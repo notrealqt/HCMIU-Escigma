@@ -9,6 +9,11 @@ public class Main {
         window.setResizable(false);
         window.setTitle("Treasure hunting");
 
+        GamePanel panel = new GamePanel();
+        window.add(panel);
+
+        window.pack();
+        
         window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
