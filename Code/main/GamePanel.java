@@ -1,6 +1,10 @@
 package main;
 
 import javax.swing.JPanel;
+import javax.swing.text.PlainDocument;
+
+import entity.Player;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -10,14 +14,19 @@ public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 16; //16x16 size
     final int scale = 3;
 
-    final int tileSize = originalTileSize * scale; //48x48 tile
+    public final int tileSize = originalTileSize * scale; //48x48 tile
     final int maxScreenCol = 16;
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol; //768 pixels
     final int screenHeight = tileSize * maxScreenRow; //576 pixels
     
+
+    //FPS
+    int FPS = 60;
+
     KeyHandle KeyH = new KeyHandle();
     Thread gameThread;
+    Player player = new Player(this, KeyH);
 
     //set player's dafault position
     int playerX = 100;
@@ -31,6 +40,8 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(KeyH);
         this.setFocusable(true);
+        startGameThread();
+
     }
     public void startGameThread () {
         gameThread = new Thread(this);
@@ -39,33 +50,36 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
         while (gameThread != null) {
-            //1 Update position
+            double drawInterval = 1000000000/FPS;
+            double nextDrawTime = System.nanoTime() + drawInterval;
             update();
-            //2 draw the screen with updated information
+
+           //System.out.println("Repaint method called");
+
             repaint();
+            try {
+                double remainingTime = nextDrawTime - System.nanoTime();
+                remainingTime = remainingTime / 1000000;
+                if (remainingTime < 0) {
+                    remainingTime = 0;
+                }
+
+                Thread.sleep((long) remainingTime);
+                nextDrawTime += drawInterval;
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
     public void update() {
-        if (KeyH.upPressed == true) {
-            playerY -= playerSpeed;
-        }
-        else if (KeyH.downPressed == true) {
-            playerY += playerSpeed;
-        }
-        else if (KeyH.leftPressed == true) {
-            playerX -= playerSpeed;
-        }
-        else if ( KeyH.rightPressed == true) {
-            playerX += playerSpeed;
-        }
+        player.update();
     }
     //draw things 
     public void paintComponent(Graphics g) {
         super.paintComponent(g); //required whenever creating this method.
         Graphics2D g2 = (Graphics2D)g;
-
-        g2.setColor(Color.white); // set color to use for drawing objects
-        g2.fillRect(playerX,playerY,tileSize,tileSize);
+        player.draw(g2);
         g2.dispose();
     }
 }
