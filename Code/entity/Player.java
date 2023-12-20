@@ -14,17 +14,23 @@ public class Player extends Entity {
     GamePanel gp;
     KeyHandle keyH;
 
+    public final int screenX;
+    public final int screenY; //where player on the screen
+
     public Player(GamePanel gp, KeyHandle keyH) {
         this.gp = gp;
         this.keyH = keyH;
-        
+
+        screenX = gp.screenWidth /2 - (gp.tileSize/2);
+        screenY = gp.screenHeight /2 - (gp.tileSize/2); //player's pos at center
+
         setDefaultValue();
         getPlayerImage();
     }
 
     public void setDefaultValue() {
-        x= 100;
-        y = 100;
+        worldX = gp.tileSize * 23; //player's pos in world map
+        worldY = gp.tileSize * 21;
         speed = 4;
         direction = "down";
     }
@@ -95,24 +101,24 @@ public class Player extends Entity {
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
             if (keyH.upPressed == true) {
             direction = "up";
-            y -= speed;
+            worldY -= speed;
             //System.out.println("Up pressed: " + playerX + ", " + playerY);
             }
             else if (keyH.downPressed == true) {
                 direction = "down";
-                y += speed;
+                worldY += speed;
                 //System.out.println("Down pressed: " + playerX + ", " + playerY);
 
             }
             else if (keyH.leftPressed == true) {
                 direction = "left";
-                x -= speed;
+                worldX -= speed;
                 //System.out.println("Left pressed: " + playerX + ", " + playerY);
 
             }
             else if ( keyH.rightPressed == true) {
                 direction = "right";
-                x+= speed;
+                worldX += speed;
                 //System.out.println("Right pressed: " + playerX + ", " + playerY);
             }
 
@@ -311,6 +317,6 @@ public class Player extends Entity {
                     break;
         }
         }
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
 }
