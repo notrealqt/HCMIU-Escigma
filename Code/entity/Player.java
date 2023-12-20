@@ -1,5 +1,6 @@
 package entity;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,6 +24,14 @@ public class Player extends Entity {
 
         screenX = gp.screenWidth /2 - (gp.tileSize/2);
         screenY = gp.screenHeight /2 - (gp.tileSize/2); //player's pos at center
+
+        solidArea = new Rectangle(); //setting the solid area of character based on 16x3 pixels
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidArea.width = 32;
+        solidArea.height = 32;
+
+
 
         setDefaultValue();
         getPlayerImage();
@@ -101,25 +110,43 @@ public class Player extends Entity {
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
             if (keyH.upPressed == true) {
             direction = "up";
-            worldY -= speed;
             //System.out.println("Up pressed: " + playerX + ", " + playerY);
             }
             else if (keyH.downPressed == true) {
                 direction = "down";
-                worldY += speed;
                 //System.out.println("Down pressed: " + playerX + ", " + playerY);
 
             }
             else if (keyH.leftPressed == true) {
                 direction = "left";
-                worldX -= speed;
                 //System.out.println("Left pressed: " + playerX + ", " + playerY);
 
             }
             else if ( keyH.rightPressed == true) {
                 direction = "right";
-                worldX += speed;
                 //System.out.println("Right pressed: " + playerX + ", " + playerY);
+            }
+
+            //check collision
+            collisionOn = false;
+            gp.colDect.checkTile(this);
+
+            //if collision is false, player can move 
+            if (collisionOn == false) {
+                switch (direction) {
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
             }
 
             //player image changes every 6 frames
