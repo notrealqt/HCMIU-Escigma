@@ -9,7 +9,7 @@ Computer Science - SCSE
 # Class Lecturer / Lab Lecturer
 # Members:
     Thái Quang Tính                 ITCSIU22222
-    Nguyễn Trọng Thuận        
+    Nguyễn Trọng Thuận              ITCSIU22223
     Hoàng Thiên Ân
-    Nguyễn Huỳnh Minh Đức
+    Nguyễn Huỳnh Minh Đức           ITCSIU22218
     Nguyễn Phát Lợi
