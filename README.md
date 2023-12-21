@@ -7,6 +7,7 @@ International University - HCMIU
 # Major
 Computer Science - SCSE
 # Class Lecturer / Lab Lecturer
+Tran Thanh Tung / Nguyen Quang Phu
 # Members:
     Thái Quang Tính                 ITCSIU22222
     Nguyễn Trọng Thuận              ITCSIU22223
