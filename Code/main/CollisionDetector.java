@@ -15,7 +15,7 @@ public class CollisionDetector {
         //Creating a box of collision on the character
         int entityLeftWorldX = entity.worldX + entity.solidArea.x;
         int entityRightWorldX = entity.worldX + entity.solidArea.x + entity.solidArea.width;
-        int entityTopWorldY = entity.worldX + entity.solidArea.y;
+        int entityTopWorldY = entity.worldY + entity.solidArea.y;
         int entityBottomWorldY = entity.worldY + entity.solidArea.y + entity.solidArea.height;
 
         int entityLeftCol = entityLeftWorldX / gp.tileSize;
@@ -37,7 +37,7 @@ public class CollisionDetector {
                 break;
             case "down":
 
-                entityBottomRow = (entityBottomWorldY - entity.speed) / gp.tileSize;  
+                entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;  
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision ==true) {
