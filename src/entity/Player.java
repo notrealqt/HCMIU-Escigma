@@ -107,24 +107,40 @@ public class Player extends Entity {
 
     public void update() {
         //System.out.println("Update method called");
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
+        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true) {
             if (keyH.upPressed == true) {
             direction = "up";
             //System.out.println("Up pressed: " + playerX + ", " + playerY);
             }
-            else if (keyH.downPressed == true) {
+            if (keyH.downPressed == true) {
                 direction = "down";
                 //System.out.println("Down pressed: " + playerX + ", " + playerY);
 
             }
-            else if (keyH.leftPressed == true) {
+            if (keyH.leftPressed == true) {
                 direction = "left";
                 //System.out.println("Left pressed: " + playerX + ", " + playerY);
 
             }
-            else if ( keyH.rightPressed == true) {
+            if ( keyH.rightPressed == true) {
                 direction = "right";
                 //System.out.println("Right pressed: " + playerX + ", " + playerY);
+            }
+            if ((keyH.upPressed && keyH.leftPressed) == true) {
+                direction = "upleft";
+                //System.out.println("Up left pressed: " + playerX + ", " + playerY);
+            }
+            if ((keyH.upPressed && keyH.rightPressed) == true) {
+                direction = "upright";
+                //System.out.println("Up right pressed: " + playerX + ", " + playerY);
+            }
+            if ((keyH.downPressed && keyH.leftPressed) == true) {
+                direction = "downleft";
+                //System.out.println("Down left pressed: " + playerX + ", " + playerY);
+            }
+            if ((keyH.downPressed && keyH.rightPressed) == true) {
+                direction = "downright";
+                //System.out.println("Down right pressed: " + playerX + ", " + playerY);
             }
 
             //check collision
@@ -145,6 +161,22 @@ public class Player extends Entity {
                         break;
                     case "right":
                         worldX += speed;
+                        break;
+                    case "upleft":
+                        worldX -= speed;
+                        worldY -= speed;
+                        break;
+                    case "upright":
+                        worldX += speed;
+                        worldY -= speed;
+                        break;
+                    case "downleft":
+                        worldX -= speed;
+                        worldY += speed;
+                        break;
+                    case "downright":
+                        worldX += speed;
+                        worldY += speed;
                         break;
                 }
             }
@@ -185,9 +217,6 @@ public class Player extends Entity {
                 spriteCounter =0;
             }
         } 
-     
-
-        
     }
 
     public void draw(Graphics2D g2) {
@@ -195,7 +224,7 @@ public class Player extends Entity {
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
 
         BufferedImage image = null;
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
+        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true) {
             switch (direction) {
                 case "up":
                     if (spriteNum == 0) {
@@ -325,6 +354,135 @@ public class Player extends Entity {
                         image = right9;
                     }
                     break;
+                case "upleft":
+                if (spriteNum == 0) {
+                    image = up0;
+                }
+                if (spriteNum == 1) {
+                    image = up1;
+                }
+                if (spriteNum == 2) {
+                    image = up2;
+                }
+                if (spriteNum == 3) {
+                    image = up3;
+                }
+                if (spriteNum == 4) {
+                    image = up4;
+                }
+                if (spriteNum == 5) {
+                    image = up5;
+                }
+                if (spriteNum == 6) {
+                    image = up6;
+                }
+                if (spriteNum == 7) {
+                    image = up7;
+                }
+                if (spriteNum == 8) {
+                    image = up8;
+                }
+                if (spriteNum == 9) {
+                    image = up9;
+                }
+                    break;
+                case "upright":
+                if (spriteNum == 0) {
+                    image = up0;
+                }
+                if (spriteNum == 1) {
+                    image = up1;
+                }
+                if (spriteNum == 2) {
+                    image = up2;
+                }
+                if (spriteNum == 3) {
+                    image = up3;
+                }
+                if (spriteNum == 4) {
+                    image = up4;
+                }
+                if (spriteNum == 5) {
+                    image = up5;
+                }
+                if (spriteNum == 6) {
+                    image = up6;
+                }
+                if (spriteNum == 7) {
+                    image = up7;
+                }
+                if (spriteNum == 8) {
+                    image = up8;
+                }
+                if (spriteNum == 9) {
+                    image = up9;
+                }
+                    break;
+                case "downleft":
+                if (spriteNum == 0) {
+                    image = down0;
+                }
+                if (spriteNum == 1) {
+                    image = down1;
+                }
+                if (spriteNum == 2) {
+                    image = down2;
+                }
+                if (spriteNum == 3) {
+                    image = down3;
+                }
+                if (spriteNum == 4) {
+                    image = down4;
+                }
+                if (spriteNum == 5) {
+                    image = down5;
+                }
+                if (spriteNum == 6) {
+                    image = down6;
+                }
+                if (spriteNum == 7) {
+                    image = down7;
+                }
+                if (spriteNum == 8) {
+                    image = down8;
+                }
+                if (spriteNum == 9) {
+                    image = down9;
+                }
+                    break;
+                case "downright":
+                if (spriteNum == 0) {
+                    image = down0;
+                }
+                if (spriteNum == 1) {
+                    image = down1;
+                }
+                if (spriteNum == 2) {
+                    image = down2;
+                }
+                if (spriteNum == 3) {
+                    image = down3;
+                }
+                if (spriteNum == 4) {
+                    image = down4;
+                }
+                if (spriteNum == 5) {
+                    image = down5;
+                }
+                if (spriteNum == 6) {
+                    image = down6;
+                }
+                if (spriteNum == 7) {
+                    image = down7;
+                }
+                if (spriteNum == 8) {
+                    image = down8;
+                }
+                if (spriteNum == 9) {
+                    image = down9;
+                }
+                    break;
+
             }
         }
         else {
