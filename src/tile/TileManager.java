@@ -35,7 +35,7 @@ public class TileManager {
 
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/res/tile/water00.png"));
-            tile[1].collision = true; //set the tile solid 
+            tile[2].collision = true; //set the tile solid 
             
         } catch (IOException e) {
             e.printStackTrace();
