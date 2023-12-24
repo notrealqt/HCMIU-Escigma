@@ -23,7 +23,7 @@ public class CollisionDetector {
         int entityTopRow = entityTopWorldY / gp.tileSize;
         int entityBottomRow = entityBottomWorldY / gp.tileSize;
 
-        int tileNum1, tileNum2;
+        int tileNum1, tileNum2,tileNum3,tileNum4;
         switch (entity.direction) {
             //prediction the coordinates of player as it moves
             case "up":
@@ -63,15 +63,26 @@ public class CollisionDetector {
                 entityLeftCol = (entityLeftWorldX - entity.speed) / gp.tileSize;  
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision ==true) {
+
+                entityTopRow = (entityTopWorldY - entity.speed) / gp.tileSize;  
+                tileNum3 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+                tileNum4 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+
+                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision ==true || gp.tileM.tile[tileNum3].collision == true || gp.tileM.tile[tileNum4].collision ==true) {
                     entity.collisionOn = true;
                 }
+
                 break;
             case "upright":
                 entityRightCol = (entityRightWorldX + entity.speed) / gp.tileSize;  
                 tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision ==true) {
+
+                entityTopRow = (entityTopWorldY - entity.speed) / gp.tileSize;  
+                tileNum3 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+                tileNum4 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+
+                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision ==true || gp.tileM.tile[tileNum3].collision == true || gp.tileM.tile[tileNum4].collision ==true) {
                     entity.collisionOn = true;
                 }
                 break;
@@ -80,7 +91,12 @@ public class CollisionDetector {
                 entityLeftCol = (entityLeftWorldX - entity.speed) / gp.tileSize;  
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision ==true) {
+
+                entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
+                tileNum3 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+                tileNum4 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+                
+                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision ==true|| gp.tileM.tile[tileNum3].collision == true || gp.tileM.tile[tileNum4].collision ==true) {
                     entity.collisionOn = true;
                 }
                 break;
@@ -89,7 +105,12 @@ public class CollisionDetector {
                 entityRightCol = (entityRightWorldX + entity.speed) / gp.tileSize;  
                 tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision ==true) {
+
+                entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
+                tileNum3 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+                tileNum4 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+
+                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision ==true|| gp.tileM.tile[tileNum3].collision == true || gp.tileM.tile[tileNum4].collision ==true) {
                     entity.collisionOn = true;
                 }
                 break;              
