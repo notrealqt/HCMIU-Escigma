@@ -163,20 +163,20 @@ public class Player extends Entity {
                         worldX += speed;
                         break;
                     case "upleft":
-                        worldX -= (int)Math.round(Math.sqrt(2)*2);
-                        worldY -= (int)Math.round(Math.sqrt(2)*2);
+                        worldX -= (int)Math.round(Math.sqrt(speed/2)*2);
+                        worldY -= (int)Math.round(Math.sqrt(speed/2)*2);
                         break;
                     case "upright":
-                        worldX += (int)Math.round(Math.sqrt(2)*2);
-                        worldY -= (int)Math.round(Math.sqrt(2)*2);
+                        worldX += (int)Math.round(Math.sqrt(speed/2)*2);
+                        worldY -= (int)Math.round(Math.sqrt(speed/2)*2);
                         break;
                     case "downleft":
-                        worldX -= (int)Math.round(Math.sqrt(2)*2);
-                        worldY += (int)Math.round(Math.sqrt(2)*2);
+                        worldX -= (int)Math.round(Math.sqrt(speed/2)*2);
+                        worldY += (int)Math.round(Math.sqrt(speed/2)*2);
                         break;
                     case "downright":
-                        worldX += (int)Math.round(Math.sqrt(2)*2);
-                        worldY += (int)Math.round(Math.sqrt(2)*2);
+                        worldX += (int)Math.round(Math.sqrt(speed/2)*2);
+                        worldY += (int)Math.round(Math.sqrt(speed/2)*2);
                         break;
                 }
             }
