@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandle;
+import main.UtilityTool;
 
 public class Player extends Entity {
     
@@ -17,7 +18,7 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY; //where player on the screen
-    int hasKey = 0;
+    public int hasKey = 0;
 
     public Player(GamePanel gp, KeyHandle keyH) {
         this.gp = gp;
@@ -47,6 +48,7 @@ public class Player extends Entity {
     }
 
     public void getPlayerImage() {
+        //old method
         try {
             //idle animation
             idleUp = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_idle_back_0.png"));
@@ -106,7 +108,76 @@ public class Player extends Entity {
             e.printStackTrace();
         }
     }
+        /* 
+        //new method
+        idleUp = setUp("1_player_idle_back_0");
+        idleDown = setUp("1_player_idle_font_0");
+        idleRight = setUp("1_player_idle_right_0");
+        idleLeft = setUp("1_player_idle_left_0");
 
+        up0 = setUp("1_player_move_back_0");
+        up1 = setUp("1_player_move_back_1");
+        up2 = setUp("1_player_move_back_2");
+        up3 = setUp("1_player_move_back_3");
+        up4 = setUp("1_player_move_back_4");
+        up5 = setUp("1_player_move_back_5");
+        up6 = setUp("1_player_move_back_6");
+        up7 = setUp("1_player_move_back_7");
+        up8 = setUp("1_player_move_back_8");
+        up9 = setUp("1_player_move_back_9");
+
+        down0 = setUp("1_player_move_font_0");
+        down1 = setUp("1_player_move_font_1");
+        down2 = setUp("1_player_move_font_2");
+        down3 = setUp("1_player_move_font_3");
+        down4 = setUp("1_player_move_font_4");
+        down5 = setUp("1_player_move_font_5");
+        down6 = setUp("1_player_move_font_6");
+        down7 = setUp("1_player_move_font_7");
+        down8 = setUp("1_player_move_font_8");
+        down9 = setUp("1_player_move_font_9");
+
+        
+        left0 = setUp("1_player_move_left_0");
+        left1 = setUp("1_player_move_left_1");
+        left2 = setUp("1_player_move_left_2");
+        left3 = setUp("1_player_move_left_3");
+        left4 = setUp("1_player_move_left_4");
+        left5 = setUp("1_player_move_left_5");
+        left6 = setUp("1_player_move_left_6");
+        left7 = setUp("1_player_move_left_7");
+        left8 = setUp("1_player_move_left_8");
+        left9 = setUp("1_player_move_left_9");
+
+
+        right0 = setUp("1_player_move_right_0");
+        right1 = setUp("1_player_move_right_1");
+        right2 = setUp("1_player_move_right_2");
+        right3 = setUp("1_player_move_right_3");
+        right4 = setUp("1_player_move_right_4");
+        right5 = setUp("1_player_move_right_5");
+        right6 = setUp("1_player_move_right_6");
+        right7 = setUp("1_player_move_right_7");
+        right8 = setUp("1_player_move_right_8");
+        right9 = setUp("1_player_move_right_9");
+
+
+    }   
+
+    public BufferedImage setUp(String imageName) {
+        
+        UtilityTool uTool = new UtilityTool();
+        BufferedImage image = null;
+        
+        try {
+            image = ImageIO.read(getClass().getResourceAsStream("/res/player/"+imageName+".png"));
+            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return image;
+    } 
+    */
     public void update() {
         //System.out.println("Update method called");
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true) {
@@ -229,17 +300,26 @@ public class Player extends Entity {
                     gp.playSE(1);
                     hasKey++;
                     gp.obj[i] = null;
+                    gp.ui.showMessage("You got a key!");
                     break;
                 case "Door":
                     if(hasKey>0){
                         gp.obj[i] = null;
                         hasKey--;
                     }
+                    else {
+                        gp.ui.showMessage("You need a key to open!");
+                    }
                     break;
                 case "Boots":
                     gp.playSE(1);
                     speed += 2;
                     gp.obj[i] = null;
+                    break;
+                case "Chest":
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();
+                    gp.playSE(2);
                     break;
             }
         }

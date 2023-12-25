@@ -13,7 +13,7 @@ public class Sound {
     public Sound(){
         soundURL[0] = getClass().getResource("/res/sound/theme_test.wav");
         soundURL[1] = getClass().getResource("/res/sound/pickup.wav");
-
+        soundURL[2] = getClass().getResource("/res/sound/yay.wav");
     }
 
     public void setFile(int i){
@@ -22,7 +22,7 @@ public class Sound {
             clip = AudioSystem.getClip();
             clip.open(ais);
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         }
     }
 

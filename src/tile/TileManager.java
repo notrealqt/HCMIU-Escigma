@@ -7,7 +7,10 @@ import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 import main.GamePanel;
+import main.UtilityTool;
+
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 public class TileManager {
     GamePanel gp;
@@ -26,8 +29,10 @@ public class TileManager {
 
     public void getTileImage() {
         try {
+            /* 
+            //Old method to setup tile
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/tile/grass00.png"));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/tile/grass00.png")); 
 
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/tile/wall.png"));
@@ -36,11 +41,32 @@ public class TileManager {
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/res/tile/water00.png"));
             tile[2].collision = true; //set the tile solid 
-            
-        } catch (IOException e) {
+            */
+            //Improved method to setup tile (dont even need try catch)
+            //setUp(index, image name, collision ? true, false)
+            //Faster the code, lesser the pain :v
+            setUp(0, "grass00", false);
+            setUp(1, "wall", true);
+            setUp(2, "water00", true);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    } 
+            
+    }
+     
+    public void setUp(int index, String imageName, boolean collision) {
+        UtilityTool uTool = new UtilityTool();
+        try {
+            tile[index] = new Tile();
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/res/tile/"+imageName+".png"));
+            tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+            tile[index].collision = collision;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void loadMap(String filePath) {
         try {
             InputStream is = getClass().getResourceAsStream(filePath);
@@ -66,7 +92,7 @@ public class TileManager {
             }
             br.close();
         } catch (Exception e) {
-            // TODO: handle exception
+           // TODO: handle exception
         }
     }
 
@@ -87,7 +113,7 @@ public class TileManager {
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX && 
                 worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && 
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
-                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize,gp.tileSize, null);
+                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 
             } //better image rendering only draw as player moves
             worldCol++;
