@@ -3,6 +3,7 @@ package main;
 import object.Key;
 import object.Chest;
 import object.Door;
+import object.Boots;
 
 //instantiate objects class
 public class AssetSetter {
@@ -40,5 +41,9 @@ public class AssetSetter {
         gp.obj[6] = new Key();
         gp.obj[6].worldX = 20 * gp.tileSize;
         gp.obj[6].worldY = 12 * gp.tileSize;
+
+        gp.obj[7] = new Boots();
+        gp.obj[7].worldX = 25 * gp.tileSize;
+        gp.obj[7].worldY = 20 * gp.tileSize;
     }
 }

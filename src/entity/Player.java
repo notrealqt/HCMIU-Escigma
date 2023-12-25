@@ -166,20 +166,20 @@ public class Player extends Entity {
                         worldX += speed;
                         break;
                     case "upleft":
-                        worldX -= (int)Math.round(Math.sqrt(speed/2)*2);
-                        worldY -= (int)Math.round(Math.sqrt(speed/2)*2);
+                        worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                         break;
                     case "upright":
-                        worldX += (int)Math.round(Math.sqrt(speed/2)*2);
-                        worldY -= (int)Math.round(Math.sqrt(speed/2)*2);
+                        worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                         break;
                     case "downleft":
-                        worldX -= (int)Math.round(Math.sqrt(speed/2)*2);
-                        worldY += (int)Math.round(Math.sqrt(speed/2)*2);
+                        worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                         break;
                     case "downright":
-                        worldX += (int)Math.round(Math.sqrt(speed/2)*2);
-                        worldY += (int)Math.round(Math.sqrt(speed/2)*2);
+                        worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                         break;
                 }
             }
@@ -226,6 +226,7 @@ public class Player extends Entity {
             String objectName = gp.obj[i].name;
             switch(objectName){
                 case "Key":
+                    gp.playSE(1);
                     hasKey++;
                     gp.obj[i] = null;
                     break;
@@ -234,6 +235,11 @@ public class Player extends Entity {
                         gp.obj[i] = null;
                         hasKey--;
                     }
+                    break;
+                case "Boots":
+                    gp.playSE(1);
+                    speed += 2;
+                    gp.obj[i] = null;
                     break;
             }
         }
