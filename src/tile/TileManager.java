@@ -1,17 +1,12 @@
 package tile;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
 import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.UtilityTool;
-
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-
 public class TileManager {
     GamePanel gp;
     public Tile[] tile;
@@ -92,7 +87,7 @@ public class TileManager {
             }
             br.close();
         } catch (Exception e) {
-           // TODO: handle exception
+           e.printStackTrace();
         }
     }
 

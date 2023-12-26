@@ -7,7 +7,7 @@ public class Main {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Treasure hunting");
+        window.setTitle("Maze Runner");
 
         GamePanel panel = new GamePanel();
         window.add(panel);

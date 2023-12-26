@@ -1,15 +1,12 @@
 package entity;
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import main.GamePanel;
 import main.KeyHandle;
-import main.UtilityTool;
 
 public class Player extends Entity {
     
