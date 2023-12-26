@@ -1,38 +1,40 @@
 package entity;
-
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
+
 import main.GamePanel;
 import main.KeyHandle;
+import main.UtilityTool;
 
 public class Player extends Entity {
-    
-    GamePanel gp;
-    KeyHandle keyH;
 
+    KeyHandle keyH;
     public final int screenX;
     public final int screenY; //where player on the screen
     public int hasKey = 0;
 
     public Player(GamePanel gp, KeyHandle keyH) {
-        this.gp = gp;
+
+        super(gp);
+
         this.keyH = keyH;
 
-        screenX = gp.screenWidth /2 - (gp.tileSize/2);
-        screenY = gp.screenHeight /2 - (gp.tileSize/2); //player's pos at center
+        screenX = gp.screenWidth/2 - (gp.tileSize/2);
+        screenY = gp.screenHeight/2 - (gp.tileSize/2); //player's pos at center
 
         solidArea = new Rectangle(); //setting the solid area of character based on 16x3 pixels
         solidArea.x = 8;
         solidArea.y = 16;
-        solidArea.width = 32;
-        solidArea.height = 32;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-
-
+        solidArea.width = 32;
+        solidArea.height = 32;
+        
         setDefaultValue();
         getPlayerImage();
     }
@@ -45,6 +47,7 @@ public class Player extends Entity {
     }
 
     public void getPlayerImage() {
+        
         //old method
         try {
             //idle animation
@@ -104,8 +107,8 @@ public class Player extends Entity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
         /* 
+
         //new method
         idleUp = setUp("1_player_idle_back_0");
         idleDown = setUp("1_player_idle_font_0");
@@ -157,10 +160,10 @@ public class Player extends Entity {
         right7 = setUp("1_player_move_right_7");
         right8 = setUp("1_player_move_right_8");
         right9 = setUp("1_player_move_right_9");
-
-
-    }   
-
+        */
+    }
+    
+    /* 
     public BufferedImage setUp(String imageName) {
         
         UtilityTool uTool = new UtilityTool();
@@ -175,6 +178,7 @@ public class Player extends Entity {
         return image;
     } 
     */
+
     public void update() {
         //System.out.println("Update method called");
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true) {
@@ -213,11 +217,18 @@ public class Player extends Entity {
                 //System.out.println("Down right pressed: " + playerX + ", " + playerY);
             }
 
-            //check collision
+            //Check tile collision
             collisionOn = false;
             gp.colDect.checkTile(this);
+
+            //Check object collison
             int objIndex = gp.colDect.checkObject(this, true);
             pickUpObject(objIndex);
+
+            //Check NPC collision
+            int npcIndex = gp.colDect.checkEntity(this, gp.npc);
+            interactNPC(1);
+
             //if collision is false, player can move 
             if (collisionOn == false) {
                 switch (direction) {
@@ -319,6 +330,11 @@ public class Player extends Entity {
                     gp.playSE(2);
                     break;
             }
+        }
+    }
+    public void interactNPC(int i) {
+        if(i!=9999) {
+
         }
     }
     public void draw(Graphics2D g2) {
