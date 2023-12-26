@@ -12,7 +12,7 @@ public class NPC_OldMan extends Entity {
         speed = 1;
 
         getImage();
-
+        setDialogue();
     }
     public void getImage(){
 
@@ -27,6 +27,15 @@ public class NPC_OldMan extends Entity {
 
         right0 = setUp("npc/oldman_right_1");
         right1 = setUp("npc/oldman_right_2");
+
+    }
+    public void setDialogue() {
+        dialogues[0] = "Hello, traveler!";
+        dialogues[1] = "Welcome to nowhere!";
+        dialogues[2] = "Sadly, it's nowhere";
+        dialogues[3] = "There is nothing to do";
+        dialogues[4] = "Being born here is miserable";
+        dialogues[5] = "DGH%#&ODTT@#$M(RQ(#$Y V(%YMV(Q#$)MV)Q)$(VQ)\n$V(%Y($YB(V##$C*#T$nv38t41n84vt19496u^B(M%(M%N))))))";
 
     }
     public void setAction() {
@@ -53,6 +62,10 @@ public class NPC_OldMan extends Entity {
             actionLockCounter = 0;
         } 
         
+    }
+    public void speak() {
+        super.speak();
+        // Customization some speacial entity stuff here
     }
 }
 

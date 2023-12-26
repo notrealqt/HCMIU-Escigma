@@ -44,6 +44,10 @@ public class Player extends Entity {
         worldY = gp.tileSize * 21;
         speed = 4;
         direction = "down";
+
+        //Player status
+        maxLife = 10;
+        life = maxLife;
     }
 
     public void getPlayerImage() {
@@ -183,8 +187,8 @@ public class Player extends Entity {
         //System.out.println("Update method called");
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true) {
             if (keyH.upPressed == true) {
-            direction = "up";
-            //System.out.println("Up pressed: " + playerX + ", " + playerY);
+                direction = "up";
+                //System.out.println("Up pressed: " + playerX + ", " + playerY);
             }
             if (keyH.downPressed == true) {
                 direction = "down";
@@ -227,8 +231,11 @@ public class Player extends Entity {
 
             //Check NPC collision
             int npcIndex = gp.colDect.checkEntity(this, gp.npc);
-            interactNPC(1);
-
+            interactNPC(npcIndex);
+            //Check event
+            gp.eHandler .checkEvent();
+            gp.KeyH.interPressed = false;
+            
             //if collision is false, player can move 
             if (collisionOn == false) {
                 switch (direction) {
@@ -334,8 +341,12 @@ public class Player extends Entity {
     }
     public void interactNPC(int i) {
         if(i!=9999) {
-
+            if(gp.KeyH.interPressed == true) {
+                gp.gameState = gp.dialogueState;
+                gp.npc[i].speak();
+            }
         }
+        
     }
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.white); // set color to use for drawing objects

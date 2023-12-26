@@ -33,12 +33,52 @@ public class Entity {
     public boolean collisionOn = false;
     public int actionLockCounter = 0;
 
+    String dialogues[] = new String[30];
+    int dialogueIndex = 0;
+
+    //Character status
+    public int maxLife;
+    public int life;
+    
     public Entity(GamePanel gp){
         this.gp = gp;
     }
 
     public void setAction() {
 
+    }
+    public void speak() {
+        if(dialogues[dialogueIndex] == null) {
+            dialogueIndex = 0;
+        }
+        gp.ui.currentDiaglogue = dialogues[dialogueIndex];
+        dialogueIndex++;
+        switch(gp.player.direction) {
+            case "up":
+                direction = "down";
+                break;
+            case "down":
+                direction = "up";
+                break;
+            case "left":
+                direction = "right";
+                break;
+            case "right":
+                direction = "left";
+                break;    
+            case "upleft":
+                direction = "right";
+                break;
+            case "upright":
+                direction = "left";
+                break;
+            case "downleft":
+                direction = "right";
+                break;
+            case "downright":
+                direction = "left";
+                break;
+        }        
     }
     public void update(){
 
