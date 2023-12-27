@@ -7,9 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
+import entity.Entity;
 import object.Heart;
 import object.Key;
-import object.SuperObject;
 
 public class UI {
     
@@ -32,11 +32,11 @@ public class UI {
         tnr_20 = new Font("Times new Ronman", Font.TRUETYPE_FONT, 20);
         tnr_40 = new Font("Times new Ronman", Font.PLAIN, 40);
         tnr_80 = new Font("Times new Ronman", Font.BOLD, 80);
-        Key key = new Key(gp);
-        keyImage = key.image;
+        Entity key = new Key(gp);
+        keyImage = key.down0;
 
         //Create hud object
-        SuperObject heart = new Heart(gp);
+        Heart heart = new Heart(gp);
         heart_full = heart.image;
         heart_half = heart.image2;
         heart_blank = heart.image3;

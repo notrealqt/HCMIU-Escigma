@@ -46,6 +46,20 @@ public class AssetSetter {
         gp.obj[7] = new Boots(gp);
         gp.obj[7].worldX = 25 * gp.tileSize;
         gp.obj[7].worldY = 20 * gp.tileSize;
+
+        gp.obj[8] = new Key(gp);
+        gp.obj[8].worldX = 20 * gp.tileSize;
+        gp.obj[8].worldY = 14 * gp.tileSize;
+
+        gp.obj[9] = new Key(gp);
+        gp.obj[9].worldX = 20 * gp.tileSize;
+        gp.obj[9].worldY = 16 * gp.tileSize;
+
+        gp.obj[10] = new Key(gp);
+        gp.obj[10].worldX = 20 * gp.tileSize;
+        gp.obj[10].worldY = 18 * gp.tileSize;
+
+        
     }
     public void setNPC(){
         gp.npc[0] = new NPC_OldMan(gp);
