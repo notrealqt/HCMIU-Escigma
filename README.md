@@ -1,7 +1,7 @@
 # Project Name
-Treasuare Explorer
+Maze Runner
 # Description
-In this project, we will be using the Java langague to create a 2D game that is called Treasure Explorer.
+In this project, we will be using the Java langague to create a 2D game that is called Maze Runne where player will continue running through a maze dungeon to find the key to escape from this dungeon. However, it isn't as easy as it sound. Playe will encounter many monsters that trying to block and fail the player's escape. Player have to fight those monsters and find the key to escape this whole dangerous dungeon.
 # School
 International University - HCMIU
 # Major
