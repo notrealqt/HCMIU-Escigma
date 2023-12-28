@@ -40,10 +40,17 @@ public class Entity {
     public String name;
     public boolean collision = false;
 
+    //take damage from monster from amount of time
+    //avoid taking constantly damage
+    public boolean invincible =false;
+    public int invincibleCounter = 0;
+
     //Character status
     public int maxLife;
     public int life;
     
+    public int type; //0 -> player, 1 -> npcs, 2 -> monster
+
     public Entity(GamePanel gp){
         this.gp = gp;
     }
@@ -91,9 +98,17 @@ public class Entity {
         collisionOn = false;
         gp.colDect.checkTile(this);
         gp.colDect.checkObject(this, false);
-        gp.colDect.checkPlayer(this);
         gp.colDect.checkEntity(this, gp.npc);    //check collision between entities (npc and monster)
         gp.colDect.checkEntity(this, gp.monster);
+        boolean hitplayer = gp.colDect.checkPlayer(this);
+
+        if(this.type == 2 && hitplayer == true){
+            if(gp.player.invincible == false){
+                //player take damage
+                gp.player.life -= 1;
+                gp.player.invincible = true;
+            }
+        }
         if (collisionOn == false) {
             switch (direction) {
                 case "up":

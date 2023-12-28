@@ -226,7 +226,10 @@ public class CollisionDetector {
         }
         return index;
     }
-    public void checkPlayer(Entity entity) {
+    public boolean checkPlayer(Entity entity) {
+
+        boolean hitplayer = false;
+
         entity.solidArea.x = entity.worldX + entity.solidArea.x;
         entity.solidArea.y = entity.worldY + entity.solidArea.y;
         gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
@@ -235,60 +238,41 @@ public class CollisionDetector {
         switch(entity.direction){
             case "up":
                 entity.solidArea.y -= entity.speed;
-                if(entity.solidArea.intersects(gp.player.solidArea)){
-                    entity.collisionOn = true;
-                }
                 break;
             case "down":
                entity.solidArea.y += entity.speed;
-                if(entity.solidArea.intersects(gp.player.solidArea)){
-                    entity.collisionOn = true;
-                }
                 break;
             case "left":
                 entity.solidArea.x -= entity.speed;
-                if(entity.solidArea.intersects(gp.player.solidArea)){
-                    entity.collisionOn = true;
-                }
                 break;
             case "right":
                 entity.solidArea.x += entity.speed;
-                if(entity.solidArea.intersects(gp.player.solidArea)){
-                    entity.collisionOn = true;
-                }
                 break;
             case "upright":
                 entity.solidArea.x += entity.speed;
                 entity.solidArea.y -= entity.speed;
-                if(entity.solidArea.intersects(gp.player.solidArea)){
-                    entity.collisionOn = true;
-                }
                 break;
             case "downright":
                 entity.solidArea.x += entity.speed;
                 entity.solidArea.y += entity.speed;
-                if(entity.solidArea.intersects(gp.player.solidArea)){
-                    entity.collisionOn = true;
-                }
                 break;
             case "upleft":
                 entity.solidArea.x -= entity.speed;
                 entity.solidArea.y -= entity.speed;
-                if(entity.solidArea.intersects(gp.player.solidArea)){
-                    entity.collisionOn = true;
-                }
                 break;
             case "downleft":
                 entity.solidArea.x -= entity.speed;
                 entity.solidArea.y += entity.speed;
-                if(entity.solidArea.intersects(gp.player.solidArea)){
-                    entity.collisionOn = true;
-                }
                 break;        
         }
+                if(entity.solidArea.intersects(gp.player.solidArea)){
+                entity.collisionOn = true;
+                }
         entity.solidArea.x = entity.solidAreaDefaultX;
         entity.solidArea.y = entity.solidAreaDefaultY;
         gp.player.solidArea.x = gp.player.solidAreaDefaultX;
         gp.player.solidArea.y = gp.player.solidAreaDefaultY;
+
+        return hitplayer;
     }
 }

@@ -1,4 +1,7 @@
 package entity;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -37,6 +40,7 @@ public class Player extends Entity {
         
         setDefaultValue();
         getPlayerImage();
+
     }
 
     public void setDefaultValue() {
@@ -238,7 +242,7 @@ public class Player extends Entity {
 
             //Check monster collision
             int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
-
+            encounterMonster(monsterIndex);
             
             //if collision is false, player can move 
             if (collisionOn == false) {
@@ -309,7 +313,15 @@ public class Player extends Entity {
                 }
                 spriteCounter =0;
             }
-        } 
+        }
+    //invincible time must outside of the key if statement
+    if(invincible == true){
+        invincibleCounter++;
+        if(invincibleCounter > 60){
+            invincible = false;
+            invincibleCounter = 0;
+            }
+        }
     }
     public void pickUpObject(int i){
         if(i!=9999){
@@ -351,6 +363,15 @@ public class Player extends Entity {
             }
         }
         
+    }
+    public void encounterMonster(int i) {
+        if (i!=999){
+            if(invincible == false){
+                life -=1;  
+                invincible = true;              
+            }
+
+        }
     }
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.white); // set color to use for drawing objects
@@ -636,5 +657,17 @@ public class Player extends Entity {
         }
         }
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
+        if(invincible == true){
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+        }
+        g2.drawImage(image,screenX,screenY,null);
+        //reset alpha
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+
+        // //DEBUG monster hit player
+        // g2.setFont(new Font("Arial", Font.PLAIN, 26));
+        // g2.setColor(Color.white);
+        // g2.drawString("Invincible:"+invincibleCounter,10,400);
     }
 }
