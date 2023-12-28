@@ -235,6 +235,10 @@ public class Player extends Entity {
             //Check event
             gp.eHandler .checkEvent();
             gp.KeyH.interPressed = false;
+
+            //Check monster collision
+            int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
+
             
             //if collision is false, player can move 
             if (collisionOn == false) {

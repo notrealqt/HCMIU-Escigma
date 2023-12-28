@@ -35,7 +35,7 @@ public class NPC_OldMan extends Entity {
         dialogues[2] = "Sadly, it's nowhere";
         dialogues[3] = "There is nothing to do";
         dialogues[4] = "Being born here is miserable";
-        dialogues[5] = "DGH%#&ODTT@#$M(RQ(#$Y V(%YMV(Q#$)MV)Q)$(VQ)\n$V(%Y($YB(V##$C*#T$nv38t41n84vt19496u^B(M%(M%N))))))";
+        dialogues[5] = "DGH%#&ODTT@#$M(RQ(#$Y V(%YMV(Q#$)MV)Q)$(VQ)\nCONCAC$V(%Y($YB(V##$C*#T$nv38t41n84vt19496u^B(M%(M%N))))))";
 
     }
     public void setAction() {

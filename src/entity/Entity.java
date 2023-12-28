@@ -92,6 +92,8 @@ public class Entity {
         gp.colDect.checkTile(this);
         gp.colDect.checkObject(this, false);
         gp.colDect.checkPlayer(this);
+        gp.colDect.checkEntity(this, gp.npc);    //check collision between entities (npc and monster)
+        gp.colDect.checkEntity(this, gp.monster);
         if (collisionOn == false) {
             switch (direction) {
                 case "up":
