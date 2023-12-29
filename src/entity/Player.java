@@ -189,7 +189,7 @@ public class Player extends Entity {
 
     public void update() {
         //System.out.println("Update method called");
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true) {
+        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed == true) || keyH.interPressed == true) {
             if (keyH.upPressed == true) {
                 direction = "up";
                 //System.out.println("Up pressed: " + playerX + ", " + playerY);
@@ -245,7 +245,7 @@ public class Player extends Entity {
             encounterMonster(monsterIndex);
             
             //if collision is false, player can move 
-            if (collisionOn == false) {
+            if (collisionOn == false && keyH.interPressed==false) {     //interact without moving
                 switch (direction) {
                     case "up":
                         worldY -= speed;
@@ -277,6 +277,7 @@ public class Player extends Entity {
                         break;
                 }
             }
+            gp.KeyH.interPressed = false;
 
             //player image changes every 6 frames
             spriteCounter++;
