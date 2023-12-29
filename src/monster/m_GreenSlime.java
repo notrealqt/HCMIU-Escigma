@@ -25,14 +25,26 @@ public class m_GreenSlime extends Entity {
         getImage();
     }
     public void getImage(){
-        up1=setUp("/monster/slime/slime_forest");
-        up2=setUp("/monster/slime/slime_forest");
-        down1=setUp("/monster/slime/slime_forest");
-        down2=setUp("/monster/slime/slime_forest");
-        left1=setUp("/monster/slime/slime_forest");
-        left2=setUp("/monster/slime/slime_forest");
-        right1=setUp("/monster/slime/slime_forest");
-        right2=setUp("/monster/slmie/slime_forest");        
+        up0=setUp("/monster/slime/1_slime_idle_front_0");
+        up1=setUp("/monster/slime/1_slime_idle_front_1");
+        up2=setUp("/monster/slime/1_slime_idle_front_2");
+        up3=setUp("/monster/slime/1_slime_idle_front_3");
+
+        down0=setUp("/monster/slime/1_slime_idle_front_0");
+        down1=setUp("/monster/slime/1_slime_idle_front_1");
+        down2=setUp("/monster/slime/1_slime_idle_front_2");
+        down3=setUp("/monster/slime/1_slime_idle_front_3");
+
+        left0=setUp("/monster/slime/1_slime_idle_front_0");
+        left1=setUp("/monster/slime/1_slime_idle_front_1");
+        left2=setUp("/monster/slime/1_slime_idle_front_2");
+        left3=setUp("/monster/slime/1_slime_idle_front_3");
+
+        right0=setUp("/monster/slime/1_slime_idle_front_0");
+        right1=setUp("/monster/slmie/1_slime_idle_front_1");        
+        right2=setUp("/monster/slime/1_slime_idle_front_2");
+        right3=setUp("/monster/slime/1_slime_idle_front_3");
+        
     }
     public void setAction(){
         actionLockCounter ++;
