@@ -41,7 +41,7 @@ public class m_GreenSlime extends Entity {
         left3=setUp("/monster/slime/1_slime_idle_front_3");
 
         right0=setUp("/monster/slime/1_slime_idle_front_0");
-        right1=setUp("/monster/slmie/1_slime_idle_front_1");        
+        right1=setUp("/monster/slime/1_slime_idle_front_1");        
         right2=setUp("/monster/slime/1_slime_idle_front_2");
         right3=setUp("/monster/slime/1_slime_idle_front_3");
         
