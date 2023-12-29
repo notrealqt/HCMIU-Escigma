@@ -25,14 +25,14 @@ public class m_GreenSlime extends Entity {
         getImage();
     }
     public void getImage(){
-        // up1=setup("/monster/slime/m_GreenSlime_up1");
-        // up2=setup("/monster/slime/m_GreenSlime_up2");
-        // down1=setup("/monster/slime/m_GreenSlime_up1");
-        // down2=setup("/monster/slime/m_GreenSlime_up2");
-        // left1=setup("/monster/slime/m_GreenSlime_up1");
-        // left2=setup("/monster/slime/m_GreenSlime_up2");
-        // right1=setup("/monster/slime/m_GreenSlime_up1");
-        // right2=setup("/monster/slime/m_GreenSlime_up2");        
+        up1=setUp("/monster/slime/slime_forest");
+        up2=setUp("/monster/slime/slime_forest");
+        down1=setUp("/monster/slime/slime_forest");
+        down2=setUp("/monster/slime/slime_forest");
+        left1=setUp("/monster/slime/slime_forest");
+        left2=setUp("/monster/slime/slime_forest");
+        right1=setUp("/monster/slime/slime_forest");
+        right2=setUp("/monster/slmie/slime_forest");        
     }
     public void setAction(){
         actionLockCounter ++;

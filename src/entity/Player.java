@@ -24,7 +24,7 @@ public class Player extends Entity {
     public Player(GamePanel gp, KeyHandle keyH) {
 
         super(gp);
-
+        type = 0;
         this.keyH = keyH;
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
@@ -44,8 +44,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValue() {
-        worldX = gp.tileSize * 23; //player's pos in world map
-        worldY = gp.tileSize * 21;
+        worldX = gp.tileSize * 21; //player's pos in world map
+        worldY = gp.tileSize * 18;
         speed = 4;
         direction = "down";
 
@@ -365,7 +365,7 @@ public class Player extends Entity {
         
     }
     public void encounterMonster(int i) {
-        if (i!=999){
+        if (i!=9999){
             if(invincible == false){
                 life -=1;  
                 invincible = true;              
@@ -656,12 +656,10 @@ public class Player extends Entity {
                     break;
         }
         }
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
-
-        if(invincible == true){
+            if(invincible == true){
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
         }
-        g2.drawImage(image,screenX,screenY,null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
         //reset alpha
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 

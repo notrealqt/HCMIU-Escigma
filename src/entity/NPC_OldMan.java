@@ -7,7 +7,9 @@ import main.GamePanel;
 public class NPC_OldMan extends Entity {
     
     public NPC_OldMan(GamePanel gp){
+  
         super(gp);
+        type = 1;
         direction = "up";
         speed = 1;
 

@@ -47,7 +47,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, KeyH);
     public Entity obj[] = new Entity[20]; // decide the number of objs
     public Entity npc[] = new Entity[10];  // decide the number of npcs
-    public Entity monster[] = new Entity[20]; // decide the number of monsters
+    public Entity monster[] = new Entity[10]; // decide the number of monsters
     ArrayList<Entity> entityList = new ArrayList<>();
 
     //Game state 
