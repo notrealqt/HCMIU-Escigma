@@ -18,7 +18,7 @@ public class Entity {
     public BufferedImage left0, left1, left2, left3, left4, left5, left6, left7, left8, left9;
     public BufferedImage right0, right1, right2, right3, right4, right5, right6, right7, right8, right9;
     public BufferedImage idleUp, idleDown, idleLeft, idleRight;
-    public BufferedImage upAttack1, downAttack1, leftAttack1, rightAttack1, upAttack2, downAttack2, leftAttack2, rightAttack2;
+    public BufferedImage upAttack1, downAttack1, leftAttack1, rightAttack1, upAttack2, downAttack2, leftAttack2, rightAttack2, upAttack3, downAttack3, leftAttack3, rightAttack3, upAttack4, downAttack4, leftAttack4, rightAttack4;
     public BufferedImage image, image2, image3, image4, image5; //heart image
     String dialogues[] = new String[30];
     //This would set solidArea for all entities, we can change it by override like in Player
@@ -37,11 +37,14 @@ public class Entity {
     //avoid taking constantly damage
     public boolean invincible =false;
     boolean attacking=false;
+    public boolean die = false;
+    public boolean alive = true;
    
     //Counter
     public int spriteCounter = 0;
     public int actionLockCounter = 0;
     public int invincibleCounter = 0;
+    public int dieCounter =0;
 
     //attributes for character   
     public int speed;
@@ -244,13 +247,33 @@ public class Entity {
                 if(invincible == true){
                     g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
                 }
-
+                if (die == true){
+                    dieAnimation(g2);
+                }
                 
             g2.drawImage(image, screenX, screenY, gp.tileSize,gp.tileSize, null);
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         }
     }
+    public void dieAnimation(Graphics2D g2){
+        dieCounter++;
+
+        if(dieCounter <= 5){changeAlpha(g2,0f);}
+        if(dieCounter>5&&dieCounter<=10) {changeAlpha(g2,1f);}
+        if(dieCounter>10&&dieCounter<=15) {changeAlpha(g2,0f);}
+        if(dieCounter>15&&dieCounter<=20) {changeAlpha(g2,1f);}
+        if(dieCounter>20&&dieCounter<=25) {changeAlpha(g2,0f);}
+        if(dieCounter>25&&dieCounter<=30) {changeAlpha(g2,1f);}
+        if(dieCounter>30&&dieCounter<=35) {changeAlpha(g2,0f);}
+        if(dieCounter>40){
+            die = false;
+            alive = false;
+        }
+    }
+        public void changeAlpha(Graphics2D g2, float alphaValue) {
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
+    };
     public BufferedImage setUp(String imagePath, int width, int height) {
         
         UtilityTool uTool = new UtilityTool();

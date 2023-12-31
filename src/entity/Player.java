@@ -59,17 +59,25 @@ public class Player extends Entity {
     }
 
     public void getPlayerattackImgage(){
-        upAttack1 = setUp("/player/attack/1_attack_up_1",gp.tileSize, gp.tileSize);
-        upAttack2 = setUp("/player/attack/2_attack_up_",gp.tileSize, gp.tileSize);
+        upAttack1 = setUp("/player/attack/1_player_attack_back_0",gp.tileSize, gp.tileSize);
+        upAttack2 = setUp("/player/attack/1_player_attack_back_1",gp.tileSize, gp.tileSize);
+        upAttack3 = setUp("/player/attack/1_player_attack_back_2",gp.tileSize, gp.tileSize);
+        upAttack4 = setUp("/player/attack/1_player_attack_back_3",gp.tileSize, gp.tileSize);
 
-        downAttack1 = setUp("/player/attack/1_attack_down_1",gp.tileSize, gp.tileSize);
-        downAttack2 = setUp("/player/attack/2_attack_down_",gp.tileSize, gp.tileSize);
+        downAttack1 = setUp("/player/attack/1_player_attack_font_0",gp.tileSize, gp.tileSize);
+        downAttack2 = setUp("/player/attack/1_player_attack_font_1",gp.tileSize, gp.tileSize);
+        downAttack3 = setUp("/player/attack/1_player_attack_font_2",gp.tileSize, gp.tileSize);
+        downAttack4 = setUp("/player/attack/1_player_attack_font_3",gp.tileSize, gp.tileSize);
 
-        leftAttack1 = setUp("/player/attack/1_attack_left_1",gp.tileSize, gp.tileSize);
-        leftAttack2 = setUp("/player/attack/2_attack_left_",gp.tileSize, gp.tileSize);
+        leftAttack1 = setUp("/player/attack/1_player_attack_left_0",gp.tileSize, gp.tileSize);
+        leftAttack2 = setUp("/player/attack/1_player_attack_left_1",gp.tileSize, gp.tileSize);
+        leftAttack3 = setUp("/player/attack/1_player_attack_left_2",gp.tileSize, gp.tileSize);
+        leftAttack4 = setUp("/player/attack/1_player_attack_left_3",gp.tileSize, gp.tileSize);
 
-        rightAttack1 = setUp("/player/attack/1_attack_right_1",gp.tileSize, gp.tileSize);
-        rightAttack2 = setUp("/player/attack/2_attack_right_",gp.tileSize, gp.tileSize);
+        rightAttack1 = setUp("/player/attack/1_player_attack_right_0",gp.tileSize, gp.tileSize);
+        rightAttack2 = setUp("/player/attack/1_player_attack_right_1",gp.tileSize, gp.tileSize);
+        rightAttack3 = setUp("/player/attack/1_player_attack_right_2",gp.tileSize, gp.tileSize);
+        rightAttack4 = setUp("/player/attack/1_player_attack_right_3",gp.tileSize, gp.tileSize);
     }
 
     public void getPlayerImage() {
@@ -354,8 +362,14 @@ public class Player extends Entity {
         if(spriteCounter <= 5){
             spriteNum = 1;
         }
-        if(spriteCounter > 5 && spriteCounter <= 25){
+        if(spriteCounter >5 && spriteCounter <= 10){
             spriteNum = 2;
+        }
+        if(spriteCounter > 10 && spriteCounter <= 15){
+            spriteNum = 3;
+        }
+        if(spriteCounter > 15 && spriteCounter <= 25){
+            spriteNum = 4;
 
             //save the current worldx, worldy, solid area
             int currentWorldX = worldX;
@@ -450,7 +464,7 @@ public class Player extends Entity {
                 gp.monster[i].invincible = true;
 
                 if(gp.monster[i].life <=0){
-                    gp.monster[i]=null;             //kill monster
+                    gp.monster[i].die=true;             //kill monster
                 }
             }
         } else System.out.println("Miss!");
@@ -502,6 +516,8 @@ public class Player extends Entity {
                 tempScreenY = screenY - gp.tileSize;    //fix up attack
                 if(spriteNum==1){image = upAttack1;}
                 if(spriteNum==2){image = upAttack2;}
+                if(spriteNum==3){image = upAttack3;}
+                if(spriteNum==4){image = upAttack4;}
             }
                     break;
                 case "down":
@@ -540,6 +556,8 @@ public class Player extends Entity {
             if(attacking == true){
                 if(spriteNum==1){image = downAttack1;}
                 if(spriteNum==2){image = downAttack2;}
+                if(spriteNum==3){image = downAttack3;}
+                if(spriteNum==4){image = downAttack4;}
             }
                     break;
                 case "left":
@@ -579,6 +597,8 @@ public class Player extends Entity {
                 tempScreenX = screenX - gp.tileSize;    //fix left attack
                 if(spriteNum==1){image = leftAttack1;}
                 if(spriteNum==2){image = leftAttack2;}
+                if(spriteNum==3){image = leftAttack3;}
+                if(spriteNum==4){image = leftAttack4;}
             }
                     break;
                 case "right":
@@ -617,6 +637,8 @@ public class Player extends Entity {
             if(attacking == true){
                 if(spriteNum==1){image = rightAttack1;}
                 if(spriteNum==2){image = rightAttack2;}
+                if(spriteNum==3){image = rightAttack3;}
+                if(spriteNum==4){image = rightAttack4;}
             }
                     break;
                 case "upleft":
@@ -656,6 +678,8 @@ public class Player extends Entity {
                 tempScreenY = screenY - gp.tileSize;    //fix up attack
                 if(spriteNum==1){image = upAttack1;}
                 if(spriteNum==2){image = upAttack2;}
+                if(spriteNum==3){image = upAttack3;}
+                if(spriteNum==4){image = upAttack4;}
             }
                     break;
                 case "upright":
@@ -695,6 +719,8 @@ public class Player extends Entity {
                 tempScreenY = screenY - gp.tileSize;    //fix up attack
                 if(spriteNum==1){image = upAttack1;}
                 if(spriteNum==2){image = upAttack2;}
+                if(spriteNum==3){image = upAttack3;}
+                if(spriteNum==4){image = upAttack4;}
             }
                     break;
                 case "downleft":
@@ -733,6 +759,8 @@ public class Player extends Entity {
             if(attacking == true){
                 if(spriteNum==1){image = downAttack1;}
                 if(spriteNum==2){image = downAttack2;}
+                if(spriteNum==3){image = downAttack3;}
+                if(spriteNum==4){image = downAttack4;}
             }
                     break;
                 case "downright":
@@ -772,9 +800,9 @@ public class Player extends Entity {
             if(attacking == true){
                 if(spriteNum==1){image = downAttack1;}
                 if(spriteNum==2){image = downAttack2;}
-                    break;
-
-            }
+                if(spriteNum==3){image = downAttack3;}
+                if(spriteNum==4){image = downAttack4;}
+            }break;
         }
     }
         else {
