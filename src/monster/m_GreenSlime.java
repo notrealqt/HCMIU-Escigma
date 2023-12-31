@@ -6,9 +6,11 @@ import entity.Entity;
 import main.GamePanel;
 
 public class m_GreenSlime extends Entity {
+    GamePanel gp;
+
     public m_GreenSlime(GamePanel gp) {
         super(gp);
-
+        this.gp = gp;
         type = 2;
         name = "Green Slime";
         speed = 1;
@@ -25,25 +27,25 @@ public class m_GreenSlime extends Entity {
         getImage();
     }
     public void getImage(){
-        up0=setUp("/monster/slime/1_slime_idle_front_0");
-        up1=setUp("/monster/slime/1_slime_idle_front_1");
-        up2=setUp("/monster/slime/1_slime_idle_front_2");
-        up3=setUp("/monster/slime/1_slime_idle_front_3");
+        up0=setUp("/monster/slime/1_slime_idle_front_0",gp.tileSize, gp.tileSize);
+        up1=setUp("/monster/slime/1_slime_idle_front_1",gp.tileSize, gp.tileSize);
+        up2=setUp("/monster/slime/1_slime_idle_front_2",gp.tileSize, gp.tileSize);
+        up3=setUp("/monster/slime/1_slime_idle_front_3",gp.tileSize, gp.tileSize);
 
-        down0=setUp("/monster/slime/1_slime_idle_front_0");
-        down1=setUp("/monster/slime/1_slime_idle_front_1");
-        down2=setUp("/monster/slime/1_slime_idle_front_2");
-        down3=setUp("/monster/slime/1_slime_idle_front_3");
+        down0=setUp("/monster/slime/1_slime_idle_front_0",gp.tileSize, gp.tileSize);
+        down1=setUp("/monster/slime/1_slime_idle_front_1",gp.tileSize, gp.tileSize);
+        down2=setUp("/monster/slime/1_slime_idle_front_2",gp.tileSize, gp.tileSize);
+        down3=setUp("/monster/slime/1_slime_idle_front_3",gp.tileSize, gp.tileSize);
 
-        left0=setUp("/monster/slime/1_slime_idle_front_0");
-        left1=setUp("/monster/slime/1_slime_idle_front_1");
-        left2=setUp("/monster/slime/1_slime_idle_front_2");
-        left3=setUp("/monster/slime/1_slime_idle_front_3");
+        left0=setUp("/monster/slime/1_slime_idle_front_0",gp.tileSize, gp.tileSize);
+        left1=setUp("/monster/slime/1_slime_idle_front_1",gp.tileSize, gp.tileSize);
+        left2=setUp("/monster/slime/1_slime_idle_front_2",gp.tileSize, gp.tileSize);
+        left3=setUp("/monster/slime/1_slime_idle_front_3",gp.tileSize, gp.tileSize);
 
-        right0=setUp("/monster/slime/1_slime_idle_front_0");
-        right1=setUp("/monster/slime/1_slime_idle_front_1");        
-        right2=setUp("/monster/slime/1_slime_idle_front_2");
-        right3=setUp("/monster/slime/1_slime_idle_front_3");
+        right0=setUp("/monster/slime/1_slime_idle_front_0",gp.tileSize, gp.tileSize);
+        right1=setUp("/monster/slime/1_slime_idle_front_1",gp.tileSize, gp.tileSize);        
+        right2=setUp("/monster/slime/1_slime_idle_front_2",gp.tileSize, gp.tileSize);
+        right3=setUp("/monster/slime/1_slime_idle_front_3",gp.tileSize, gp.tileSize);
         
     }
     public void setAction(){

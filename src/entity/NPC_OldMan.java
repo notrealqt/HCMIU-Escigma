@@ -18,17 +18,17 @@ public class NPC_OldMan extends Entity {
     }
     public void getImage(){
 
-        up0 = setUp("npc/oldman_up_1");
-        up1 = setUp("npc/oldman_up_2");
+        up0 = setUp("npc/oldman_up_1",gp.tileSize, gp.tileSize);
+        up1 = setUp("npc/oldman_up_2",gp.tileSize, gp.tileSize);
 
-        down0 = setUp("npc/oldman_down_1");
-        down1 = setUp("npc/oldman_down_2");
+        down0 = setUp("npc/oldman_down_1",gp.tileSize, gp.tileSize);
+        down1 = setUp("npc/oldman_down_2",gp.tileSize, gp.tileSize);
 
-        left0 = setUp("npc/oldman_left_1");
-        left1 = setUp("npc/oldman_left_2");
+        left0 = setUp("npc/oldman_left_1",gp.tileSize, gp.tileSize);
+        left1 = setUp("npc/oldman_left_2",gp.tileSize, gp.tileSize);
 
-        right0 = setUp("npc/oldman_right_1");
-        right1 = setUp("npc/oldman_right_2");
+        right0 = setUp("npc/oldman_right_1",gp.tileSize, gp.tileSize);
+        right1 = setUp("npc/oldman_right_2",gp.tileSize, gp.tileSize);
 
     }
     public void setDialogue() {

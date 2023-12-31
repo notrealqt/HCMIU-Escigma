@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -12,44 +13,42 @@ import main.UtilityTool;
 public class Entity {
 
     GamePanel gp;
-    public int worldX, worldY;
-    public int speed;
-
     public BufferedImage up1, up2, up3, up0, up4, up5, up6, up7,up8,up9;
     public BufferedImage down0, down1, down2, down3, down4, down5, down6, down7, down8, down9;
     public BufferedImage left0, left1, left2, left3, left4, left5, left6, left7, left8, left9;
     public BufferedImage right0, right1, right2, right3, right4, right5, right6, right7, right8, right9;
     public BufferedImage idleUp, idleDown, idleLeft, idleRight;
-
-    public String direction = "down";
-
-    public int spriteCounter = 0;
-    public int spriteNum = 0;
-    
+    public BufferedImage upAttack1, downAttack1, leftAttack1, rightAttack1, upAttack2, downAttack2, leftAttack2, rightAttack2;
+    public BufferedImage image, image2, image3, image4, image5; //heart image
+    String dialogues[] = new String[30];
     //This would set solidArea for all entities, we can change it by override like in Player
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
-    
+    public Rectangle attackArea = new Rectangle(0,0,0,0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
-    public int actionLockCounter = 0;
 
-    String dialogues[] = new String[30];
+    //State
+    public int worldX, worldY;
+    public String direction = "down";
+    public int spriteNum = 0;
     int dialogueIndex = 0;
-
-    public BufferedImage image, image2, image3, image4, image5;
-    public String name;
     public boolean collision = false;
-
     //take damage from monster from amount of time
     //avoid taking constantly damage
     public boolean invincible =false;
+    boolean attacking=false;
+   
+    //Counter
+    public int spriteCounter = 0;
+    public int actionLockCounter = 0;
     public int invincibleCounter = 0;
 
-    //Character status
+    //attributes for character   
+    public int speed;
     public int maxLife;
     public int life;
-    
     public int type; //0 -> player, 1 -> npcs, 2 -> monster
+    public String name;
 
     public Entity(GamePanel gp){
         this.gp = gp;
@@ -153,6 +152,13 @@ public class Entity {
             }
             spriteCounter = 0;
         }
+        if(invincible == true){
+            invincibleCounter++;
+            if(invincibleCounter > 60){
+                invincible = false;
+                invincibleCounter = 0;
+                }
+            }
     } 
 
 
@@ -234,17 +240,25 @@ public class Entity {
                         break;
     
                 }
+                //get invincible for entities
+                if(invincible == true){
+                    g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
+                }
+
+                
             g2.drawImage(image, screenX, screenY, gp.tileSize,gp.tileSize, null);
+
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         }
     }
-    public BufferedImage setUp(String imagePath) {
+    public BufferedImage setUp(String imagePath, int width, int height) {
         
         UtilityTool uTool = new UtilityTool();
         BufferedImage image = null;
         
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/"+imagePath+".png"));
-            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+            image = uTool.scaleImage(image, width, height);
         } catch (Exception e) {
             e.printStackTrace();
         }

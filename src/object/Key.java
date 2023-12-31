@@ -11,7 +11,7 @@ public class Key extends Entity {
     public Key (GamePanel gp) {
         super(gp);
         name = "Key";
-        down0 = setUp("objects/key");
+        down0 = setUp("objects/key",gp.tileSize, gp.tileSize);
         /*
         try {
             down0 = ImageIO.read(getClass().getResourceAsStream("key."));

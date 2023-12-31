@@ -60,7 +60,7 @@ public class KeyHandle implements KeyListener {
         }
 
         //Play state
-        if(gp.gameState == gp.playState) {
+        else if(gp.gameState == gp.playState) { //stop player swing when start the game with "else"
             if (code == KeyEvent.VK_W) {
             upPressed = true;
             }

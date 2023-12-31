@@ -11,7 +11,7 @@ public class Door extends Entity{
     public Door(GamePanel gp) {
         super(gp);
         name = "Door";
-        down0 = setUp("objects/Door");
+        down0 = setUp("objects/Door",gp.tileSize, gp.tileSize);
         /*
         try {
             down0 = ImageIO.read(getClass().getResourceAsStream("/res/objects/door.png"));
