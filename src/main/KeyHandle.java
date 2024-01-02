@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 public class KeyHandle implements KeyListener {
 
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed;
+    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed;
     //Debug
     boolean checkDrawtime = false;
 
@@ -112,6 +112,58 @@ public class KeyHandle implements KeyListener {
         else if(gp.gameState == gp.optionState) {
             if(code == KeyEvent.VK_ESCAPE) {
                 gp.gameState = gp.playState;
+            }
+
+            if(code == KeyEvent.VK_ENTER){
+                enterPressed = true;
+            }
+            int maxCommandNum = 0;
+            switch(gp.ui.SubState){
+                case 0: maxCommandNum = 4; break;
+                case 2: maxCommandNum = 2; break;
+                case 4: maxCommandNum = 1;break;
+                case 5: maxCommandNum = 1;break;
+            }
+
+             if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                if(gp.ui.commandNum < 0) {
+                    gp.ui.commandNum = maxCommandNum;
+                }
+                
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                if(gp.ui.commandNum > maxCommandNum ) {
+                    gp.ui.commandNum = 0;
+                }
+               
+            }
+            if (code == KeyEvent.VK_A){
+                if(gp.ui.SubState == 2){
+                    if(gp.ui.commandNum == 0 && gp.music.volumeScale > 0){
+                        gp.music.volumeScale--;
+                        gp.music.CheckVolume();
+                        gp.playSE(9);
+                    }
+                     if(gp.ui.commandNum == 1 && gp.se.volumeScale > 0){
+                        gp.se.volumeScale--;
+                        gp.playSE(9);
+                    }
+                }
+            }
+            if (code == KeyEvent.VK_D){
+                if(gp.ui.SubState == 2){
+                    if(gp.ui.commandNum == 0 && gp.music.volumeScale < 5){
+                        gp.music.volumeScale++;
+                        gp.music.CheckVolume();
+                        gp.playSE(9);
+                    }
+                    if(gp.ui.commandNum == 1 && gp.se.volumeScale < 5){
+                        gp.se.volumeScale++;
+                        gp.playSE(9);
+                    }
+                }
             }
         }
 
