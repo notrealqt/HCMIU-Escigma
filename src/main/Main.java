@@ -3,6 +3,7 @@ package main;
 import javax.swing.JFrame;
 
 public class Main {
+    //thuan
     public static JFrame window;
     public static void main(String[] args) {
 
