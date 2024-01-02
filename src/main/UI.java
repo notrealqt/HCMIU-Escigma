@@ -23,6 +23,8 @@ public class UI {
     public boolean gameFinished = false;
     public String currentDiaglogue;
     public int commandNum = 0;
+    int SubState = 0;
+
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -133,7 +135,10 @@ public class UI {
         if(gp.gameState == gp.dialogueState) {
             drawDialogueScreen();
         }
-        
+        //Menu State
+         if(gp.gameState == gp.optionState) {
+            drawOptionScreen();
+        }
     }
     public void drawPlayerLife() {
         
@@ -266,5 +271,47 @@ public class UI {
         int x = gp.screenWidth/2 - lenght/2;
         return x;
     }
-    
+    public void drawOptionScreen(){
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(32F));
+        //Sub Window
+        int frameX = gp.tileSize*6;
+        int frameY = gp.tileSize;
+        int frameWidth=gp.tileSize*8;
+        int frameHeight = gp.tileSize*10;
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        switch (SubState) {
+            case 0: options_top(frameX , frameY);break;
+            case 1: break;
+            case 2: break;
+        }
+      
+
+    }
+      public void options_top(int frameX,int frameY){
+            int textX;
+            int textY;
+            //Title
+            String text = "Menu" ;
+            textX = getXforCenteredText(text);
+            textY = frameY + gp.tileSize;
+            g2.drawString(text, textX, textY);
+            // Full Screen mode ON/OFF
+            textX = frameX + gp.tileSize;
+            textY += gp.tileSize*2;
+            g2.drawString("Full Screen", textX, textY);
+            //Volume 
+            textY += gp.tileSize;
+            g2.drawString("Volume", textX, textY);
+            //Guide
+            textY += gp.tileSize;
+            g2.drawString("Guide", textX, textY);
+            //Return to Title
+             textY += gp.tileSize;
+            g2.drawString("Back to title screen", textX, textY);
+            //Exit
+             textY += gp.tileSize;
+            g2.drawString("Exit", textX, textY);
+        }
 }

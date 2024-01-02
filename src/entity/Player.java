@@ -475,7 +475,8 @@ public class Player extends Entity {
                     gp.monster[i].die=true;             //kill monster
                 }
             }
-        } else System.out.println("Miss!");
+        } 
+        // else System.out.println("Miss!");
     }
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.white); // set color to use for drawing objects

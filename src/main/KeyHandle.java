@@ -79,6 +79,10 @@ public class KeyHandle implements KeyListener {
             if (code == KeyEvent.VK_F) {
                 interPressed = true;
             }
+            // Menu
+              if (code == KeyEvent.VK_ESCAPE) {
+                gp.gameState= gp.optionState;
+            }
 
             //Debug
             if (code == KeyEvent.VK_T) {
@@ -104,6 +108,14 @@ public class KeyHandle implements KeyListener {
                 gp.gameState = gp.playState;
             }
         }
+        //Menu state
+        else if(gp.gameState == gp.optionState) {
+            if(code == KeyEvent.VK_ESCAPE) {
+                gp.gameState = gp.playState;
+            }
+        }
+
+        
 
     }
 
