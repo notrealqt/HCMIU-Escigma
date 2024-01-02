@@ -102,6 +102,7 @@ public class EventHandler {
     public void healingPool(int col, int row, int gameState) {
         if(gp.KeyH.interPressed == true) {
             gp.gameState = gameState;
+            gp.player.attackCanceled = true;
             gp.ui.currentDiaglogue = "You drink the water. Your life has been\n recovered. Why? Cuz you are made of more\n than 50% water.";
             gp.player.life = gp.player.maxLife;
         }

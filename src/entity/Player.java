@@ -20,6 +20,8 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY; //where player on the screen
     public int hasKey = 0;
+    int standCounter = 0;
+    public boolean attackCanceled = false;
 
     public Player(GamePanel gp, KeyHandle keyH) {
 
@@ -307,6 +309,11 @@ public class Player extends Entity {
                         break;
                 }
             }
+            if(keyH.interPressed==true&&attackCanceled==false){
+                attacking = true;
+                spriteCounter=0;
+            }
+            attackCanceled =false;
             gp.KeyH.interPressed = false;
 
             //player image changes every 6 frames
@@ -439,10 +446,10 @@ public class Player extends Entity {
     public void interactNPC(int i) {
         if (gp.KeyH.interPressed==true) {
             if(i!=9999) {
+                attackCanceled=true;
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();   
             }
-        else attacking = true;
         }
 
     }
@@ -462,6 +469,7 @@ public class Player extends Entity {
             if(gp.monster[i].invincible == false){
                 gp.monster[i].life -= 1;
                 gp.monster[i].invincible = true;
+                gp.monster[i].damagereaction();
 
                 if(gp.monster[i].life <=0){
                     gp.monster[i].die=true;             //kill monster
@@ -477,7 +485,7 @@ public class Player extends Entity {
         int tempScreenX = screenX;
         int tempScreenY = screenY;
 
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true) {
+        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true || keyH.interPressed == true) {
             switch (direction) {
                 case "up":
                 if(attacking == false){

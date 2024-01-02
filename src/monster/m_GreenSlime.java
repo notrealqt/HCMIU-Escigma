@@ -71,4 +71,9 @@ public class m_GreenSlime extends Entity {
             actionLockCounter = 0;
         } 
     }
+
+    public void damagereaction(){
+        actionLockCounter = 0;  
+        direction = gp.player.direction;
+    }
 }
