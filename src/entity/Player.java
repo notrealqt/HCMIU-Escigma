@@ -73,157 +73,150 @@ public class Player extends Entity {
     public int getDefense(){
         return defensevalue = dexterity * currentWeapon.defensevalue;
     }
+    
     public void getPlayerattackImgage(){
-        upAttack1 = setUp("player/attack/1_player_attack_back_0",gp.tileSize, gp.tileSize);
-        upAttack2 = setUp("player/attack/1_player_attack_back_1",gp.tileSize, gp.tileSize);
-        upAttack3 = setUp("player/attack/1_player_attack_back_2",gp.tileSize, gp.tileSize);
-        upAttack4 = setUp("player/attack/1_player_attack_back_3",gp.tileSize, gp.tileSize);
+        upAttack1 = setUp("player/attack/1_player_attack_back_0",gp.tileSize, gp.tileSize*2);
+        upAttack2 = setUp("player/attack/1_player_attack_back_1",gp.tileSize, gp.tileSize*2);
+        upAttack3 = setUp("player/attack/1_player_attack_back_2",gp.tileSize, gp.tileSize*2);
+        upAttack4 = setUp("player/attack/1_player_attack_back_3",gp.tileSize, gp.tileSize*2);
 
-        downAttack1 = setUp("player/attack/1_player_attack_font_0",gp.tileSize, gp.tileSize);
-        downAttack2 = setUp("player/attack/1_player_attack_font_1",gp.tileSize, gp.tileSize);
-        downAttack3 = setUp("player/attack/1_player_attack_font_2",gp.tileSize, gp.tileSize);
-        downAttack4 = setUp("player/attack/1_player_attack_font_3",gp.tileSize, gp.tileSize);
+        downAttack1 = setUp("player/attack/1_player_attack_font_0",gp.tileSize, gp.tileSize*2);
+        downAttack2 = setUp("player/attack/1_player_attack_font_1",gp.tileSize, gp.tileSize*2);
+        downAttack3 = setUp("player/attack/1_player_attack_font_2",gp.tileSize, gp.tileSize*2);
+        downAttack4 = setUp("player/attack/1_player_attack_font_3",gp.tileSize, gp.tileSize*2);
 
-        leftAttack1 = setUp("player/attack/1_player_attack_left_0",gp.tileSize, gp.tileSize);
-        leftAttack2 = setUp("player/attack/1_player_attack_left_1",gp.tileSize, gp.tileSize);
-        leftAttack3 = setUp("player/attack/1_player_attack_left_2",gp.tileSize, gp.tileSize);
-        leftAttack4 = setUp("player/attack/1_player_attack_left_3",gp.tileSize, gp.tileSize);
+        leftAttack1 = setUp("player/attack/1_player_attack_left_0",gp.tileSize*2, gp.tileSize);
+        leftAttack2 = setUp("player/attack/1_player_attack_left_1",gp.tileSize*2, gp.tileSize);
+        leftAttack3 = setUp("player/attack/1_player_attack_left_2",gp.tileSize*2, gp.tileSize);
+        leftAttack4 = setUp("player/attack/1_player_attack_left_3",gp.tileSize*2, gp.tileSize);
 
-        rightAttack1 = setUp("player/attack/1_player_attack_right_0",gp.tileSize, gp.tileSize);
-        rightAttack2 = setUp("player/attack/1_player_attack_right_1",gp.tileSize, gp.tileSize);
-        rightAttack3 = setUp("player/attack/1_player_attack_right_2",gp.tileSize, gp.tileSize);
-        rightAttack4 = setUp("player/attack/1_player_attack_right_3",gp.tileSize, gp.tileSize);
+        rightAttack1 = setUp("player/attack/1_player_attack_right_0",gp.tileSize*2, gp.tileSize);
+        rightAttack2 = setUp("player/attack/1_player_attack_right_1",gp.tileSize*2, gp.tileSize);
+        rightAttack3 = setUp("player/attack/1_player_attack_right_2",gp.tileSize*2, gp.tileSize);
+        rightAttack4 = setUp("player/attack/1_player_attack_right_3",gp.tileSize*2, gp.tileSize);
     }
 
     public void getPlayerImage() {
         
-        //old method
-        try {
+        // //old method
+        // try {
 
-            idleUp = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_idle_back_0.png"));
-            idleDown = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_idle_font_0.png"));
-            idleRight = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_idle_right_0.png"));
-            idleLeft = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_idle_left_0.png")); 
+        //     idleUp = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_back_0.png"));
+        //     idleDown = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_font_0.png"));
+        //     idleRight = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_right_0.png"));
+        //     idleLeft = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_left_0.png")); 
 
-            //up
-            up0 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_back_0.png"));
-            up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_back_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_back_2.png"));
-            up3 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_back_3.png"));
-            up4 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_back_4.png"));
-            up5 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_back_5.png"));
-            up6 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_back_6.png"));
-            up7 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_back_7.png"));
-            //down
-            down0 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_0.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_2.png"));
-            down3 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_3.png"));
-            down4 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_4.png"));
-            down5 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_5.png"));
-            down6 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_6.png"));
-            down7 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_7.png"));
-            //down8 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_8.png"));
-            //down9 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_font_9.png"));
+        //     //up
+        //     up0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_0.png"));
+        //     up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_1.png"));
+        //     up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_2.png"));
+        //     up3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_3.png"));
+        //     up4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_4.png"));
+        //     up5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_5.png"));
+        //     up6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_6.png"));
+        //     up7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_7.png"));
+        //     //down
+        //     down0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_0.png"));
+        //     down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_1.png"));
+        //     down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_2.png"));
+        //     down3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_3.png"));
+        //     down4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_4.png"));
+        //     down5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_5.png"));
+        //     down6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_6.png"));
+        //     down7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_7.png"));
+        //     //down8 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_8.png"));
+        //     //down9 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_9.png"));
 
-            //left
-            left0 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_left_0.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_left_2.png"));
-            left3 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_left_3.png"));
-            left4 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_left_4.png"));
-            left5 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_left_5.png"));
-            left6 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_left_6.png"));
-            left7 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_left_7.png"));
-            //left8 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_left_8.png"));
-            //left9 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_left_9.png"));
+        //     //left
+        //     left0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_0.png"));
+        //     left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_1.png"));
+        //     left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_2.png"));
+        //     left3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_3.png"));
+        //     left4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_4.png"));
+        //     left5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_5.png"));
+        //     left6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_6.png"));
+        //     left7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_7.png"));
+        //     //left8 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_left_8.png"));
+        //     //left9 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_left_9.png"));
 
-            //right
-            right0 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_right_0.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_right_2.png"));
-            right3 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_right_3.png"));
-            right4 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_right_4.png"));
-            right5 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_right_5.png"));
-            right6 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_right_6.png"));
-            right7 = ImageIO.read(getClass().getResourceAsStream("/res/player/attack/1_player_idle_back_0_player_move_right_7.png"));
-            //right8 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_right_8.png"));
-            //right9 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_right_9.png"));
+        //     //right
+        //     right0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_0.png"));
+        //     right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_1.png"));
+        //     right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_2.png"));
+        //     right3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_3.png"));
+        //     right4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_4.png"));
+        //     right5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_5.png"));
+        //     right6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_6.png"));
+        //     right7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_7.png"));
+        //     //right8 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_right_8.png"));
+        //     //right9 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_right_9.png"));
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        /* 
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
+        
 
         //new method
-        idleUp = setUp("1_player_idle_back_0");
-        idleDown = setUp("1_player_idle_font_0");
-        idleRight = setUp("1_player_idle_right_0");
-        idleLeft = setUp("1_player_idle_left_0");
+        idleUp = setUp("/player/move/1_player_idle_back_0_player_idle_back_0",gp.tileSize, gp.tileSize);
+        idleDown = setUp("/player/move/1_player_idle_back_0_player_idle_font_0",gp.tileSize, gp.tileSize);
+        idleRight = setUp("/player/move/1_player_idle_back_0_player_idle_right_0",gp.tileSize, gp.tileSize);
+        idleLeft = setUp("/player/move/1_player_idle_back_0_player_idle_left_0",gp.tileSize, gp.tileSize);
 
-        up0 = setUp("1_player_move_back_0");
-        up1 = setUp("1_player_move_back_1");
-        up2 = setUp("1_player_move_back_2");
-        up3 = setUp("1_player_move_back_3");
-        up4 = setUp("1_player_move_back_4");
-        up5 = setUp("1_player_move_back_5");
-        up6 = setUp("1_player_move_back_6");
-        up7 = setUp("1_player_move_back_7");
-        up8 = setUp("1_player_move_back_8");
-        up9 = setUp("1_player_move_back_9");
+        up0 = setUp("/player/move/1_player_idle_back_0_player_move_back_0",gp.tileSize, gp.tileSize);
+        up1 = setUp("/player/move/1_player_idle_back_0_player_move_back_1",gp.tileSize, gp.tileSize);
+        up2 = setUp("/player/move/1_player_idle_back_0_player_move_back_2",gp.tileSize, gp.tileSize);
+        up3 = setUp("/player/move/1_player_idle_back_0_player_move_back_3",gp.tileSize, gp.tileSize);
+        up4 = setUp("/player/move/1_player_idle_back_0_player_move_back_4",gp.tileSize, gp.tileSize);
+        up5 = setUp("/player/move/1_player_idle_back_0_player_move_back_5",gp.tileSize, gp.tileSize);
+        up6 = setUp("/player/move/1_player_idle_back_0_player_move_back_6",gp.tileSize, gp.tileSize);
+        up7 = setUp("/player/move/1_player_idle_back_0_player_move_back_7",gp.tileSize, gp.tileSize);
 
-        down0 = setUp("1_player_move_font_0");
-        down1 = setUp("1_player_move_font_1");
-        down2 = setUp("1_player_move_font_2");
-        down3 = setUp("1_player_move_font_3");
-        down4 = setUp("1_player_move_font_4");
-        down5 = setUp("1_player_move_font_5");
-        down6 = setUp("1_player_move_font_6");
-        down7 = setUp("1_player_move_font_7");
-        down8 = setUp("1_player_move_font_8");
-        down9 = setUp("1_player_move_font_9");
+        down0 = setUp("/player/move/1_player_idle_back_0_player_move_font_0",gp.tileSize, gp.tileSize);
+        down1 = setUp("/player/move/1_player_idle_back_0_player_move_font_1",gp.tileSize, gp.tileSize);
+        down2 = setUp("/player/move/1_player_idle_back_0_player_move_font_2",gp.tileSize, gp.tileSize);
+        down3 = setUp("/player/move/1_player_idle_back_0_player_move_font_3",gp.tileSize, gp.tileSize);
+        down4 = setUp("/player/move/1_player_idle_back_0_player_move_font_4",gp.tileSize, gp.tileSize);
+        down5 = setUp("/player/move/1_player_idle_back_0_player_move_font_5",gp.tileSize, gp.tileSize);
+        down6 = setUp("/player/move/1_player_idle_back_0_player_move_font_6",gp.tileSize, gp.tileSize);
+        down7 = setUp("/player/move/1_player_idle_back_0_player_move_font_7",gp.tileSize, gp.tileSize);
 
         
-        left0 = setUp("1_player_move_left_0");
-        left1 = setUp("1_player_move_left_1");
-        left2 = setUp("1_player_move_left_2");
-        left3 = setUp("1_player_move_left_3");
-        left4 = setUp("1_player_move_left_4");
-        left5 = setUp("1_player_move_left_5");
-        left6 = setUp("1_player_move_left_6");
-        left7 = setUp("1_player_move_left_7");
-        left8 = setUp("1_player_move_left_8");
-        left9 = setUp("1_player_move_left_9");
+        left0 = setUp("/player/move/1_player_idle_back_0_player_move_left_0",gp.tileSize, gp.tileSize);
+        left1 = setUp("/player/move/1_player_idle_back_0_player_move_left_1",gp.tileSize, gp.tileSize);
+        left2 = setUp("/player/move/1_player_idle_back_0_player_move_left_2",gp.tileSize, gp.tileSize);
+        left3 = setUp("/player/move/1_player_idle_back_0_player_move_left_3",gp.tileSize, gp.tileSize);
+        left4 = setUp("/player/move/1_player_idle_back_0_player_move_left_4",gp.tileSize, gp.tileSize);
+        left5 = setUp("/player/move/1_player_idle_back_0_player_move_left_5",gp.tileSize, gp.tileSize);
+        left6 = setUp("/player/move/1_player_idle_back_0_player_move_left_6",gp.tileSize, gp.tileSize);
+        left7 = setUp("/player/move/1_player_idle_back_0_player_move_left_7",gp.tileSize, gp.tileSize);;
 
 
-        right0 = setUp("1_player_move_right_0");
-        right1 = setUp("1_player_move_right_1");
-        right2 = setUp("1_player_move_right_2");
-        right3 = setUp("1_player_move_right_3");
-        right4 = setUp("1_player_move_right_4");
-        right5 = setUp("1_player_move_right_5");
-        right6 = setUp("1_player_move_right_6");
-        right7 = setUp("1_player_move_right_7");
-        right8 = setUp("1_player_move_right_8");
-        right9 = setUp("1_player_move_right_9");
-        */
+        right0 = setUp("/player/move/1_player_idle_back_0_player_move_right_0",gp.tileSize, gp.tileSize);
+        right1 = setUp("/player/move/1_player_idle_back_0_player_move_right_1",gp.tileSize, gp.tileSize);
+        right2 = setUp("/player/move/1_player_idle_back_0_player_move_right_2",gp.tileSize, gp.tileSize);
+        right3 = setUp("/player/move/1_player_idle_back_0_player_move_right_3",gp.tileSize, gp.tileSize);
+        right4 = setUp("/player/move/1_player_idle_back_0_player_move_right_4",gp.tileSize, gp.tileSize);
+        right5 = setUp("/player/move/1_player_idle_back_0_player_move_right_5",gp.tileSize, gp.tileSize);
+        right6 = setUp("/player/move/1_player_idle_back_0_player_move_right_6",gp.tileSize, gp.tileSize);
+        right7 = setUp("/player/move/1_player_idle_back_0_player_move_right_7",gp.tileSize, gp.tileSize);
+        
     }
     
-    /* 
-    public BufferedImage setUp(String imageName) {
+    
+    // public BufferedImage setUp(String imageName) {
         
-        UtilityTool uTool = new UtilityTool();
-        BufferedImage image = null;
+    //     UtilityTool uTool = new UtilityTool();
+    //     BufferedImage image = null;
         
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/res/player/"+imageName+".png"));
-            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return image;
-    } 
-    */
+    //     try {
+    //         image = ImageIO.read(getClass().getResourceAsStream("/res/player/"+imageName+".png"));
+    //         image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    //     return image;
+    // } 
+    
 
     public void update() {
         //attack animation
@@ -231,7 +224,7 @@ public class Player extends Entity {
             attacking();
         }else
         //System.out.println("Update method called");
-            if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed == true) || keyH.interPressed == true) {
+            if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed == true)) {
             if (keyH.upPressed == true) {
                 direction = "up";
                 //System.out.println("Up pressed: " + playerX + ", " + playerY);
@@ -351,14 +344,14 @@ public class Player extends Entity {
                     spriteNum =7;
                 }
                 else if (spriteNum == 7) {
-                    spriteNum =8;
-                }
-                else if (spriteNum == 8) {
-                    spriteNum =9;
-                }
-                else if (spriteNum == 9) {
                     spriteNum =0;
                 }
+                // else if (spriteNum == 8) {
+                //     spriteNum =9;
+                // }
+                // else if (spriteNum == 9) {
+                //     spriteNum =0;
+                // }
                 spriteCounter =0;
             }
         }
@@ -454,8 +447,9 @@ public class Player extends Entity {
         }
     }
     public void interactNPC(int i) {
-        if (gp.KeyH.interPressed==true) {
-            if(i!=9999) {
+        if (gp.KeyH.interPressed==true){
+            if(i!=9999)
+            {
                 attackCanceled=true;
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();   
@@ -526,12 +520,12 @@ public class Player extends Entity {
                     if (spriteNum == 7) {
                         image = up7;
                     }
-                    if (spriteNum == 8) {
-                        image = up8;
-                    }
-                    if (spriteNum == 9) {
-                        image = up9;
-                    }
+                    // if (spriteNum == 8) {
+                    //     image = up8;
+                    // }
+                    // if (spriteNum == 9) {
+                    //     image = up9;
+                    // }
                 }
             if(attacking == true){
                 tempScreenY = screenY - gp.tileSize;    //fix up attack
@@ -607,12 +601,12 @@ public class Player extends Entity {
                     if (spriteNum == 7) {
                         image = left7;
                     }
-                    if (spriteNum == 8) {
-                        image = left8;
-                    }
-                    if (spriteNum == 9) {
-                        image = left9;
-                    }
+                    // if (spriteNum == 8) {
+                    //     image = left8;
+                    // }
+                    // if (spriteNum == 9) {
+                    //     image = left9;
+                    // }
                 }
             if(attacking == true){
                 tempScreenX = screenX - gp.tileSize;    //fix left attack
@@ -648,12 +642,12 @@ public class Player extends Entity {
                     if (spriteNum == 7) {
                         image = right7;
                     }
-                    if (spriteNum == 8) {
-                        image = right8;
-                    }
-                    if (spriteNum == 9) {
-                        image = right9;
-                    }
+                    // if (spriteNum == 8) {
+                    //     image = right8;
+                    // }
+                    // if (spriteNum == 9) {
+                    //     image = right9;
+                    // }
                 }
             if(attacking == true){
                 if(spriteNum==1){image = rightAttack1;}
@@ -729,12 +723,12 @@ public class Player extends Entity {
                 if (spriteNum == 7) {
                     image = up7;
                 }
-                if (spriteNum == 8) {
-                    image = up8;
-                }
-                if (spriteNum == 9) {
-                    image = up9;
-                }
+                // if (spriteNum == 8) {
+                //     image = up8;
+                // }
+                // if (spriteNum == 9) {
+                //     image = up9;
+                // }
             }
             if(attacking == true){
                 tempScreenY = screenY - gp.tileSize;    //fix up attack
@@ -770,12 +764,12 @@ public class Player extends Entity {
                 if (spriteNum == 7) {
                     image = down7;
                 }
-                if (spriteNum == 8) {
-                    image = down8;
-                }
-                if (spriteNum == 9) {
-                    image = down9;
-                }
+                // if (spriteNum == 8) {
+                //     image = down8;
+                // }
+                // if (spriteNum == 9) {
+                //     image = down9;
+                // }
             }
             if(attacking == true){
                 if(spriteNum==1){image = downAttack1;}
