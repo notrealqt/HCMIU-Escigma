@@ -52,6 +52,12 @@ public class Entity {
     public int life;
     public int type; //0 -> player, 1 -> npcs, 2 -> monster
     public String name;
+    public int attack,defense,coin,strength,dexterity;
+    public Entity currentWeapon;
+
+    //ITEM ATTRIBUTES
+    public int attackvalue;
+    public int defensevalue;
 
     public Entity(GamePanel gp){
         this.gp = gp;

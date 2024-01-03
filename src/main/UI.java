@@ -292,7 +292,7 @@ public class UI {
       gp.KeyH.enterPressed=false;
 
     }
-      public void options_top(int frameX,int frameY){
+    public void options_top(int frameX,int frameY){
             int textX;
             int textY;
             //Title
@@ -366,7 +366,7 @@ public class UI {
                 g2.drawString("★", textX, textY);
             }
         }
-        public void options_FullScreenNotification(int frameX,int frameY){
+    public void options_FullScreenNotification(int frameX,int frameY){
             int textX= frameX + gp.tileSize;
             int textY= frameY + gp.tileSize*3;
             currentDiaglogue= "The change will be \neffect after restart";
@@ -387,7 +387,7 @@ public class UI {
             
            
         }
-          public void options_Volume(int frameX,int frameY){
+    public void options_Volume(int frameX,int frameY){
             
            int textY ;
             int textX ;
@@ -436,7 +436,7 @@ public class UI {
             g2.fillRect(textX, textY, volumeWidth, 24);
            
         }
-        public void options_Guide(int frameX,int frameY){
+    public void options_Guide(int frameX,int frameY){
             int textY ;
             int textX  ;
 
@@ -472,7 +472,7 @@ public class UI {
                 }
             }else{commandNum = 0;}
         }
-        public void options_EndGameComfirmation(int frameX,int frameY){
+    public void options_EndGameComfirmation(int frameX,int frameY){
             int textX= frameX + gp.tileSize;
             int textY= frameY + gp.tileSize*3;
             currentDiaglogue= "Quit the game and \nreturn title screen ?";
@@ -505,7 +505,7 @@ public class UI {
                 }
             }
         }
-         public void options_QuitGameComfirmation(int frameX,int frameY){
+    public void options_QuitGameComfirmation(int frameX,int frameY){
             int textX= frameX + gp.tileSize;
             int textY= frameY + gp.tileSize*3;
             currentDiaglogue= "Do you want \nto quit the game ?";
