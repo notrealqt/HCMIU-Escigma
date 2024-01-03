@@ -43,6 +43,8 @@ public class TileManager {
             setUp(0, "grass00", false);
             setUp(1, "wall", true);
             setUp(2, "water00", true);
+            setUp(3, "map-ice_13", false);
+            setUp(4, "map-ice_06", true);
         } catch (Exception e) {
             e.printStackTrace();
         }
