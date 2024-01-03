@@ -19,7 +19,7 @@ public class TileManager {
     
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        loadMap("/res/map/map01.txt");
+        loadMap("/res/map/map02.txt");
     }
 
     public void getTileImage() {
@@ -43,8 +43,8 @@ public class TileManager {
             setUp(0, "grass00", false);
             setUp(1, "wall", true);
             setUp(2, "water00", true);
-            setUp(3, "map-ice_13", false);
-            setUp(4, "map-ice_06", true);
+            //setUp(3, "map-ice_13", false);
+            //setUp(4, "map-ice_06", true);
         } catch (Exception e) {
             e.printStackTrace();
         }
