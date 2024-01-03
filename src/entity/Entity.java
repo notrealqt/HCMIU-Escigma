@@ -11,7 +11,7 @@ import main.GamePanel;
 import main.UtilityTool;
 
 public class Entity {
-
+//sdf
     GamePanel gp;
     public BufferedImage up1, up2, up3, up0, up4, up5, up6, up7,up8,up9;
     public BufferedImage down0, down1, down2, down3, down4, down5, down6, down7, down8, down9;
@@ -27,7 +27,7 @@ public class Entity {
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
 
-    //State
+    //State sdfsdfsdf
     public int worldX, worldY;
     public String direction = "down";
     public int spriteNum = 0;
