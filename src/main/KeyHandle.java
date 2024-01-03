@@ -30,7 +30,37 @@ public class KeyHandle implements KeyListener {
 
         //Title state
         if(gp.gameState == gp.titleState) {
-            if (code == KeyEvent.VK_W) {
+            titleState(code);
+        }
+
+        //Play state
+        else if(gp.gameState == gp.playState) { //stop player swing when start the game with "else"
+            playState(code);
+        } 
+        
+        //Pause state
+        else if (gp.gameState == gp.pauseState) {
+            pauseState(code);
+        }
+
+        //Dialogue state
+        else if(gp.gameState == gp.dialogueState) {
+            dialogueState(code);
+        }
+
+        //Character State
+        else if(gp.gameState ==gp.characterState){
+            characterState(code);
+        }
+
+        //Menu state
+        else if(gp.gameState == gp.optionState) {
+            menuState(code);
+        }
+    }
+
+    public void titleState(int code){
+        if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
                 gp.playSE(1);
                 if(gp.ui.commandNum < 0) {
@@ -59,11 +89,9 @@ public class KeyHandle implements KeyListener {
                     System.exit(0);
                 }
             }
-        }
-
-        //Play state
-        else if(gp.gameState == gp.playState) { //stop player swing when start the game with "else"
-            if (code == KeyEvent.VK_W) {
+    }
+    public void playState(int code){
+        if (code == KeyEvent.VK_W) {
             upPressed = true;
             }
             if (code == KeyEvent.VK_S) {
@@ -77,6 +105,9 @@ public class KeyHandle implements KeyListener {
             }
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.pauseState;
+            }
+            if(code == KeyEvent.VK_C){
+                gp.gameState = gp.characterState;
             }
             if (code == KeyEvent.VK_F) {
                 interPressed = true;
@@ -95,24 +126,24 @@ public class KeyHandle implements KeyListener {
                     checkDrawtime = false;
                 }
             }
-        } 
-        
-        //Pause state
-        else if (gp.gameState == gp.pauseState) {
-            if (code == KeyEvent.VK_P) {
+    }
+    public void pauseState(int code){
+        if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;
             }
-        }
-
-        //Dialogue state
-        else if(gp.gameState == gp.dialogueState) {
-            if(code == KeyEvent.VK_ENTER) {
+    }
+    public void dialogueState(int code){
+        if(code == KeyEvent.VK_ENTER) {
                 gp.gameState = gp.playState;
             }
-        }
-        //Menu state
-        else if(gp.gameState == gp.optionState) {
-            if(code == KeyEvent.VK_ESCAPE) {
+    }
+    public void characterState(int code){
+        if(code == KeyEvent.VK_C) {
+                gp.gameState = gp.playState;
+            }
+    }
+    public void menuState(int code){
+                    if(code == KeyEvent.VK_ESCAPE) {
                 gp.gameState = gp.playState;
             }
 
@@ -169,12 +200,7 @@ public class KeyHandle implements KeyListener {
                     }
                 }
             }
-        }
-
-        
-
     }
-
     @Override
     public void keyReleased (KeyEvent e) {
         int code = e.getKeyCode();
