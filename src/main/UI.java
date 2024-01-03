@@ -88,7 +88,7 @@ public class UI {
             g2.drawString(text, x, y);
             
             gp.gameThread = null;
-
+            
         }
         else {
             g2.setFont(tnr_40);
@@ -449,6 +449,7 @@ public class UI {
             if(gp.fullScrennOn== true){
                 g2.drawString("★", textX, textY);
             }
+            gp.config.saveConfig();
         }
     public void options_FullScreenNotification(int frameX,int frameY){
             int textX= frameX + gp.tileSize;
@@ -518,7 +519,7 @@ public class UI {
             g2.drawRect(textX, textY , 120, 24);
             volumeWidth= 24 * gp.se.volumeScale;
             g2.fillRect(textX, textY, volumeWidth, 24);
-           
+           gp.config.saveConfig();
         }
     public void options_Guide(int frameX,int frameY){
             int textY ;

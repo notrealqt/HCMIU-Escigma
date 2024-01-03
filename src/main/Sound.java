@@ -19,6 +19,7 @@ public class Sound {
         soundURL[0] = getClass().getResource("/res/sound/theme_test.wav");
         soundURL[1] = getClass().getResource("/res/sound/pickup.wav");
         soundURL[2] = getClass().getResource("/res/sound/yay.wav");
+        soundURL[3] = getClass().getResource("/res/sound/click.wav");
     }
 
     public void setFile(int i){
@@ -48,11 +49,11 @@ public class Sound {
     public void CheckVolume(){
         switch (volumeScale) {
             case 0: volume = -80f ; break;
-            case 1: volume = -35f ; break;
-            case 2: volume = -25f ; break;
-            case 3: volume = -17f ; break;
-            case 4: volume = -10f ; break;  
-            case 5: volume = 0f ; break;     
+            case 1: volume = -20f ; break;
+            case 2: volume = -15f ; break;
+            case 3: volume = -10f ; break;
+            case 4: volume = -5f ; break;  
+            case 5: volume = 2f ; break;     
         }
         fc.setValue(volume);
     }

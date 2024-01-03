@@ -15,6 +15,11 @@ public class Main {
 
         GamePanel panel = new GamePanel();
         window.add(panel);
+       
+        panel.config.loadConfig();
+        if(panel.fullScrennOn == true){
+            window.setUndecorated(true);
+        }
 
         window.pack();
         
