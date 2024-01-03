@@ -458,7 +458,7 @@ public class UI {
             textX= frameX + gp.tileSize*5;
             textY = frameY + gp.tileSize*2;
             g2.drawString("WASD", textX, textY);  textY += gp.tileSize;
-            g2.drawString("F + Move", textX, textY);  textY += gp.tileSize;
+            g2.drawString("F", textX, textY);  textY += gp.tileSize;
             g2.drawString("P", textX, textY);  textY += gp.tileSize;
             //Back
             textX= frameX + gp.tileSize;
