@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.KeyHandle;
 import main.UtilityTool;
+import object.Sword;
 
 public class Player extends Entity {
 
@@ -58,8 +59,20 @@ public class Player extends Entity {
         //Player status
         maxLife = 10;
         life = maxLife;
+        strength = 1;   // more strength, more dmg
+        dexterity = 1; //more dexterity, less dmg receive
+        coin = 0;
+        currentWeapon = new Sword(gp);
+        attack = getAttack();
+        defense = getDefense();
     }
 
+    public int getAttack(){
+        return attackvalue =  strength * currentWeapon.attackvalue;
+    }
+    public int getDefense(){
+        return defensevalue = dexterity * currentWeapon.defensevalue;
+    }
     public void getPlayerattackImgage(){
         upAttack1 = setUp("/player/attack/1_player_attack_back_0",gp.tileSize, gp.tileSize);
         upAttack2 = setUp("/player/attack/1_player_attack_back_1",gp.tileSize, gp.tileSize);
@@ -450,11 +463,13 @@ public class Player extends Entity {
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();   
             }
+            else{attacking = true;}
         }
 
     }
     public void encounterMonster(int i) {
         if (i!=9999){
+            
             if(invincible == false){
                 life -=1;  
                 invincible = true;              
@@ -464,7 +479,7 @@ public class Player extends Entity {
     }
 
     public void damageMonster(int i){
-        if(i != 9999){
+            if(i != 9999){
             System.out.println("Hit!");             //give damage to monster
             if(gp.monster[i].invincible == false){
                 gp.monster[i].life -= 1;

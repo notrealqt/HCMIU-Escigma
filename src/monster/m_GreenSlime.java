@@ -9,6 +9,7 @@ public class m_GreenSlime extends Entity {
     GamePanel gp;
 
     public m_GreenSlime(GamePanel gp) {
+        
         super(gp);
         this.gp = gp;
         type = 2;
