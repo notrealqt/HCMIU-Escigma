@@ -51,8 +51,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValue() {
-        worldX = gp.tileSize * 50; //player's pos in world map
-        worldY = gp.tileSize * 50;
+        worldX = gp.tileSize * 14; //player's pos in world map
+        worldY = gp.tileSize * 14;
         speed = 4;
         direction = "down";
 
@@ -65,6 +65,15 @@ public class Player extends Entity {
         currentWeapon = new Sword(gp);
         attack = getAttack();
         defense = getDefense();
+    }
+    public void setDefaultPosition(){
+        worldX = gp.tileSize * 14; //player's pos in world map
+        worldY = gp.tileSize * 14;
+        direction = "down";
+    }
+    public void setDefaultLife(){
+        life = maxLife;
+        invincible = false;
     }
 
     public int getAttack(){
@@ -364,6 +373,16 @@ public class Player extends Entity {
             invincible = false;
             invincibleCounter = 0;
             }
+        }
+        
+
+
+
+
+        if(life <= 0){
+            gp.playSE(4);
+            gp.gameState= gp.youLostState;
+            
         }
     }
 

@@ -143,6 +143,10 @@ public class UI {
         if(gp.gameState == gp.characterState){
             drawCharacterScreen();
         }
+        //You lost state
+         if(gp.gameState == gp.youLostState) {
+            drawYouLostScreen();
+        }
     }
     public void drawPlayerLife() {
         
@@ -476,7 +480,7 @@ public class UI {
             
            int textY ;
             int textX ;
-             String text = "Guide";
+             String text = "Volume";
             textX= getXforCenteredText(text);
             textY = frameY + gp.tileSize;
             g2.drawString(text, textX, textY);
@@ -574,6 +578,7 @@ public class UI {
                 g2.drawString("👉", textX-40, textY);
                 if(gp.KeyH.enterPressed == true){
                     SubState=0;
+                    gp.restart();
                     gp.gameState = gp.titleState;
                 }
             }
@@ -624,4 +629,45 @@ public class UI {
                 }
             }
         }
-}
+    public void drawYouLostScreen(){
+        g2.setColor(new Color(0,0,0,150));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        
+        int x;
+        int y;
+        String text;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110f));
+
+        text = "You Lost";
+        //Shadow for You Lost
+        g2.setColor(Color.black);
+        x= getXforCenteredText(text);
+        y= gp.tileSize*4;
+        g2.drawString(text, x, y);
+        // Main text 
+        g2.setColor(Color.red);
+        x= getXforCenteredText(text);
+        y= gp.tileSize*4;
+        g2.drawString(text, x-4, y-4);
+
+        //Retry
+          g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(50f));
+        text = "Retry";
+        x = getXforCenteredText(text);
+        y += gp.tileSize*4;
+        g2.drawString(text, x, y);
+         if(commandNum == 0){
+                g2.drawString("👉", x-50, y);
+         }
+
+        //Back to the title screen
+         text = "Quit";
+        x = getXforCenteredText(text);
+        y += 55;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+                g2.drawString("👉", x-50, y);
+         }
+    }
+    }

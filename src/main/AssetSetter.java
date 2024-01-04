@@ -73,8 +73,8 @@ public class AssetSetter {
     //place slime onto the map
     public void setMonster(){
         gp.monster[0] = new m_GreenSlime(gp);
-        gp.monster[0].worldX = gp.tileSize*19;
-        gp.monster[0].worldY = gp.tileSize*19;
+        gp.monster[0].worldX = gp.tileSize*15;
+        gp.monster[0].worldY = gp.tileSize*15;
 
         gp.monster[1] = new m_GreenSlime(gp);
         gp.monster[1].worldX = gp.tileSize*18;
