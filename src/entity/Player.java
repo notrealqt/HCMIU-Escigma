@@ -224,7 +224,7 @@ public class Player extends Entity {
             attacking();
         }else
         //System.out.println("Update method called");
-            if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed == true)) {
+            if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed == true|| keyH.attackPressed == true || keyH.interPressed == true)) {
             if (keyH.upPressed == true) {
                 direction = "up";
                 //System.out.println("Up pressed: " + playerX + ", " + playerY);
@@ -273,14 +273,14 @@ public class Player extends Entity {
             interactNPC(npcIndex);
             //Check event
             gp.eHandler .checkEvent();
-            gp.KeyH.interPressed = false;
+           
 
             //Check monster collision
             int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
             encounterMonster(monsterIndex);
             
             //if collision is false, player can move 
-            if (collisionOn == false && keyH.interPressed==false) {     //interact without moving
+            if (collisionOn == false && keyH.interPressed==false && keyH.attackPressed == false) {     //interact without moving
                 switch (direction) {
                     case "up":
                         worldY -= speed;
@@ -312,12 +312,14 @@ public class Player extends Entity {
                         break;
                 }
             }
-            if(keyH.interPressed==true&&attackCanceled==false){
+            
+            if(keyH.attackPressed==true&&attackCanceled==false){
                 attacking = true;
                 spriteCounter=0;
             }
             attackCanceled =false;
-            gp.KeyH.interPressed = false;
+            gp.KeyH.attackPressed = false;
+             gp.KeyH.interPressed = false;
 
             //player image changes every 6 frames
             spriteCounter++;
@@ -380,8 +382,7 @@ public class Player extends Entity {
         }
         if(spriteCounter > 15 && spriteCounter <= 25){
             spriteNum = 4;
-
-            //save the current worldx, worldy, solid area
+      //save the current worldx, worldy, solid area
             int currentWorldX = worldX;
             int currentWorldY = worldY;
             int solidAreaWidth = solidArea.width;
@@ -406,13 +407,15 @@ public class Player extends Entity {
             worldX = currentWorldX;
             worldY = currentWorldY;
             solidArea.width = solidAreaWidth;
-            solidArea.height = solidAreaHeight;
-        }
-        if(spriteCounter > 25){
+            solidArea.height = solidAreaHeight;}
+            
+          if(spriteCounter > 25){
             spriteNum = 1;
             spriteCounter = 0;
             attacking = false;
         }
+            
+       
     }
     public void pickUpObject(int i){
         if(i!=9999){
@@ -447,15 +450,15 @@ public class Player extends Entity {
         }
     }
     public void interactNPC(int i) {
-        if (gp.KeyH.interPressed==true){
+        if (gp.KeyH.attackPressed==false && gp.KeyH.interPressed==true){
             if(i!=9999)
             {
                 attackCanceled=true;
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();   
             }
-            else{attacking = true;}
-        }
+            
+        }else if(gp.KeyH.attackPressed==true && gp.KeyH.interPressed==false){attacking = true;}
 
     }
     public void encounterMonster(int i) {
@@ -492,7 +495,8 @@ public class Player extends Entity {
         int tempScreenX = screenX;
         int tempScreenY = screenY;
 
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true || keyH.interPressed == true) {
+       // if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed) == true ) {
+           
             switch (direction) {
                 case "up":
                 if(attacking == false){
@@ -535,6 +539,7 @@ public class Player extends Entity {
                 if(spriteNum==4){image = upAttack4;}
             }
                     break;
+
                 case "down":
             if(attacking == false){
                     if (spriteNum == 0) {
@@ -575,6 +580,7 @@ public class Player extends Entity {
                 if(spriteNum==4){image = downAttack4;}
             }
                     break;
+
                 case "left":
             if(attacking == false){
                     if (spriteNum == 0) {
@@ -616,6 +622,7 @@ public class Player extends Entity {
                 if(spriteNum==4){image = leftAttack4;}
             }
                     break;
+
                 case "right":
             if(attacking == false){
                     if (spriteNum == 0) {
@@ -656,6 +663,7 @@ public class Player extends Entity {
                 if(spriteNum==4){image = rightAttack4;}
             }
                     break;
+
                 case "upleft":
             if(attacking == false){
                 if (spriteNum == 0) {
@@ -697,6 +705,7 @@ public class Player extends Entity {
                 if(spriteNum==4){image = upAttack4;}
             }
                     break;
+
                 case "upright":
             if(attacking == false){
                 if (spriteNum == 0) {
@@ -819,24 +828,24 @@ public class Player extends Entity {
                 if(spriteNum==4){image = downAttack4;}
             }break;
         }
-    }
-        else {
-            // Character is idle
-            switch (direction) {
-                case "up":
-                    image = idleUp;
-                    break;
-                case "down":
-                    image = idleDown;
-                    break;
-                case "left":
-                    image = idleLeft;
-                    break;
-                case "right":
-                    image = idleRight;
-                    break;
-        }
-        }
+    // }
+    //     else {
+    //         // Character is idle
+    //         switch (direction) {
+    //             case "up":
+    //                 image = idleUp;
+    //                 break;
+    //             case "down":
+    //                 image = idleDown;
+    //                 break;
+    //             case "left":
+    //                 image = idleLeft;
+    //                 break;
+    //             case "right":
+    //                 image = idleRight;
+    //                 break;
+    //     }
+    //     }
             if(invincible == true){
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
         }
