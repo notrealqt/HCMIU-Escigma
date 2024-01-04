@@ -7,12 +7,14 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandle;
 import main.UtilityTool;
+import object.Key;
 import object.Sword;
 
 public class Player extends Entity {
@@ -23,6 +25,8 @@ public class Player extends Entity {
     public int hasKey = 0;
     int standCounter = 0;
     public boolean attackCanceled = false;
+    public ArrayList<Entity> inventory = new ArrayList<>();
+    public final int maxInventorySize = 20;
 
     public Player(GamePanel gp, KeyHandle keyH) {
 
@@ -47,6 +51,7 @@ public class Player extends Entity {
         setDefaultValue();
         getPlayerImage();
         getPlayerattackImgage();
+        setItems();
 
     }
 
@@ -75,7 +80,11 @@ public class Player extends Entity {
         life = maxLife;
         invincible = false;
     }
-
+    public void setItems(){
+        inventory.add(currentWeapon);
+        inventory.add(new Key(gp));
+        inventory.add(new Key(gp));
+    }
     public int getAttack(){
         return attackvalue =  strength * currentWeapon.attackvalue;
     }
