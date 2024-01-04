@@ -111,8 +111,14 @@ public class Entity {
 
         if(this.type == 2 && hitplayer == true){
             if(gp.player.invincible == false){
+                int damage = attack - gp.player.defense;
+                if(damage < 0){
+                    
+                    damage = 0;
+
+                }
                 //player take damage
-                gp.player.life -= 1;
+                gp.player.life -= damage;
                 gp.player.invincible = true;
             }
         }

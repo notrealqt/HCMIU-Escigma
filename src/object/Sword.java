@@ -9,7 +9,7 @@ public class Sword extends Entity {
         super(gp);
         name = "Shit Sword";
         down1=setUp("/item/weapon/sword",gp.tileSize,gp.tileSize);
-        attackvalue = 1;
+        attackvalue = 4;
         defensevalue = 1;
         //TODO Auto-generated constructor stub
     }

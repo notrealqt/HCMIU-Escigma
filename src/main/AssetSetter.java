@@ -15,6 +15,7 @@ public class AssetSetter {
         this.gp = gp;
     }
 
+
     public void setObject() {
         gp.obj[0] = new Key(gp);
         gp.obj[0].worldX = 4 * gp.tileSize;

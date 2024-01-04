@@ -7,6 +7,7 @@ import entity.Player;
 import tile.TileManager;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
@@ -168,7 +169,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void drawToTempScreen() {
         long drawStart = 0;
-        if(KeyH.checkDrawtime == true){
+        if(KeyH.debugText == true){
             drawStart = System.nanoTime();
         }
         
@@ -224,12 +225,22 @@ public class GamePanel extends JPanel implements Runnable {
         
 
         //Debug
-        if(KeyH.checkDrawtime == true){
+        if(KeyH.debugText == true){
             long drawEnd = System.nanoTime();
             long passed = drawEnd - drawStart;
-            g2.setColor(Color.BLACK);
-            g2.drawString("Draw Time: "+passed, 10, 400);
-            System.out.println("Draw Time: "+passed);
+
+            g2.setFont(new Font("Arial",Font.PLAIN,20));
+            g2.setColor(Color.white);
+            int x = 10;
+            int y = 400;
+            int lineHeight = 20;
+
+            g2.drawString("X coord: " + player.worldX,x,y); y+= lineHeight;
+            g2.drawString("Y coord: " + player.worldY,x,y); y+= lineHeight;
+            g2.drawString("Col "+(player.worldX+player.solidArea.x)/tileSize,x,y); y+= lineHeight;
+            g2.drawString("Row "+(player.worldY+player.solidArea.y)/tileSize,x,y); y+= lineHeight;
+            g2.drawString("Draw Time: "+passed, x, y);
+            //System.out.println("Draw Time: "+passed);
         }
     }
 
