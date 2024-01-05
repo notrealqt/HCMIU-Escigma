@@ -11,6 +11,7 @@ public class Sword extends Entity {
         down0=setUp("/item/weapon/sword",gp.tileSize,gp.tileSize);
         attackvalue = 4;
         defensevalue = 1;
+        description = "["+name+"]\nAn old sword";
         //TODO Auto-generated constructor stub
     }
     

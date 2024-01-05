@@ -12,6 +12,7 @@ public class Key extends Entity {
         super(gp);
         name = "Key";
         down0 = setUp("objects/key",gp.tileSize, gp.tileSize);
+        description = "["+name+"]\nKey to open door\nWhat do you expect more?";
         /*
         try {
             down0 = ImageIO.read(getClass().getResourceAsStream("key."));
