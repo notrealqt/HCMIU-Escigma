@@ -60,6 +60,14 @@ public class KeyHandle implements KeyListener {
         //You lost state
         else if(gp.gameState == gp.youLostState) {
             youLostState(code);
+        } 
+        // guide state
+        else if(gp.gameState == gp.guideState) {
+            guideState(code);
+        }
+        //menu option state
+         else if(gp.gameState == gp.menuOptionState) {
+            menuOptionState(code);
         }
     }
 
@@ -68,16 +76,17 @@ public class KeyHandle implements KeyListener {
                 gp.ui.commandNum--;
                 gp.playSE(3);
                 if(gp.ui.commandNum < 0) {
-                    gp.ui.commandNum = 3;
+                    gp.ui.commandNum = 4;
                 }
             }
             if (code == KeyEvent.VK_S) {
                 gp.ui.commandNum++;
                 gp.playSE(3);
-                if(gp.ui.commandNum > 3) {
+                if(gp.ui.commandNum > 4) {
                     gp.ui.commandNum = 0;
                 }
             }
+           
             if(code == KeyEvent.VK_ENTER) {
                 if(gp.ui.commandNum == 0) {
                     gp.gameState = gp.playState;
@@ -88,8 +97,15 @@ public class KeyHandle implements KeyListener {
                 }
                 if(gp.ui.commandNum == 2) {
                     //Add later
+                    gp.gameState = gp.guideState;
                 }
                 if(gp.ui.commandNum == 3) {
+                    //Add later
+                    gp.gameState = gp.menuOptionState;
+                    gp.ui.commandNum = 0;
+                }
+
+                if(gp.ui.commandNum == 4) {
                     System.exit(0);
                 }
             }
@@ -117,6 +133,7 @@ public class KeyHandle implements KeyListener {
                 interPressed = true;
             }
              if (code == KeyEvent.VK_J) {
+                // gp.playSE(5);
                 attackPressed = true;
             }
             // Menu
@@ -153,8 +170,10 @@ public class KeyHandle implements KeyListener {
             }
     }
     public void menuState(int code){
-                    if(code == KeyEvent.VK_ESCAPE) {
-                gp.gameState = gp.playState;
+            if(code == KeyEvent.VK_ESCAPE) {
+            gp.ui.commandNum = 0;
+            gp.ui.SubState = 0;
+            gp.gameState = gp.playState;
             }
 
             if(code == KeyEvent.VK_ENTER){
@@ -211,7 +230,7 @@ public class KeyHandle implements KeyListener {
                 }
             }
     }
-public void youLostState(int code){
+    public void youLostState(int code){
 
      if (code == KeyEvent.VK_W) {
                 gp.ui.commandNum--;
@@ -241,6 +260,62 @@ public void youLostState(int code){
                 }
             }
 }
+    public void guideState(int code){
+    if(code == KeyEvent.VK_ENTER){
+         if(gp.ui.commandNum == 0){
+                
+            gp.gameState = gp.titleState;
+            gp.ui.commandNum = 2;
+                    
+                }
+    }
+}
+    public void menuOptionState(int code){
+        if(code == KeyEvent.VK_ENTER){
+                    enterPressed = true;
+                }
+    
+        if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                gp.playSE(3);
+             if(gp.ui.commandNum < 0) {
+                    gp.ui.commandNum = 3;
+                }
+                
+            }
+        if (code == KeyEvent.VK_S) {
+            gp.ui.commandNum++;
+            gp.playSE(3);
+            if(gp.ui.commandNum > 3) {
+                gp.ui.commandNum = 0;
+                }
+        }
+         if (code == KeyEvent.VK_A){
+                    if(gp.ui.commandNum == 1 && gp.music.volumeScale > 0){
+                        gp.music.volumeScale--;
+                        gp.music.CheckVolume();
+                        gp.playSE(3);
+                    }
+                     if(gp.ui.commandNum == 2 && gp.se.volumeScale > 0){
+                        gp.se.volumeScale--;
+                        gp.playSE(3);
+                    }
+            }
+            if (code == KeyEvent.VK_D){
+                
+                    if(gp.ui.commandNum == 1 && gp.music.volumeScale < 5){
+                        gp.music.volumeScale++;
+                        gp.music.CheckVolume();
+                        gp.playSE(3);
+                    }
+                    if(gp.ui.commandNum == 2 && gp.se.volumeScale < 5){
+                        gp.se.volumeScale++;
+                        gp.playSE(3);
+                    }
+                
+            }
+    }
+    
 
 
     @Override
