@@ -72,6 +72,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     public final int optionState=5;
     public final int youLostState=6;
+    public final int guideState = 7;
+      public final int menuOptionState = 8;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
