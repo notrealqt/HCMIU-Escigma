@@ -24,7 +24,8 @@ public class UI {
     public String currentDiaglogue;
     public int commandNum = 0;
     int SubState = 0;
-
+    public int slotCol = 0;
+    public int slotRow = 0;
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -143,6 +144,7 @@ public class UI {
         //Character State
         if(gp.gameState == gp.characterState){
             drawCharacterScreen();
+            drawInventory();
         }
         //You lost state
          if(gp.gameState == gp.youLostState) {
@@ -352,21 +354,60 @@ public class UI {
         g2.drawString(value, textX, textY);
         textY += lineHeight;
 
-        g2.drawImage(gp.player.currentWeapon.down1,tailX - gp.tileSize, textY+=35, null);
+        g2.drawImage(gp.player.currentWeapon.down0,tailX - gp.tileSize, textY+=35, null);
         textY += lineHeight;
 
 
+    }
+    public void drawInventory(){
+
+        //frame
+        int frameX = gp.tileSize *13;
+        int frameY = gp.tileSize;
+        int frameWidth = gp.tileSize*6;
+        int frameHeight = gp.tileSize*5;
+        drawSubWindow(frameX,frameY,frameWidth,frameHeight);
+
+        //slot
+        final int slotXstart = frameX + 20;
+        final int slotYstart = frameY + 20;
+        int slotX = slotXstart;
+        int slotY = slotYstart;
+        
+
+        //draw player's items
+        for (int i = 0; i < gp.player.inventory.size();i++){
+                g2.drawImage(gp.player.inventory.get(i).down0,slotX,slotY,null);
+
+            slotX += gp.tileSize;
+
+            if(i==4|| i ==9|| i == 14){
+                slotX = slotXstart;
+                slotY += gp.tileSize;
+            }
+        }
+
+        //cursor
+        int cursorX = slotXstart + (gp.tileSize * slotCol);
+        int cursorY = slotYstart + (gp.tileSize * slotRow);
+        int cursorWidth = gp.tileSize;
+        int cursorHeight = gp.tileSize;
+        
+        //draw cursor
+        g2.setColor(Color.white);
+        g2.setStroke(new BasicStroke(3));
+        g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight,15,15);
     }
     public void drawSubWindow(int x, int y, int width, int height) {
         
         Color c = new Color(0,0,0,230);
         g2.setColor(c);
-        g2.fillRoundRect(x, y, width, height, 100, 100);
+        g2.fillRoundRect(x, y, width, height, 60, 60);
 
         c = new Color(255,255,255);
         g2.setColor(c);
         g2.setStroke(new BasicStroke(5));
-        g2.drawRoundRect(x+5, y+5, width-10, height-10, 95, 95);
+        g2.drawRoundRect(x+5, y+5, width-10, height-10, 50, 50);
 
     }
     public int getXforCenteredText(String text){
