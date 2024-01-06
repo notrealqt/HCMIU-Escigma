@@ -15,7 +15,7 @@ public class TileManager {
     public TileManager(GamePanel gp) {
         this.gp = gp;
 
-        tile = new Tile[10]; //10 types of tiles
+        tile = new Tile[100000000]; //10 types of tiles
     
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
@@ -24,27 +24,31 @@ public class TileManager {
 
     public void getTileImage() {
         try {
-            /* 
-            //Old method to setup tile
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/tile/grass00.png")); 
+        setUp(0, "grass00", false);
+        setUp(1, "wall", true);
+        setUp(2, "grass00", false);
+            //forest theme
+                //wall
+                    //wall
+                    setUp(10, "forest/wall/map_wall_forest_01", true);
+                    setUp(11, "forest/wall/map_wall_forest_02", true);
+                    setUp(12, "forest/wall head/map_wallhead_forest_01", true);
+                    setUp(13, "forest/wall head/map_wallhead_forest_02", true);
+                    //corner
+                    setUp(14, "forest/wall head bot corner/map_wallhead_botcorner_1", true);
+                    setUp(15, "forest/wall head bot corner/map_wallhead_botcorner_2", true);
+                //floor
+                    //floor
+                    setUp(16, "forest/floor/map_floor_forest_01", false);
+                    setUp(17, "forest/floor/map_floor_forest_02", false);
+                    setUp(18, "forest/floor/map_floor_forest_03", false);
+                    setUp(19, "forest/floor/map_floor_forest_04", false);
+                    //underwall floor
+                    setUp(20, "forest/underwall floor/map_underwall_floor_forest_1", false);
+                    setUp(21, "forest/underwall floor/map_underwall_floor_forest_2", false);
+                    setUp(22, "forest/underwall floor/map_underwall_floor_forest_3", false);
+                    setUp(23, "forest/underwall floor/map_underwall_floor_forest_4", false);
 
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/tile/wall.png"));
-            tile[1].collision = true; //set the tile solid 
-
-            tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/res/tile/water00.png"));
-            tile[2].collision = true; //set the tile solid 
-            */
-            //Improved method to setup tile (dont even need try catch)
-            //setUp(index, image name, collision ? true, false)
-            //Faster the code, lesser the pain :v
-            setUp(0, "grass00", false);
-            setUp(1, "wall", true);
-            setUp(2, "grass00", false);
-            //setUp(3, "map-ice_13", false);
-            //setUp(4, "map-ice_06", true);
         } catch (Exception e) {
             e.printStackTrace();
         }
