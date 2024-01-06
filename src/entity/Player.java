@@ -119,53 +119,53 @@ public class Player extends Entity {
         // //old method
         // try {
 
-        //     idleUp = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_back_0.png"));
-        //     idleDown = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_font_0.png"));
-        //     idleRight = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_right_0.png"));
-        //     idleLeft = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_left_0.png")); 
+        //     idleUp = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0.png"));
+        //     idleDown = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_font_0.png"));
+        //     idleRight = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_right_0.png"));
+        //     idleLeft = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_left_0.png")); 
 
         //     //up
-        //     up0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_0.png"));
-        //     up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_1.png"));
-        //     up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_2.png"));
-        //     up3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_3.png"));
-        //     up4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_4.png"));
-        //     up5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_5.png"));
-        //     up6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_6.png"));
-        //     up7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_7.png"));
+        //     up0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_back_0.png"));
+        //     up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_back_1.png"));
+        //     up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_back_2.png"));
+        //     up3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_back_3.png"));
+        //     up4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_back_4.png"));
+        //     up5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_back_5.png"));
+        //     up6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_back_6.png"));
+        //     up7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_back_7.png"));
         //     //down
-        //     down0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_0.png"));
-        //     down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_1.png"));
-        //     down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_2.png"));
-        //     down3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_3.png"));
-        //     down4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_4.png"));
-        //     down5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_5.png"));
-        //     down6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_6.png"));
-        //     down7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_7.png"));
-        //     //down8 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_8.png"));
-        //     //down9 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_9.png"));
+        //     down0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_0.png"));
+        //     down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_1.png"));
+        //     down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_2.png"));
+        //     down3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_3.png"));
+        //     down4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_4.png"));
+        //     down5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_5.png"));
+        //     down6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_6.png"));
+        //     down7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_7.png"));
+        //     //down8 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_8.png"));
+        //     //down9 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_font_9.png"));
 
         //     //left
-        //     left0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_0.png"));
-        //     left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_1.png"));
-        //     left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_2.png"));
-        //     left3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_3.png"));
-        //     left4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_4.png"));
-        //     left5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_5.png"));
-        //     left6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_6.png"));
-        //     left7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_7.png"));
+        //     left0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_left_0.png"));
+        //     left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_left_1.png"));
+        //     left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_left_2.png"));
+        //     left3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_left_3.png"));
+        //     left4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_left_4.png"));
+        //     left5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_left_5.png"));
+        //     left6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_left_6.png"));
+        //     left7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_left_7.png"));
         //     //left8 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_left_8.png"));
         //     //left9 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_left_9.png"));
 
         //     //right
-        //     right0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_0.png"));
-        //     right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_1.png"));
-        //     right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_2.png"));
-        //     right3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_3.png"));
-        //     right4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_4.png"));
-        //     right5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_5.png"));
-        //     right6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_6.png"));
-        //     right7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_7.png"));
+        //     right0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_right_0.png"));
+        //     right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_right_1.png"));
+        //     right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_right_2.png"));
+        //     right3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_right_3.png"));
+        //     right4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_right_4.png"));
+        //     right5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_right_5.png"));
+        //     right6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_right_6.png"));
+        //     right7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_move_right_7.png"));
         //     //right8 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_right_8.png"));
         //     //right9 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_right_9.png"));
 
@@ -175,48 +175,48 @@ public class Player extends Entity {
         
 
         //new method
-        idleUp = setUp("/player/move/1_player_idle_back_0_player_idle_back_0",gp.tileSize, gp.tileSize);
-        idleDown = setUp("/player/move/1_player_idle_back_0_player_idle_font_0",gp.tileSize, gp.tileSize);
-        idleRight = setUp("/player/move/1_player_idle_back_0_player_idle_right_0",gp.tileSize, gp.tileSize);
-        idleLeft = setUp("/player/move/1_player_idle_back_0_player_idle_left_0",gp.tileSize, gp.tileSize);
+        idleUp = setUp("/player/move/1_player_idle_back_0",gp.tileSize, gp.tileSize);
+        idleDown = setUp("/player/move/1_player_idle_font_0",gp.tileSize, gp.tileSize);
+        idleRight = setUp("/player/move/1_player_idle_right_0",gp.tileSize, gp.tileSize);
+        idleLeft = setUp("/player/move/1_player_idle_left_0",gp.tileSize, gp.tileSize);
 
-        up0 = setUp("/player/move/1_player_idle_back_0_player_move_back_0",gp.tileSize, gp.tileSize);
-        up1 = setUp("/player/move/1_player_idle_back_0_player_move_back_1",gp.tileSize, gp.tileSize);
-        up2 = setUp("/player/move/1_player_idle_back_0_player_move_back_2",gp.tileSize, gp.tileSize);
-        up3 = setUp("/player/move/1_player_idle_back_0_player_move_back_3",gp.tileSize, gp.tileSize);
-        up4 = setUp("/player/move/1_player_idle_back_0_player_move_back_4",gp.tileSize, gp.tileSize);
-        up5 = setUp("/player/move/1_player_idle_back_0_player_move_back_5",gp.tileSize, gp.tileSize);
-        up6 = setUp("/player/move/1_player_idle_back_0_player_move_back_6",gp.tileSize, gp.tileSize);
-        up7 = setUp("/player/move/1_player_idle_back_0_player_move_back_7",gp.tileSize, gp.tileSize);
+        up0 = setUp("/player/move/1_player_move_back_0",gp.tileSize, gp.tileSize);
+        up1 = setUp("/player/move/1_player_move_back_1",gp.tileSize, gp.tileSize);
+        up2 = setUp("/player/move/1_player_move_back_2",gp.tileSize, gp.tileSize);
+        up3 = setUp("/player/move/1_player_move_back_3",gp.tileSize, gp.tileSize);
+        up4 = setUp("/player/move/1_player_move_back_4",gp.tileSize, gp.tileSize);
+        up5 = setUp("/player/move/1_player_move_back_5",gp.tileSize, gp.tileSize);
+        up6 = setUp("/player/move/1_player_move_back_6",gp.tileSize, gp.tileSize);
+        up7 = setUp("/player/move/1_player_move_back_7",gp.tileSize, gp.tileSize);
 
-        down0 = setUp("/player/move/1_player_idle_back_0_player_move_font_0",gp.tileSize, gp.tileSize);
-        down1 = setUp("/player/move/1_player_idle_back_0_player_move_font_1",gp.tileSize, gp.tileSize);
-        down2 = setUp("/player/move/1_player_idle_back_0_player_move_font_2",gp.tileSize, gp.tileSize);
-        down3 = setUp("/player/move/1_player_idle_back_0_player_move_font_3",gp.tileSize, gp.tileSize);
-        down4 = setUp("/player/move/1_player_idle_back_0_player_move_font_4",gp.tileSize, gp.tileSize);
-        down5 = setUp("/player/move/1_player_idle_back_0_player_move_font_5",gp.tileSize, gp.tileSize);
-        down6 = setUp("/player/move/1_player_idle_back_0_player_move_font_6",gp.tileSize, gp.tileSize);
-        down7 = setUp("/player/move/1_player_idle_back_0_player_move_font_7",gp.tileSize, gp.tileSize);
+        down0 = setUp("/player/move/1_player_move_font_0",gp.tileSize, gp.tileSize);
+        down1 = setUp("/player/move/1_player_move_font_1",gp.tileSize, gp.tileSize);
+        down2 = setUp("/player/move/1_player_move_font_2",gp.tileSize, gp.tileSize);
+        down3 = setUp("/player/move/1_player_move_font_3",gp.tileSize, gp.tileSize);
+        down4 = setUp("/player/move/1_player_move_font_4",gp.tileSize, gp.tileSize);
+        down5 = setUp("/player/move/1_player_move_font_5",gp.tileSize, gp.tileSize);
+        down6 = setUp("/player/move/1_player_move_font_6",gp.tileSize, gp.tileSize);
+        down7 = setUp("/player/move/1_player_move_font_7",gp.tileSize, gp.tileSize);
 
         
-        left0 = setUp("/player/move/1_player_idle_back_0_player_move_left_0",gp.tileSize, gp.tileSize);
-        left1 = setUp("/player/move/1_player_idle_back_0_player_move_left_1",gp.tileSize, gp.tileSize);
-        left2 = setUp("/player/move/1_player_idle_back_0_player_move_left_2",gp.tileSize, gp.tileSize);
-        left3 = setUp("/player/move/1_player_idle_back_0_player_move_left_3",gp.tileSize, gp.tileSize);
-        left4 = setUp("/player/move/1_player_idle_back_0_player_move_left_4",gp.tileSize, gp.tileSize);
-        left5 = setUp("/player/move/1_player_idle_back_0_player_move_left_5",gp.tileSize, gp.tileSize);
-        left6 = setUp("/player/move/1_player_idle_back_0_player_move_left_6",gp.tileSize, gp.tileSize);
-        left7 = setUp("/player/move/1_player_idle_back_0_player_move_left_7",gp.tileSize, gp.tileSize);;
+        left0 = setUp("/player/move/1_player_move_left_0",gp.tileSize, gp.tileSize);
+        left1 = setUp("/player/move/1_player_move_left_1",gp.tileSize, gp.tileSize);
+        left2 = setUp("/player/move/1_player_move_left_2",gp.tileSize, gp.tileSize);
+        left3 = setUp("/player/move/1_player_move_left_3",gp.tileSize, gp.tileSize);
+        left4 = setUp("/player/move/1_player_move_left_4",gp.tileSize, gp.tileSize);
+        left5 = setUp("/player/move/1_player_move_left_5",gp.tileSize, gp.tileSize);
+        left6 = setUp("/player/move/1_player_move_left_6",gp.tileSize, gp.tileSize);
+        left7 = setUp("/player/move/1_player_move_left_7",gp.tileSize, gp.tileSize);;
 
 
-        right0 = setUp("/player/move/1_player_idle_back_0_player_move_right_0",gp.tileSize, gp.tileSize);
-        right1 = setUp("/player/move/1_player_idle_back_0_player_move_right_1",gp.tileSize, gp.tileSize);
-        right2 = setUp("/player/move/1_player_idle_back_0_player_move_right_2",gp.tileSize, gp.tileSize);
-        right3 = setUp("/player/move/1_player_idle_back_0_player_move_right_3",gp.tileSize, gp.tileSize);
-        right4 = setUp("/player/move/1_player_idle_back_0_player_move_right_4",gp.tileSize, gp.tileSize);
-        right5 = setUp("/player/move/1_player_idle_back_0_player_move_right_5",gp.tileSize, gp.tileSize);
-        right6 = setUp("/player/move/1_player_idle_back_0_player_move_right_6",gp.tileSize, gp.tileSize);
-        right7 = setUp("/player/move/1_player_idle_back_0_player_move_right_7",gp.tileSize, gp.tileSize);
+        right0 = setUp("/player/move/1_player_move_right_0",gp.tileSize, gp.tileSize);
+        right1 = setUp("/player/move/1_player_move_right_1",gp.tileSize, gp.tileSize);
+        right2 = setUp("/player/move/1_player_move_right_2",gp.tileSize, gp.tileSize);
+        right3 = setUp("/player/move/1_player_move_right_3",gp.tileSize, gp.tileSize);
+        right4 = setUp("/player/move/1_player_move_right_4",gp.tileSize, gp.tileSize);
+        right5 = setUp("/player/move/1_player_move_right_5",gp.tileSize, gp.tileSize);
+        right6 = setUp("/player/move/1_player_move_right_6",gp.tileSize, gp.tileSize);
+        right7 = setUp("/player/move/1_player_move_right_7",gp.tileSize, gp.tileSize);
         
     }
     
