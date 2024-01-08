@@ -151,7 +151,13 @@ public class KeyHandle implements KeyListener {
                 }
             }
             if (code == KeyEvent.VK_R){
-                gp.tileM.loadMap("/res/map/map02.txt");
+                switch(gp.currentMap) {
+                    case 0:
+                       gp.tileM.loadMap("/res/map/map02.txt", 0);
+                       break;
+
+                    //case 1: different map
+                }
             }
     }
     public void pauseState(int code){

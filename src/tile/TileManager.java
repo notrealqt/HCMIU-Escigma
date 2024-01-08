@@ -10,16 +10,16 @@ import java.awt.Graphics2D;
 public class TileManager {
     GamePanel gp;
     public Tile[] tile;
-    public int mapTileNum[][]; 
+    public int mapTileNum[][][]; 
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
 
         tile = new Tile[100000000]; //10 types of tiles
     
-        mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
+        mapTileNum = new int[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        loadMap("/res/map/map02.txt");
+        loadMap("/res/map/map02.txt",0);
     }
 
     public void getTileImage() {
@@ -68,7 +68,7 @@ public class TileManager {
         }
     }
     
-    public void loadMap(String filePath) {
+    public void loadMap(String filePath, int map) {
         try {
             InputStream is = getClass().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -83,7 +83,7 @@ public class TileManager {
 
                     int num = Integer.parseInt(numbers[col]);
 
-                    mapTileNum[col][row] = num;
+                    mapTileNum[map][col][row] = num;
                     col++;
                 }
                 if (col == gp.maxWorldCol ) {
@@ -103,7 +103,7 @@ public class TileManager {
 
         //50x50 map
         while ( worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
-            int tileNum = mapTileNum[worldCol][worldRow];
+            int tileNum = mapTileNum[gp.currentMap][worldCol][worldRow];
 
             int worldX = worldCol * gp.tileSize;
             int worldY = worldRow * gp.tileSize;

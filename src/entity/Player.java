@@ -72,7 +72,7 @@ public class Player extends Entity {
         defense = getDefense();
     }
     public void setDefaultPosition(){
-        worldX = gp.tileSize * 14; //player's pos in world map
+        worldX = gp.tileSize * 14; 
         worldY = gp.tileSize * 14;
         direction = "down";
     }
@@ -160,22 +160,6 @@ public class Player extends Entity {
         right7 = setUp("/player/move/1_player_move_right_7",gp.tileSize, gp.tileSize);
         
     }
-    
-    
-    // public BufferedImage setUp(String imageName) {
-        
-    //     UtilityTool uTool = new UtilityTool();
-    //     BufferedImage image = null;
-        
-    //     try {
-    //         image = ImageIO.read(getClass().getResourceAsStream("/res/player/"+imageName+".png"));
-    //         image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    //     return image;
-    // } 
-    
 
     public void update() {
         //attack animation
@@ -319,21 +303,18 @@ public class Player extends Entity {
     //invincible time must outside of the key if statement
     if(invincible == true){
         invincibleCounter++;
-        if(invincibleCounter > 60){
+        if(invincibleCounter > 60) {
             invincible = false;
             invincibleCounter = 0;
-            }
         }
-        
-
-
-
-
-        if(life <= 0){
+        if (life <= 0) {
             gp.playSE(4);
             gp.gameState= gp.youLostState;
-            
+            gp.ui.commandNum = -1;
+            //death music
+            //gp.playMusic(index);
         }
+    }
     }
 
     //attack animation
@@ -388,7 +369,7 @@ public class Player extends Entity {
     }
     public void pickUpObject(int i){
         if(i!=9999){
-            String objectName = gp.obj[i].name;
+            String objectName = gp.obj[gp.currentMap][i].name;
             switch(objectName){
                 case "Key":
                     gp.playSE(1);
@@ -424,7 +405,7 @@ public class Player extends Entity {
             {
                 attackCanceled=true;
                 gp.gameState = gp.dialogueState;
-                gp.npc[i].speak();   
+                gp.npc[gp.currentMap][i].speak();   
             }
             
         }else if(gp.KeyH.attackPressed==true && gp.KeyH.interPressed==false){attacking = true;}
@@ -435,7 +416,7 @@ public class Player extends Entity {
             
             if(invincible == false){
 
-                int damage = gp.monster[i].attack - defense;
+                int damage = gp.monster[gp.currentMap][i].attack - defense;
                 if(damage < 0){
                     damage = 0;
                 }
@@ -449,19 +430,19 @@ public class Player extends Entity {
     public void damageMonster(int i){
             if(i != 9999){
             // System.out.println("Hit!");             //give damage to monster
-            if(gp.monster[i].invincible == false){
-                int damage = attack - gp.monster[i].defense;
+            if(gp.monster[gp.currentMap][i].invincible == false){
+                int damage = attack - gp.monster[gp.currentMap][i].defense;
                 if(damage < 0){
                     
                     damage = 0;
 
                 }
-                gp.monster[i].life -= damage;
-                gp.monster[i].invincible = true;
-                gp.monster[i].damagereaction();
+                gp.monster[gp.currentMap][i].life -= damage;
+                gp.monster[gp.currentMap][i].invincible = true;
+                gp.monster[gp.currentMap][i].damagereaction();
 
-                if(gp.monster[i].life <=0){
-                    gp.monster[i].die=true;             //kill monster
+                if(gp.monster[gp.currentMap][i].life <=0){
+                    gp.monster[gp.currentMap][i].die=true;             //kill monster
                 }
             }
         } 
