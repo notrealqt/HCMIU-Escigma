@@ -374,12 +374,12 @@ public class Player extends Entity {
                 case "Key":
                     gp.playSE(1);
                     hasKey++;
-                    gp.obj[i] = null;
-                    //gp.ui.showMessage("You got a key!");
+                    gp.obj[gp.currentMap][i] = null;
+                    gp.ui.showMessage("You got a key!");
                     break;
                 case "Door":
                     if(hasKey>0){
-                        gp.obj[i] = null;
+                        gp.obj[gp.currentMap][i] = null;
                         hasKey--;
                     }
                     else {
@@ -389,7 +389,7 @@ public class Player extends Entity {
                 case "Boots":
                     gp.playSE(1);
                     speed += 2;
-                    gp.obj[i] = null;
+                    gp.obj[gp.currentMap][i] = null;
                     break;
                 case "Chest":
                     gp.ui.gameFinished = true;
