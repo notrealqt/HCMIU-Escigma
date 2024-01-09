@@ -135,8 +135,13 @@ public class KeyHandle implements KeyListener {
             if (code == KeyEvent.VK_F) {
                 interPressed = true;
             }
+// <<<<<<< HEAD
+             if (code == KeyEvent.VK_J) {
+               
+// =======
             if (code == KeyEvent.VK_J) {
                 // gp.playSE(5);
+// >>>>>>> bcaccd040d067d4b04646b740b96173561644dea
                 attackPressed = true;
             }
             // Menu

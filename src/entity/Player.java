@@ -45,8 +45,8 @@ public class Player extends Entity {
         solidArea.width = 32;
         solidArea.height = 32;
         
-        attackArea.width=36;
-        attackArea.height=36;
+        // attackArea.width=36;
+        // attackArea.height=36;
 
         setDefaultValue();
         getPlayerImage();
@@ -86,6 +86,7 @@ public class Player extends Entity {
         inventory.add(new Key(gp));
     }
     public int getAttack(){
+        attackArea=currentWeapon.attackArea;
         return attackvalue =  strength * currentWeapon.attackvalue;
     }
     public int getDefense(){
@@ -208,8 +209,12 @@ public class Player extends Entity {
             gp.colDect.checkTile(this);
 
             //Check object collison
-            int objIndex = gp.colDect.checkObject(this, true);
-            pickUpObject(objIndex);
+            // int objIndex = gp.colDect.checkObject(this, true);
+            // pickUpObject(objIndex);
+
+            //Check item collision
+            int itemIndex = gp.colDect.checkObject(this, true);
+            pickUpItem(itemIndex);
 
             //Check NPC collision
             int npcIndex = gp.colDect.checkEntity(this, gp.npc);
@@ -367,9 +372,9 @@ public class Player extends Entity {
             
        
     }
-    public void pickUpObject(int i){
+    public void pickUpItem(int i){
         if(i!=9999){
-            String objectName = gp.obj[gp.currentMap][i].name;
+            String objectName = gp.obj[i].name;
             switch(objectName){
                 case "Key":
                     gp.playSE(1);
