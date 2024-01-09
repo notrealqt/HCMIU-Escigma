@@ -177,6 +177,7 @@ public class KeyHandle implements KeyListener {
                     //case 1: different map
                 }
             }
+        }
     }
     public void pauseState(int code){
         if (code == KeyEvent.VK_P) {

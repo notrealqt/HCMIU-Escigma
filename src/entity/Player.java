@@ -374,7 +374,7 @@ public class Player extends Entity {
     }
     public void pickUpItem(int i){
         if(i!=9999){
-            String objectName = gp.obj[i].name;
+            String objectName = gp.obj[gp.currentMap][i].name;
             switch(objectName){
                 case "Key":
                     gp.playSE(1);
