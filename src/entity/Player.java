@@ -45,8 +45,8 @@ public class Player extends Entity {
         solidArea.width = 32;
         solidArea.height = 32;
         
-        attackArea.width=36;
-        attackArea.height=36;
+        // attackArea.width=36;
+        // attackArea.height=36;
 
         setDefaultValue();
         getPlayerImage();
@@ -86,6 +86,7 @@ public class Player extends Entity {
         inventory.add(new Key(gp));
     }
     public int getAttack(){
+        attackArea=currentWeapon.attackArea;
         return attackvalue =  strength * currentWeapon.attackvalue;
     }
     public int getDefense(){
@@ -175,48 +176,48 @@ public class Player extends Entity {
         
 
         //new method
-        idleUp = setUp("/player/move/1_player_idle_back_0_player_idle_back_0",gp.tileSize, gp.tileSize);
-        idleDown = setUp("/player/move/1_player_idle_back_0_player_idle_font_0",gp.tileSize, gp.tileSize);
-        idleRight = setUp("/player/move/1_player_idle_back_0_player_idle_right_0",gp.tileSize, gp.tileSize);
-        idleLeft = setUp("/player/move/1_player_idle_back_0_player_idle_left_0",gp.tileSize, gp.tileSize);
+        idleUp = setUp("/player/move/1_player_idle_back_0",gp.tileSize, gp.tileSize);
+        idleDown = setUp("/player/move/1_player_idle_font_0",gp.tileSize, gp.tileSize);
+        idleRight = setUp("/player/move/1_player_idle_right_0",gp.tileSize, gp.tileSize);
+        idleLeft = setUp("/player/move/1_player_idle_left_0",gp.tileSize, gp.tileSize);
 
-        up0 = setUp("/player/move/1_player_idle_back_0_player_move_back_0",gp.tileSize, gp.tileSize);
-        up1 = setUp("/player/move/1_player_idle_back_0_player_move_back_1",gp.tileSize, gp.tileSize);
-        up2 = setUp("/player/move/1_player_idle_back_0_player_move_back_2",gp.tileSize, gp.tileSize);
-        up3 = setUp("/player/move/1_player_idle_back_0_player_move_back_3",gp.tileSize, gp.tileSize);
-        up4 = setUp("/player/move/1_player_idle_back_0_player_move_back_4",gp.tileSize, gp.tileSize);
-        up5 = setUp("/player/move/1_player_idle_back_0_player_move_back_5",gp.tileSize, gp.tileSize);
-        up6 = setUp("/player/move/1_player_idle_back_0_player_move_back_6",gp.tileSize, gp.tileSize);
-        up7 = setUp("/player/move/1_player_idle_back_0_player_move_back_7",gp.tileSize, gp.tileSize);
+        up0 = setUp("/player/move/1_player_move_back_0",gp.tileSize, gp.tileSize);
+        up1 = setUp("/player/move/1_player_move_back_1",gp.tileSize, gp.tileSize);
+        up2 = setUp("/player/move/1_player_move_back_2",gp.tileSize, gp.tileSize);
+        up3 = setUp("/player/move/1_player_move_back_3",gp.tileSize, gp.tileSize);
+        up4 = setUp("/player/move/1_player_move_back_4",gp.tileSize, gp.tileSize);
+        up5 = setUp("/player/move/1_player_move_back_5",gp.tileSize, gp.tileSize);
+        up6 = setUp("/player/move/1_player_move_back_6",gp.tileSize, gp.tileSize);
+        up7 = setUp("/player/move/1_player_move_back_7",gp.tileSize, gp.tileSize);
 
-        down0 = setUp("/player/move/1_player_idle_back_0_player_move_font_0",gp.tileSize, gp.tileSize);
-        down1 = setUp("/player/move/1_player_idle_back_0_player_move_font_1",gp.tileSize, gp.tileSize);
-        down2 = setUp("/player/move/1_player_idle_back_0_player_move_font_2",gp.tileSize, gp.tileSize);
-        down3 = setUp("/player/move/1_player_idle_back_0_player_move_font_3",gp.tileSize, gp.tileSize);
-        down4 = setUp("/player/move/1_player_idle_back_0_player_move_font_4",gp.tileSize, gp.tileSize);
-        down5 = setUp("/player/move/1_player_idle_back_0_player_move_font_5",gp.tileSize, gp.tileSize);
-        down6 = setUp("/player/move/1_player_idle_back_0_player_move_font_6",gp.tileSize, gp.tileSize);
-        down7 = setUp("/player/move/1_player_idle_back_0_player_move_font_7",gp.tileSize, gp.tileSize);
+        down0 = setUp("/player/move/1_player_move_font_0",gp.tileSize, gp.tileSize);
+        down1 = setUp("/player/move/1_player_move_font_1",gp.tileSize, gp.tileSize);
+        down2 = setUp("/player/move/1_player_move_font_2",gp.tileSize, gp.tileSize);
+        down3 = setUp("/player/move/1_player_move_font_3",gp.tileSize, gp.tileSize);
+        down4 = setUp("/player/move/1_player_move_font_4",gp.tileSize, gp.tileSize);
+        down5 = setUp("/player/move/1_player_move_font_5",gp.tileSize, gp.tileSize);
+        down6 = setUp("/player/move/1_player_move_font_6",gp.tileSize, gp.tileSize);
+        down7 = setUp("/player/move/1_player_move_font_7",gp.tileSize, gp.tileSize);
 
         
-        left0 = setUp("/player/move/1_player_idle_back_0_player_move_left_0",gp.tileSize, gp.tileSize);
-        left1 = setUp("/player/move/1_player_idle_back_0_player_move_left_1",gp.tileSize, gp.tileSize);
-        left2 = setUp("/player/move/1_player_idle_back_0_player_move_left_2",gp.tileSize, gp.tileSize);
-        left3 = setUp("/player/move/1_player_idle_back_0_player_move_left_3",gp.tileSize, gp.tileSize);
-        left4 = setUp("/player/move/1_player_idle_back_0_player_move_left_4",gp.tileSize, gp.tileSize);
-        left5 = setUp("/player/move/1_player_idle_back_0_player_move_left_5",gp.tileSize, gp.tileSize);
-        left6 = setUp("/player/move/1_player_idle_back_0_player_move_left_6",gp.tileSize, gp.tileSize);
-        left7 = setUp("/player/move/1_player_idle_back_0_player_move_left_7",gp.tileSize, gp.tileSize);;
+        left0 = setUp("/player/move/1_player_move_left_0",gp.tileSize, gp.tileSize);
+        left1 = setUp("/player/move/1_player_move_left_1",gp.tileSize, gp.tileSize);
+        left2 = setUp("/player/move/1_player_move_left_2",gp.tileSize, gp.tileSize);
+        left3 = setUp("/player/move/1_player_move_left_3",gp.tileSize, gp.tileSize);
+        left4 = setUp("/player/move/1_player_move_left_4",gp.tileSize, gp.tileSize);
+        left5 = setUp("/player/move/1_player_move_left_5",gp.tileSize, gp.tileSize);
+        left6 = setUp("/player/move/1_player_move_left_6",gp.tileSize, gp.tileSize);
+        left7 = setUp("/player/move/1_player_move_left_7",gp.tileSize, gp.tileSize);;
 
 
-        right0 = setUp("/player/move/1_player_idle_back_0_player_move_right_0",gp.tileSize, gp.tileSize);
-        right1 = setUp("/player/move/1_player_idle_back_0_player_move_right_1",gp.tileSize, gp.tileSize);
-        right2 = setUp("/player/move/1_player_idle_back_0_player_move_right_2",gp.tileSize, gp.tileSize);
-        right3 = setUp("/player/move/1_player_idle_back_0_player_move_right_3",gp.tileSize, gp.tileSize);
-        right4 = setUp("/player/move/1_player_idle_back_0_player_move_right_4",gp.tileSize, gp.tileSize);
-        right5 = setUp("/player/move/1_player_idle_back_0_player_move_right_5",gp.tileSize, gp.tileSize);
-        right6 = setUp("/player/move/1_player_idle_back_0_player_move_right_6",gp.tileSize, gp.tileSize);
-        right7 = setUp("/player/move/1_player_idle_back_0_player_move_right_7",gp.tileSize, gp.tileSize);
+        right0 = setUp("/player/move/1_player_move_right_0",gp.tileSize, gp.tileSize);
+        right1 = setUp("/player/move/1_player_move_right_1",gp.tileSize, gp.tileSize);
+        right2 = setUp("/player/move/1_player_move_right_2",gp.tileSize, gp.tileSize);
+        right3 = setUp("/player/move/1_player_move_right_3",gp.tileSize, gp.tileSize);
+        right4 = setUp("/player/move/1_player_move_right_4",gp.tileSize, gp.tileSize);
+        right5 = setUp("/player/move/1_player_move_right_5",gp.tileSize, gp.tileSize);
+        right6 = setUp("/player/move/1_player_move_right_6",gp.tileSize, gp.tileSize);
+        right7 = setUp("/player/move/1_player_move_right_7",gp.tileSize, gp.tileSize);
         
     }
     
@@ -283,8 +284,12 @@ public class Player extends Entity {
             gp.colDect.checkTile(this);
 
             //Check object collison
-            int objIndex = gp.colDect.checkObject(this, true);
-            pickUpObject(objIndex);
+            // int objIndex = gp.colDect.checkObject(this, true);
+            // pickUpObject(objIndex);
+
+            //Check item collision
+            int itemIndex = gp.colDect.checkObject(this, true);
+            pickUpItem(itemIndex);
 
             //Check NPC collision
             int npcIndex = gp.colDect.checkEntity(this, gp.npc);
@@ -445,38 +450,64 @@ public class Player extends Entity {
             
        
     }
-    public void pickUpObject(int i){
+    public void pickUpItem(int i){
         if(i!=9999){
-            String objectName = gp.obj[i].name;
-            switch(objectName){
-                case "Key":
-                    gp.playSE(1);
+                    String text;
+                if(inventory.size() != maxInventorySize){
+                    inventory.add(gp.obj[i]);
+                    text = "You got a " + gp.obj[i].name + "!";
                     hasKey++;
-                    gp.obj[i] = null;
-                    gp.ui.showMessage("You got a key!");
-                    break;
-                case "Door":
-                    if(hasKey>0){
-                        gp.obj[i] = null;
-                        hasKey--;
-                    }
-                    else {
-                        gp.ui.showMessage("You need a key to open!");
-                    }
-                    break;
-                case "Boots":
-                    gp.playSE(1);
-                    speed += 2;
-                    gp.obj[i] = null;
-                    break;
-                case "Chest":
-                    gp.ui.gameFinished = true;
-                    gp.stopMusic();
-                    gp.playSE(2);
-                    break;
+                }else {
+                    text = "Your inventory is full!";
+                }
+                gp.ui.showMessage(text);
+                gp.obj[i]=null;
             }
-        }
+
     }
+    // public void pickUpObject(int i){
+    //     if(i!=9999){
+    //         /*String text;
+    //             if(inventory.size() != maxInventorySize){
+    //                 inventory.add(gp.obj[i]);
+    //                 gp.playSE(1);
+    //                 text = "You got a " + gp.obj[i].name + "!";
+    //             }else {
+    //                 text = "Your inventory is full!";
+    //             }
+    //             gp.ui.addMessage(text);
+    //             gp.obj[i]=null;
+    //         */
+    //         String objectName = gp.obj[i].name;
+    //         switch(objectName){
+    //             case "Key":
+    //                 gp.obj[i] = null;
+    //                 gp.ui.showMessage("You got a key!");
+    //                 gp.playSE(1);
+    //                 hasKey++;
+    //                 break;
+    //             case "Door":
+    //                 if(hasKey>0){
+    //                     gp.obj[i] = null;
+    //                     hasKey--;
+    //                 }
+    //                 else {
+    //                     gp.ui.showMessage("You need a key to open!");
+    //                 }
+    //                 break;
+    //             case "Boots":
+    //                 gp.playSE(1);
+    //                 speed += 2;
+    //                 gp.obj[i] = null;
+    //                 break;
+    //             case "Chest":
+    //                 gp.ui.gameFinished = true;
+    //                 gp.stopMusic();
+    //                 gp.playSE(2);
+    //                 break;
+    //         }
+    //     }
+    // }
     public void interactNPC(int i) {
         if (gp.KeyH.attackPressed==false && gp.KeyH.interPressed==true){
             if(i!=9999)
