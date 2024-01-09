@@ -29,8 +29,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize * maxScreenRow; //576 pixels
     
     //WORLD SETTING
-    public final int maxWorldCol = 100;
-    public final int maxWorldRow = 100;
+    public final int maxWorldCol = 120;
+    public final int maxWorldRow = 120;
     public final int maxMap = 10;
     public int currentMap = 0;
 
@@ -63,9 +63,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     //Entity and object
     public Player player = new Player(this, KeyH);
-    public Entity obj[][] = new Entity[maxMap][20]; // decide the number of objs
-    public Entity npc[][] = new Entity[maxMap][10];  // decide the number of npcs
-    public Entity monster[][] = new Entity[maxMap][20]; // decide the number of monsters
+    public Entity obj[][] = new Entity[maxMap][1000]; // decide the number of objs
+    public Entity npc[][] = new Entity[maxMap][1000];  // decide the number of npcs
+    public Entity monster[][] = new Entity[maxMap][1000]; // decide the number of monsters
     ArrayList<Entity> entityList = new ArrayList<>();
 
     //Game state 

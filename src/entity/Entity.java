@@ -20,7 +20,7 @@ public class Entity {
     public BufferedImage idleUp, idleDown, idleLeft, idleRight;
     public BufferedImage upAttack1, downAttack1, leftAttack1, rightAttack1, upAttack2, downAttack2, leftAttack2, rightAttack2, upAttack3, downAttack3, leftAttack3, rightAttack3, upAttack4, downAttack4, leftAttack4, rightAttack4;
     public BufferedImage image, image2, image3, image4, image5; //heart image
-    String dialogues[] = new String[30];
+    String dialogues[] = new String[10000];
     //This would set solidArea for all entities, we can change it by override like in Player
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0,0,0,0);
