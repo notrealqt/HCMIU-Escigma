@@ -66,8 +66,11 @@ public class KeyHandle implements KeyListener {
             guideState(code);
         }
         //menu option state
-         else if(gp.gameState == gp.menuOptionState) {
+        else if(gp.gameState == gp.menuOptionState) {
             menuOptionState(code);
+        }
+        else if (gp.gameState == gp.mapState) {
+            mapState(code);
         }
     }
 
@@ -132,13 +135,17 @@ public class KeyHandle implements KeyListener {
             if (code == KeyEvent.VK_F) {
                 interPressed = true;
             }
-             if (code == KeyEvent.VK_J) {
+            if (code == KeyEvent.VK_J) {
                 // gp.playSE(5);
                 attackPressed = true;
             }
             // Menu
-              if (code == KeyEvent.VK_ESCAPE) {
+            if (code == KeyEvent.VK_ESCAPE) {
                 gp.gameState= gp.optionState;
+            }
+            //map
+            if(code == KeyEvent.VK_M) {
+                gp.gameState = gp.mapState;
             }
 
             //Debug
@@ -346,7 +353,11 @@ public class KeyHandle implements KeyListener {
                 
             }
     }
-    
+    public void mapState( int code ) {
+        if (code == KeyEvent.VK_M) {
+            gp.gameState = gp.playState;
+        }
+    }
 
 
     @Override

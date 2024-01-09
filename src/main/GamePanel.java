@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import entity.Entity;
 import entity.Player;
+import tile.Map;
 import tile.TileManager;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -57,6 +58,7 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
     Config config= new Config(this);
+    Map map = new Map(this);
     Thread gameThread;
 
     //Entity and object
@@ -78,6 +80,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int youLostState=6;
     public final int guideState = 7;
     public final int menuOptionState = 8;
+    public final int mapState = 10;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -195,6 +198,10 @@ public class GamePanel extends JPanel implements Runnable {
         //Title screen
         if(gameState == titleState) {
             ui.draw(g2);
+        }
+        //Map screen
+        else if (gameState == mapState) {
+            map.drawFullMapScreen(g2);
         }
         else { 
             //Tile
