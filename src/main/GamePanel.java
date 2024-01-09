@@ -243,7 +243,8 @@ public class GamePanel extends JPanel implements Runnable {
             }
             //Empty entity list
             entityList.clear();
-
+            //MINIMAP
+            map.drawMiniMap(g2);
             //UI
             ui.draw(g2);
         }

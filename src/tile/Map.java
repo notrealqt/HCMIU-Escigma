@@ -2,6 +2,7 @@ package tile;
 
 import main.GamePanel;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.font.GraphicAttribute;
@@ -61,8 +62,44 @@ public class Map extends TileManager {
     
         // Draw the mini-map with the adjusted dimensions
         g2.drawImage(worldMap[gp.currentMap], x, y, miniMapWidth, miniMapHeight, null);
+        
+
+        //draw player
+        double scale = (double)(gp.tileSize * gp.maxWorldCol) / miniMapWidth;
+        int playerX = (int)(x + gp.player.worldX/scale);
+        int playerY = (int)(y + gp.player.worldY/scale);
+        // Adjust the scaling factor to make the player's dot bigger or smaller
+        double dotScaleFactor = 3;
+        int playerSize = (int)(gp.tileSize / scale * dotScaleFactor);
+        g2.drawImage(gp.player.down1, playerX, playerY, playerSize, playerSize, null);
+
+        //Hint
+        g2.setFont(gp.ui.tnr_40.deriveFont(32f));
+        g2.setColor(Color.white);
+        g2.drawString("Press M to close", 650, 550);
     }
     
-    
+    public void drawMiniMap ( Graphics2D g2) {
+        if (miniMapOn = true) {
+            int miniMapWidth = 300;
+            int miniMapHeight = 300;
+
+            int x = gp.screenWidth - miniMapWidth - 50;
+            int y = 50;
+
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,0.8f));
+            g2.drawImage(worldMap[gp.currentMap], x, y,miniMapWidth, miniMapHeight,null);
+        
+            //player
+            double scale = (double)(gp.tileSize * gp.maxWorldCol) / miniMapWidth;
+            int playerX = (int)(x + gp.player.worldX/scale);
+            int playerY = (int)(y + gp.player.worldY/scale);
+            // Adjust the scaling factor to make the player's dot bigger or smaller
+            double dotScaleFactor = 5;
+            int playerSize = (int)(gp.tileSize / scale * dotScaleFactor);
+            g2.drawImage(gp.player.down1, playerX-6, playerY-6, playerSize, playerSize, null);
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1f));
+        }
+    }
     
 }
