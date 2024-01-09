@@ -50,13 +50,21 @@ public class Entity {
     public int speed;
     public int maxLife;
     public int life;
-    public int type; //0 -> player, 1 -> npcs, 2 -> monster
     public String name;
     public int attack,defense,coin,strength,dexterity;
     public Entity currentWeapon;
 
     //TYPE
     public final int type_pickupOnly = 7;
+    public int type; //0 -> player, 1 -> npcs, 2 -> monster
+    public final int 
+    type_player = 0,
+    type_npc = 1,
+    type_monster = 2,
+    type_sword = 3,
+    type_axe = 4,
+    type_consumable = 5;
+
     //ITEM ATTRIBUTES
     public int value;
     public int attackvalue;
@@ -113,7 +121,7 @@ public class Entity {
         gp.colDect.checkEntity(this, gp.monster);
         boolean hitplayer = gp.colDect.checkPlayer(this);
 
-        if(this.type == 2 && hitplayer == true){
+        if(this.type == type_monster && hitplayer == true){
             if(gp.player.invincible == false){
                 int damage = attack - gp.player.defense;
                 if(damage < 0){

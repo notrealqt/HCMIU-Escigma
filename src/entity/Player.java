@@ -94,6 +94,7 @@ public class Player extends Entity {
     }
     
     public void getPlayerattackImgage(){
+        if(currentWeapon.type == type_sword){
         upAttack1 = setUp("player/attack/1_player_attack_back_0",gp.tileSize, gp.tileSize*2);
         upAttack2 = setUp("player/attack/1_player_attack_back_1",gp.tileSize, gp.tileSize*2);
         upAttack3 = setUp("player/attack/1_player_attack_back_2",gp.tileSize, gp.tileSize*2);
@@ -113,6 +114,7 @@ public class Player extends Entity {
         rightAttack2 = setUp("player/attack/1_player_attack_right_1",gp.tileSize*2, gp.tileSize);
         rightAttack3 = setUp("player/attack/1_player_attack_right_2",gp.tileSize*2, gp.tileSize);
         rightAttack4 = setUp("player/attack/1_player_attack_right_3",gp.tileSize*2, gp.tileSize);
+        }
     }
 
     public void getPlayerImage() {
@@ -453,6 +455,23 @@ public class Player extends Entity {
         } 
         // else System.out.println("Miss!");
     }
+
+    public void selectItem(){
+        int itemIndex = gp.ui.getItemIndexOnSlot();
+
+        if(itemIndex < inventory.size()){
+            Entity selectedItem = inventory.get(itemIndex);
+
+            if(selectedItem.type == type_sword||selectedItem.type == type_axe){
+                currentWeapon = (Sword) selectedItem;
+                attack = getAttack();
+            }
+            if(selectedItem.type == type_consumable){
+                //soon
+            }
+        }
+    }
+
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.white); // set color to use for drawing objects
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);

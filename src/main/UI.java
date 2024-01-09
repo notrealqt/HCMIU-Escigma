@@ -378,6 +378,12 @@ public class UI {
 
         //draw player's items
         for (int i = 0; i < gp.player.inventory.size();i++){
+
+            //equip cursor
+            if(gp.player.inventory.get(i)==gp.player.currentWeapon){
+                g2.setColor(new Color(0,247,255));
+                g2.fillRoundRect(slotX, slotY, slotSize-4, slotSize-4, 15, 15);
+            }
                 g2.drawImage(gp.player.inventory.get(i).down0,slotX,slotY,null);
 
             slotX += slotSize;

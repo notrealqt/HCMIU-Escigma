@@ -16,7 +16,7 @@ public class PathFinder {
     int step = 0;
 
     public PathFinder (GamePanel gp) {
-        this.gp = gp
+        this.gp = gp;
     }
     public void instantiateNodes() {
         node = new Node[gp.maxScreenCol][gp.maxWorldRow];
