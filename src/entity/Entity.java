@@ -12,7 +12,7 @@ import main.UtilityTool;
 
 public class Entity {
 //sdf
-    GamePanel gp;
+    protected GamePanel gp;
     public BufferedImage up1, up2, up3, up0, up4, up5, up6, up7,up8,up9;
     public BufferedImage down0, down1, down2, down3, down4, down5, down6, down7, down8, down9;
     public BufferedImage left0, left1, left2, left3, left4, left5, left6, left7, left8, left9;
@@ -20,14 +20,14 @@ public class Entity {
     public BufferedImage idleUp, idleDown, idleLeft, idleRight;
     public BufferedImage upAttack1, downAttack1, leftAttack1, rightAttack1, upAttack2, downAttack2, leftAttack2, rightAttack2, upAttack3, downAttack3, leftAttack3, rightAttack3, upAttack4, downAttack4, leftAttack4, rightAttack4;
     public BufferedImage image, image2, image3, image4, image5; //heart image
-    String dialogues[] = new String[30];
+    String dialogues[] = new String[10000];
     //This would set solidArea for all entities, we can change it by override like in Player
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0,0,0,0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
 
-    //State sdfsdfsdf
+    //State 
     public int worldX, worldY;
     public String direction = "down";
     public int spriteNum = 0;
@@ -55,7 +55,10 @@ public class Entity {
     public int attack,defense,coin,strength,dexterity;
     public Entity currentWeapon;
 
+    //TYPE
+    public final int type_pickupOnly = 7;
     //ITEM ATTRIBUTES
+    public int value;
     public int attackvalue;
     public int defensevalue;
     public String description = ""; //item description
@@ -263,7 +266,7 @@ public class Entity {
                     dieAnimation(g2);
                 }
                 
-            g2.drawImage(image, screenX, screenY, gp.tileSize,gp.tileSize, null);
+            g2.drawImage(image, screenX, screenY, null);
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         }

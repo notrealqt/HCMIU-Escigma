@@ -15,7 +15,7 @@ public class UI {
     
     GamePanel gp;
     Graphics2D g2;
-    Font tnr_20, tnr_40, tnr_80;
+    public Font tnr_20, tnr_40, tnr_80;
     BufferedImage keyImage, heart_full, heart_half, heart_blank;
     public boolean messageOn = false;
     public String message = "";
@@ -238,7 +238,7 @@ public class UI {
             g2.drawString(">", x-gp.tileSize, y);
         }
 
-        text = "OPTION";
+        text = "SETTING";
         x = getXforCenteredText(text);
         y += gp.tileSize;
         g2.drawString(text, x, y);
@@ -631,7 +631,7 @@ public class UI {
             g2.drawString("Move", textX, textY);  textY += gp.tileSize;
             g2.drawString("Interact", textX, textY);  textY += gp.tileSize;
             g2.drawString("Pause", textX, textY);  textY += gp.tileSize;
-            // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Attack", textX, textY);  textY += gp.tileSize;
             // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
             // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
 
@@ -640,6 +640,7 @@ public class UI {
             g2.drawString("WASD", textX, textY);  textY += gp.tileSize;
             g2.drawString("F", textX, textY);  textY += gp.tileSize;
             g2.drawString("P", textX, textY);  textY += gp.tileSize;
+            g2.drawString("J", textX, textY);  textY += gp.tileSize;
             //Back
             textX= frameX + gp.tileSize;
             textY = frameY + gp.tileSize*9;
@@ -790,6 +791,7 @@ public class UI {
             g2.drawString("Move", textX, textY);  textY += gp.tileSize;
             g2.drawString("Interact", textX, textY);  textY += gp.tileSize;
             g2.drawString("Pause", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Attack", textX, textY);  textY += gp.tileSize;
             // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
             // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
             // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
@@ -799,6 +801,7 @@ public class UI {
             g2.drawString("WASD", textX, textY);  textY += gp.tileSize;
             g2.drawString("F", textX, textY);  textY += gp.tileSize;
             g2.drawString("P", textX, textY);  textY += gp.tileSize;
+            g2.drawString("J", textX, textY);  textY += gp.tileSize;
             //Back
             textX= frameX + gp.tileSize;
             textY = frameY + gp.tileSize*9;

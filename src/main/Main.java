@@ -10,7 +10,7 @@ public class Main {
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Maze Runner");
+        window.setTitle("Dungeon Raider");
         //window.setUndecorated(true);
 
         GamePanel panel = new GamePanel();

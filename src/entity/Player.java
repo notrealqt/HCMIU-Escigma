@@ -72,7 +72,7 @@ public class Player extends Entity {
         defense = getDefense();
     }
     public void setDefaultPosition(){
-        worldX = gp.tileSize * 14; //player's pos in world map
+        worldX = gp.tileSize * 14; 
         worldY = gp.tileSize * 14;
         direction = "down";
     }
@@ -116,66 +116,7 @@ public class Player extends Entity {
     }
 
     public void getPlayerImage() {
-        
-        // //old method
-        // try {
 
-        //     idleUp = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_back_0.png"));
-        //     idleDown = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_font_0.png"));
-        //     idleRight = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_right_0.png"));
-        //     idleLeft = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_idle_left_0.png")); 
-
-        //     //up
-        //     up0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_0.png"));
-        //     up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_1.png"));
-        //     up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_2.png"));
-        //     up3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_3.png"));
-        //     up4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_4.png"));
-        //     up5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_5.png"));
-        //     up6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_6.png"));
-        //     up7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_back_7.png"));
-        //     //down
-        //     down0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_0.png"));
-        //     down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_1.png"));
-        //     down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_2.png"));
-        //     down3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_3.png"));
-        //     down4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_4.png"));
-        //     down5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_5.png"));
-        //     down6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_6.png"));
-        //     down7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_7.png"));
-        //     //down8 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_8.png"));
-        //     //down9 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_font_9.png"));
-
-        //     //left
-        //     left0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_0.png"));
-        //     left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_1.png"));
-        //     left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_2.png"));
-        //     left3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_3.png"));
-        //     left4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_4.png"));
-        //     left5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_5.png"));
-        //     left6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_6.png"));
-        //     left7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_left_7.png"));
-        //     //left8 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_left_8.png"));
-        //     //left9 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_left_9.png"));
-
-        //     //right
-        //     right0 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_0.png"));
-        //     right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_1.png"));
-        //     right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_2.png"));
-        //     right3 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_3.png"));
-        //     right4 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_4.png"));
-        //     right5 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_5.png"));
-        //     right6 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_6.png"));
-        //     right7 = ImageIO.read(getClass().getResourceAsStream("/res/player/move/1_player_idle_back_0_player_move_right_7.png"));
-        //     //right8 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_right_8.png"));
-        //     //right9 = ImageIO.read(getClass().getResourceAsStream("/res/player/1_player_move_right_9.png"));
-
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
-        
-
-        //new method
         idleUp = setUp("/player/move/1_player_idle_back_0",gp.tileSize, gp.tileSize);
         idleDown = setUp("/player/move/1_player_idle_font_0",gp.tileSize, gp.tileSize);
         idleRight = setUp("/player/move/1_player_idle_right_0",gp.tileSize, gp.tileSize);
@@ -220,22 +161,6 @@ public class Player extends Entity {
         right7 = setUp("/player/move/1_player_move_right_7",gp.tileSize, gp.tileSize);
         
     }
-    
-    
-    // public BufferedImage setUp(String imageName) {
-        
-    //     UtilityTool uTool = new UtilityTool();
-    //     BufferedImage image = null;
-        
-    //     try {
-    //         image = ImageIO.read(getClass().getResourceAsStream("/res/player/"+imageName+".png"));
-    //         image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    //     return image;
-    // } 
-    
 
     public void update() {
         //attack animation
@@ -383,21 +308,18 @@ public class Player extends Entity {
     //invincible time must outside of the key if statement
     if(invincible == true){
         invincibleCounter++;
-        if(invincibleCounter > 60){
+        if(invincibleCounter > 60) {
             invincible = false;
             invincibleCounter = 0;
-            }
         }
-        
-
-
-
-
-        if(life <= 0){
+        if (life <= 0) {
             gp.playSE(4);
             gp.gameState= gp.youLostState;
-            
+            gp.ui.commandNum = -1;
+            //death music
+            //gp.playMusic(index);
         }
+    }
     }
 
     //attack animation
@@ -452,69 +374,43 @@ public class Player extends Entity {
     }
     public void pickUpItem(int i){
         if(i!=9999){
-                    String text;
-                if(inventory.size() != maxInventorySize){
-                    inventory.add(gp.obj[i]);
-                    text = "You got a " + gp.obj[i].name + "!";
+            String objectName = gp.obj[i].name;
+            switch(objectName){
+                case "Key":
+                    gp.playSE(1);
                     hasKey++;
-                }else {
-                    text = "Your inventory is full!";
-                }
-                gp.ui.showMessage(text);
-                gp.obj[i]=null;
+                    gp.obj[i] = null;
+                    gp.ui.showMessage("You got a key!");
+                    break;
+                case "Door":
+                    if(hasKey>0){
+                        gp.obj[i] = null;
+                        hasKey--;
+                    }
+                    else {
+                        gp.ui.showMessage("You need a key to open!");
+                    }
+                    break;
+                case "Boots":
+                    gp.playSE(1);
+                    speed += 2;
+                    gp.obj[i] = null;
+                    break;
+                case "Chest":
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();
+                    gp.playSE(2);
+                    break;
             }
-
+        }
     }
-    // public void pickUpObject(int i){
-    //     if(i!=9999){
-    //         /*String text;
-    //             if(inventory.size() != maxInventorySize){
-    //                 inventory.add(gp.obj[i]);
-    //                 gp.playSE(1);
-    //                 text = "You got a " + gp.obj[i].name + "!";
-    //             }else {
-    //                 text = "Your inventory is full!";
-    //             }
-    //             gp.ui.addMessage(text);
-    //             gp.obj[i]=null;
-    //         */
-    //         String objectName = gp.obj[i].name;
-    //         switch(objectName){
-    //             case "Key":
-    //                 gp.obj[i] = null;
-    //                 gp.ui.showMessage("You got a key!");
-    //                 gp.playSE(1);
-    //                 hasKey++;
-    //                 break;
-    //             case "Door":
-    //                 if(hasKey>0){
-    //                     gp.obj[i] = null;
-    //                     hasKey--;
-    //                 }
-    //                 else {
-    //                     gp.ui.showMessage("You need a key to open!");
-    //                 }
-    //                 break;
-    //             case "Boots":
-    //                 gp.playSE(1);
-    //                 speed += 2;
-    //                 gp.obj[i] = null;
-    //                 break;
-    //             case "Chest":
-    //                 gp.ui.gameFinished = true;
-    //                 gp.stopMusic();
-    //                 gp.playSE(2);
-    //                 break;
-    //         }
-    //     }
-    // }
     public void interactNPC(int i) {
         if (gp.KeyH.attackPressed==false && gp.KeyH.interPressed==true){
             if(i!=9999)
             {
                 attackCanceled=true;
                 gp.gameState = gp.dialogueState;
-                gp.npc[i].speak();   
+                gp.npc[gp.currentMap][i].speak();   
             }
             
         }else if(gp.KeyH.attackPressed==true && gp.KeyH.interPressed==false){attacking = true;}
@@ -525,7 +421,7 @@ public class Player extends Entity {
             
             if(invincible == false){
 
-                int damage = gp.monster[i].attack - defense;
+                int damage = gp.monster[gp.currentMap][i].attack - defense;
                 if(damage < 0){
                     damage = 0;
                 }
@@ -539,19 +435,19 @@ public class Player extends Entity {
     public void damageMonster(int i){
             if(i != 9999){
             // System.out.println("Hit!");             //give damage to monster
-            if(gp.monster[i].invincible == false){
-                int damage = attack - gp.monster[i].defense;
+            if(gp.monster[gp.currentMap][i].invincible == false){
+                int damage = attack - gp.monster[gp.currentMap][i].defense;
                 if(damage < 0){
                     
                     damage = 0;
 
                 }
-                gp.monster[i].life -= damage;
-                gp.monster[i].invincible = true;
-                gp.monster[i].damagereaction();
+                gp.monster[gp.currentMap][i].life -= damage;
+                gp.monster[gp.currentMap][i].invincible = true;
+                gp.monster[gp.currentMap][i].damagereaction();
 
-                if(gp.monster[i].life <=0){
-                    gp.monster[i].die=true;             //kill monster
+                if(gp.monster[gp.currentMap][i].life <=0){
+                    gp.monster[gp.currentMap][i].die=true;             //kill monster
                 }
             }
         } 

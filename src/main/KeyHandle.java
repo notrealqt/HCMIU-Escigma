@@ -66,8 +66,11 @@ public class KeyHandle implements KeyListener {
             guideState(code);
         }
         //menu option state
-         else if(gp.gameState == gp.menuOptionState) {
+        else if(gp.gameState == gp.menuOptionState) {
             menuOptionState(code);
+        }
+        else if (gp.gameState == gp.mapState) {
+            mapState(code);
         }
     }
 
@@ -132,13 +135,28 @@ public class KeyHandle implements KeyListener {
             if (code == KeyEvent.VK_F) {
                 interPressed = true;
             }
+// <<<<<<< HEAD
              if (code == KeyEvent.VK_J) {
+               
+// =======
+            if (code == KeyEvent.VK_J) {
                 // gp.playSE(5);
+// >>>>>>> bcaccd040d067d4b04646b740b96173561644dea
                 attackPressed = true;
             }
             // Menu
-              if (code == KeyEvent.VK_ESCAPE) {
+            if (code == KeyEvent.VK_ESCAPE) {
                 gp.gameState= gp.optionState;
+            }
+            //map
+            if(code == KeyEvent.VK_M) {
+                gp.gameState = gp.mapState;
+            }
+            if(code == KeyEvent.VK_X) {
+                if(gp.map.miniMapOn == false) {
+                    gp.map.miniMapOn = true;
+                }
+                else { gp.map.miniMapOn = false;}
             }
 
             //Debug
@@ -151,7 +169,13 @@ public class KeyHandle implements KeyListener {
                 }
             }
             if (code == KeyEvent.VK_R){
-                gp.tileM.loadMap("/res/map/map02.txt");
+                switch(gp.currentMap) {
+                    case 0:
+                       gp.tileM.loadMap("/res/map/map02.txt", 0);
+                       break;
+
+                    //case 1: different map
+                }
             }
     }
     public void pauseState(int code){
@@ -340,7 +364,11 @@ public class KeyHandle implements KeyListener {
                 
             }
     }
-    
+    public void mapState( int code ) {
+        if (code == KeyEvent.VK_M) {
+            gp.gameState = gp.playState;
+        }
+    }
 
 
     @Override
