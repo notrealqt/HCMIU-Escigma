@@ -133,7 +133,7 @@ public class KeyHandle implements KeyListener {
                 interPressed = true;
             }
              if (code == KeyEvent.VK_J) {
-                // gp.playSE(5);
+               
                 attackPressed = true;
             }
             // Menu
