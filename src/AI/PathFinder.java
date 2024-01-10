@@ -17,8 +17,7 @@ public class PathFinder {
     int step = 0;
 
     public PathFinder (GamePanel gp) {
-        this.gp = gp;
-        instantiateNodes(); 
+        this.gp = gp
     }
 
     public void instantiateNodes() {

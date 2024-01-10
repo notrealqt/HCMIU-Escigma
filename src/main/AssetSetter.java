@@ -5,6 +5,7 @@ import object.Chest;
 import object.Door;
 import entity.NPC_OldMan;
 import monster.m_GreenSlime;
+import object.Axe;
 import object.Boots;
 
 //instantiate objects class
@@ -62,6 +63,10 @@ public class AssetSetter {
         gp.obj[mapNum][10] = new Key(gp);
         gp.obj[mapNum][10].worldX = 20 * gp.tileSize;
         gp.obj[mapNum][10].worldY = 18 * gp.tileSize;
+
+        gp.obj[mapNum][11] = new Axe(gp);
+        gp.obj[mapNum][11].worldX = 20 * gp.tileSize;
+        gp.obj[mapNum][11].worldY = 20 * gp.tileSize;
 
         
     }

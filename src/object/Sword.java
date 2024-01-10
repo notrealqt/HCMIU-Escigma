@@ -7,6 +7,7 @@ public class Sword extends Entity {
 
     public Sword(GamePanel gp) {
         super(gp);
+        type = type_sword;
         name = "Shit Sword";
         down0=setUp("/item/weapon/sword",gp.tileSize,gp.tileSize);
         attackvalue = 1;
