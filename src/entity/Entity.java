@@ -48,12 +48,14 @@ public class Entity {
     public int dieCounter =0;
 
     //attributes for character   
+    public String name;
     public int speed;
     public int maxLife;
     public int life;
-    public String name;
+    public int maxMana, mana;
     public int attack,defense,coin,strength,dexterity;
     public Entity currentWeapon;
+    public Projectile projectile;
 
     //TYPE
     public final int type_pickupOnly = 7;
@@ -71,6 +73,7 @@ public class Entity {
     public int attackvalue;
     public int defensevalue;
     public String description = ""; //item description
+    public int manaCost;
 
     public Entity(GamePanel gp){
         this.gp = gp;
@@ -298,7 +301,6 @@ public class Entity {
         if(dieCounter>25&&dieCounter<=30) {changeAlpha(g2,1f);}
         if(dieCounter>30&&dieCounter<=35) {changeAlpha(g2,0f);}
         if(dieCounter>40){
-            die = false;
             alive = false;
         }
     }

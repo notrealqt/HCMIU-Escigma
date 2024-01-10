@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.KeyHandle;
 import main.UtilityTool;
+import object.Fire_Sword;
 import object.Key;
 import object.Sword;
 
@@ -71,6 +72,7 @@ public class Player extends Entity {
         dexterity = 1; //more dexterity, less dmg receive
         coin = 0;
         currentWeapon = new Sword(gp);
+        projectile = new Fire_Sword(gp);
         attack = getAttack();
         defense = getDefense();
     }
@@ -310,6 +312,15 @@ public class Player extends Entity {
                 spriteCounter =0;
             }
         }
+
+        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false){
+
+                //Set default coordinates, direction and user
+                projectile.set(worldX, worldY, direction, true,this);
+
+                //add projectile to the list
+                gp.projectileList.add(projectile);
+        }
     //invincible time must outside of the key if statement
     if(invincible == true){
         invincibleCounter++;
@@ -424,7 +435,7 @@ public class Player extends Entity {
     public void encounterMonster(int i) {
         if (i!=9999){
             
-            if(invincible == false){
+            if(invincible == false && gp.monster[gp.currentMap][i].die==false){
 
                 int damage = gp.monster[gp.currentMap][i].attack - defense;
                 if(damage < 0){
