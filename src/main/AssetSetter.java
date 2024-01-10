@@ -68,17 +68,17 @@ public class AssetSetter {
     public void setNPC(){
         int mapNum = 0;
         gp.npc[mapNum][0] = new NPC_OldMan(gp);
-        gp.npc[mapNum][0].worldX = gp.tileSize*13;
-        gp.npc[mapNum][0].worldY = gp.tileSize*20;
+        gp.npc[mapNum][0].worldX = gp.tileSize*15;
+        gp.npc[mapNum][0].worldY = gp.tileSize*15;
 
     }
 
     //place slime onto the map
     public void setMonster(){
         int mapNum = 0;
-        gp.monster[mapNum][0] = new m_GreenSlime(gp);
-        gp.monster[mapNum][0].worldX = gp.tileSize*15;
-        gp.monster[mapNum][0].worldY = gp.tileSize*15;
+        //gp.monster[mapNum][0] = new m_GreenSlime(gp);
+        //gp.monster[mapNum][0].worldX = gp.tileSize*15;
+        //gp.monster[mapNum][0].worldY = gp.tileSize*15;
 
         gp.monster[mapNum][1] = new m_GreenSlime(gp);
         gp.monster[mapNum][1].worldX = gp.tileSize*18;
