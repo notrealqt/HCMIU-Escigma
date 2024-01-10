@@ -472,6 +472,8 @@ public class Player extends Entity {
         }
     }
 
+
+
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.white); // set color to use for drawing objects
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
@@ -834,7 +836,7 @@ public class Player extends Entity {
             if(invincible == true){
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
         }
-        g2.drawImage(image, tempScreenX, tempScreenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, tempScreenX, tempScreenY,null);
         //reset alpha
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 

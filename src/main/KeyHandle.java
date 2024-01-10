@@ -139,7 +139,6 @@ public class KeyHandle implements KeyListener {
                 gp.player.selectItem();
             }
 // <<<<<<< HEAD
-             if (code == KeyEvent.VK_J) {
                
 // =======
             if (code == KeyEvent.VK_J) {
@@ -181,7 +180,7 @@ public class KeyHandle implements KeyListener {
                 }
             }
         }
-    }
+    
     public void pauseState(int code){
         if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;

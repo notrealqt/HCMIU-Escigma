@@ -122,17 +122,7 @@ public class Entity {
         boolean hitplayer = gp.colDect.checkPlayer(this);
 
         if(this.type == type_monster && hitplayer == true){
-            if(gp.player.invincible == false){
-                int damage = attack - gp.player.defense;
-                if(damage < 0){
-                    
-                    damage = 0;
-
-                }
-                //player take damage
-                gp.player.life -= damage;
-                gp.player.invincible = true;
-            }
+            damagePlayer(attack);
         }
         if (collisionOn == false) {
             switch (direction) {
@@ -186,6 +176,20 @@ public class Entity {
                 }
             }
     } 
+    public void damagePlayer(int attack){
+                if(gp.player.invincible == false){
+                int damage = attack - gp.player.defense;
+                if(damage < 0){
+                    
+                    damage = 0;
+
+                }
+                //player take damage
+                gp.player.life -= damage;
+                gp.player.invincible = true;
+            }
+        
+    }
 
 
     public void draw(Graphics2D g2) {
