@@ -1,0 +1,24 @@
+@startuml "Entity package uml"
+hide circle
+
+class Entity {
+    gp : GamePanel
+    up : BufferedImage
+    down : BufferImage
+    left : BufferImage
+    right : BufferImage
+    idle : BufferImage
+    Attack : BufferImage
+    image : BufferImage
+    dialogues : String[10000]
+    solidArea : Rectangle
+    attackArea : Rectangle
+    solidAreaDefaultX : int
+    solidAreaDefaultY : int
+    collisionOn : boolean
+    worldX : int
+    worldY : int
+    direction : String
+    spriteNum : int
+    
+}
