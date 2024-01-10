@@ -27,6 +27,9 @@ public class Player extends Entity {
     public boolean attackCanceled = false;
     public ArrayList<Entity> inventory = new ArrayList<>();
     public final int maxInventorySize = 20;
+    public boolean lightUpdated = false;
+    public Object currentLight;
+
 
     public Player(GamePanel gp, KeyHandle keyH) {
 

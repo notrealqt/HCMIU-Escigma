@@ -39,7 +39,8 @@ public class Entity {
     boolean attacking=false;
     public boolean die = false;
     public boolean alive = true;
-   
+   public boolean onPath = false;
+
     //Counter
     public int spriteCounter = 0;
     public int actionLockCounter = 0;
@@ -110,10 +111,7 @@ public class Entity {
                 break;
         }        
     }
-    public void update(){
-
-        setAction();
-
+    public void checkCollision () {
         collisionOn = false;
         gp.colDect.checkTile(this);
         gp.colDect.checkObject(this, false);
@@ -124,6 +122,12 @@ public class Entity {
         if(this.type == type_monster && hitplayer == true){
             damagePlayer(attack);
         }
+    }
+    public void update(){
+
+        setAction();
+        checkCollision();
+        
         if (collisionOn == false) {
             switch (direction) {
                 case "up":

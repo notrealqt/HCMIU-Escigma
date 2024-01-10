@@ -2,6 +2,7 @@ package main;
 
 import javax.swing.JPanel;
 
+import AI.PathFinder;
 import entity.Entity;
 import entity.Player;
 import tile.Map;
@@ -59,6 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
     public EventHandler eHandler = new EventHandler(this);
     Config config= new Config(this);
     Map map = new Map(this);
+    public PathFinder pFinder = new PathFinder(this);
     Thread gameThread;
 
     //Entity and object
@@ -81,6 +83,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int guideState = 7;
     public final int menuOptionState = 8;
     public final int mapState = 10;
+    public int currentArea;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -244,7 +247,7 @@ public class GamePanel extends JPanel implements Runnable {
             //Empty entity list
             entityList.clear();
             //MINIMAP
-            // map.drawMiniMap(g2);
+            map.drawMiniMap(g2);
             //UI
             ui.draw(g2);
         }

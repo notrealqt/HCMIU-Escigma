@@ -1,6 +1,7 @@
 package monster;
 
 import java.util.Random;
+import AI.Node;
 
 import entity.Entity;
 import main.GamePanel;
@@ -29,6 +30,20 @@ public class m_GreenSlime extends Entity {
         solidAreaDefaultY = solidArea.y;
 
         getImage();
+    }
+    public void update() {
+
+        super.update();
+        int xDistance = Math.abs(worldX - gp.player.worldX);
+        int yDistance = Math.abs(worldY - gp.player.worldY);
+        int tileDistance = (xDistance + yDistance) / gp.tileSize;
+
+        if (onPath == false && tileDistance <5) {
+            int i = new Random().nextInt(100) +1;
+            if (i>90) {
+                onPath = true;
+            }
+        }
     }
     public void getImage(){
         up0=setUp("/monster/slime/1_slime_idle_front_0",gp.tileSize, gp.tileSize);
@@ -81,4 +96,5 @@ public class m_GreenSlime extends Entity {
         gp.playSE(5); 
         direction = gp.player.direction;
     }
+
 }
