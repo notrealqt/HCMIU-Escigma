@@ -71,6 +71,8 @@ public class Player extends Entity {
         strength = 1;   // more strength, more dmg
         dexterity = 1; //more dexterity, less dmg receive
         coin = 0;
+        maxMana = 4;
+        mana = maxMana;
         currentWeapon = new Sword(gp);
         projectile = new Fire_Sword(gp);
         attack = getAttack();
@@ -340,7 +342,7 @@ public class Player extends Entity {
     }
     if(shotAvailableCounter<30){
         shotAvailableCounter++;
-    }
+        }
     }
 
     //attack animation

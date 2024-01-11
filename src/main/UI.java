@@ -10,13 +10,14 @@ import java.text.DecimalFormat;
 import entity.Entity;
 import object.Heart;
 import object.Key;
+import object.ManaCrystal;
 
 public class UI {
     
     GamePanel gp;
     Graphics2D g2;
     public Font tnr_20, tnr_40, tnr_80;
-    BufferedImage keyImage, heart_full, heart_half, heart_blank;
+    BufferedImage keyImage, heart_full, heart_half, heart_blank, mana_full, mana_blank;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -26,6 +27,7 @@ public class UI {
     int SubState = 0;
     public int slotCol = 0;
     public int slotRow = 0;
+
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -43,6 +45,9 @@ public class UI {
         heart_full = heart.image;
         heart_half = heart.image2;
         heart_blank = heart.image3;
+        Entity mana = new ManaCrystal(gp);
+        mana_full = mana.image;
+        mana_blank = mana.image2;
     }
 
     public void showMessage(String text){
@@ -185,7 +190,28 @@ public class UI {
             i++;
             x += gp.tileSize;
         }
-    }
+
+        //draw max mana
+        x = (gp.tileSize/2)-5;
+        y = (int)(gp.tileSize*1.5);
+        i = 0;
+        while(i<gp.player.maxMana){
+            g2.drawImage(mana_blank, x, y, null);
+            i++;
+            x+=35;
+        }
+
+        //draw mana
+        x = (gp.tileSize/2)-5;
+        y = (int)(gp.tileSize*1.5);
+        i= 0;
+        while(i<gp.player.mana){
+        g2.drawImage(mana_full, x, y, null);
+        i++;
+        x+=35;
+            }
+        }
+    
     public void drawTitleScreen() {
         
         g2.setColor(Color.DARK_GRAY);
@@ -305,6 +331,8 @@ public class UI {
         //Name
         g2.drawString("Life", textX, textY);
         textY += lineHeight;
+        g2.drawString("MP", textX, textY);
+        textY += lineHeight;
         g2.drawString("Str", textX, textY);
         textY += lineHeight;
         g2.drawString("Dex", textX, textY);
@@ -325,6 +353,11 @@ public class UI {
         String value;
 
         value = String.valueOf(gp.player.life + "/" + gp.player.maxLife);
+        textX = getXforAlignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.mana + "/" + gp.player.maxMana);
         textX = getXforAlignToRightText(value, tailX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
