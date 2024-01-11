@@ -14,9 +14,17 @@ public class NPC_OldMan extends Entity {
         direction = "up";
         speed = 2;
 
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        solidArea.width = 30;
+        solidArea.height = 30;
+        
+
         getImage();
         setDialogue();
-        setAction();
+
     }
     public void getImage(){
 

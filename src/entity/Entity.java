@@ -309,6 +309,7 @@ public class Entity {
         int startRow = (worldY + solidArea.y)/gp.tileSize;
 
         gp.pFinder.setNodes(startCol, startRow, goalCol, goalRow);
+        
         if (gp.pFinder.search() == true) {
             int nextX = (gp.pFinder.pathList.get(0).col * gp.tileSize); 
             int nextY = (gp.pFinder.pathList.get(0).row * gp.tileSize);
@@ -318,56 +319,56 @@ public class Entity {
             int enTopY = worldY + solidArea.y;
             int enBottomY = worldY + solidArea.y + solidArea.height;
             
-        if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
-            direction = "up";
-        }
-        else if (enTopY < nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
-            direction = "down";
-        }
-        else if (enTopY >= nextY && enBottomY < nextY + gp.tileSize) {
-            if (enLeftX > nextX) {
-                direction = "left";
+            if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
+                direction = "up";
             }
-            if (enLeftX < nextX) {
-                direction = "right";
+            else if (enTopY < nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
+                direction = "down";
             }
-        }
+            else if (enTopY >= nextY && enBottomY < nextY + gp.tileSize) {
+                if (enLeftX > nextX) {
+                    direction = "left";
+                }
+                if (enLeftX < nextX) {
+                    direction = "right";
+                }
+            }
 
-        else if (enTopY > nextY && enLeftX > nextX) {
-            direction = "up";
-            checkCollision();
-            if (collisionOn == true) {
-                direction = "left";
+            else if (enTopY > nextY && enLeftX > nextX) {
+                direction = "up";
+                checkCollision();
+                if (collisionOn == true) {
+                    direction = "left";
+                }
+            } 
+            else if (enTopY > nextY && enLeftX < nextX) {
+                direction = "up";
+                checkCollision();
+                if (collisionOn == true) {
+                    direction = "right";
+                }
+            } 
+            else if (enTopY < nextY && enLeftX > nextX) {
+                direction = "down";
+                checkCollision();
+                if (collisionOn == true) {
+                    direction = "left";
+                }
             }
-        } 
-        else if (enTopY > nextY && enLeftX < nextX) {
-            direction = "up";
-            checkCollision();
-            if (collisionOn == true) {
-                direction = "right";
+            else if (enTopY < nextY && enLeftX < nextX) {
+                direction = "down";
+                checkCollision();
+                if (collisionOn == true) {
+                    direction = "right";
+                }
             }
-        } 
-        else if (enTopY < nextY && enLeftX > nextX) {
-            direction = "down";
-            checkCollision();
-            if (collisionOn == true) {
-                direction = "left";
-            }
-        }
-        else if (enTopY < nextY && enLeftX < nextX) {
-            direction = "down";
-            checkCollision();
-            if (collisionOn == true) {
-                direction = "right";
-            }
-        }
 
-       //int nextCol = gp.pFinder.pathList.get(0).col;
-       //int nextRow = gp.pFinder.pathList.get(0).row;
-       //if (nextCol == goalCol && nextRow == goalRow) {
-       //   onPath = false;
-       //}
-     }
+        //int nextCol = gp.pFinder.pathList.get(0).col;
+        //int nextRow = gp.pFinder.pathList.get(0).row;
+        //if (nextCol == goalCol && nextRow == goalRow) {
+        //   onPath = false;
+        //}
+        }
     }
 
     public BufferedImage setUp(String imagePath, int width, int height) {
