@@ -39,7 +39,7 @@ public class Entity {
     boolean attacking=false;
     public boolean die = false;
     public boolean alive = true;
-   public boolean onPath = false;
+    public boolean onPath = false;
 
     //Counter
     public int spriteCounter = 0;
@@ -48,12 +48,14 @@ public class Entity {
     public int dieCounter =0;
 
     //attributes for character   
+    public String name;
     public int speed;
     public int maxLife;
     public int life;
-    public String name;
+    public int maxMana, mana;
     public int attack,defense,coin,strength,dexterity;
     public Entity currentWeapon;
+    public Projectile projectile;
 
     //TYPE
     public final int type_pickupOnly = 7;
@@ -71,6 +73,7 @@ public class Entity {
     public int attackvalue;
     public int defensevalue;
     public String description = ""; //item description
+    public int manaCost;
 
     public Entity(GamePanel gp){
         this.gp = gp;
@@ -124,7 +127,6 @@ public class Entity {
         }
     }
     public void update(){
-
         setAction();
         checkCollision();
         
@@ -194,8 +196,6 @@ public class Entity {
             }
         
     }
-
-
     public void draw(Graphics2D g2) {
 
         BufferedImage image = null;
@@ -298,13 +298,78 @@ public class Entity {
         if(dieCounter>25&&dieCounter<=30) {changeAlpha(g2,1f);}
         if(dieCounter>30&&dieCounter<=35) {changeAlpha(g2,0f);}
         if(dieCounter>40){
-            die = false;
             alive = false;
         }
     }
         public void changeAlpha(Graphics2D g2, float alphaValue) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
     };
+    public void searchPath (int goalCol, int goalRow){
+        int startCol = (worldX + solidArea.x)/gp.tileSize;
+        int startRow = (worldY + solidArea.y)/gp.tileSize;
+
+        gp.pFinder.setNodes(startCol, startRow, goalCol, goalRow);
+        if (gp.pFinder.search() == true) {
+            int nextX = (gp.pFinder.pathList.get(0).col * gp.tileSize); 
+            int nextY = (gp.pFinder.pathList.get(0).row * gp.tileSize);
+
+            int enLeftX = worldX + solidArea.x;
+            int enRightX = worldX + solidArea.x + solidArea.width;
+            int enTopY = worldY + solidArea.y;
+            int enBottomY = worldY + solidArea.y + solidArea.height;
+            
+        if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
+            direction = "up";
+        }
+        else if (enTopY < nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
+                this.direction = "down";
+        }
+        else if (enTopY >= nextY && enBottomY < nextY + gp.tileSize) {
+            if (enLeftX > nextX) {
+                direction = "left";
+            }
+            if (enLeftX < nextX) {
+                direction = "right";
+            }
+        }
+
+        else if (enTopY > nextY && enLeftX > nextX) {
+            direction = "up";
+            checkCollision();
+            if (collisionOn == true) {
+                direction = "left";
+            }
+        } 
+        else if (enTopY > nextY && enLeftX < nextX) {
+            direction = "up";
+            checkCollision();
+            if (collisionOn == true) {
+                direction = "right";
+            }
+        } 
+        else if (enTopY < nextY && enLeftX > nextX) {
+            direction = "down";
+            checkCollision();
+            if (collisionOn == true) {
+                direction = "left";
+            }
+        }
+        else if (enTopY < nextY && enLeftX < nextX) {
+            direction = "down";
+            checkCollision();
+            if (collisionOn == true) {
+                direction = "right";
+            }
+        }
+
+       //int nextCol = gp.pFinder.pathList.get(0).col;
+       //int nextRow = gp.pFinder.pathList.get(0).row;
+       //if (nextCol == goalCol && nextRow == goalRow) {
+       //   onPath = false;
+       //}
+     }
+    }
+
     public BufferedImage setUp(String imagePath, int width, int height) {
         
         UtilityTool uTool = new UtilityTool();

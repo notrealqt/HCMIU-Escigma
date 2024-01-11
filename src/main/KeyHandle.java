@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 public class KeyHandle implements KeyListener {
 
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed,attackPressed;
+    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed,attackPressed,shotKeyPressed;
     //Debug
     boolean debugText = false;
 
@@ -137,6 +137,9 @@ public class KeyHandle implements KeyListener {
             }
             if(code== KeyEvent.VK_ENTER){
                 gp.player.selectItem();
+            }
+            if(code == KeyEvent.VK_K){
+                shotKeyPressed = true;
             }
 // <<<<<<< HEAD
                
@@ -390,6 +393,9 @@ public class KeyHandle implements KeyListener {
         }
         if (code == KeyEvent.VK_D) {
             rightPressed = false;
+        }
+        if(code == KeyEvent.VK_K){
+            shotKeyPressed = false;
         }
     }
 }
