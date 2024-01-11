@@ -12,17 +12,12 @@ public class NPC_OldMan extends Entity {
         super(gp);
         type = 1;
         direction = "up";
-        speed = 2;
+        speed = 1;
 
         getImage();
         setDialogue();
-        update();
-    }
-
-    public void update() {
         setAction();
     }
-
     public void getImage(){
 
         up0 = setUp("npc/oldman_up_1",gp.tileSize, gp.tileSize);
@@ -52,10 +47,12 @@ public class NPC_OldMan extends Entity {
         if (onPath == true) {
             int goalCol = (gp.player.worldX + gp.player.solidArea.x) / gp.tileSize;
             int goalRow = (gp.player.worldY + gp.player.solidArea.y) / gp.tileSize;
+            //int goalCol = 20;
+            //int goalRow = 25;
             searchPath(goalCol,goalRow);
         }
         else {
-            actionLockCounter++;
+            ++actionLockCounter;
             
             if(actionLockCounter == 120){
                 Random random = new Random();
@@ -81,73 +78,9 @@ public class NPC_OldMan extends Entity {
     }
     public void speak() {
         super.speak();
-        
+        onPath = true;  
     }
-
-
-    public void searchPath(int goalCol, int goalRow) {
-      int startCol = (worldX + solidArea.x)/gp.tileSize;
-      int startRow = (worldY + solidArea.y)/gp.tileSize;
-
-      gp.pFinder.setNodes(startCol, startRow, goalCol, goalRow);
-      if (this.gp.pFinder.search() == true) {
-         int nextX = (gp.pFinder.pathList.get(0).col * gp.tileSize); 
-         int nextY = (gp.pFinder.pathList.get(0).row * gp.tileSize);
-
-         int enLeftX = worldX + solidArea.x;
-         int enRightX = worldX + solidArea.x + solidArea.width;
-         int enTopY = worldY + solidArea.y;
-         int enBottomY = worldY + solidArea.y + solidArea.height;
-       if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
-          this.direction = "up";
-       }
-       else if (enTopY < nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
-               this.direction = "down";
-       }
-       else if (enTopY >= nextY && enBottomY < nextY + gp.tileSize) {
-          if (enLeftX > nextX) {
-             direction = "left";
-          }
-          if (enLeftX < nextX) {
-             direction = "right";
-          }
-       }
-       else if (enTopY > nextY && enLeftX > nextX) {
-          direction = "up";
-          checkCollision();
-          if (collisionOn == true) {
-             direction = "left";
-          }
-       } 
-       else if (enTopY > nextY && enLeftX < nextX) {
-          direction = "up";
-          checkCollision();
-          if (collisionOn == true) {
-             direction = "right";
-          }
-       } 
-       else if (enTopY < nextY && enLeftX > nextX) {
-          direction = "down";
-          checkCollision();
-          if (collisionOn == true) {
-             direction = "left";
-          }
-       }
-       else if (enTopY < nextY && enLeftX < nextX) {
-          direction = "down";
-          checkCollision();
-          if (collisionOn == true) {
-             direction = "right";
-          }
-       }
-
-       int nextCol = gp.pFinder.pathList.get(0).col;
-       int nextRow = gp.pFinder.pathList.get(0).row;
-       if (nextCol == goalCol && nextRow == goalRow) {
-          onPath = false;
-       }
-      }
-   }
+   
 }
 
     

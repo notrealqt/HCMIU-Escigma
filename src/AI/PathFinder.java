@@ -17,20 +17,22 @@ public class PathFinder {
 
    public PathFinder(GamePanel gp) {
       this.gp = gp;
-      this.instantiateNodes();
+      instantiateNodes();
    }
 
    public void instantiateNodes() {
-      this.node = new Node[this.gp.maxWorldCol][this.gp.maxWorldRow];
+      this.node = new Node[gp.maxWorldCol][gp.maxWorldRow];
+
       int col = 0;
       int row = 0;
 
-      while(col < this.gp.maxWorldCol && row < this.gp.maxWorldRow) {
+      while(col < gp.maxWorldCol && row < gp.maxWorldRow) {
          this.node[col][row] = new Node(col, row);
-         ++col;
-         if (col == this.gp.maxWorldCol) {
+         col++;
+
+         if (col == gp.maxWorldCol) {
             col = 0;
-            ++row;
+            row++;
          }
       }
 
@@ -40,122 +42,132 @@ public class PathFinder {
       int col = 0;
       int row = 0;
 
-      while(col < this.gp.maxWorldCol && row < this.gp.maxWorldRow) {
-         this.node[col][row].open = false;
-         this.node[col][row].checked = false;
-         this.node[col][row].solid = false;
-         ++col;
-         if (col == this.gp.maxWorldCol) {
+      while(col < gp.maxWorldCol && row < gp.maxWorldRow) {
+         node[col][row].open = false;
+         node[col][row].checked = false;
+         node[col][row].solid = false;
+         col++;
+         if (col == gp.maxWorldCol) {
             col = 0;
-            ++row;
+            row++;
          }
       }
 
-      this.openList.clear();
-      this.pathList.clear();
-      this.goalReached = false;
-      this.step = 0;
+      openList.clear();
+      pathList.clear();
+      goalReached = false;
+      step = 0;
+
    }
 
    public void setNodes(int startCol, int startRow, int goalCol, int goalRow) {
-      this.resetNodes();
-      this.startNode = this.node[startCol][startRow];
-      this.currentNode = this.startNode;
-      this.goalNode = this.node[goalCol][goalRow];
-      this.openList.add(this.currentNode);
+      resetNodes();
+      startNode = node[startCol][startRow];
+      currentNode = startNode;
+      goalNode = node[goalCol][goalRow];
+      openList.add(currentNode);
       int col = 0;
       int row = 0;
 
-      int i;
-      while(col < this.gp.maxWorldCol && row < this.gp.maxWorldRow) {
-         i = this.gp.tileM.mapTileNum[this.gp.currentMap][col][row];
-         if (this.gp.tileM.tile[i].collision) {
-            this.node[col][row].solid = true;
+      while(col < gp.maxWorldCol && row < gp.maxWorldRow) {
+         int tileNum = gp.tileM.mapTileNum[gp.currentMap][col][row];
+         if (gp.tileM.tile[tileNum].collision == true) {
+            node[col][row].solid = true;
          }
 
-         this.getCost(this.node[col][row]);
-         ++col;
-         if (col == this.gp.maxWorldCol) {
+         getCost(node[col][row]);
+         col++;
+         if (col == gp.maxWorldCol) {
             col = 0;
-            ++row;
+            row++;
          }
       }
 
    }
 
    public void getCost(Node node) {
-      int xDistance = Math.abs(node.col - this.startNode.col);
-      int yDistance = Math.abs(node.row - this.startNode.row);
+      int xDistance = Math.abs(node.col - startNode.col);
+      int yDistance = Math.abs(node.row - startNode.row);
+
       node.gCost = xDistance + yDistance;
-      xDistance = Math.abs(node.col - this.goalNode.col);
-      yDistance = Math.abs(node.row - this.goalNode.row);
+
+      xDistance = Math.abs(node.col - goalNode.col);
+      yDistance = Math.abs(node.row - goalNode.row);
       node.hCost = xDistance + yDistance;
+
       node.fCost = node.gCost + node.hCost;
    }
 
    public boolean search() {
-      while(true) {
-         if (!this.goalReached && this.step < 500) {
-            int col = this.currentNode.col;
-            int row = this.currentNode.row;
-            this.currentNode.checked = true;
-            this.openList.remove(this.currentNode);
-            if (row - 1 >= 0) {
-               this.openNode(this.node[col][row - 1]);
+      while(goalReached == false && step < 500) {
+         int col = currentNode.col;
+         int row = currentNode.row;
+
+         currentNode.checked = true;
+         openList.remove(currentNode);
+
+         if (row - 1 >= 0) {
+            openNode(node[col][row - 1]);
+         }
+
+         if (col -1 >= 0) {
+            openNode(node[col-1][row]);
+         }
+         if (row + 1 < gp.maxWorldRow) {
+            openNode(node[col][row+1]);
+         }
+         if (col +1 < gp.maxWorldCol) {
+            openNode(node[col+1][row]);
+         }
+
+         int bestNodeIndex = 0;
+         int bestNodefCost = 999;
+         for (int i =0; i < openList.size() ; i++) {
+            if (openList.get(i).fCost < bestNodefCost) {
+               bestNodeIndex = i;
+               bestNodefCost= openList.get(i).fCost;
             }
-
-            if (col - 1 >= 0) {
-               this.openNode(this.node[col - 1][row]);
-            }
-
-            if (row + 1 < this.gp.maxWorldRow) {
-               this.openNode(this.node[col][row + 1]);
-            }
-
-            if (col + 1 < this.gp.maxWorldCol) {
-               this.openNode(this.node[col + 1][row]);
-            }
-
-            int bestNodeIndex = 0;
-            int bestNodefCost = 999;
-
-            for(int i = 0; i < this.openList.size(); ++i) {
-               if (((Node)this.openList.get(i)).fCost < bestNodefCost) {
-                  bestNodeIndex = i;
-                  bestNodefCost = ((Node)this.openList.get(i)).fCost;
-               } else if (((Node)this.openList.get(i)).fCost == bestNodefCost && ((Node)this.openList.get(i)).gCost < ((Node)this.openList.get(bestNodeIndex)).gCost) {
+            else if (openList.get(i).fCost == bestNodefCost) {
+               if ( openList.get(i).gCost < openList.get(bestNodeIndex).gCost) {
                   bestNodeIndex = i;
                }
-            }
-
-            if (this.openList.size() != 0) {
-               this.currentNode = (Node)this.openList.get(bestNodeIndex);
-               if (this.currentNode == this.goalNode) {
-                  this.goalReached = true;
-                  this.trackThePath();
-               }
-
-               ++this.step;
-               continue;
             }
          }
 
-         return this.goalReached;
+         if (openList.size() == 0) {
+            break;
+         }
+
+         currentNode = openList.get(bestNodeIndex);
+
+         if (currentNode == goalNode ) {
+            goalReached = true;
+            trackThePath();
+         }
+
+         step++;
       }
+
+      return goalReached;
+
    }
 
    public void openNode(Node node) {
-      if (!node.open && !node.checked && !node.solid) {
+      if (node.open == false && node.checked == false && node.solid == false) {
          node.open = true;
-         node.parent = this.currentNode;
-         this.openList.add(node);
+         node.parent = currentNode;
+         openList.add(node);
       }
 
    }
 
    public void trackThePath() {
-      for(Node current = this.goalNode; current != this.startNode; current = current.parent) {
-         this.pathList.add(0, current);
+      Node current = goalNode;
+
+      while(current != startNode) {
+         pathList.add(0,current);
+         current = current.parent;
+         
       }
 
    }
