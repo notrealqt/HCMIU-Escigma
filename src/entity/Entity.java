@@ -46,6 +46,7 @@ public class Entity {
     public int actionLockCounter = 0;
     public int invincibleCounter = 0;
     public int dieCounter =0;
+    public int shotAvailableCounter = 0;
 
     //attributes for character   
     public String name;
