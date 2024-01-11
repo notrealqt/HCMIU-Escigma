@@ -12,7 +12,7 @@ public class NPC_OldMan extends Entity {
         super(gp);
         type = 1;
         direction = "up";
-        speed = 1;
+        speed = 2;
 
         getImage();
         setDialogue();
@@ -52,7 +52,7 @@ public class NPC_OldMan extends Entity {
             searchPath(goalCol,goalRow);
         }
         else {
-            ++actionLockCounter;
+            actionLockCounter++;
             
             if(actionLockCounter == 120){
                 Random random = new Random();

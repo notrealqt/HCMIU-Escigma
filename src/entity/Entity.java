@@ -322,7 +322,7 @@ public class Entity {
             direction = "up";
         }
         else if (enTopY < nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
-                this.direction = "down";
+            direction = "down";
         }
         else if (enTopY >= nextY && enBottomY < nextY + gp.tileSize) {
             if (enLeftX > nextX) {

@@ -21,15 +21,17 @@ public class PathFinder {
    }
 
    public void instantiateNodes() {
-      this.node = new Node[gp.maxWorldCol][gp.maxWorldRow];
+
+      node = new Node[gp.maxWorldCol][gp.maxWorldRow];
 
       int col = 0;
       int row = 0;
 
       while(col < gp.maxWorldCol && row < gp.maxWorldRow) {
-         this.node[col][row] = new Node(col, row);
+         
+         node[col][row] = new Node(col, row);
+         
          col++;
-
          if (col == gp.maxWorldCol) {
             col = 0;
             row++;
@@ -46,6 +48,7 @@ public class PathFinder {
          node[col][row].open = false;
          node[col][row].checked = false;
          node[col][row].solid = false;
+         
          col++;
          if (col == gp.maxWorldCol) {
             col = 0;
@@ -61,21 +64,26 @@ public class PathFinder {
    }
 
    public void setNodes(int startCol, int startRow, int goalCol, int goalRow) {
+      
       resetNodes();
+
       startNode = node[startCol][startRow];
       currentNode = startNode;
       goalNode = node[goalCol][goalRow];
       openList.add(currentNode);
+
       int col = 0;
       int row = 0;
 
       while(col < gp.maxWorldCol && row < gp.maxWorldRow) {
+
          int tileNum = gp.tileM.mapTileNum[gp.currentMap][col][row];
          if (gp.tileM.tile[tileNum].collision == true) {
             node[col][row].solid = true;
          }
 
          getCost(node[col][row]);
+
          col++;
          if (col == gp.maxWorldCol) {
             col = 0;
