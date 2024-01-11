@@ -14,9 +14,17 @@ public class NPC_OldMan extends Entity {
         direction = "up";
         speed = 2;
 
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        solidArea.width = 30;
+        solidArea.height = 30;
+        
+
         getImage();
         setDialogue();
-        setAction();
+
     }
     public void getImage(){
 
@@ -35,12 +43,10 @@ public class NPC_OldMan extends Entity {
     }
     
     public void setDialogue() {
-        dialogues[0] = "Hello, traveler!";
-        dialogues[1] = "Welcome to nowhere!";
-        dialogues[2] = "Sadly, it's nowhere";
-        dialogues[3] = "There is nothing to do";
-        dialogues[4] = "Being born here is miserable";
-        dialogues[5] = "DGH%#&ODTT@#$M(RQ(#$Y V(%YMV(Q#$)MV)Q)$(VQ)\nCONCAC$V(%Y($YB(V##$C*#T$nv38t41n84vt19496u^B(M%(M%N))))))";
+        dialogues[0] = "Hello, traveler! Welcome to nowhere!";
+        dialogues[1] = "Sadly, it's nowhere. There is nothing to do";
+        dialogues[2] = "Oh I know what to do, I'll follow you";
+        dialogues[3] = "You can run but you can't hide, you can never hide...";
 
     }
     public void setAction() {
