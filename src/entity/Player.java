@@ -63,7 +63,7 @@ public class Player extends Entity {
         worldX = gp.tileSize * 14; //player's pos in world map
         worldY = gp.tileSize * 14;
         defaultSpeed = 4;
-        speed = 20;
+        speed = 10;
         direction = "down";
 
         //Player status
@@ -174,51 +174,21 @@ public class Player extends Entity {
         //attack animation
         if (attacking == true){
             attacking();
-        }else
+        }
+        else {
         //System.out.println("Update method called");
             if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed == true|| keyH.attackPressed == true || keyH.interPressed == true)) {
-            if (keyH.upPressed == true) {
-                direction = "up";
-                //System.out.println("Up pressed: " + playerX + ", " + playerY);
-            }
-            if (keyH.downPressed == true) {
-                direction = "down";
-                //System.out.println("Down pressed: " + playerX + ", " + playerY);
-
-            }
-            if (keyH.leftPressed == true) {
-                direction = "left";
-                //System.out.println("Left pressed: " + playerX + ", " + playerY);
-
-            }
-            if ( keyH.rightPressed == true) {
-                direction = "right";
-                //System.out.println("Right pressed: " + playerX + ", " + playerY);
-            }
-            if ((keyH.upPressed && keyH.leftPressed) == true) {
-                direction = "upleft";
-                //System.out.println("Up left pressed: " + playerX + ", " + playerY);
-            }
-            if ((keyH.upPressed && keyH.rightPressed) == true) {
-                direction = "upright";
-                //System.out.println("Up right pressed: " + playerX + ", " + playerY);
-            }
-            if ((keyH.downPressed && keyH.leftPressed) == true) {
-                direction = "downleft";
-                //System.out.println("Down left pressed: " + playerX + ", " + playerY);
-            }
-            if ((keyH.downPressed && keyH.rightPressed) == true) {
-                direction = "downright";
-                //System.out.println("Down right pressed: " + playerX + ", " + playerY);
-            }
-
+            if (keyH.upPressed == true) { direction = "up"; } 
+            if (keyH.downPressed == true) { direction = "down"; }
+            if (keyH.leftPressed == true) { direction = "left"; }
+            if ( keyH.rightPressed == true) { direction = "right"; }
+            if ((keyH.upPressed && keyH.leftPressed) == true) { direction = "upleft"; }
+            if ((keyH.upPressed && keyH.rightPressed) == true) { direction = "upright"; }
+            if ((keyH.downPressed && keyH.leftPressed) == true) { direction = "downleft"; }
+            if ((keyH.downPressed && keyH.rightPressed) == true) { direction = "downright"; }
             //Check tile collision
             collisionOn = false;
             gp.colDect.checkTile(this);
-
-            //Check object collison
-            // int objIndex = gp.colDect.checkObject(this, true);
-            // pickUpObject(objIndex);
 
             //Check item collision
             int itemIndex = gp.colDect.checkObject(this, true);
@@ -230,7 +200,6 @@ public class Player extends Entity {
             //Check event
             gp.eHandler .checkEvent();
            
-
             //Check monster collision
             int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
             encounterMonster(monsterIndex);
@@ -275,46 +244,24 @@ public class Player extends Entity {
             }
             attackCanceled =false;
             gp.KeyH.attackPressed = false;
-             gp.KeyH.interPressed = false;
+            gp.KeyH.interPressed = false;
 
             //player image changes every 6 frames
             spriteCounter++;
-            if (spriteCounter >  6) {
-                if (spriteNum == 0) {
-                    spriteNum =1;
-                }
-                else if (spriteNum == 1) {
-                    spriteNum =2;
-                }
-                else if (spriteNum == 2) {
-                    spriteNum =3;
-                }
-                else if (spriteNum == 3) {
-                    spriteNum =4;
-                }
-                else if (spriteNum == 4) {
-                    spriteNum =5;
-                }
-                else if (spriteNum == 5) {
-                    spriteNum =6;
-                }
-                else if (spriteNum == 6) {
-                    spriteNum =7;
-                }
-                else if (spriteNum == 7) {
-                    spriteNum =0;
-                }
-                // else if (spriteNum == 8) {
-                //     spriteNum =9;
-                // }
-                // else if (spriteNum == 9) {
-                //     spriteNum =0;
-                // }
+            if (spriteCounter >  7) {
+                if (spriteNum == 0) { spriteNum =1; }
+                else if (spriteNum == 1) { spriteNum =2; }
+                else if (spriteNum == 2) { spriteNum =3; }
+                else if (spriteNum == 3) { spriteNum =4; }
+                else if (spriteNum == 4) { spriteNum =5; }
+                else if (spriteNum == 5) { spriteNum =6; }
+                else if (spriteNum == 6) { spriteNum =7; }
+                else if (spriteNum == 7) { spriteNum =8; }
+                else if (spriteNum == 8) { spriteNum = 0;}
                 spriteCounter =0;
             }
-        }
 
-        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true){
+        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true) {
 
                 //Set default coordinates, direction and user
                 projectile.set(worldX, worldY, direction, true,this);
@@ -342,13 +289,14 @@ public class Player extends Entity {
             //gp.playMusic(index);
         }
     }
-    if(shotAvailableCounter<30){
-        shotAvailableCounter++;
-        }
-    }
 
-    //attack animation
-    public void attacking (){
+    if(shotAvailableCounter<30){ shotAvailableCounter++; }            
+        }
+
+    }
+}
+    //attack animation    
+    public void attacking () {
         spriteCounter++;
 
         if(spriteCounter <= 5){
@@ -381,7 +329,7 @@ public class Player extends Entity {
 
             //check monster collision with the updated worldX,Y and solidArea
             int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
-            damageMonster (monsterIndex, attack);
+            damageMonster (monsterIndex,this, attack);
         
             //after checking collision, restore the original data
             worldX = currentWorldX;
@@ -468,9 +416,9 @@ public class Player extends Entity {
         }
     }
 
-    public void damageMonster(int index, int attack) {
+    public void damageMonster(int index, Entity attacker, int attack) {
         if (index >= 0 && index < gp.monster[gp.currentMap].length) {
-            knockBack(gp.monster[gp.currentMap][index]);
+            knockBack(gp.monster[gp.currentMap][index], attacker);
     
             if (index != 9999) {
                 // System.out.println("Hit!"); // give damage to monster
@@ -881,9 +829,11 @@ public class Player extends Entity {
         // g2.setColor(Color.white);
         // g2.drawString("Invincible:"+invincibleCounter,10,400);
     }
+
     public void knockBack (Entity entity) {
         entity.direction = direction;
         entity.speed += 10;
         entity.knockBack = true;
     }
+
 }

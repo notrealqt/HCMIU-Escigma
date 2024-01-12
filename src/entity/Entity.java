@@ -27,6 +27,8 @@ public class Entity {
     public Rectangle attackArea = new Rectangle(0,0,0,0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
+    public Entity attacker;
+
 
     //State 
     public int worldX, worldY;
@@ -37,10 +39,12 @@ public class Entity {
     //take damage from monster from amount of time
     //avoid taking constantly damage
     public boolean invincible =false;
-    boolean attacking=false;
+    public boolean attacking=false;
     public boolean die = false;
     public boolean alive = true;
     public boolean onPath = false;
+    public String knockBackDirection;
+
 
     //Counter
     public int spriteCounter = 0;
@@ -114,7 +118,7 @@ public class Entity {
         return yDistance;
     }
     public int getTileDistance ( Entity target) {
-        int tileDistance = (getXDistance(target) + getYDistance(target));
+        int tileDistance = (getXDistance(target) + getYDistance(target)) / gp.tileSize;
         return tileDistance;
     }
     public int getGoalCol ( Entity target) {
@@ -206,6 +210,9 @@ public class Entity {
                 knockBack = false;
                 speed = defaultSpeed;
             }
+        else if (attacking == true) {
+            attacking();
+        }
         }
         else {
             setAction();
@@ -535,4 +542,102 @@ public class Entity {
                 actionLockCounter = 0;
             } 
     }
+
+    public void knockBack (Entity target, Entity attacker) {
+        this.attacker = attacker;
+        target.knockBackDirection = attacker.direction;
+        target.speed += 10;
+        target.knockBack = true;
+    }
+
+    public void attacking () {
+        spriteCounter++;
+
+        if(spriteCounter <= 5){
+            spriteNum = 1;
+        }
+        if(spriteCounter >5 && spriteCounter <= 10){
+            spriteNum = 2;
+        }
+        if(spriteCounter > 10 && spriteCounter <= 15){
+            spriteNum = 3;
+        }
+        if(spriteCounter > 15 && spriteCounter <= 25){
+            spriteNum = 4;
+      //save the current worldx, worldy, solid area
+            int currentWorldX = worldX;
+            int currentWorldY = worldY;
+            int solidAreaWidth = solidArea.width;
+            int solidAreaHeight = solidArea.height;
+
+            //modify player's worldx,y for the attackarea
+            switch(direction){
+                case "up": worldY -= attackArea.height; break;
+                case "down": worldY += attackArea.height; break;
+                case "left": worldX -= attackArea.width; break;
+                case "right": worldX += attackArea.width; break;
+            }
+            //attack attack area (sword) becomes solid area
+            solidArea.width = attackArea.width;
+            solidArea.height = attackArea.height;
+            if (type == type_monster) {
+                if (gp.colDect.checkPlayer(this ) == true) {
+                    damagePlayer(attack);
+                }
+            }
+            else {
+                //check monster collision with the updated worldX,Y and solidArea
+                int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
+                gp.player.damageMonster (monsterIndex,this, attack);
+            }
+
+            //after checking collision, restore the original data
+            worldX = currentWorldX;
+            worldY = currentWorldY;
+            solidArea.width = solidAreaWidth;
+            solidArea.height = solidAreaHeight;}
+            
+          if(spriteCounter > 25){
+            spriteNum = 1;
+            spriteCounter = 0;
+            attacking = false;
+        }
+    }
+    public void checkAttack( int rate, int straight, int horizontal) {
+        boolean targetInRange = false;
+        int xDis = getXDistance(gp.player);
+        int yDis = getYDistance(gp.player);
+
+        switch (direction)  {
+            case "up":
+                if (gp.player.worldY < worldY && yDis < straight && xDis < horizontal) {
+                    targetInRange = true;
+                }
+                break;
+            case "down":
+                if (gp.player.worldY > worldY && yDis < straight && xDis < horizontal) {
+                    targetInRange = true;
+                }
+                break;
+            case "left":
+                if (gp.player.worldY < worldY && xDis < straight && yDis < horizontal) {
+                    targetInRange = true;
+                }
+                break;
+            case "right":
+                if (gp.player.worldY > worldY && yDis < straight && xDis < horizontal) {
+                    targetInRange = true;
+                }
+                break;
+        }
+        if (targetInRange == true) {
+            int i = new Random().nextInt(rate);
+            if (i==0) {
+                attacking = true;
+                spriteNum = 1;
+                spriteCounter = 0;
+            }
+        }
+    }
 }
+

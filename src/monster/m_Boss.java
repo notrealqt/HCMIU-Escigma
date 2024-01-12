@@ -1,5 +1,6 @@
 package monster;
 
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import entity.Entity;
@@ -29,8 +30,8 @@ public class m_Boss extends Entity {
         attackArea.width = 48;
         attackArea.height = 48;
 
-        //getImage();
-        //getAttackImage();
+        getImage();
+        getAttackImage();
     }
 
 
@@ -74,6 +75,25 @@ public class m_Boss extends Entity {
     }
 
     public void getAttackImage() {
+        upAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_0", gp.tileSize, gp.tileSize);
+        upAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_1", gp.tileSize, gp.tileSize);
+        upAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_2", gp.tileSize, gp.tileSize);
+        upAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_3", gp.tileSize, gp.tileSize);
+
+        downAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_0", gp.tileSize, gp.tileSize);
+        downAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_1", gp.tileSize, gp.tileSize);
+        downAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_2", gp.tileSize, gp.tileSize);
+        downAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_3", gp.tileSize, gp.tileSize);
+        
+        leftAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_0", gp.tileSize, gp.tileSize);
+        leftAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_1", gp.tileSize, gp.tileSize);
+        leftAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_2", gp.tileSize, gp.tileSize);
+        leftAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_3", gp.tileSize, gp.tileSize);
+
+        rightAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_0", gp.tileSize, gp.tileSize);
+        rightAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_1", gp.tileSize, gp.tileSize);
+        rightAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_2", gp.tileSize, gp.tileSize);
+        rightAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_3", gp.tileSize, gp.tileSize);
 
     }
 
@@ -86,7 +106,10 @@ public class m_Boss extends Entity {
         else {
             checkChasing(gp.player, 5, 100);
             getRandomDirection();
-        }    
+        } 
+        if (attacking == false) {
+            checkAttack(30, gp.tileSize *4, gp.tileSize);
+        }
     }
 
     public void damageReaction(){

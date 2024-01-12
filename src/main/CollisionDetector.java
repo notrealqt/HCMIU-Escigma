@@ -24,7 +24,14 @@ public class CollisionDetector {
         int entityBottomRow = entityBottomWorldY / gp.tileSize;
 
         int tileNum1, tileNum2,tileNum3,tileNum4;
-        switch (entity.direction) {
+        //temp
+        String direction = entity.direction;
+
+        if (entity.knockBack == true) {
+            direction = entity.knockBackDirection;
+        }
+        switch (direction) {
+            
             //prediction the coordinates of player as it moves
             case "up":
                 entityTopRow = (entityTopWorldY - entity.speed) / gp.tileSize;  
@@ -194,8 +201,13 @@ public class CollisionDetector {
                 entity.solidArea.y = entity.worldY + entity.solidArea.y;
                 npc[gp.currentMap][i].solidArea.x = npc[gp.currentMap][i].worldX + npc[gp.currentMap][i].solidArea.x;
                 npc[gp.currentMap][i].solidArea.y = npc[gp.currentMap][i].worldY + npc[gp.currentMap][i].solidArea.y;
+                //temp
+                String direction = entity.direction;
 
-                switch(entity.direction){
+                if (entity.knockBack == true) {
+                    direction = entity.knockBackDirection;
+}
+                switch(direction){
                     case "up":
                         entity.solidArea.y -= entity.speed; 
 
