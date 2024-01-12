@@ -1,5 +1,6 @@
 package object;
 
+import entity.Entity;
 import entity.Projectile;
 import main.GamePanel;
 
@@ -32,6 +33,17 @@ public class Fire_Sword extends Projectile{
         right2 = setUp("/item/weapon/flame_attack/1_flame_projectile_right_0",gp.tileSize,gp.tileSize);
         
    }
-
+   public boolean haveResource(Entity user){
+    boolean haveResource = false;
+    if(user.mana >= manaCost){
+        haveResource = true;
     
+        }
+    return haveResource;
+    }
+
+    public void subtractResource(Entity user){
+        user.mana -= manaCost;
+
+    }
 }
