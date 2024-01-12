@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import AI.PathFinder;
 import entity.Entity;
 import entity.Player;
+import environment.EnvironmentManager;
 import tile.Map;
 import tile.TileManager;
 import java.awt.Color;
@@ -61,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable {
     Config config= new Config(this);
     Map map = new Map(this);
     public PathFinder pFinder = new PathFinder(this);
+    EnvironmentManager eManager = new EnvironmentManager(this);
     Thread gameThread;
 
     //Entity and object
@@ -87,11 +89,12 @@ public class GamePanel extends JPanel implements Runnable {
     public int currentArea;
 
     public GamePanel() {
-        this.setPreferredSize(new Dimension(screenWidth,screenHeight));
-        this.setBackground(Color.black);
-        this.setDoubleBuffered(true);
-        this.addKeyListener(KeyH);
-        this.setFocusable(true);
+        setPreferredSize(new Dimension(screenWidth,screenHeight));
+        setBackground(Color.black);
+        setDoubleBuffered(true);
+        addKeyListener(KeyH);
+        setFocusable(true);
+        eManager.setup();
 
     }
 
@@ -264,6 +267,8 @@ public class GamePanel extends JPanel implements Runnable {
             if(map.miniMapOn == true){
             map.drawMiniMap(g2);
             }
+
+            //eManager.draw(g2);
             //UI
             ui.draw(g2);
         }

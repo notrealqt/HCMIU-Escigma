@@ -60,6 +60,7 @@ public class Entity {
     public int attack,defense,coin,strength,dexterity;
     public Entity currentWeapon;
     public Projectile projectile;
+    public Entity currentLight;
 
     //TYPE
     public final int type_pickupOnly = 7;
@@ -71,7 +72,9 @@ public class Entity {
     type_sword = 3,
     type_axe = 4,
     type_consumable = 5,
-    type_obstacle = 8;
+    type_obstacle = 8,
+    type_light = 9;
+
     //ITEM ATTRIBUTES
     public int value;
     public int attackvalue;
@@ -79,6 +82,7 @@ public class Entity {
     public String description = ""; //item description
     public int manaCost;
     public boolean knockBack = false;
+    public int lightRadius;
 
     public Entity(GamePanel gp){
         this.gp = gp;

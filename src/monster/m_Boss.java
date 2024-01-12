@@ -29,8 +29,8 @@ public class m_Boss extends Entity {
         attackArea.width = 48;
         attackArea.height = 48;
 
-        getImage();
-        getAttackImage();
+        //getImage();
+        //getAttackImage();
     }
 
 
