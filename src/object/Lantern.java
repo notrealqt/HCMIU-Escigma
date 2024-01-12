@@ -9,9 +9,16 @@ public class Lantern extends Entity {
         super(gp);
         type = type_light;
         name = "Lantern";
-        down1 = setUp("objects/Lantern",gp.tileSize, gp.tileSize);
+        down0 = setUp("objects/lantern",gp.tileSize, gp.tileSize);
         lightRadius = 250;
 
+        collision = true;
+        solidArea.x = 0;
+        solidArea.y = 16;
+        solidArea.width = 48;
+        solidArea.height = 32;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
     }
     
 }
