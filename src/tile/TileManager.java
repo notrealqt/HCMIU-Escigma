@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
+
+import AI.Node;
 import main.GamePanel;
 import main.UtilityTool;
 
@@ -117,72 +119,71 @@ public class TileManager {
     }
     
     public void loadMap(String filePath, int map) {
-        try {
-            InputStream is = getClass().getResourceAsStream(filePath);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filePath)))) {
             int col = 0;
             int row = 0;
-
-            while(col< gp.maxWorldCol && row < gp.maxWorldRow) {
+    
+            while (col < gp.maxWorldCol && row < gp.maxWorldRow) {
                 String line = br.readLine();
-
-                while(col < gp.maxWorldCol ) {
+    
+                while (col < gp.maxWorldCol) {
                     String numbers[] = line.split(" ");
-
-                    int num = Integer.parseInt(numbers[col]);
-
-                    mapTileNum[map][col][row] = num;
+                    mapTileNum[map][col][row] = Integer.parseInt(numbers[col]);
                     col++;
                 }
-                if (col == gp.maxWorldCol ) {
+    
+                if (col == gp.maxWorldCol) {
                     col = 0;
                     row++;
                 }
             }
-            br.close();
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
     public void draw(Graphics2D g2) {
         int worldCol = 0;
         int worldRow = 0;
-
-        //50x50 map
-        while ( worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
+        int tileSize = gp.tileSize;
+        int playerWorldX = gp.player.worldX;
+        int playerWorldY = gp.player.worldY;
+        int playerScreenX = gp.player.screenX;
+        int playerScreenY = gp.player.screenY;
+    
+        while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
             int tileNum = mapTileNum[gp.currentMap][worldCol][worldRow];
-
-            int worldX = worldCol * gp.tileSize;
-            int worldY = worldRow * gp.tileSize;
-            int screenX = worldX - gp.player.worldX + gp.player.screenX;
-            int screenY = worldY - gp.player.worldY + gp.player.screenY;
-
-            if( worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && 
-                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX && 
-                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && 
-                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
-                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
-
-            } //better image rendering only draw as player moves
+    
+            int worldX = worldCol * tileSize;
+            int worldY = worldRow * tileSize;
+            int screenX = worldX - playerWorldX + playerScreenX;
+            int screenY = worldY - playerWorldY + playerScreenY;
+    
+            if (worldX + tileSize > playerWorldX - playerScreenX &&
+                    worldX - tileSize < playerWorldX + playerScreenX &&
+                    worldY + tileSize > playerWorldY - playerScreenY &&
+                    worldY - tileSize < playerWorldY + playerScreenY) {
+                g2.drawImage(tile[tileNum].image, screenX, screenY, tileSize, tileSize, null);
+            }
+    
             worldCol++;
-            if (worldCol == gp.maxWorldCol ) {
+            if (worldCol == gp.maxWorldCol) {
                 worldCol = 0;
                 worldRow++;
             }
         }
-        if(drawPath == true) {
-            g2.setColor(new Color(255,0,0,70));
-
-            for (int i = 0; i < gp.pFinder.pathList.size(); i++) {
-                int worldX = gp.pFinder.pathList.get(i).col * gp.tileSize;
-                int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
-                int screenX = worldX - gp.player.worldX + gp.player.screenX;
-                int screenY = worldY - gp.player.worldY + gp.player.screenY;
-
-                g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
+    
+        if (drawPath) {
+            g2.setColor(new Color(255, 0, 0, 70));
+    
+            for (Node node : gp.pFinder.pathList) {
+                int worldX = node.col * tileSize;
+                int worldY = node.row * tileSize;
+                int screenX = worldX - playerWorldX + playerScreenX;
+                int screenY = worldY - playerWorldY + playerScreenY;
+    
+                g2.fillRect(screenX, screenY, tileSize, tileSize);
             }
         }
-
     }
 }

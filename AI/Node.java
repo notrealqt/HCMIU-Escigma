@@ -17,5 +17,14 @@ public class Node {
         this.row = row;
     
     }
+    public void reset() {
+        open = false;
+        checked = false;
+        solid = false;
+        parent = null;
+        gCost = 0;
+        hCost = 0;
+        fCost = 0;
+    }
     
 }

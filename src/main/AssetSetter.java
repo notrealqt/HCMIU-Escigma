@@ -1,6 +1,7 @@
 package main;
 
 import object.Key;
+import object.Lantern;
 import object.Chest;
 import object.Door;
 import entity.NPC_OldMan;
@@ -27,10 +28,10 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldY = 19 * gp.tileSize;
         i++;
 
-        gp.obj[mapNum][i] = new Axe(gp);
-        gp.obj[mapNum][i].worldX = 20 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 20 * gp.tileSize;
-        i++;
+        //gp.obj[mapNum][i] = new Axe(gp);
+        //gp.obj[mapNum][i].worldX = 20 * gp.tileSize;
+        //gp.obj[mapNum][i].worldY = 20 * gp.tileSize;
+        //i++;
 
         gp.obj[mapNum][i] = new Door(gp);
         gp.obj[mapNum][i].worldX = 25 * gp.tileSize;
@@ -41,6 +42,13 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldX = 20 * gp.tileSize;
         gp.obj[mapNum][i].worldY = 18 * gp.tileSize;
         i++;
+
+        gp.obj[mapNum][i] = new Lantern(gp);
+        gp.obj[mapNum][i].worldX = 18 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 18 * gp.tileSize;
+        i++;
+
+
         
     }
     public void setNPC(){
@@ -55,12 +63,12 @@ public class AssetSetter {
     public void setMonster(){
         int mapNum = 0;
         gp.monster[mapNum][1] = new m_GreenSlime(gp);
-        gp.monster[mapNum][1].worldX = gp.tileSize*18;
-        gp.monster[mapNum][1].worldY = gp.tileSize*18;  
+        gp.monster[mapNum][1].worldX = gp.tileSize*24;
+        gp.monster[mapNum][1].worldY = gp.tileSize*24;  
         
         gp.monster[mapNum][2] = new m_Boss(gp);
         gp.monster[mapNum][2].worldX = gp.tileSize*24;
-        gp.monster[mapNum][2].worldY = gp.tileSize*18;  
+        gp.monster[mapNum][2].worldY = gp.tileSize*25;  
         
     }
 }
