@@ -62,7 +62,8 @@ public class Player extends Entity {
     public void setDefaultValue() {
         worldX = gp.tileSize * 14; //player's pos in world map
         worldY = gp.tileSize * 14;
-        speed = 4;
+        defaultSpeed = 4;
+        speed = defaultSpeed;
         direction = "down";
 
         //Player status
@@ -464,28 +465,30 @@ public class Player extends Entity {
         }
     }
 
-    public void damageMonster(int i, int attack){
-            if(i != 9999){
-            // System.out.println("Hit!");             //give damage to monster
-            if(gp.monster[gp.currentMap][i].invincible == false){
-                int damage = attack - gp.monster[gp.currentMap][i].defense;
-                if(damage < 0){
-                    
-                    damage = 0;
-
-                }
-                gp.monster[gp.currentMap][i].life -= damage;
-                gp.monster[gp.currentMap][i].invincible = true;
-                gp.monster[gp.currentMap][i].damagereaction();
-
-                if(gp.monster[gp.currentMap][i].life <=0){
-                    gp.monster[gp.currentMap][i].die=true;             //kill monster
+    public void damageMonster(int index, int attack) {
+        if (index >= 0 && index < gp.monster[gp.currentMap].length) {
+            knockBack(gp.monster[gp.currentMap][index]);
+    
+            if (index != 999999999) {
+                // System.out.println("Hit!"); // give damage to monster
+                if (!gp.monster[gp.currentMap][index].invincible) {
+                    int damage = attack - gp.monster[gp.currentMap][index].defense;
+                    if (damage < 0) {
+                        damage = 0;
+                    }
+                    gp.monster[gp.currentMap][index].life -= damage;
+                    gp.monster[gp.currentMap][index].invincible = true;
+                    gp.monster[gp.currentMap][index].damagereaction();
+    
+                    if (gp.monster[gp.currentMap][index].life <= 0) {
+                        gp.monster[gp.currentMap][index].die = true; // kill monster
+                    }
                 }
             }
-        } 
-        // else System.out.println("Miss!");
+        } else {
+            System.out.println("Invalid index: " + index); // Print a message for debugging
+        }
     }
-
     public void selectItem(){
         int itemIndex = gp.ui.getItemIndexOnSlot();
 
@@ -504,9 +507,6 @@ public class Player extends Entity {
             }
         }
     }
-
-
-
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.white); // set color to use for drawing objects
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
@@ -877,5 +877,10 @@ public class Player extends Entity {
         // g2.setFont(new Font("Arial", Font.PLAIN, 26));
         // g2.setColor(Color.white);
         // g2.drawString("Invincible:"+invincibleCounter,10,400);
+    }
+    public void knockBack (Entity entity) {
+        entity.direction = direction;
+        entity.speed += 10;
+        entity.knockBack = true;
     }
 }

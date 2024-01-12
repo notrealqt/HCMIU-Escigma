@@ -7,80 +7,92 @@ import main.GamePanel;
 
 public class m_Boss extends Entity {
     GamePanel gp;
-    public static final String monName = "Skeleton Lỏd";
-
 
     public m_Boss(GamePanel gp) {
+        
         super(gp);
         this.gp = gp;
-
-        type = 2;
-        name = monName;
-        speed = 1;
-        life = 50;
+        type = type_monster;
+        name = "Human Collector";
+        speed = 2;
+        maxLife = 10;
+        life = maxLife;
         attack = 10;
-        defense = 2;
-
-        int size = gp.tileSize * 5;
-        solidArea.x = 48;
-        solidArea.y = 48;
-        solidArea.width = size - 48*2;
-        solidArea.height = size - 48;
+        defense = 5;
+        
+        solidArea.x = 4;
+        solidArea.y = 4;
+        solidArea.width = 40;
+        solidArea.height = 44;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        attackArea.width = 170;
-        attackArea.height = 170;
-        
+        attackArea.width = 48;
+        attackArea.height = 48;
+
         getImage();
-        //getAttackImage();
+        getAttackImage();
+    }
+
+
+    public void getImage(){
+        up0=setUp("/monster/boss/boss_corpse collector_move_font_0",gp.tileSize, gp.tileSize);
+        up1=setUp("/monster/slime/boss_corpse collector_move_font_1",gp.tileSize, gp.tileSize);
+        up2=setUp("/monster/slime/boss_corpse collector_move_font_2",gp.tileSize, gp.tileSize);
+        up3=setUp("/monster/slime/boss_corpse collector_move_font_3",gp.tileSize, gp.tileSize);
+        up4=setUp("/monster/slime/boss_corpse collector_move_font_4",gp.tileSize, gp.tileSize);
+        up5=setUp("/monster/slime/boss_corpse collector_move_font_5",gp.tileSize, gp.tileSize);
+        up6=setUp("/monster/slime/boss_corpse collector_move_font_6",gp.tileSize, gp.tileSize);
+        up7=setUp("/monster/slime/boss_corpse collector_move_font_7",gp.tileSize, gp.tileSize);
+
+        down0=setUp("/monster/boss/boss_corpse collector_move_down_0",gp.tileSize, gp.tileSize);
+        down1=setUp("/monster/boss/boss_corpse collector_move_down_1",gp.tileSize, gp.tileSize);
+        down2=setUp("/monster/boss/boss_corpse collector_move_down_2",gp.tileSize, gp.tileSize);
+        down3=setUp("/monster/boss/boss_corpse collector_move_down_3",gp.tileSize, gp.tileSize);
+        down4=setUp("/monster/boss/boss_corpse collector_move_down_4",gp.tileSize, gp.tileSize);
+        down5=setUp("/monster/boss/boss_corpse collector_move_down_5",gp.tileSize, gp.tileSize);
+        down6=setUp("/monster/boss/boss_corpse collector_move_down_6",gp.tileSize, gp.tileSize);
+        down7=setUp("/monster/boss/boss_corpse collector_move_down_7",gp.tileSize, gp.tileSize);
+
+        left0=setUp("/monster/boss/boss_corpse collector_move_left_0",gp.tileSize, gp.tileSize);
+        left1=setUp("/monster/boss/boss_corpse collector_move_left_1",gp.tileSize, gp.tileSize);
+        left2=setUp("/monster/boss/boss_corpse collector_move_left_2",gp.tileSize, gp.tileSize);
+        left3=setUp("/monster/boss/boss_corpse collector_move_left_3",gp.tileSize, gp.tileSize);
+        left4=setUp("/monster/boss/boss_corpse collector_move_left_4",gp.tileSize, gp.tileSize);
+        left5=setUp("/monster/boss/boss_corpse collector_move_left_5",gp.tileSize, gp.tileSize);
+        left6=setUp("/monster/boss/boss_corpse collector_move_left_6",gp.tileSize, gp.tileSize);
+        left7=setUp("/monster/boss/boss_corpse collector_move_left_7",gp.tileSize, gp.tileSize);
+
+        right0=setUp("/monster/boss/boss_corpse collector_move_right_0",gp.tileSize, gp.tileSize);
+        right1=setUp("/monster/boss/boss_corpse collector_move_right_1",gp.tileSize, gp.tileSize);
+        right2=setUp("/monster/boss/boss_corpse collector_move_right_2",gp.tileSize, gp.tileSize);
+        right3=setUp("/monster/boss/boss_corpse collector_move_right_3",gp.tileSize, gp.tileSize);
+        right4=setUp("/monster/boss/boss_corpse collector_move_right_4",gp.tileSize, gp.tileSize);
+        right5=setUp("/monster/boss/boss_corpse collector_move_right_5",gp.tileSize, gp.tileSize);
+        right6=setUp("/monster/boss/boss_corpse collector_move_right_6",gp.tileSize, gp.tileSize);
+        right7=setUp("/monster/boss/boss_corpse collector_move_right_7",gp.tileSize, gp.tileSize);
 
     }
-    public void getImage() {
-        int scale = 5;
 
-        up1 = setUp("/res/monster/Boss/skeletonlord_up_1",gp.tileSize * scale,gp.tileSize * scale);
-        up2 = setUp("/res/monster/Boss/skeletonlord_up_2",gp.tileSize * scale,gp.tileSize * scale);
-        down1 = setUp("/res/monster/Boss/skeletonlord_down_1",gp.tileSize * scale,gp.tileSize * scale);
-        down2 = setUp("/res/monster/Boss/skeletonlord_down_2",gp.tileSize * scale,gp.tileSize * scale);
-        left1 = setUp("/res/monster/Boss/skeletonlord_left_1",gp.tileSize * scale,gp.tileSize * scale);
-        left2 = setUp("/res/monster/Boss/skeletonlord_left_2",gp.tileSize * scale,gp.tileSize * scale);
-        right1 = setUp("/res/monster/Boss/skeletonlord_right_1",gp.tileSize * scale,gp.tileSize * scale);
-        right2 = setUp("/res/monster/Boss/skeletonlord_right_2",gp.tileSize * scale,gp.tileSize * scale);
+    public void getAttackImage() {
+
     }
-    public void getAttackImage () {
-        int scale = 5;
-       /* attackUp1 = setUp("/res/monster/Boss/skeletonlord_up_1",gp.tileSize * scale,gp.tileSize * scale);
-        attackUp2 = setUp("/res/monster/Boss/skeletonlord_up_2",gp.tileSize * scale,gp.tileSize * scale);
-        down1 = setUp("/res/monster/Boss/skeletonlord_down_1",gp.tileSize * scale,gp.tileSize * scale);
-        down2 = setUp("/res/monster/Boss/skeletonlord_down_2",gp.tileSize * scale,gp.tileSize * scale);
-        left1 = setUp("/res/monster/Boss/skeletonlord_left_1",gp.tileSize * scale,gp.tileSize * scale);
-        left2 = setUp("/res/monster/Boss/skeletonlord_left_2",gp.tileSize * scale,gp.tileSize * scale);
-        right1 = setUp("/res/monster/Boss/skeletonlord_right_1",gp.tileSize * scale,gp.tileSize * scale);
-        right2 = setUp("/res/monster/Boss/skeletonlord_right_2",gp.tileSize * scale,gp.tileSize * scale);
-    */
-    }
+
     public void setAction(){
-        actionLockCounter ++;
         
-        if(actionLockCounter == 120){
-            Random random = new Random();
-            int i = random.nextInt(100)+1; //Random from 1 to 100
-
-            if(i<=25){
-                direction = "up";
-            }
-            if(i>25 && i<= 50){
-                direction = "down";
-            }
-            if(i>50 && i<=75){
-                direction = "left";
-            }
-            if(i>75 && i<=100){
-                direction = "right";
-            }
-
-            actionLockCounter = 0;
-        } 
+        if (onPath == true) {
+            checkStop(gp.player, 15, 100);
+            searchPath(getGoalCol(gp.player),getGoalRow(gp.player));
+        }
+        else {
+            checkChasing(gp.player, 5, 100);
+            getRandomDirection();
+        }    
     }
-    
+
+    public void damageReaction(){
+        actionLockCounter = 0; 
+        //direction = gp.player.direction;
+        onPath = true;
+    }
+
 }

@@ -4,6 +4,7 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -47,8 +48,10 @@ public class Entity {
     public int invincibleCounter = 0;
     public int dieCounter =0;
     public int shotAvailableCounter = 0;
+    int knockBackCounter = 0;
 
-    //attributes for character   
+    //attributes for character 
+    public int defaultSpeed;  
     public String name;
     public int speed;
     public int maxLife;
@@ -75,6 +78,7 @@ public class Entity {
     public int defensevalue;
     public String description = ""; //item description
     public int manaCost;
+    public boolean knockBack = false;
 
     public Entity(GamePanel gp){
         this.gp = gp;
@@ -97,6 +101,27 @@ public class Entity {
     public int getRow() {
         return (worldY + solidArea.y)/gp.tileSize;
     }
+    public int getXDistance ( Entity target) {
+        int xDistance = Math.abs(worldX - target.worldX);
+        return xDistance;
+    }
+    public int getYDistance ( Entity target) {
+        int yDistance = Math.abs(worldX - target.worldY);
+        return yDistance;
+    }
+    public int getTileDistance ( Entity target) {
+        int tileDistance = (getXDistance(target) + getYDistance(target));
+        return tileDistance;
+    }
+    public int getGoalCol ( Entity target) {
+        int goalCol = (target.worldX +target.solidArea.x) / gp.tileSize;
+        return goalCol;
+    }
+    public int getGoalRow ( Entity target) {
+        int goalRow = (target.worldY +target.solidArea.y) / gp.tileSize;
+        return goalRow;    
+    }
+
     public void setAction() {}
     public void damagereaction() {}
     public void speak() {
@@ -147,41 +172,75 @@ public class Entity {
         }
     }
     public void update(){
-        setAction();
-        checkCollision();
-        
-        if (collisionOn == false) {
-            switch (direction) {
-                case "up":
-                    worldY -= speed;
-                    break;
-                case "down":
-                    worldY += speed;
-                    break;
-                case "left":
-                    worldX -= speed;
-                    break;
-                case "right":
-                    worldX += speed;
-                    break;
-                case "upleft":
-                    worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                    worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                    break;
-                case "upright":
-                    worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                    worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                    break;
-                case "downleft":
-                    worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                    worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                    break;
-                case "downright":
-                    worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                    worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                    break;
+        if (knockBack == true) {
+            checkCollision();
+            if(collisionOn == true) {
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+
+            }
+            else if (collisionOn == false) {
+                switch (gp.player.direction) {
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
+            }
+            knockBackCounter++;
+            if(knockBackCounter == 10) {
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
             }
         }
+        else {
+            setAction();
+            checkCollision();
+        
+            if (collisionOn == false) {
+                switch (direction) {
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                    case "upleft":
+                        worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        break;
+                    case "upright":
+                        worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        break;
+                    case "downleft":
+                        worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        break;
+                    case "downright":
+                        worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                        break;
+                }
+            }
+        }
+        
 
         //npc image changes every 12 frames
         spriteCounter++;
@@ -420,7 +479,6 @@ public class Entity {
         }
         return index;
     }
-
     public BufferedImage setUp(String imagePath, int width, int height) {
         
         UtilityTool uTool = new UtilityTool();
@@ -434,4 +492,43 @@ public class Entity {
         }
         return image;
     } 
+    public void checkStop ( Entity target, int distance, int rate) {
+        if (getTileDistance(target) > distance) {
+            int i = new Random().nextInt();
+            if (i==0) {
+                onPath = false;
+            }
+        }
+    }
+    public void checkChasing ( Entity target, int distance, int rate) {
+        if (getTileDistance(target) < distance) {
+            int i = new Random().nextInt();
+            if (i==0) {
+                onPath = true;
+            }
+        }
+    }
+    public void getRandomDirection() {
+        actionLockCounter++;
+            
+            if(actionLockCounter == 120){
+                Random random = new Random();
+                int i = random.nextInt(100)+1; //Random from 1 to 100
+
+                if(i<=25){
+                    direction = "up";
+                }
+                if(i>25 && i<= 50){
+                    direction = "down";
+                }
+                if(i>50 && i<=75){
+                    direction = "left";
+                }
+                if(i>75 && i<=100){
+                    direction = "right";
+                }
+
+                actionLockCounter = 0;
+            } 
+    }
 }

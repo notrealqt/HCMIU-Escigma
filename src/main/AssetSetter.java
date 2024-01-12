@@ -4,6 +4,7 @@ import object.Key;
 import object.Chest;
 import object.Door;
 import entity.NPC_OldMan;
+import monster.m_Boss;
 import monster.m_GreenSlime;
 import object.Axe;
 import object.Boots;
@@ -32,8 +33,8 @@ public class AssetSetter {
         i++;
 
         gp.obj[mapNum][i] = new Door(gp);
-        gp.obj[mapNum][i].worldX = 18 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 18 * gp.tileSize;
+        gp.obj[mapNum][i].worldX = 25 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 25 * gp.tileSize;
         i++;
 
         gp.obj[mapNum][i] = new Chest(gp, new Key(gp));
@@ -53,12 +54,13 @@ public class AssetSetter {
     //place slime onto the map
     public void setMonster(){
         int mapNum = 0;
-        //gp.monster[mapNum][0] = new m_GreenSlime(gp);
-        //gp.monster[mapNum][0].worldX = gp.tileSize*15;
-        //gp.monster[mapNum][0].worldY = gp.tileSize*15;
-
         gp.monster[mapNum][1] = new m_GreenSlime(gp);
         gp.monster[mapNum][1].worldX = gp.tileSize*18;
-        gp.monster[mapNum][1].worldY = gp.tileSize*18;        
+        gp.monster[mapNum][1].worldY = gp.tileSize*18;  
+        
+        gp.monster[mapNum][2] = new m_Boss(gp);
+        gp.monster[mapNum][2].worldX = gp.tileSize*24;
+        gp.monster[mapNum][2].worldY = gp.tileSize*18;  
+        
     }
 }
