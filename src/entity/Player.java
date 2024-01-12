@@ -381,8 +381,8 @@ public class Player extends Entity {
 
             //check monster collision with the updated worldX,Y and solidArea
             int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
-            damageMonster ( monsterIndex, attack);
-
+            damageMonster (monsterIndex, attack);
+        
             //after checking collision, restore the original data
             worldX = currentWorldX;
             worldY = currentWorldY;
@@ -472,7 +472,7 @@ public class Player extends Entity {
         if (index >= 0 && index < gp.monster[gp.currentMap].length) {
             knockBack(gp.monster[gp.currentMap][index]);
     
-            if (index != 999999999) {
+            if (index != 9999) {
                 // System.out.println("Hit!"); // give damage to monster
                 if (!gp.monster[gp.currentMap][index].invincible) {
                     int damage = attack - gp.monster[gp.currentMap][index].defense;
@@ -489,7 +489,7 @@ public class Player extends Entity {
                 }
             }
         } else {
-            System.out.println("Invalid index: " + index); // Print a message for debugging
+           // System.out.println("Invalid index: " + index); // Print a message for debugging
         }
     }
     public void selectItem(){
