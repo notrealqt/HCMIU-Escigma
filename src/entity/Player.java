@@ -71,6 +71,8 @@ public class Player extends Entity {
         strength = 1;   // more strength, more dmg
         dexterity = 1; //more dexterity, less dmg receive
         coin = 0;
+        maxMana = 4;
+        mana = maxMana;
         currentWeapon = new Sword(gp);
         projectile = new Fire_Sword(gp);
         attack = getAttack();
@@ -311,13 +313,15 @@ public class Player extends Entity {
             }
         }
 
-        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false){
+        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30){
 
                 //Set default coordinates, direction and user
                 projectile.set(worldX, worldY, direction, true,this);
 
                 //add projectile to the list
                 gp.projectileList.add(projectile);
+
+                shotAvailableCounter = 0 ;
         }
     //invincible time must outside of the key if statement
     if(invincible == true){
@@ -334,6 +338,9 @@ public class Player extends Entity {
             //gp.playMusic(index);
         }
     }
+    if(shotAvailableCounter<30){
+        shotAvailableCounter++;
+        }
     }
 
     //attack animation
@@ -370,7 +377,7 @@ public class Player extends Entity {
 
             //check monster collision with the updated worldX,Y and solidArea
             int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
-            damageMonster ( monsterIndex);
+            damageMonster ( monsterIndex, attack);
 
             //after checking collision, restore the original data
             worldX = currentWorldX;
@@ -457,7 +464,7 @@ public class Player extends Entity {
         }
     }
 
-    public void damageMonster(int i){
+    public void damageMonster(int i, int attack){
             if(i != 9999){
             // System.out.println("Hit!");             //give damage to monster
             if(gp.monster[gp.currentMap][i].invincible == false){

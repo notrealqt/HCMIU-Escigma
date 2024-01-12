@@ -46,6 +46,7 @@ public class Entity {
     public int actionLockCounter = 0;
     public int invincibleCounter = 0;
     public int dieCounter =0;
+    public int shotAvailableCounter = 0;
 
     //attributes for character   
     public String name;
@@ -200,6 +201,9 @@ public class Entity {
                 invincibleCounter = 0;
                 }
             }
+            if(shotAvailableCounter == 0){
+                shotAvailableCounter ++;
+        }
     } 
     public void damagePlayer(int attack){
                 if(gp.player.invincible == false){

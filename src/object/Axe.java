@@ -9,7 +9,7 @@ public class Axe extends Entity {
         super(gp);
         type = type_axe;
         name = "Starter Axe";
-        down0=setUp("/item/weapon/axe",gp.tileSize,gp.tileSize);
+        down0=setUp("/item/weapon/axe/",gp.tileSize,gp.tileSize);
         attackvalue = 4;
         defensevalue = 2;
         description = "["+name+"]\nAn axe!!!";
