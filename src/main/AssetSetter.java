@@ -3,6 +3,9 @@ package main;
 import object.Key;
 import object.Lantern;
 import object.Chest;
+import object.ChestForest;
+import object.ChestIce;
+import object.ChestRock;
 import object.Door;
 import entity.NPC_OldMan;
 import monster.m_Boss;
@@ -46,6 +49,21 @@ public class AssetSetter {
         gp.obj[mapNum][i] = new Lantern(gp);
         gp.obj[mapNum][i].worldX = 18 * gp.tileSize;
         gp.obj[mapNum][i].worldY = 18 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new ChestForest(gp, new Key(gp));
+        gp.obj[mapNum][i].worldX = 22 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 102 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new ChestIce(gp, new Key(gp));
+        gp.obj[mapNum][i].worldX = 51 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 12 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new ChestRock(gp, new Key(gp));
+        gp.obj[mapNum][i].worldX = 96 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 26 * gp.tileSize;
         i++;
 
 

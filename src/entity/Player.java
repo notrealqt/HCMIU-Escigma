@@ -63,7 +63,7 @@ public class Player extends Entity {
         worldX = gp.tileSize * 14; //player's pos in world map
         worldY = gp.tileSize * 14;
         defaultSpeed = 4;
-        speed = defaultSpeed;
+        speed = 20;
         direction = "down";
 
         //Player status
