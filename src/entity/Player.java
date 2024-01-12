@@ -87,8 +87,6 @@ public class Player extends Entity {
     }
     public void setItems(){
         inventory.add(currentWeapon);
-        inventory.add(new Key(gp));
-        inventory.add(new Key(gp));
     }
     public int getAttack(){
         attackArea=currentWeapon.attackArea;
@@ -390,34 +388,45 @@ public class Player extends Entity {
     }
     public void pickUpItem(int i){
         if(i!=9999){
-            String objectName = gp.obj[gp.currentMap][i].name;
-            switch(objectName){
-                case "Key":
-                    gp.playSE(1);
-                    hasKey++;
-                    gp.obj[gp.currentMap][i] = null;
-                    gp.ui.showMessage("You got a key!");
-                    break;
-                case "Door":
-                    if(hasKey>0){
-                        gp.obj[gp.currentMap][i] = null;
-                        hasKey--;
-                    }
-                    else {
-                        gp.ui.showMessage("You need a key to open!");
-                    }
-                    break;
-                case "Boots":
-                    gp.playSE(1);
-                    speed += 2;
-                    gp.obj[gp.currentMap][i] = null;
-                    break;
-                case "Chest":
-                    gp.ui.gameFinished = true;
-                    gp.stopMusic();
-                    gp.playSE(2);
-                    break;
+            //Obstacle
+            if(gp.obj[gp.currentMap][i].type == type_obstacle) {
+                if(keyH.enterPressed == true) {
+                    attackCanceled = true;
+                    System.out.println("Pressed door");
+                    gp.obj[gp.currentMap][i].interact();
+                }
             }
+            else {
+                String objectName = gp.obj[gp.currentMap][i].name;
+                switch(objectName){
+                    case "Key":
+                        gp.playSE(1);
+                        hasKey++;
+                        gp.obj[gp.currentMap][i] = null;
+                        gp.ui.showMessage("You got a key!");
+                        break;
+                    case "Door":
+                        if(hasKey>0){
+                            gp.obj[gp.currentMap][i] = null;
+                            hasKey--;
+                        }
+                        else {
+                            gp.ui.showMessage("You need a key to open!");
+                        }
+                        break;
+                    case "Boots":
+                        gp.playSE(1);
+                        speed += 2;
+                        gp.obj[gp.currentMap][i] = null;
+                        break;
+                    case "Chest":
+                        gp.ui.gameFinished = true;
+                        gp.stopMusic();
+                        gp.playSE(2);
+                        break;
+                }
+            }
+            
         }
     }
     public void interactNPC(int i) {
@@ -481,7 +490,10 @@ public class Player extends Entity {
                 attack = getAttack();
             }
             if(selectedItem.type == type_consumable){
-                //soon
+                if(selectedItem.use(this) == true) {
+                    inventory.remove(itemIndex);
+                }
+
             }
         }
     }
