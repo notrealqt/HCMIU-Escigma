@@ -8,8 +8,11 @@ import main.GamePanel;
 
 public class Door extends Entity{
 
+    GamePanel gp;
     public Door(GamePanel gp) {
         super(gp);
+        this.gp = gp;
+        type = type_obstacle;
         name = "Door";
         down0 = setUp("objects/Door",gp.tileSize, gp.tileSize);
         /*
@@ -27,4 +30,10 @@ public class Door extends Entity{
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
     }  
+    public void interact() {
+        
+        gp.gameState = gp.dialogueState;
+        gp.ui.currentDiaglogue = "You need a key to open this door";
+
+    }
 }

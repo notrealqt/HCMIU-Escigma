@@ -137,6 +137,7 @@ public class KeyHandle implements KeyListener {
             }
             if(code== KeyEvent.VK_ENTER){
                 gp.player.selectItem();
+                enterPressed = true;
             }
             if(code == KeyEvent.VK_K){
                 shotKeyPressed = true;
@@ -396,6 +397,9 @@ public class KeyHandle implements KeyListener {
         }
         if(code == KeyEvent.VK_K){
             shotKeyPressed = false;
+        }
+        if(code == KeyEvent.VK_ENTER) {
+            enterPressed = false;
         }
     }
 }
