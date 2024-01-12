@@ -314,10 +314,13 @@ public class Player extends Entity {
             }
         }
 
-        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30){
+        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true){
 
                 //Set default coordinates, direction and user
                 projectile.set(worldX, worldY, direction, true,this);
+
+                //use the mana
+                projectile.subtractResource(this);
 
                 //add projectile to the list
                 gp.projectileList.add(projectile);
