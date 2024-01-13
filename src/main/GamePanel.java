@@ -117,21 +117,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
     
-    public void retry(){
-        player.setDefaultLife();
-        player.setDefaultPosition();
-        aSetter.setNPC();
-        aSetter.setMonster();
-    }
-    
-    public void restart(){
-        player.setDefaultValue();
-        aSetter.setObject();
-        aSetter.setNPC();
-        aSetter.setMonster();
-        
-    }
-    
     public void setFullScreen() {
         //LOCAL SCREEN DEVICE
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -324,4 +309,13 @@ public class GamePanel extends JPanel implements Runnable {
         se.play();
     }
 
+    public void resetGame (boolean restart) {
+        player.setDefaultLife();
+        player.setDefaultPosition();
+        aSetter.setNPC();
+        aSetter.setMonster();
+        if (restart == true) {
+            player.setDefaultValue();
+        }
+    }
 }

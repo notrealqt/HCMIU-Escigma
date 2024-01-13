@@ -53,9 +53,6 @@ public class Player extends Entity {
         // attackArea.height=36;
 
         setDefaultValue();
-        getPlayerImage();
-        getPlayerattackImgage();
-        setItems();
 
     }
 
@@ -78,6 +75,11 @@ public class Player extends Entity {
         projectile = new Fire_Sword(gp);
         attack = getAttack();
         defense = getDefense();
+        currentLight = null;
+        getPlayerImage();
+        getPlayerattackImgage();
+        //getGuardImage();
+        setItems();
     }
     
     public void setDefaultPosition(){
@@ -88,7 +90,12 @@ public class Player extends Entity {
     
     public void setDefaultLife(){
         life = maxLife;
+        mana = maxMana;
         invincible = false;
+        attacking = false;
+        guarding = false;
+        knockBack = false;
+        lightUpdated = false;
     }
     
     public void setItems(){
@@ -129,6 +136,16 @@ public class Player extends Entity {
         rightAttack4 = setUp("player/attack/1_player_attack_right_3",gp.tileSize*2, gp.tileSize);
         }
     }
+
+    /*
+    public void getGuardImage() {
+        guardUp = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
+        guardDown = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
+        guardLeft = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
+        guardRight = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
+
+    }
+    */
 
     public void getPlayerImage() {
 
@@ -183,7 +200,7 @@ public class Player extends Entity {
             attacking();
         }
         else {
-        //System.out.println("Update method called");
+            if (keyH.guardPressed == true) { guarding = true;}
             if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed == true|| keyH.attackPressed == true || keyH.interPressed == true)) {
             if (keyH.upPressed == true) { direction = "up"; } 
             if (keyH.downPressed == true) { direction = "down"; }
@@ -214,33 +231,25 @@ public class Player extends Entity {
             //if collision is false, player can move 
             if (collisionOn == false && keyH.interPressed==false && keyH.attackPressed == false) {     //interact without moving
                 switch (direction) {
-                    case "up":
-                        worldY -= speed;
+                    case "up": worldY -= speed;
                         break;
-                    case "down":
-                        worldY += speed;
+                    case "down": worldY += speed;
                         break;
-                    case "left":
-                        worldX -= speed;
+                    case "left": worldX -= speed;
                         break;
-                    case "right":
-                        worldX += speed;
+                    case "right": worldX += speed;
                         break;
-                    case "upleft":
-                        worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                    case "upleft": worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2)); 
+                                   worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                         break;
-                    case "upright":
-                        worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                    case "upright": worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                                    worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                         break;
-                    case "downleft":
-                        worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                    case "downleft": worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                                     worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                         break;
-                    case "downright":
-                        worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                    case "downright": worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                                      worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                         break;
                 }
             }
@@ -412,15 +421,14 @@ public class Player extends Entity {
     
     public void encounterMonster(int i) {
         if (i!=9999){
-            
             if(invincible == false && gp.monster[gp.currentMap][i].die==false){
-
                 int damage = gp.monster[gp.currentMap][i].attack - defense;
-                if(damage < 0){
-                    damage = 0;
+                if(damage < 1){
+                    damage = 1;
                 }
                 life -=damage;  
-                invincible = true;              
+                invincible = true;
+                transparent = true;              
             }
 
         }
@@ -648,7 +656,7 @@ public class Player extends Entity {
                 }
                     break;
             }
-        if(invincible == true) {g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));}
+        if(transparent == true) {g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));}
         g2.drawImage(image, tempScreenX, tempScreenY,null);
         //reset alpha
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));

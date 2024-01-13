@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 public class KeyHandle implements KeyListener {
 
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed,attackPressed,shotKeyPressed;
+    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed,attackPressed,shotKeyPressed, guardPressed;
     //Debug
     boolean debugText = false;
 
@@ -144,12 +144,9 @@ public class KeyHandle implements KeyListener {
             if(code == KeyEvent.VK_K){
                 shotKeyPressed = true;
             }
-// <<<<<<< HEAD
-               
-// =======
+
             if (code == KeyEvent.VK_J) {
-                // gp.playSE(5);
-// >>>>>>> bcaccd040d067d4b04646b740b96173561644dea
+
                 attackPressed = true;
             }
             // Menu
@@ -184,6 +181,9 @@ public class KeyHandle implements KeyListener {
 
                     //case 1: different map
                 }
+            }
+            if (code == KeyEvent.VK_SPACE) {
+                guardPressed = true;
             }
         }
     
@@ -312,12 +312,12 @@ public class KeyHandle implements KeyListener {
             }
             if(code == KeyEvent.VK_ENTER){
                 if(gp.ui.commandNum==0){
-                    gp.retry();
+                    gp.resetGame(false);
                     gp.gameState = gp.playState;
                     
                 }
                 else if(gp.ui.commandNum==1){
-                    gp.restart();
+                    gp.resetGame(true);
                     gp.gameState = gp.titleState;
                 }
             }
@@ -408,6 +408,9 @@ public class KeyHandle implements KeyListener {
         }
         if(code == KeyEvent.VK_ENTER) {
             enterPressed = false;
+        }
+        if(code == KeyEvent.VK_SPACE) {
+            guardPressed = false;
         }
     }
 
