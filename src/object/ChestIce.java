@@ -41,6 +41,7 @@ public class ChestIce extends Entity{
         */
         
     }  
+   
     public void interact() {
         gp.gameState = gp.dialogueState;
         

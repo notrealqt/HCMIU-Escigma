@@ -15,13 +15,6 @@ public class Door extends Entity{
         type = type_obstacle;
         name = "Door";
         down0 = setUp("objects/Door",gp.tileSize, gp.tileSize);
-        /*
-        try {
-            down0 = ImageIO.read(getClass().getResourceAsStream("/res/objects/door.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
         collision = true;
         solidArea.x = 0;
         solidArea.y = 16;

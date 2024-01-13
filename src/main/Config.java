@@ -12,13 +12,16 @@ public class Config {
     public Config(GamePanel gp){
         this.gp = gp;
     }
+    
     public GamePanel getGp() {
         return gp;
     }
+    
     public void setGp(GamePanel gp) {
         this.gp = gp;
     }
-public void saveConfig(){
+    
+    public void saveConfig(){
     
     try {
         BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
@@ -47,32 +50,34 @@ public void saveConfig(){
         e.printStackTrace();
     }
 }
-public void loadConfig(){
-    try {
-        BufferedReader br = new BufferedReader(new FileReader("config.txt"));
+    
+    public void loadConfig(){
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("config.txt"));
 
-        String s = br.readLine();
+            String s = br.readLine();
 
-        //Full Screen
-        if(s.equals("On")){
-            gp.fullScrennOn = true;
+            //Full Screen
+            if(s.equals("On")){
+                gp.fullScrennOn = true;
+            }
+            if(s.equals("Off")){
+                gp.fullScrennOn = false;
+            }
+            //Music
+            s = br.readLine();
+            gp.music.volumeScale = Integer.parseInt(s);
+
+
+            //SE
+            s = br.readLine();
+            gp.se.volumeScale = Integer.parseInt(s);
+
+            br.close();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
-        if(s.equals("Off")){
-            gp.fullScrennOn = false;
-        }
-        //Music
-        s = br.readLine();
-        gp.music.volumeScale = Integer.parseInt(s);
-
-
-        //SE
-        s = br.readLine();
-        gp.se.volumeScale = Integer.parseInt(s);
-
-        br.close();
-    } catch (Exception e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
 }
+
 }

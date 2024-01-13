@@ -162,6 +162,7 @@ public class UI {
          if(gp.gameState == gp.menuOptionState)
             drawMenuOptionScreen();
     }
+    
     public void drawPlayerLife() {
         
         int x = gp.tileSize/2;
@@ -285,6 +286,7 @@ public class UI {
         }
 
     }
+    
     public void drawPauseScreen(){
         g2.setFont(tnr_40);
         String text  = "PAUSED";
@@ -293,6 +295,7 @@ public class UI {
         
         g2.drawString(text, x, y);
     }
+    
     public void drawDialogueScreen() {
         //Window
         int x = gp.tileSize*3;
@@ -392,6 +395,7 @@ public class UI {
 
 
     }
+    
     public void drawInventory(){
 
         //frame
@@ -465,6 +469,7 @@ public class UI {
         int itemIndex = slotCol + (slotRow*5);
         return itemIndex;
     }
+    
     public void drawSubWindow(int x, int y, int width, int height) {
         
         Color c = new Color(0,0,0,230);
@@ -477,18 +482,21 @@ public class UI {
         g2.drawRoundRect(x+5, y+5, width-10, height-10, 50, 50);
 
     }
+    
     public int getXforCenteredText(String text){
 
         int lenght = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = gp.screenWidth/2 - lenght/2;
         return x;
     }
+    
     public int getXforAlignToRightText(String text, int tailX){
             
             int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             int x = tailX - length;
             return x;
     }
+    
     public void drawOptionScreen(){
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(32F));
@@ -510,6 +518,7 @@ public class UI {
       gp.KeyH.enterPressed=false;
 
     }
+    
     public void options_top(int frameX,int frameY){
             int textX;
             int textY;
@@ -585,6 +594,7 @@ public class UI {
             }
             gp.config.saveConfig();
         }
+    
     public void options_FullScreenNotification(int frameX,int frameY){
             int textX= frameX + gp.tileSize;
             int textY= frameY + gp.tileSize*3;
@@ -606,6 +616,7 @@ public class UI {
             
            
         }
+
     public void options_Volume(int frameX,int frameY){
             
            int textY ;
@@ -655,6 +666,7 @@ public class UI {
             g2.fillRect(textX, textY, volumeWidth, 24);
            gp.config.saveConfig();
         }
+    
     public void options_Guide(int frameX,int frameY){
             int textY ;
             int textX  ;
@@ -694,6 +706,7 @@ public class UI {
                 }
             }else{commandNum = 0;}
         }
+    
     public void options_EndGameComfirmation(int frameX,int frameY){
             int textX= frameX + gp.tileSize;
             int textY= frameY + gp.tileSize*3;
@@ -728,6 +741,7 @@ public class UI {
                 }
             }
         }
+    
     public void options_QuitGameComfirmation(int frameX,int frameY){
             int textX= frameX + gp.tileSize;
             int textY= frameY + gp.tileSize*3;
@@ -762,8 +776,7 @@ public class UI {
                 }
             }
         }
-
-        
+    
     public void drawYouLostScreen(){
         g2.setColor(new Color(0,0,0,150));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
@@ -805,6 +818,7 @@ public class UI {
                 g2.drawString("👉", x-50, y);
          }
     }
+    
     public void drawGuideScreen(){
        g2.setColor(Color.black);;
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
@@ -948,4 +962,4 @@ public class UI {
 
     }
 
-    }
+}

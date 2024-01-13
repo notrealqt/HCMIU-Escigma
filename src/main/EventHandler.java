@@ -39,6 +39,7 @@ public class EventHandler {
 
         
     }
+    
     public void checkEvent() {
         //Check if the player character is more than 1 tile a way from the last event
         int xDistance = Math.abs(gp.player.worldX - previousEventX);
@@ -52,6 +53,42 @@ public class EventHandler {
             if(hit(0,16,10,"any") == true) {
                 damagePit(gp.dialogueState);
             }
+
+            if(hit(0,11,94,"any") == true) {
+                wormHole(0, 45, 71);
+            }
+    
+            if(hit(0,46,71,"any") == true) {
+                wormHole(0, 94, 97);
+            }
+    
+            if(hit(0,95,97,"any") == true) {
+                wormHole(0, 107, 100);
+            }
+    
+            if(hit(0,108,100,"any") == true) {
+                wormHole(0, 12, 94);
+            }
+    
+            if(hit(0,104,63,"any") == true) {
+                wormHole(0, 107, 12);
+            }
+    
+            if(hit(0,108,12,"any") == true) {
+                wormHole(0, 105, 63);
+            }
+    
+            if(hit(0,27,27,"any") == true) {
+                wormHole(0, 49, 45);
+            }
+    
+            if(hit(0,48,45,"any") == true) {
+                wormHole(0, 66, 16);
+            }
+    
+            if(hit(0,67,16,"any") == true) {
+                wormHole(0, 26, 27);
+            }
         }
 
         if(hit(0,10,9,"any") == true) {
@@ -61,7 +98,11 @@ public class EventHandler {
         if(hit(0,15,12,"any") == true) {
             teleport(gp.dialogueState);
         }
+
+        
+        
     }
+    
     public boolean hit(int map, int col, int row, String reqDirection) {
         
         boolean hit = false;
@@ -87,6 +128,7 @@ public class EventHandler {
         }
         return hit;
     }
+    
     public void teleport(int gameState) {
 
         gp.gameState = gameState;
@@ -95,12 +137,14 @@ public class EventHandler {
         gp.player.worldY = gp.tileSize*18;
 
     }
+    
     public void damagePit( int gameState) {
         gp.gameState = gameState;
         gp.ui.currentDiaglogue = "You fall into a pit!";
         gp.player.life -= 1;
         canTouchEvent = false;
     }
+    
     public void healingPool(int gameState) {
         if(gp.KeyH.interPressed == true) {
             gp.gameState = gameState;
@@ -112,7 +156,17 @@ public class EventHandler {
         }
         gp.KeyH.interPressed = false;
     }
+    
     public void teleport (int map, int col, int row) {
+        gp.currentMap = map;
+        gp.player.worldX = gp.tileSize * col;
+        gp.player.worldY = gp.tileSize * row;
+        previousEventX = gp.player.worldX;
+        previousEventY = gp.player.worldY;
+        canTouchEvent = false;
+        
+    }
+    public void wormHole (int map, int col, int row) {
         gp.currentMap = map;
         gp.player.worldX = gp.tileSize * col;
         gp.player.worldY = gp.tileSize * row;
