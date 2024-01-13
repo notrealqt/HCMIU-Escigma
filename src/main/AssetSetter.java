@@ -66,7 +66,10 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldY = 26 * gp.tileSize;
         i++;
 
-
+        //  gp.obj[mapNum][i] = new Boots(gp);
+        // gp.obj[mapNum][i].worldX = 18 * gp.tileSize;
+        // gp.obj[mapNum][i].worldY = 17 * gp.tileSize;
+        // i++;
         
     }
     public void setNPC(){

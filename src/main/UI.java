@@ -671,8 +671,8 @@ public class UI {
             g2.drawString("Interact", textX, textY);  textY += gp.tileSize;
             g2.drawString("Pause", textX, textY);  textY += gp.tileSize;
             g2.drawString("Attack", textX, textY);  textY += gp.tileSize;
-            // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
-            // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Map", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Status", textX, textY);  textY += gp.tileSize;
 
             textX= frameX + gp.tileSize*5;
             textY = frameY + gp.tileSize*2;
@@ -680,6 +680,8 @@ public class UI {
             g2.drawString("F", textX, textY);  textY += gp.tileSize;
             g2.drawString("P", textX, textY);  textY += gp.tileSize;
             g2.drawString("J", textX, textY);  textY += gp.tileSize;
+            g2.drawString("M", textX, textY);  textY += gp.tileSize;
+            g2.drawString("C", textX, textY);  textY += gp.tileSize;
             //Back
             textX= frameX + gp.tileSize;
             textY = frameY + gp.tileSize*9;
@@ -831,8 +833,8 @@ public class UI {
             g2.drawString("Interact", textX, textY);  textY += gp.tileSize;
             g2.drawString("Pause", textX, textY);  textY += gp.tileSize;
             g2.drawString("Attack", textX, textY);  textY += gp.tileSize;
-            // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
-            // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Map", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Status", textX, textY);  textY += gp.tileSize;
             // g2.drawString("Move", textX, textY);  textY += gp.tileSize;
 
             textX= frameX + gp.tileSize*5;
@@ -841,6 +843,8 @@ public class UI {
             g2.drawString("F", textX, textY);  textY += gp.tileSize;
             g2.drawString("P", textX, textY);  textY += gp.tileSize;
             g2.drawString("J", textX, textY);  textY += gp.tileSize;
+            g2.drawString("M", textX, textY);  textY += gp.tileSize;
+            g2.drawString("C", textX, textY);  textY += gp.tileSize;
             //Back
             textX= frameX + gp.tileSize;
             textY = frameY + gp.tileSize*9;
