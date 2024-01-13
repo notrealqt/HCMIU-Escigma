@@ -6,13 +6,12 @@ import java.awt.event.KeyEvent;
 public class KeyHandle implements KeyListener {
 
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed,attackPressed,shotKeyPressed;
+    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed,attackPressed,shotKeyPressed, guardPressed;
     //Debug
     boolean debugText = false;
 
-   
-
     // Constructor to initialize the boolean variables
+    
     public KeyHandle(GamePanel gp) {
         this.gp = gp;
         upPressed = false;
@@ -20,10 +19,12 @@ public class KeyHandle implements KeyListener {
         leftPressed = false;
         rightPressed = false;
     }
+    
     @Override
     public void keyTyped(KeyEvent e) {
 
     }
+    
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         //System.out.println("Key pressed: " + code);
@@ -113,6 +114,7 @@ public class KeyHandle implements KeyListener {
                 }
             }
     }
+    
     public void playState(int code){
         if (code == KeyEvent.VK_W) {
             upPressed = true;
@@ -142,12 +144,9 @@ public class KeyHandle implements KeyListener {
             if(code == KeyEvent.VK_K){
                 shotKeyPressed = true;
             }
-// <<<<<<< HEAD
-               
-// =======
+
             if (code == KeyEvent.VK_J) {
-                // gp.playSE(5);
-// >>>>>>> bcaccd040d067d4b04646b740b96173561644dea
+
                 attackPressed = true;
             }
             // Menu
@@ -183,6 +182,9 @@ public class KeyHandle implements KeyListener {
                     //case 1: different map
                 }
             }
+            if (code == KeyEvent.VK_SPACE) {
+                guardPressed = true;
+            }
         }
     
     public void pauseState(int code){
@@ -190,11 +192,13 @@ public class KeyHandle implements KeyListener {
                 gp.gameState = gp.playState;
             }
     }
+    
     public void dialogueState(int code){
         if(code == KeyEvent.VK_ENTER) {
                 gp.gameState = gp.playState;
             }
     }
+    
     public void characterState(int code){
         if(code == KeyEvent.VK_C) {
                 gp.gameState = gp.playState;
@@ -225,6 +229,7 @@ public class KeyHandle implements KeyListener {
                 }
             }
     }
+    
     public void menuState(int code){
             if(code == KeyEvent.VK_ESCAPE) {
             gp.ui.commandNum = 0;
@@ -286,6 +291,7 @@ public class KeyHandle implements KeyListener {
                 }
             }
     }
+    
     public void youLostState(int code){
 
      if (code == KeyEvent.VK_W) {
@@ -306,16 +312,17 @@ public class KeyHandle implements KeyListener {
             }
             if(code == KeyEvent.VK_ENTER){
                 if(gp.ui.commandNum==0){
-                    gp.retry();
+                    gp.resetGame(false);
                     gp.gameState = gp.playState;
                     
                 }
                 else if(gp.ui.commandNum==1){
-                    gp.restart();
+                    gp.resetGame(true);
                     gp.gameState = gp.titleState;
                 }
             }
 }
+    
     public void guideState(int code){
     if(code == KeyEvent.VK_ENTER){
          if(gp.ui.commandNum == 0){
@@ -326,6 +333,7 @@ public class KeyHandle implements KeyListener {
                 }
     }
 }
+
     public void menuOptionState(int code){
         if(code == KeyEvent.VK_ENTER){
                     enterPressed = true;
@@ -371,12 +379,12 @@ public class KeyHandle implements KeyListener {
                 
             }
     }
+    
     public void mapState( int code ) {
         if (code == KeyEvent.VK_M) {
             gp.gameState = gp.playState;
         }
     }
-
 
     @Override
     public void keyReleased (KeyEvent e) {
@@ -401,5 +409,9 @@ public class KeyHandle implements KeyListener {
         if(code == KeyEvent.VK_ENTER) {
             enterPressed = false;
         }
+        if(code == KeyEvent.VK_SPACE) {
+            guardPressed = false;
+        }
     }
+
 }

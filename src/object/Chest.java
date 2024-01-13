@@ -41,6 +41,7 @@ public class Chest extends Entity{
         */
         
     }  
+    
     public void interact() {
         gp.gameState = gp.dialogueState;
         
@@ -64,4 +65,5 @@ public class Chest extends Entity{
             gp.ui.currentDiaglogue = "It's empty";
         }
     }
+
 }

@@ -116,19 +116,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 
     }
-    public void retry(){
-        player.setDefaultLife();
-        player.setDefaultPosition();
-        aSetter.setNPC();
-        aSetter.setMonster();
-    }
-    public void restart(){
-        player.setDefaultValue();
-        aSetter.setObject();
-        aSetter.setNPC();
-        aSetter.setMonster();
-        
-    }
+    
     public void setFullScreen() {
         //LOCAL SCREEN DEVICE
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -140,10 +128,12 @@ public class GamePanel extends JPanel implements Runnable {
         screenHeight2 = Main.window.getHeight();
 
     }
+    
     public void startGameThread () {
         gameThread = new Thread(this);
         gameThread.start();
     }
+    
     @Override
     public void run() {
         double drawInterval = 1000000000/FPS;
@@ -173,6 +163,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
     }
+    
     public void update() {
 
         if(gameState == playState){
@@ -204,6 +195,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
         
     }
+    
     public void drawToTempScreen() {
         long drawStart = 0;
         if(KeyH.debugText == true){
@@ -315,5 +307,15 @@ public class GamePanel extends JPanel implements Runnable {
     public void playSE(int i){
         se.setFile(i);
         se.play();
+    }
+
+    public void resetGame (boolean restart) {
+        player.setDefaultLife();
+        player.setDefaultPosition();
+        aSetter.setNPC();
+        aSetter.setMonster();
+        if (restart == true) {
+            player.setDefaultValue();
+        }
     }
 }

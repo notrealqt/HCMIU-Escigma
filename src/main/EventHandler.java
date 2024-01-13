@@ -39,6 +39,7 @@ public class EventHandler {
 
         
     }
+    
     public void checkEvent() {
         //Check if the player character is more than 1 tile a way from the last event
         int xDistance = Math.abs(gp.player.worldX - previousEventX);
@@ -101,6 +102,7 @@ public class EventHandler {
         
         
     }
+    
     public boolean hit(int map, int col, int row, String reqDirection) {
         
         boolean hit = false;
@@ -126,6 +128,7 @@ public class EventHandler {
         }
         return hit;
     }
+    
     public void teleport(int gameState) {
 
         gp.gameState = gameState;
@@ -134,12 +137,14 @@ public class EventHandler {
         gp.player.worldY = gp.tileSize*18;
 
     }
+    
     public void damagePit( int gameState) {
         gp.gameState = gameState;
         gp.ui.currentDiaglogue = "You fall into a pit!";
         gp.player.life -= 1;
         canTouchEvent = false;
     }
+    
     public void healingPool(int gameState) {
         if(gp.KeyH.interPressed == true) {
             gp.gameState = gameState;
@@ -151,6 +156,7 @@ public class EventHandler {
         }
         gp.KeyH.interPressed = false;
     }
+    
     public void teleport (int map, int col, int row) {
         gp.currentMap = map;
         gp.player.worldX = gp.tileSize * col;
