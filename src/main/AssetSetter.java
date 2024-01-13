@@ -2,6 +2,9 @@ package main;
 
 import object.Key;
 import object.Lantern;
+import object.WormHoleForest;
+import object.WormHoleIce;
+import object.WormHoleRock;
 import object.Chest;
 import object.ChestForest;
 import object.ChestIce;
@@ -66,8 +69,51 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldY = 26 * gp.tileSize;
         i++;
 
+        gp.obj[mapNum][i] = new WormHoleForest(gp);
+        gp.obj[mapNum][i].worldX = 11 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 94 * gp.tileSize;
+        i++;
 
-        
+        gp.obj[mapNum][i] = new WormHoleForest(gp);
+        gp.obj[mapNum][i].worldX = 46 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 71 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new WormHoleForest(gp);
+        gp.obj[mapNum][i].worldX = 95 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 97 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new WormHoleForest(gp);
+        gp.obj[mapNum][i].worldX = 108 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 100 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new WormHoleRock(gp);
+        gp.obj[mapNum][i].worldX = 104 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 63 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new WormHoleRock(gp);
+        gp.obj[mapNum][i].worldX = 108 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 12 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new WormHoleIce(gp);
+        gp.obj[mapNum][i].worldX = 27 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 27 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new WormHoleIce(gp);
+        gp.obj[mapNum][i].worldX = 48 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 45 * gp.tileSize;
+        i++;
+
+        gp.obj[mapNum][i] = new WormHoleIce(gp);
+        gp.obj[mapNum][i].worldX = 67 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 16 * gp.tileSize;
+        i++;
+
     }
     public void setNPC(){
         int mapNum = 0;

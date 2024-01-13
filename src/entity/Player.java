@@ -248,17 +248,16 @@ public class Player extends Entity {
 
             //player image changes every 6 frames
             spriteCounter++;
-            if (spriteCounter >  7) {
-                if (spriteNum == 0) { spriteNum =1; }
-                else if (spriteNum == 1) { spriteNum =2; }
-                else if (spriteNum == 2) { spriteNum =3; }
-                else if (spriteNum == 3) { spriteNum =4; }
-                else if (spriteNum == 4) { spriteNum =5; }
-                else if (spriteNum == 5) { spriteNum =6; }
-                else if (spriteNum == 6) { spriteNum =7; }
-                else if (spriteNum == 7) { spriteNum =8; }
-                else if (spriteNum == 8) { spriteNum = 0;}
-                spriteCounter =0;
+            if (spriteCounter > 7) {
+                if (spriteNum == 0) { spriteNum = 1; }
+                else if (spriteNum == 1) { spriteNum = 2; }
+                else if (spriteNum == 2) { spriteNum = 3; }
+                else if (spriteNum == 3) { spriteNum = 4; }
+                else if (spriteNum == 4) { spriteNum = 5; }
+                else if (spriteNum == 5) { spriteNum = 6; }
+                else if (spriteNum == 6) { spriteNum = 7; }
+                else if (spriteNum == 7) { spriteNum = 0; }
+                spriteCounter = 0;
             }
 
         if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true) {
