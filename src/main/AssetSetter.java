@@ -68,7 +68,6 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldY = 26 * gp.tileSize;
         i++;
 
-<<<<<<< HEAD
         gp.obj[mapNum][i] = new WormHoleForest(gp);
         gp.obj[mapNum][i].worldX = 11 * gp.tileSize;
         gp.obj[mapNum][i].worldY = 94 * gp.tileSize;
@@ -114,13 +113,6 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldY = 16 * gp.tileSize;
         i++;
 
-=======
-        //  gp.obj[mapNum][i] = new Boots(gp);
-        // gp.obj[mapNum][i].worldX = 18 * gp.tileSize;
-        // gp.obj[mapNum][i].worldY = 17 * gp.tileSize;
-        // i++;
-        
->>>>>>> 5e1a19198aae11ef77b3718fc37fd8bf4bab853a
     }
     
     public void setNPC(){
