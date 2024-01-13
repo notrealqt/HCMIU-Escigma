@@ -49,6 +49,7 @@ public class Sound {
     public void stop(){
         clip.stop();
     }
+    
     public void CheckVolume(){
         switch (volumeScale) {
             case 0: volume = -80f ; break;
@@ -60,4 +61,5 @@ public class Sound {
         }
         fc.setValue(volume);
     }
+
 }

@@ -126,6 +126,7 @@ public class CollisionDetector {
                 break;              
         }
     }
+    
     public int checkObject(Entity entity, boolean player){
         int index = 9999;
         for(int i = 0; i<gp.obj[1].length; i++){
@@ -192,7 +193,7 @@ public class CollisionDetector {
         }
         return index;
     }
-    //NPC or Monster collisioin
+    
     public int checkEntity(Entity entity, Entity[][] npc) {
         int index = 9999;
         for(int i = 0; i<npc.length; i++){
@@ -258,6 +259,7 @@ public class CollisionDetector {
         }
         return index;
     }
+    
     public boolean checkPlayer(Entity entity) {
 
         boolean hitplayer = false;

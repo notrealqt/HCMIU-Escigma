@@ -21,7 +21,6 @@ public class AssetSetter {
         this.gp = gp;
     }
 
-
     public void setObject() {
         int mapNum = 0;
         int i = 0;
@@ -72,6 +71,7 @@ public class AssetSetter {
         // i++;
         
     }
+    
     public void setNPC(){
         int mapNum = 0;
         gp.npc[mapNum][0] = new NPC_OldMan(gp);
@@ -80,7 +80,6 @@ public class AssetSetter {
 
     }
 
-    //place slime onto the map
     public void setMonster(){
         int mapNum = 0;
         gp.monster[mapNum][1] = new m_GreenSlime(gp);
