@@ -50,7 +50,7 @@ public class Entity {
     public String knockBackDirection;
     public boolean guarding = false;
     public boolean transparent = false;
-
+    public boolean  offBalance = false;
 
     //Counter
     public int spriteCounter = 0;
@@ -59,6 +59,9 @@ public class Entity {
     public int dieCounter =0;
     public int shotAvailableCounter = 0;
     int knockBackCounter = 0;
+    public int guardCounter = 0;
+    int offBalanceCounter = 0;
+
 
     //attributes for character 
     public int defaultSpeed;  
@@ -307,9 +310,16 @@ public class Entity {
                 invincible = false;
                 invincibleCounter = 0;
                 }
+        }
+        if(shotAvailableCounter == 0){
+            shotAvailableCounter ++;
+        }
+        if(offBalance == true)  {
+            offBalanceCounter++;
+            if(offBalanceCounter > 60) {
+                offBalance = false;
+                offBalanceCounter = 0;
             }
-            if(shotAvailableCounter == 0){
-                shotAvailableCounter ++;
         }
     } 
 
@@ -331,6 +341,14 @@ public class Entity {
             int damage = attack - gp.player.defense;
             String canGuard = getOppDirection(direction);
             if (gp.player.guarding == true && gp.player.direction.equals(canGuard)) {
+                //Parry
+                if(gp.player.guardCounter < 10) {
+                    damage = 0;
+                    knockBack(this, gp.player);
+                    offBalance = true;
+                    spriteCounter =- 60;
+                }
+                //Normal guard
                 damage /= 3;
             }
             else {                 
@@ -339,6 +357,7 @@ public class Entity {
 
             if (damage != 0) {
                 gp.player.transparent = true;
+                knockBack(gp.player, this);
             }
             gp.player.life -= damage;
             gp.player.invincible = true;
