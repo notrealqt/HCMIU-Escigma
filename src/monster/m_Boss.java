@@ -18,7 +18,7 @@ public class m_Boss extends Entity {
         speed = 2;
         maxLife = 10;
         life = maxLife;
-        attack = 10;
+        attack = 1;
         defense = 5;
         
         solidArea.x = 4;
@@ -98,17 +98,21 @@ public class m_Boss extends Entity {
     }
 
     public void setAction(){
-        
-        if (onPath == true) {
-            checkStop(gp.player, 15, 100);
-            searchPath(getGoalCol(gp.player),getGoalRow(gp.player));
+        if (rage == false && life < maxLife/2) {
+            rage = true;
+            defaultSpeed += 2;
+            speed = defaultSpeed;
+            attack *= 2;
+            
+        }
+        if (getTileDistance(gp.player) < 10) {
+            chasePlayer(60);
         }
         else {
-            checkChasing(gp.player, 5, 100);
-            getRandomDirection();
-        } 
+            getRandomDirection(120);
+        }
         if (attacking == false) {
-            checkAttack(30, gp.tileSize *4, gp.tileSize);
+            checkAttack(60, gp.tileSize, gp.tileSize);
         }
     }
 
