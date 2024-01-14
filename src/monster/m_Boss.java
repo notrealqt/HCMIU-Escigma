@@ -13,6 +13,7 @@ public class m_Boss extends Entity {
         
         super(gp);
         this.gp = gp;
+        boss = true;
         type = type_monster;
         name = "Human Collector";
         speed = 2;

@@ -72,6 +72,7 @@ public class Entity {
     public Projectile projectile;
     public Entity currentLight;
     public int motion1_duration, motion2_duration;
+    public boolean boss;
 
     //TYPE
     public final int type_pickupOnly = 7;
