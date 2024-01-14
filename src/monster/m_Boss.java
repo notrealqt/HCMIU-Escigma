@@ -21,7 +21,8 @@ public class m_Boss extends Entity {
         life = maxLife;
         attack = 1;
         defense = 5;
-        
+        knockBackPower = 100;
+
         solidArea.x = 4;
         solidArea.y = 4;
         solidArea.width = 40;

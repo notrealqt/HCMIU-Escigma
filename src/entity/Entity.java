@@ -98,7 +98,7 @@ public class Entity {
     public int manaCost;
     public boolean knockBack = false;
     public int lightRadius;
-
+    public int knockBackPower = 0;
     public Entity(GamePanel gp){
         this.gp = gp;
     }
@@ -344,7 +344,7 @@ public class Entity {
                 //Parry
                 if(gp.player.guardCounter < 10) {
                     damage = 0;
-                    knockBack(this, gp.player);
+                    knockBack(this, gp.player, knockBackPower);
                     offBalance = true;
                     spriteCounter =- 60;
                 }
@@ -357,7 +357,7 @@ public class Entity {
 
             if (damage != 0) {
                 gp.player.transparent = true;
-                knockBack(gp.player, this);
+                knockBack(gp.player, this, knockBackPower);
             }
             gp.player.life -= damage;
             gp.player.invincible = true;
@@ -652,10 +652,10 @@ public class Entity {
             } 
     }
 
-    public void knockBack (Entity target, Entity attacker) {
+    public void knockBack (Entity target, Entity attacker, int knockBackPower) {
         this.attacker = attacker;
         target.knockBackDirection = attacker.direction;
-        target.speed += 10;
+        target.speed += knockBackPower;
         target.knockBack = true;
     }
 

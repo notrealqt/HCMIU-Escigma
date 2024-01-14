@@ -19,7 +19,7 @@ public class m_GreenSlime extends Entity {
         life = maxLife;
         attack = 5;
         defense = 0;
-
+        knockBackPower = 5;
         
         solidArea.x = 3;
         solidArea.y = 18;
