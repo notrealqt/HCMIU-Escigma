@@ -9,13 +9,11 @@ import main.GamePanel;
 
 public class Chest extends Entity{
     
-    Entity loot;
-    boolean opened = false;
 
-    public Chest(GamePanel gp, Entity loot) {
+
+    public Chest(GamePanel gp) {
         super(gp);
         this.gp = gp;
-        this.loot = loot;
 
         type = type_obstacle;
         name = "Chest";
@@ -41,7 +39,9 @@ public class Chest extends Entity{
         */
         
     }  
-    
+    public void setLoot(Entity loot) {
+        this.loot = loot;
+    }
     public void interact() {
         gp.gameState = gp.dialogueState;
         

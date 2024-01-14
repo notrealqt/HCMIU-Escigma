@@ -98,6 +98,16 @@ public class Player extends Entity {
         lightUpdated = false;
     }
     
+    public int getCurrentWeap () {
+        int currentWeaponSlot = 0;
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i) == currentWeapon) {
+                currentWeaponSlot = i;
+            }
+        }
+        return currentWeaponSlot;
+    }
+    
     public void setItems(){
         inventory.add(currentWeapon);
     }

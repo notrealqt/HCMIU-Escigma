@@ -724,7 +724,7 @@ public class UI {
                 g2.drawString("👉", textX-40, textY);
                 if(gp.KeyH.enterPressed == true){
                     SubState=0;
-                    gp.restart();
+                    gp.resetGame(true);
                     gp.gameState = gp.titleState;
                 }
             }

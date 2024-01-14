@@ -36,6 +36,9 @@ public class Entity {
     public String direction = "down";
     public int spriteNum = 0;
     int dialogueIndex = 0;
+    public Entity loot;
+    public boolean opened = false;
+
     public boolean collision = false;
     //take damage from monster from amount of time
     //avoid taking constantly damage
@@ -145,6 +148,7 @@ public class Entity {
         return goalRow;    
     }
     
+    public void setLoot(Entity loot) {}
     public void setAction() {}
     
     public void damagereaction() {}
