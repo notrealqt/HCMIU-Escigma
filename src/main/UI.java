@@ -224,7 +224,7 @@ public class UI {
         // }
         //Title name
         g2.setFont(tnr_80);
-        String text = "Maze Raider";
+        String text = "Escigma";
         int x = getXforCenteredText(text);
         int y = gp.tileSize*2;
         //Shadow
@@ -272,10 +272,6 @@ public class UI {
         g2.drawString(text, x, y);
         if(commandNum == 3) {
             g2.drawString(">", x-gp.tileSize, y);
-            //   if(gp.KeyH.enterPressed == true){
-                    
-            //            drawOptionMenuScreen();
-            //     }
         }
 
         text = "QUIT";

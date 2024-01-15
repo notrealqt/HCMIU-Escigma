@@ -27,7 +27,7 @@ public class KeyHandle implements KeyListener {
     
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        //System.out.println("Key pressed: " + code);
+        System.out.println("Key pressed: " + code);
 
         //Title state
         if(gp.gameState == gp.titleState) {
