@@ -36,6 +36,9 @@ public class Entity {
     public String direction = "down";
     public int spriteNum = 0;
     int dialogueIndex = 0;
+    public Entity loot;
+    public boolean opened = false;
+    public boolean rage = false;
     public boolean collision = false;
     //take damage from monster from amount of time
     //avoid taking constantly damage
@@ -47,7 +50,7 @@ public class Entity {
     public String knockBackDirection;
     public boolean guarding = false;
     public boolean transparent = false;
-
+    public boolean  offBalance = false;
 
     //Counter
     public int spriteCounter = 0;
@@ -56,6 +59,9 @@ public class Entity {
     public int dieCounter =0;
     public int shotAvailableCounter = 0;
     int knockBackCounter = 0;
+    public int guardCounter = 0;
+    int offBalanceCounter = 0;
+
 
     //attributes for character 
     public int defaultSpeed;  
@@ -69,6 +75,7 @@ public class Entity {
     public Projectile projectile;
     public Entity currentLight;
     public int motion1_duration, motion2_duration;
+    public boolean boss;
 
     //TYPE
     public final int type_pickupOnly = 7;
@@ -91,7 +98,7 @@ public class Entity {
     public int manaCost;
     public boolean knockBack = false;
     public int lightRadius;
-
+    public int knockBackPower = 0;
     public Entity(GamePanel gp){
         this.gp = gp;
     }
@@ -121,12 +128,22 @@ public class Entity {
     }
     
     public int getXDistance ( Entity target) {
-        int xDistance = Math.abs(worldX - target.worldX);
+        int xDistance = Math.abs(getCenterX() - target.getCenterX());
         return xDistance;
     }
     
+    public int getCenterX() {
+        int centerX = worldX + left1.getWidth()/2;
+        return centerX;
+    }
+    
+    public int getCenterY() {
+        int centerY = worldY + up1.getHeight()/2;
+        return centerY;
+    }
+
     public int getYDistance ( Entity target) {
-        int yDistance = Math.abs(worldX - target.worldY);
+        int yDistance = Math.abs(getCenterY() - target.getCenterY());
         return yDistance;
     }
     
@@ -145,6 +162,7 @@ public class Entity {
         return goalRow;    
     }
     
+    public void setLoot(Entity loot) {}
     public void setAction() {}
     
     public void damagereaction() {}
@@ -292,9 +310,16 @@ public class Entity {
                 invincible = false;
                 invincibleCounter = 0;
                 }
+        }
+        if(shotAvailableCounter == 0){
+            shotAvailableCounter ++;
+        }
+        if(offBalance == true)  {
+            offBalanceCounter++;
+            if(offBalanceCounter > 60) {
+                offBalance = false;
+                offBalanceCounter = 0;
             }
-            if(shotAvailableCounter == 0){
-                shotAvailableCounter ++;
         }
     } 
 
@@ -316,6 +341,14 @@ public class Entity {
             int damage = attack - gp.player.defense;
             String canGuard = getOppDirection(direction);
             if (gp.player.guarding == true && gp.player.direction.equals(canGuard)) {
+                //Parry
+                if(gp.player.guardCounter < 10) {
+                    damage = 0;
+                    knockBack(this, gp.player, knockBackPower);
+                    offBalance = true;
+                    spriteCounter =- 60;
+                }
+                //Normal guard
                 damage /= 3;
             }
             else {                 
@@ -324,6 +357,7 @@ public class Entity {
 
             if (damage != 0) {
                 gp.player.transparent = true;
+                knockBack(gp.player, this, knockBackPower);
             }
             gp.player.life -= damage;
             gp.player.invincible = true;
@@ -337,9 +371,9 @@ public class Entity {
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-        if( worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && 
+        if( worldX + gp.tileSize*5 > gp.player.worldX - gp.player.screenX && 
             worldX - gp.tileSize < gp.player.worldX + gp.player.screenX && 
-            worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && 
+            worldY + gp.tileSize *5 > gp.player.worldY - gp.player.screenY && 
             worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
                 
                 int tempScreenX = screenX;
@@ -359,7 +393,7 @@ public class Entity {
                             if (spriteNum == 9) {image = up9;}
                         }
                         if(attacking == true){
-                            tempScreenY = screenY - gp.tileSize; 
+                            tempScreenY = screenY - up1.getHeight(); 
                             if(spriteNum==1){image = upAttack1;}
                             if(spriteNum==2){image = upAttack2;}
                             if(spriteNum==3){image = upAttack3;}
@@ -381,6 +415,7 @@ public class Entity {
                             if (spriteNum == 9) {image = down9;}
                         }
                         if(attacking == true){
+
                             if(spriteNum==1){image = downAttack1;}
                             if(spriteNum==2){image = downAttack2;}
                             if(spriteNum==3){image = downAttack3;}
@@ -402,7 +437,7 @@ public class Entity {
                             if (spriteNum == 9) {image = left9;}
                         }
                         if(attacking == true){
-                            tempScreenX = screenX - gp.tileSize; 
+                            tempScreenX = screenX - left1.getWidth(); 
                             if(spriteNum==1){image = leftAttack1;}
                             if(spriteNum==2){image = leftAttack2;}
                             if(spriteNum==3){image = leftAttack3;}
@@ -593,10 +628,10 @@ public class Entity {
         }
     }
     
-    public void getRandomDirection() {
+    public void getRandomDirection(int interval) {
         actionLockCounter++;
             
-            if(actionLockCounter == 120){
+            if(actionLockCounter  > interval){
                 Random random = new Random();
                 int i = random.nextInt(100)+1; //Random from 1 to 100
 
@@ -617,10 +652,10 @@ public class Entity {
             } 
     }
 
-    public void knockBack (Entity target, Entity attacker) {
+    public void knockBack (Entity target, Entity attacker, int knockBackPower) {
         this.attacker = attacker;
         target.knockBackDirection = attacker.direction;
-        target.speed += 10;
+        target.speed += knockBackPower;
         target.knockBack = true;
     }
 
@@ -685,22 +720,22 @@ public class Entity {
 
         switch (direction)  {
             case "up":
-                if (gp.player.worldY < worldY && yDis < straight && xDis < horizontal) {
+                if (gp.player.getCenterY() < getCenterY() && yDis < straight && xDis < horizontal) {
                     targetInRange = true;
                 }
                 break;
             case "down":
-                if (gp.player.worldY > worldY && yDis < straight && xDis < horizontal) {
+                if (gp.player.getCenterY() > getCenterY() && yDis < straight && xDis < horizontal) {
                     targetInRange = true;
                 }
                 break;
             case "left":
-                if (gp.player.worldY < worldY && xDis < straight && yDis < horizontal) {
+                if (gp.player.getCenterX() < getCenterX() && xDis < straight && yDis < horizontal) {
                     targetInRange = true;
                 }
                 break;
             case "right":
-                if (gp.player.worldY > worldY && yDis < straight && xDis < horizontal) {
+                if (gp.player.getCenterX() > getCenterX() && yDis < straight && xDis < horizontal) {
                     targetInRange = true;
                 }
                 break;
@@ -714,6 +749,28 @@ public class Entity {
             }
         }
     }
-
+    
+    public void chasePlayer (int interval) {
+        actionLockCounter++;
+        if(actionLockCounter > interval) {
+            if(getXDistance(gp.player) > getYDistance(gp.player)) {
+                if (gp.player.getCenterX() < getCenterX()) {
+                    direction = "left";
+                }
+                else {
+                    direction = "right";
+                }
+            }
+            else if (getXDistance(gp.player) < getYDistance(gp.player)) {
+                if(gp.player.getCenterY() < getCenterY()) {
+                    direction = "up";
+                }
+                else {
+                    direction = "down";
+                }
+            }
+            actionLockCounter = 0;
+        }
+    }
 }
 

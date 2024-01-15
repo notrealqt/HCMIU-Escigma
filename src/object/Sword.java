@@ -15,6 +15,7 @@ public class Sword extends Entity {
         description = "["+name+"]\nAn old sword";
         attackArea.width = 36;
         attackArea.height = 36;
+        knockBackPower = 3;
         //TODO Auto-generated constructor stub
     }
     

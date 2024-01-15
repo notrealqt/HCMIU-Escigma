@@ -19,7 +19,7 @@ public class m_GreenSlime extends Entity {
         life = maxLife;
         attack = 5;
         defense = 0;
-
+        knockBackPower = 5;
         
         solidArea.x = 3;
         solidArea.y = 18;
@@ -64,7 +64,7 @@ public class m_GreenSlime extends Entity {
         }
         else {
             checkChasing(gp.player, 5, 100);
-            getRandomDirection();
+            getRandomDirection(120);
         }    
     }
 

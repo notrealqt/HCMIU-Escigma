@@ -17,14 +17,11 @@ public class DataStorage implements Serializable {
    ArrayList<String> itemNames = new ArrayList();
    ArrayList<Integer> itemAmounts = new ArrayList();
    int currentWeaponSlot;
-   int currentShieldSlot;
-   String[][] mapObjectNames;
-   int[][] mapObjectWorldX;
-   int[][] mapObjectWorldY;
-   String[][] mapObjectLootNames;
-   boolean[][] mapObjectOpened;
-   String[][] iTileNames;
-   int[][] iTileWorldX;
-   int[][] iTileWorldY;
+
+   String mapObjectNames[][];
+   int mapObjectWorldX[][];
+   int mapObjectWorldY[][];
+   String mapObjectLootNames[][];
+   boolean mapObjectOpened[][];
 }
 

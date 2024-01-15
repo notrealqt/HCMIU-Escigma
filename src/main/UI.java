@@ -168,12 +168,12 @@ public class UI {
         int x = gp.tileSize/2;
         int y = gp.tileSize/2;
         int i = 0;
-
+        int iconSize = 32;
         //Draw blank heart
         while(i < gp.player.maxLife/2) {
-            g2.drawImage(heart_blank, x, y, null);
+            g2.drawImage(heart_blank, x, y,iconSize,iconSize, null);
             i++;
-            x += gp.tileSize;    
+            x += iconSize;    
         }
 
         //Reset
@@ -183,13 +183,13 @@ public class UI {
         
         //Draw current life
         while(i < gp.player.life) {
-            g2.drawImage(heart_half, x, y, null);
+            g2.drawImage(heart_half, x, y, iconSize, iconSize, null);
             i++;
             if(i < gp.player.life) {
-                g2.drawImage(heart_full, x, y, null);
+                g2.drawImage(heart_full, x, y,iconSize,iconSize, null);
             }
             i++;
-            x += gp.tileSize;
+            x += iconSize;
         }
 
         //draw max mana
@@ -197,7 +197,7 @@ public class UI {
         y = (int)(gp.tileSize*1.5);
         i = 0;
         while(i<gp.player.maxMana){
-            g2.drawImage(mana_blank, x, y, null);
+            g2.drawImage(mana_blank, x, y,iconSize,iconSize, null);
             i++;
             x+=35;
         }
@@ -207,7 +207,7 @@ public class UI {
         y = (int)(gp.tileSize*1.5);
         i= 0;
         while(i<gp.player.mana){
-        g2.drawImage(mana_full, x, y, null);
+        g2.drawImage(mana_full, x, y,iconSize,iconSize, null);
         i++;
         x+=35;
             }
@@ -724,7 +724,7 @@ public class UI {
                 g2.drawString("👉", textX-40, textY);
                 if(gp.KeyH.enterPressed == true){
                     SubState=0;
-                    gp.restart();
+                    gp.resetGame(true);
                     gp.gameState = gp.titleState;
                 }
             }

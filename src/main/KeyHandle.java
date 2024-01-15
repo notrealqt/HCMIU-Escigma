@@ -97,10 +97,12 @@ public class KeyHandle implements KeyListener {
                     gp.playMusic(0);
                 }
                 if(gp.ui.commandNum == 1) {
-                    //Add later
+                    gp.saveLoad.load();
+                    gp.gameState = gp.playState;
+                    gp.playMusic(0);
+
                 }
                 if(gp.ui.commandNum == 2) {
-                    //Add later
                     gp.gameState = gp.guideState;
                 }
                 if(gp.ui.commandNum == 3) {
