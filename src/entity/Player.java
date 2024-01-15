@@ -256,116 +256,115 @@ public class Player extends Entity {
         else {
             
             if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || (keyH.leftPressed && keyH.upPressed) == true || (keyH.rightPressed && keyH.upPressed) == true || (keyH.leftPressed && keyH.downPressed) == true || (keyH.rightPressed && keyH.downPressed == true|| keyH.attackPressed == true || keyH.interPressed == true)) {
-            if (keyH.upPressed == true) { direction = "up"; } 
-            if (keyH.downPressed == true) { direction = "down"; }
-            if (keyH.leftPressed == true) { direction = "left"; }
-            if ( keyH.rightPressed == true) { direction = "right"; }
-            if ((keyH.upPressed && keyH.leftPressed) == true) { direction = "upleft"; }
-            if ((keyH.upPressed && keyH.rightPressed) == true) { direction = "upright"; }
-            if ((keyH.downPressed && keyH.leftPressed) == true) { direction = "downleft"; }
-            if ((keyH.downPressed && keyH.rightPressed) == true) { direction = "downright"; }
-            //Check tile collision
-            collisionOn = false;
-            gp.colDect.checkTile(this);
+                if (keyH.upPressed == true) { direction = "up"; } 
+                if (keyH.downPressed == true) { direction = "down"; }
+                if (keyH.leftPressed == true) { direction = "left"; }
+                if ( keyH.rightPressed == true) { direction = "right"; }
+                if ((keyH.upPressed && keyH.leftPressed) == true) { direction = "upleft"; }
+                if ((keyH.upPressed && keyH.rightPressed) == true) { direction = "upright"; }
+                if ((keyH.downPressed && keyH.leftPressed) == true) { direction = "downleft"; }
+                if ((keyH.downPressed && keyH.rightPressed) == true) { direction = "downright"; }
+                //Check tile collision
+                collisionOn = false;
+                gp.colDect.checkTile(this);
 
-            //Check item collision
-            int itemIndex = gp.colDect.checkObject(this, true);
-            pickUpItem(itemIndex);
+                //Check item collision
+                int itemIndex = gp.colDect.checkObject(this, true);
+                pickUpItem(itemIndex);
 
-            //Check NPC collision
-            int npcIndex = gp.colDect.checkEntity(this, gp.npc);
-            interactNPC(npcIndex);
-            //Check event
-            gp.eHandler .checkEvent();
-           
-            //Check monster collision
-            int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
-            encounterMonster(monsterIndex);
+                //Check NPC collision
+                int npcIndex = gp.colDect.checkEntity(this, gp.npc);
+                interactNPC(npcIndex);
+                //Check event
+                gp.eHandler .checkEvent();
             
-            //if collision is false, player can move 
-            if (collisionOn == false && keyH.interPressed==false && keyH.attackPressed == false) {     //interact without moving
-                switch (direction) {
-                    case "up": worldY -= speed;
-                        break;
-                    case "down": worldY += speed;
-                        break;
-                    case "left": worldX -= speed;
-                        break;
-                    case "right": worldX += speed;
-                        break;
-                    case "upleft": worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2)); 
-                                   worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        break;
-                    case "upright": worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                                    worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        break;
-                    case "downleft": worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                                     worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        break;
-                    case "downright": worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                                      worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        break;
+                //Check monster collision
+                int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
+                encounterMonster(monsterIndex);
+                
+                //if collision is false, player can move 
+                if (collisionOn == false && keyH.interPressed==false && keyH.attackPressed == false) {     //interact without moving
+                    switch (direction) {
+                        case "up": worldY -= speed;
+                            break;
+                        case "down": worldY += speed;
+                            break;
+                        case "left": worldX -= speed;
+                            break;
+                        case "right": worldX += speed;
+                            break;
+                        case "upleft": worldX -= (int)Math.round(2*Math.sqrt(speed)); 
+                                    worldY -= (int)Math.round(2*Math.sqrt(speed));
+                            break;
+                        case "upright": worldX += (int)Math.round(2*Math.sqrt(speed));
+                                        worldY -= (int)Math.round(2*Math.sqrt(speed));
+                            break;
+                        case "downleft": worldX -= (int)Math.round(2*Math.sqrt(speed));
+                                        worldY += (int)Math.round(2*Math.sqrt(speed));
+                            break;
+                        case "downright": worldX += (int)Math.round(2*Math.sqrt(speed));
+                                        worldY += (int)Math.round(2*Math.sqrt(speed));
+                            break;
+                    }
                 }
+                
+                if(keyH.attackPressed==true&&attackCanceled==false){
+                    attacking = true;
+                    spriteCounter=0;
+                }
+                attackCanceled =false;
+                gp.KeyH.attackPressed = false;
+                gp.KeyH.interPressed = false;
+                guarding = false;
+                guardCounter = 0;
+                //player image changes every 6 frames
+                spriteCounter++;
+                if (spriteCounter > 7) {
+                    if (spriteNum == 0) { spriteNum = 1; }
+                    else if (spriteNum == 1) { spriteNum = 2; }
+                    else if (spriteNum == 2) { spriteNum = 3; }
+                    else if (spriteNum == 3) { spriteNum = 4; }
+                    else if (spriteNum == 4) { spriteNum = 5; }
+                    else if (spriteNum == 5) { spriteNum = 6; }
+                    else if (spriteNum == 6) { spriteNum = 7; }
+                    else if (spriteNum == 7) { spriteNum = 0; }
+                    spriteCounter = 0;
+                }
+
+                if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true) {
+
+                    //Set default coordinates, direction and user
+                    projectile.set(worldX, worldY, direction, true,this);
+
+                    //use the mana
+                    projectile.subtractResource(this);
+
+                    //add projectile to the list
+                    gp.projectileList.add(projectile);
+
+                    shotAvailableCounter = 0 ;
+                }       
+                if(shotAvailableCounter<30){ shotAvailableCounter++; }            
             }
-            
-            if(keyH.attackPressed==true&&attackCanceled==false){
-                attacking = true;
-                spriteCounter=0;
-            }
-            attackCanceled =false;
-            gp.KeyH.attackPressed = false;
-            gp.KeyH.interPressed = false;
-            guarding = false;
-            guardCounter = 0;
-            //player image changes every 6 frames
-            spriteCounter++;
-            if (spriteCounter > 7) {
-                if (spriteNum == 0) { spriteNum = 1; }
-                else if (spriteNum == 1) { spriteNum = 2; }
-                else if (spriteNum == 2) { spriteNum = 3; }
-                else if (spriteNum == 3) { spriteNum = 4; }
-                else if (spriteNum == 4) { spriteNum = 5; }
-                else if (spriteNum == 5) { spriteNum = 6; }
-                else if (spriteNum == 6) { spriteNum = 7; }
-                else if (spriteNum == 7) { spriteNum = 0; }
-                spriteCounter = 0;
-            }
 
-        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true) {
-
-                //Set default coordinates, direction and user
-                projectile.set(worldX, worldY, direction, true,this);
-
-                //use the mana
-                projectile.subtractResource(this);
-
-                //add projectile to the list
-                gp.projectileList.add(projectile);
-
-                shotAvailableCounter = 0 ;
         }
-    //invincible time must outside of the key if statement
-    if(invincible == true){
-        invincibleCounter++;
-        if(invincibleCounter > 60) {
-            invincible = false;
-            transparent = false;
-            invincibleCounter = 0;
-        }
-        if (life <= 0) {
-            gp.playSE(4);
-            gp.gameState= gp.youLostState;
-            gp.ui.commandNum = -1;
-            //death music
-            //gp.playMusic(index);
+        //invincible time must outside of the key if statement
+        if(invincible == true){
+            invincibleCounter++;
+            if(invincibleCounter > 60) {
+                invincible = false;
+                transparent = false;
+                invincibleCounter = 0;
+            }
+            if (life <= 0) {
+                gp.playSE(4);
+                gp.gameState= gp.youLostState;
+                gp.ui.commandNum = -1;
+                //death music
+                //gp.playMusic(index);
+            }
         }
     }
-
-    if(shotAvailableCounter<30){ shotAvailableCounter++; }            
-        }
-
-    }
-}
        
     public void attacking () {
         spriteCounter++;
@@ -466,7 +465,6 @@ public class Player extends Entity {
             if(i!=9999)
             {
                 attackCanceled=true;
-                gp.gameState = gp.dialogueState;
                 gp.npc[gp.currentMap][i].speak();   
             }
             

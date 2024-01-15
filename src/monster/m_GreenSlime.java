@@ -11,6 +11,7 @@ public class m_GreenSlime extends Entity {
         
         super(gp);
         this.gp = gp;
+        boss = false;
         type = type_monster;
         name = "Green Slime";
         defaultSpeed = 1;

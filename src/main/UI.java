@@ -27,10 +27,12 @@ public class UI {
     int SubState = 0;
     public int slotCol = 0;
     public int slotRow = 0;
-
+    int charIndex = 0;
+    String combineText = "";
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
+    public Entity npc;
 
     public UI(GamePanel gp){
         this.gp = gp;
@@ -130,6 +132,7 @@ public class UI {
 
         //Play state
         if(gp.gameState == gp.playState) {
+            drawMonsterLife();
             drawPlayerLife();
         }
 
@@ -223,7 +226,7 @@ public class UI {
         // }
         //Title name
         g2.setFont(tnr_80);
-        String text = "Maze Raider";
+        String text = "Escigma";
         int x = getXforCenteredText(text);
         int y = gp.tileSize*2;
         //Shadow
@@ -271,10 +274,6 @@ public class UI {
         g2.drawString(text, x, y);
         if(commandNum == 3) {
             g2.drawString(">", x-gp.tileSize, y);
-            //   if(gp.KeyH.enterPressed == true){
-                    
-            //            drawOptionMenuScreen();
-            //     }
         }
 
         text = "QUIT";
@@ -307,6 +306,36 @@ public class UI {
         g2.setFont(tnr_20);
         x += gp.tileSize;
         y += gp.tileSize;
+
+        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {
+            //currentDiaglogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
+            
+            char characters[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
+            if (charIndex < characters.length) {
+                String s = String.valueOf(characters[charIndex]);
+                combineText = combineText + s;
+                currentDiaglogue = combineText;
+                charIndex++;
+
+            }
+            if (gp.KeyH.enterPressed == true ) {
+                charIndex = 0;
+                combineText = "";
+
+                if (gp.gameState == gp.dialogueState) {
+                    npc.dialogueIndex++;
+                    gp.KeyH.enterPressed = false;
+
+                }
+            }
+        }
+        else {
+            npc.dialogueIndex = 0;
+            if (gp.gameState == gp.dialogueState) {
+                gp.gameState = gp.playState;
+            }
+        }
+
 
         for(String line : currentDiaglogue.split("\n")) {
             g2.drawString(line, x, y);
@@ -962,4 +991,46 @@ public class UI {
 
     }
 
+    public void drawMonsterLife() {
+        for (int i = 0; i < gp.monster[1].length; i++) {
+            Entity monster = gp.monster[gp.currentMap][i];
+            //Normal monster
+            if ( monster != null && monster.inCamera() == true) {
+                if (monster.hpBarOn == true && monster.boss == false) {
+                    double oneScale = (double)gp.tileSize/monster.maxLife;
+                    double hpBarValue = oneScale*monster.life;
+
+                    g2.setColor(new Color(35,35,35));
+                    g2.fillRect(monster.getScreenX()-1,monster.getScreenY() -16 , gp.tileSize+2, 12);
+
+                    g2.setColor(new Color(255,0,30));
+                    g2.fillRect(monster.getCenterX(), monster.getCenterY() -15, (int)hpBarValue , 10);
+
+                    monster.hpBarCounter++;
+                    if (monster.hpBarCounter > 600) {
+                        monster.hpBarCounter = 0;
+                        monster.hpBarOn = false;
+                    }
+                }
+                else if (monster.boss == true) {
+                    double oneScale = (double)gp.tileSize*8/monster.maxLife;
+                    double hpBarValue = oneScale*monster.life;
+    
+                    int x = gp.screenWidth/2 - gp.tileSize *4;
+                    int y = gp.tileSize *10;
+    
+                    g2.setColor(new Color(35,35,35));
+                    g2.fillRect(x-1,y -1 , gp.tileSize*8 +2, 22);
+    
+                    g2.setColor(new Color(255,0,30));
+                    g2.fillRect(x, y, (int)hpBarValue , 20);
+    
+                    g2.setFont( g2.getFont().deriveFont(Font.BOLD,24f));
+                    g2.setColor(Color.white);   
+                    g2.drawString(monster.name, x+4, y- 10);
+                }
+            }
+
+        }
+    }
 }

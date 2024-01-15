@@ -11,14 +11,14 @@ public class Chest extends Entity{
     
 
 
-    public Chest(GamePanel gp) {
+    public Chest(GamePanel gp, String openImage, String closeImage, Entity loot) {
         super(gp);
         this.gp = gp;
-
+        this.loot = loot;
         type = type_obstacle;
         name = "Chest";
-        image = setUp("objects/chest_ice_close_0",gp.tileSize, gp.tileSize);
-        image2 = setUp("objects/chest_ice_open_0",gp.tileSize, gp.tileSize);
+        image = setUp("objects/"+closeImage,gp.tileSize, gp.tileSize);
+        image2 = setUp("objects/"+openImage,gp.tileSize, gp.tileSize);
         down0 = image;
 
         collision = true;
@@ -39,9 +39,6 @@ public class Chest extends Entity{
         */
         
     }  
-    public void setLoot(Entity loot) {
-        this.loot = loot;
-    }
     public void interact() {
         gp.gameState = gp.dialogueState;
         

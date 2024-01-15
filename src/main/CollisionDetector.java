@@ -194,14 +194,14 @@ public class CollisionDetector {
         return index;
     }
     
-    public int checkEntity(Entity entity, Entity[][] npc) {
+    public int checkEntity(Entity entity, Entity[][] target) {
         int index = 9999;
-        for(int i = 0; i<npc.length; i++){
-            if(npc[gp.currentMap][i] != null){
+        for(int i = 0; i<target.length; i++){
+            if(target[gp.currentMap][i] != null){
                 entity.solidArea.x = entity.worldX + entity.solidArea.x;
                 entity.solidArea.y = entity.worldY + entity.solidArea.y;
-                npc[gp.currentMap][i].solidArea.x = npc[gp.currentMap][i].worldX + npc[gp.currentMap][i].solidArea.x;
-                npc[gp.currentMap][i].solidArea.y = npc[gp.currentMap][i].worldY + npc[gp.currentMap][i].solidArea.y;
+                target[gp.currentMap][i].solidArea.x = target[gp.currentMap][i].worldX + target[gp.currentMap][i].solidArea.x;
+                target[gp.currentMap][i].solidArea.y = target[gp.currentMap][i].worldY + target[gp.currentMap][i].solidArea.y;
                 //temp
                 String direction = entity.direction;
 
@@ -245,16 +245,16 @@ public class CollisionDetector {
                         entity.solidArea.y += entity.speed;
                         break;                        
                     }
-                        if(entity.solidArea.intersects(npc[gp.currentMap][i].solidArea)){
-                        if(npc[gp.currentMap][i]!=entity){
+                if(entity.solidArea.intersects(target[gp.currentMap][i].solidArea)){
+                    if(target[gp.currentMap][i]!=entity){
                         entity.collisionOn = true;
                         index = i; 
                         }                      
                 }                          
                 entity.solidArea.x = entity.solidAreaDefaultX;
                 entity.solidArea.y = entity.solidAreaDefaultY;
-                npc[gp.currentMap][i].solidArea.x = npc[gp.currentMap][i].solidAreaDefaultX;
-                npc[gp.currentMap][i].solidArea.y = npc[gp.currentMap][i].solidAreaDefaultY;       
+                target[gp.currentMap][i].solidArea.x = target[gp.currentMap][i].solidAreaDefaultX;
+                target[gp.currentMap][i].solidArea.y = target[gp.currentMap][i].solidAreaDefaultY;       
             }                            
         }
         return index;

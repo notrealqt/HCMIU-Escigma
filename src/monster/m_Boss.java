@@ -21,6 +21,7 @@ public class m_Boss extends Entity {
         life = maxLife;
         attack = 1;
         defense = 5;
+        sleep = true;
         knockBackPower = 100;
 
         solidArea.x = 4;
@@ -117,6 +118,7 @@ public class m_Boss extends Entity {
             checkAttack(60, gp.tileSize, gp.tileSize);
         }
     }
+
 
     public void damageReaction(){
         actionLockCounter = 0; 
