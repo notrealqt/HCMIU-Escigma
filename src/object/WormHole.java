@@ -6,15 +6,16 @@ import javax.imageio.ImageIO;
 import entity.Entity;
 import main.GamePanel;
 
-public class WormHoleRock extends Entity{
+public class WormHole extends Entity{
 
     GamePanel gp;
-    public WormHoleRock(GamePanel gp) {
+    public WormHole(GamePanel gp, String wormholeType) {
         super(gp);
         this.gp = gp;
         type = type_obstacle;
-        name = "WormHoleIce";
-        down0 = setUp("objects/wormhole_rock",gp.tileSize, gp.tileSize);
+        name = "WormHole";
+        down0 = setUp("objects/"+wormholeType,gp.tileSize, gp.tileSize);
+
         /*
         try {
             down0 = ImageIO.read(getClass().getResourceAsStream("/res/objects/door.png"));
