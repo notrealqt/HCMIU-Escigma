@@ -6,13 +6,14 @@ import AI.Node;
 import main.GamePanel;
 
 public class NPC_OldMan extends Entity {
-    
+    Entity eventMaster;
+
     public NPC_OldMan(GamePanel gp){
   
         super(gp);
         type = 1;
         direction = "up";
-        speed = 2;
+        speed = 1;
 
         solidArea.x = 8;
         solidArea.y = 16;
@@ -21,7 +22,7 @@ public class NPC_OldMan extends Entity {
         solidArea.width = 30;
         solidArea.height = 30;
         
-
+        dialogueSet = -1;
         getImage();
         setDialogue();
 
@@ -43,10 +44,12 @@ public class NPC_OldMan extends Entity {
     }
     
     public void setDialogue() {
-        dialogues[0] = "Hello, traveler! Welcome to nowhere!";
-        dialogues[1] = "Sadly, it's nowhere. There is nothing to do";
-        dialogues[2] = "Oh I know what to do, I'll follow you";
-        dialogues[3] = "You can run but you can't hide, you can never hide...";
+        dialogues[0][0] = "Hello, traveler! Welcome to nowhere!";
+        dialogues[0][1] = "Sadly, it's nowhere. There is nothing to do";
+        dialogues[0][2] = "Oh I know what to do, I'll follow you";
+        dialogues[0][3] = "You can run but you can't hide, you can never hide...";
+        dialogues[1][0] = " Hello world!";
+        dialogues[1][1] = " No code no life";
 
     }
     public void setAction() {
@@ -83,8 +86,14 @@ public class NPC_OldMan extends Entity {
         
     }
     public void speak() {
-        super.speak();
-        onPath = true;  
+        facePlayer();
+        startDialogue(this, dialogueSet);
+
+        dialogueSet++;
+
+        if (dialogues[dialogueSet][0] == null ) {
+            dialogueSet--;
+        }
     }
    
 }

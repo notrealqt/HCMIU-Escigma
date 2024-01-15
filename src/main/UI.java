@@ -27,10 +27,12 @@ public class UI {
     int SubState = 0;
     public int slotCol = 0;
     public int slotRow = 0;
-
+    int charIndex = 0;
+    String combineText = "";
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
+    public Entity npc;
 
     public UI(GamePanel gp){
         this.gp = gp;
@@ -304,6 +306,36 @@ public class UI {
         g2.setFont(tnr_20);
         x += gp.tileSize;
         y += gp.tileSize;
+
+        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {
+            //currentDiaglogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
+            
+            char characters[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
+            if (charIndex < characters.length) {
+                String s = String.valueOf(characters[charIndex]);
+                combineText = combineText + s;
+                currentDiaglogue = combineText;
+                charIndex++;
+
+            }
+            if (gp.KeyH.enterPressed == true ) {
+                charIndex = 0;
+                combineText = "";
+
+                if (gp.gameState == gp.dialogueState) {
+                    npc.dialogueIndex++;
+                    gp.KeyH.enterPressed = false;
+
+                }
+            }
+        }
+        else {
+            npc.dialogueIndex = 0;
+            if (gp.gameState == gp.dialogueState) {
+                gp.gameState = gp.playState;
+            }
+        }
+
 
         for(String line : currentDiaglogue.split("\n")) {
             g2.drawString(line, x, y);

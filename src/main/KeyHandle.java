@@ -27,7 +27,7 @@ public class KeyHandle implements KeyListener {
     
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        System.out.println("Key pressed: " + code);
+        System.out.println("Key pressed: " + (char)code);
 
         //Title state
         if(gp.gameState == gp.titleState) {
@@ -197,8 +197,8 @@ public class KeyHandle implements KeyListener {
     
     public void dialogueState(int code){
         if(code == KeyEvent.VK_ENTER) {
-                gp.gameState = gp.playState;
-            }
+            enterPressed = true;
+        }
     }
     
     public void characterState(int code){

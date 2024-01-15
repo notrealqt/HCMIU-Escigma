@@ -1,15 +1,20 @@
 package main;
 
+import entity.Entity;
+
 public class EventHandler {
     
     GamePanel gp;
     EventRect eventRect[][][];
+    Entity eventMaster;
 
     int previousEventX, previousEventY;
     boolean canTouchEvent = true;
     public EventHandler(GamePanel gp) {
         this.gp = gp;
 
+        eventMaster = new Entity(gp);
+        
         eventRect = new EventRect[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
         int map = 0;
         int col = 0;
@@ -38,6 +43,10 @@ public class EventHandler {
         }
 
         
+    }
+    //diagloue set
+    public void setDialogue() {
+        eventMaster.dialogues[0][0] = "You fall into a pit!" ;
     }
     
     public void checkEvent() {
@@ -140,8 +149,8 @@ public class EventHandler {
     
     public void damagePit( int gameState) {
         gp.gameState = gameState;
-        gp.ui.currentDiaglogue = "You fall into a pit!";
         gp.player.life -= 1;
+        eventMaster.startDialogue(eventMaster,0);
         canTouchEvent = false;
     }
     
@@ -167,6 +176,7 @@ public class EventHandler {
         canTouchEvent = false;
         
     }
+    
     public void wormHole (int map, int col, int row) {
         gp.currentMap = map;
         gp.player.worldX = gp.tileSize * col;
