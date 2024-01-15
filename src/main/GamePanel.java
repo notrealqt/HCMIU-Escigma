@@ -65,6 +65,7 @@ public class GamePanel extends JPanel implements Runnable {
     public PathFinder pFinder = new PathFinder(this);
     EnvironmentManager eManager = new EnvironmentManager(this);
     SaveLoad saveLoad = new SaveLoad(this);
+    public CutSceneManager csManager = new CutSceneManager(this);
     Thread gameThread;
 
     //Entity and object
@@ -82,13 +83,16 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     public final int dialogueState = 3;
     public final int characterState = 4;
-
     public final int optionState=5;
     public final int youLostState=6;
     public final int guideState = 7;
     public final int menuOptionState = 8;
     public final int mapState = 10;
+    public final int cutScene = 11;
     public int currentArea;
+
+    public boolean bossBatleOn = false;
+
 
     public GamePanel() {
         setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -259,7 +263,9 @@ public class GamePanel extends JPanel implements Runnable {
             if(map.miniMapOn == true){
             map.drawMiniMap(g2);
             }
-
+            //cutscene
+            csManager.draw(g2);
+            
             //eManager.draw(g2);
             //UI
             ui.draw(g2);

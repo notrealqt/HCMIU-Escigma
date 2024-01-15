@@ -41,6 +41,8 @@ public class Entity {
     public boolean opened = false;
     public boolean rage = false;
     public boolean collision = false;
+    public boolean sleep = false;
+
     //take damage from monster from amount of time
     //avoid taking constantly damage
     public boolean invincible =false;
@@ -235,108 +237,112 @@ public class Entity {
     }
     
     public void update(){
-        if (knockBack == true) {
-            checkCollision();
-            if(collisionOn == true) {
-                knockBackCounter = 0;
-                knockBack = false;
-                speed = defaultSpeed;
 
-            }
-            else if (collisionOn == false) {
-                switch (gp.player.direction) {
-                    case "up":
-                        worldY -= speed;
-                        break;
-                    case "down":
-                        worldY += speed;
-                        break;
-                    case "left":
-                        worldX -= speed;
-                        break;
-                    case "right":
-                        worldX += speed;
-                        break;
+        if ( sleep == false) {
+            if (knockBack == true) {
+                checkCollision();
+                if(collisionOn == true) {
+                    knockBackCounter = 0;
+                    knockBack = false;
+                    speed = defaultSpeed;
+    
+                }
+                else if (collisionOn == false) {
+                    switch (gp.player.direction) {
+                        case "up":
+                            worldY -= speed;
+                            break;
+                        case "down":
+                            worldY += speed;
+                            break;
+                        case "left":
+                            worldX -= speed;
+                            break;
+                        case "right":
+                            worldX += speed;
+                            break;
+                    }
+                }
+                knockBackCounter++;
+                if(knockBackCounter == 10) {
+                    knockBackCounter = 0;
+                    knockBack = false;
+                    speed = defaultSpeed;
+                }
+                else if (attacking == true) {
+                    attacking();
                 }
             }
-            knockBackCounter++;
-            if(knockBackCounter == 10) {
-                knockBackCounter = 0;
-                knockBack = false;
-                speed = defaultSpeed;
+            else {
+                setAction();
+                checkCollision();
+            
+                if (collisionOn == false) {
+                    switch (direction) {
+                        case "up":
+                            worldY -= speed;
+                            break;
+                        case "down":
+                            worldY += speed;
+                            break;
+                        case "left":
+                            worldX -= speed;
+                            break;
+                        case "right":
+                            worldX += speed;
+                            break;
+                        case "upleft":
+                            worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                            worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                            break;
+                        case "upright":
+                            worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                            worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                            break;
+                        case "downleft":
+                            worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                            worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                            break;
+                        case "downright":
+                            worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                            worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
+                            break;
+                    }
+                }
+                //npc image changes every 12 frames
+                spriteCounter++;
+                if (spriteCounter >  12) {
+                    if (spriteNum == 0) {
+                        spriteNum = 1;
+                    }
+                    else if (spriteNum == 1) {
+                        spriteNum = 0;
+                    }
+                    spriteCounter = 0;
             }
-            else if (attacking == true) {
-                attacking();
+            }
+            
+    
+            
+            if(invincible == true){
+                invincibleCounter++;
+                if(invincibleCounter > 60){
+                    invincible = false;
+                    invincibleCounter = 0;
+                    }
+            }
+            if(shotAvailableCounter == 0){
+                shotAvailableCounter ++;
+            }
+            if(offBalance == true)  {
+                offBalanceCounter++;
+                if(offBalanceCounter > 60) {
+                    offBalance = false;
+                    offBalanceCounter = 0;
+                }
             }
         }
-        else {
-            setAction();
-            checkCollision();
         
-            if (collisionOn == false) {
-                switch (direction) {
-                    case "up":
-                        worldY -= speed;
-                        break;
-                    case "down":
-                        worldY += speed;
-                        break;
-                    case "left":
-                        worldX -= speed;
-                        break;
-                    case "right":
-                        worldX += speed;
-                        break;
-                    case "upleft":
-                        worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        break;
-                    case "upright":
-                        worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        break;
-                    case "downleft":
-                        worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        break;
-                    case "downright":
-                        worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                        break;
-                }
-            }
-            //npc image changes every 12 frames
-            spriteCounter++;
-            if (spriteCounter >  12) {
-                if (spriteNum == 0) {
-                    spriteNum = 1;
-                }
-                else if (spriteNum == 1) {
-                    spriteNum = 0;
-                }
-                spriteCounter = 0;
-        }
-        }
-        
-
-        
-        if(invincible == true){
-            invincibleCounter++;
-            if(invincibleCounter > 60){
-                invincible = false;
-                invincibleCounter = 0;
-                }
-        }
-        if(shotAvailableCounter == 0){
-            shotAvailableCounter ++;
-        }
-        if(offBalance == true)  {
-            offBalanceCounter++;
-            if(offBalanceCounter > 60) {
-                offBalance = false;
-                offBalanceCounter = 0;
-            }
-        }
     } 
 
     public String getOppDirection ( String direction) {
