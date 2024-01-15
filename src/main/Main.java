@@ -1,5 +1,6 @@
 package main;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Main {
@@ -10,9 +11,9 @@ public class Main {
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Dungeon Raider");
+        window.setTitle("Escigma");
         //window.setUndecorated(true);
-
+        //new Main().setIcon();
         GamePanel panel = new GamePanel();
         window.add(panel);
        
@@ -28,5 +29,10 @@ public class Main {
 
         panel.setupGame();
         panel.startGameThread();
+
+    }
+    public void setIcon() {
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("null"));
+        window.setIconImage(icon.getImage());
     }
 }

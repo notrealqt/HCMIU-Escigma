@@ -22,7 +22,7 @@ public class Entity {
     public BufferedImage guardUp, guardDown, guardLeft, guardRight;
     public BufferedImage upAttack1, downAttack1, leftAttack1, rightAttack1, upAttack2, downAttack2, leftAttack2, rightAttack2, upAttack3, downAttack3, leftAttack3, rightAttack3, upAttack4, downAttack4, leftAttack4, rightAttack4;
     public BufferedImage image, image2, image3, image4, image5; //heart image
-    String dialogues[] = new String[10000];
+    public String dialogues[] = new String[10000];
     //This would set solidArea for all entities, we can change it by override like in Player
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0,0,0,0);
@@ -51,7 +51,7 @@ public class Entity {
     public boolean guarding = false;
     public boolean transparent = false;
     public boolean  offBalance = false;
-
+    public boolean hpBarOn = false;
     //Counter
     public int spriteCounter = 0;
     public int actionLockCounter = 0;
@@ -99,8 +99,18 @@ public class Entity {
     public boolean knockBack = false;
     public int lightRadius;
     public int knockBackPower = 0;
+    public int hpBarCounter = 0;
     public Entity(GamePanel gp){
         this.gp = gp;
+    }
+    public int getScreenX () {
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        return screenX;
+    }
+
+    public int getScreenY() {
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+        return screenY;
     }
     
     public int getLeftX() {
@@ -163,6 +173,7 @@ public class Entity {
     }
     
     public void setLoot(Entity loot) {}
+    
     public void setAction() {}
     
     public void damagereaction() {}
@@ -364,20 +375,26 @@ public class Entity {
         }
         
     }
+ 
+    public boolean inCamera() {
+        boolean inCamera = false;
+        if( worldX + gp.tileSize*5 > gp.player.worldX - gp.player.screenX && 
+        worldX - gp.tileSize < gp.player.worldX + gp.player.screenX && 
+        worldY + gp.tileSize *5 > gp.player.worldY - gp.player.screenY && 
+        worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+            inCamera = true;
+        }
+        return inCamera;
+    }
     
     public void draw(Graphics2D g2) {
 
         BufferedImage image = null;
-        int screenX = worldX - gp.player.worldX + gp.player.screenX;
-        int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-        if( worldX + gp.tileSize*5 > gp.player.worldX - gp.player.screenX && 
-            worldX - gp.tileSize < gp.player.worldX + gp.player.screenX && 
-            worldY + gp.tileSize *5 > gp.player.worldY - gp.player.screenY && 
-            worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+        if(inCamera() == true) {
                 
-                int tempScreenX = screenX;
-                int tempScreenY = screenY;
+            int tempScreenX = getScreenX();
+            int tempScreenY = getScreenY();
                     switch (direction) {
                         case "up":
                         if(attacking == false){
@@ -393,7 +410,7 @@ public class Entity {
                             if (spriteNum == 9) {image = up9;}
                         }
                         if(attacking == true){
-                            tempScreenY = screenY - up1.getHeight(); 
+                            tempScreenY = getScreenY() - up1.getHeight(); 
                             if(spriteNum==1){image = upAttack1;}
                             if(spriteNum==2){image = upAttack2;}
                             if(spriteNum==3){image = upAttack3;}
@@ -437,7 +454,7 @@ public class Entity {
                             if (spriteNum == 9) {image = left9;}
                         }
                         if(attacking == true){
-                            tempScreenX = screenX - left1.getWidth(); 
+                            tempScreenX = getScreenX() - left1.getWidth(); 
                             if(spriteNum==1){image = leftAttack1;}
                             if(spriteNum==2){image = leftAttack2;}
                             if(spriteNum==3){image = leftAttack3;}
@@ -697,7 +714,7 @@ public class Entity {
             else {
                 //check monster collision with the updated worldX,Y and solidArea
                 int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
-                gp.player.damageMonster (monsterIndex,this, attack);
+                gp.player.damageMonster (monsterIndex,this, attack, knockBackPower);
             }
 
             //after checking collision, restore the original data
