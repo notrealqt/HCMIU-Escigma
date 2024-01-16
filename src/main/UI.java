@@ -307,9 +307,7 @@ public class UI {
         x += gp.tileSize;
         y += gp.tileSize;
 
-        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {
-            //currentDiaglogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
-            
+        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {            
             char characters[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
             if (charIndex < characters.length) {
                 String s = String.valueOf(characters[charIndex]);

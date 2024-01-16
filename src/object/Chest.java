@@ -38,28 +38,31 @@ public class Chest extends Entity{
         }
         */
         
-    }  
+    } 
+    public void setLoot (Entity loot) {
+        this.loot = loot;
+    }
+
+    public void setDialogue() {
+        dialogues[0][0] = "You open the chest and find something.";
+        dialogues[1][0] = "You obtain the " + loot.name + "!";
+        dialogues[2][0] = "It's empty";
+    }
+
     public void interact() {
-        gp.gameState = gp.dialogueState;
         
         if(opened == false) {
-            
-            StringBuilder sb = new StringBuilder();
-            sb.append("You open the chest and find something.");
-
             if(gp.player.inventory.size() == gp.player.maxInventorySize) {
-                sb.append("\n but you cannot carry anymore.");
+                startDialogue(this, 0);
             }
             else {
-                sb.append("\nYou obtain the "+loot.name+"!");
-                gp.player.inventory.add(loot);
+                startDialogue(this, 1);
                 down0 = image2;
                 opened = true;
             }
-            gp.ui.currentDiaglogue = sb.toString();
         }
         else {
-            gp.ui.currentDiaglogue = "It's empty";
+            startDialogue(this, 2);
         }
     }
 
