@@ -346,7 +346,7 @@ public class UI {
 
     public void drawCharacterScreen(){
         //make a frame
-        final int frameX = gp.tileSize*2;
+        final int frameX = gp.tileSize;
         final int frameY = gp.tileSize;
         final int frameWidth = gp.tileSize*5;
         final int frameHeight = gp.tileSize*10;
@@ -357,7 +357,7 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(32F));
 
         int textX = frameX + 20;
-        int textY = frameY + gp.tileSize;
+        int textY = frameY + gp.tileSize +10;
         final int lineHeight = 32;
 
         //Name
@@ -377,11 +377,13 @@ public class UI {
         textY += lineHeight;
         g2.drawString("Weapon", textX, textY+60);
         textY += lineHeight;
+        g2.drawString("Shield", textX, textY+85);
+        textY += lineHeight;
         
         //value
         int tailX = (frameX + frameWidth) - 30;
         //reset textY
-        textY = frameY + gp.tileSize;
+        textY = frameY + gp.tileSize +10;
         String value;
 
         value = String.valueOf(gp.player.life + "/" + gp.player.maxLife);
@@ -419,9 +421,9 @@ public class UI {
         g2.drawString(value, textX, textY);
         textY += lineHeight;
 
-        g2.drawImage(gp.player.currentWeapon.down0,tailX - gp.tileSize, textY+=35, null);
+        g2.drawImage(gp.player.currentWeapon.down0,tailX - gp.tileSize, textY+=25, null);
         textY += lineHeight;
-
+        g2.drawImage(gp.player.currentShield.down0, tailX - gp.tileSize, textY+=25, null);
 
     }
     

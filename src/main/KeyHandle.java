@@ -118,7 +118,7 @@ public class KeyHandle implements KeyListener {
     }
     
     public void playState(int code){
-        if (code == KeyEvent.VK_W) {
+            if (code == KeyEvent.VK_W) {
             upPressed = true;
             }
             if (code == KeyEvent.VK_S) {
