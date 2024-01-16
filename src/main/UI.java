@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import entity.Entity;
 import object.Heart;
@@ -19,8 +20,10 @@ public class UI {
     public Font tnr_20, tnr_40, tnr_80;
     BufferedImage keyImage, heart_full, heart_half, heart_blank, mana_full, mana_blank;
     public boolean messageOn = false;
-    public String message = "";
-    int messageCounter = 0;
+   // public String message = "";
+  //  int messageCounter = 0;
+  ArrayList<String> message = new ArrayList<>();
+  ArrayList<Integer> messageCounter = new ArrayList<>();
     public boolean gameFinished = false;
     public String currentDiaglogue;
     public int commandNum = 0;
@@ -29,6 +32,7 @@ public class UI {
     public int slotRow = 0;
     int charIndex = 0;
     String combineText = "";
+
 
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -52,9 +56,11 @@ public class UI {
         mana_blank = mana.image2;
     }
 
-    public void showMessage(String text){
-        message = text;
-        messageOn = true;
+    public void addMessage(String text){
+    //    message = text;
+  //      messageOn = true;
+        message.add(text);
+        messageCounter.add(0);
     }
 
     public void draw(Graphics2D g2){
@@ -108,7 +114,7 @@ public class UI {
             //playTime +=(double)1/60;
             //g2.drawString("Time: "+dFormat.format(playTime), 10, gp.tileSize);
 
-
+        /*
             // Message
             if(messageOn == true){
                 
@@ -121,7 +127,8 @@ public class UI {
                     messageCounter = 0;
                     messageOn = false;
                 }
-            }    
+            }
+            */    
         }
         
         //Title state
@@ -134,6 +141,7 @@ public class UI {
         if(gp.gameState == gp.playState) {
             drawMonsterLife();
             drawPlayerLife();
+            drawMessage();
         }
 
         //Pause state
@@ -216,6 +224,31 @@ public class UI {
             }
         }
     
+    public void drawMessage() {
+        int messageX = gp.tileSize;
+        int messageY = gp.tileSize*4;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32F));
+
+        for(int i = 0; i < message.size(); i++) {
+            if(message.get(i) != null) {
+                g2.setColor(Color.BLACK);
+                g2.drawString(message.get(i), messageX +1, messageY +1);
+                g2.drawString(message.get(i), messageX +1, messageY -1);
+                g2.drawString(message.get(i), messageX -1, messageY +1);
+                g2.drawString(message.get(i), messageX -1, messageY -1);
+                g2.setColor(Color.WHITE);
+                g2.drawString(message.get(i), messageX, messageY);
+                int counter = messageCounter.get(i) + 1; // messageCounter++
+                messageCounter.set(i, counter); // set the counter to the array
+                messageY += 50;
+                if(messageCounter.get(i)>180) {
+                    message.remove(i);
+                    messageCounter.remove(i);
+                }
+            }
+        }
+
+    }
     public void drawTitleScreen() {
         
         g2.setColor(Color.DARK_GRAY);

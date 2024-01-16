@@ -60,7 +60,7 @@ public class Player extends Entity {
     public void setDefaultValue() {
         worldX = gp.tileSize * 14; //player's pos in world map
         worldY = gp.tileSize * 14;
-        defaultSpeed = 4;
+        defaultSpeed = 10;
         speed = 10;
         direction = "down";
 
@@ -428,6 +428,7 @@ public class Player extends Entity {
                     gp.obj[gp.currentMap][i].interact();
                 }
             }
+            /* 
             else {
                 String objectName = gp.obj[gp.currentMap][i].name;
                 switch(objectName){
@@ -457,7 +458,9 @@ public class Player extends Entity {
                         gp.playSE(2);
                         break;
                 }
+                
             }
+            */
             
         }
     }
@@ -511,6 +514,10 @@ public class Player extends Entity {
     
                     if (gp.monster[gp.currentMap][index].life <= 0) {
                         gp.monster[gp.currentMap][index].die = true; // kill monster
+                        gp.ui.addMessage("Killed the " +gp.monster[gp.currentMap][index].name + "!");
+                        gp.ui.addMessage("Coin + " +gp.monster[gp.currentMap][index].coin + "!");
+                        coin += gp.monster[gp.currentMap][index].coin;
+
                     }
 
                     if(gp.monster[gp.currentMap][index].offBalance == true) {

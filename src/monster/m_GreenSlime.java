@@ -21,6 +21,7 @@ public class m_GreenSlime extends Entity {
         attack = 5;
         defense = 0;
         knockBackPower = 5;
+        coin = 5;
         
         solidArea.x = 3;
         solidArea.y = 18;

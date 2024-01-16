@@ -74,7 +74,7 @@ public class Entity {
 
     //attributes for character 
     public int defaultSpeed;  
-    public static String name;
+    public String name;
     public int speed;
     public int maxLife;
     public int life;
