@@ -307,9 +307,7 @@ public class UI {
         x += gp.tileSize;
         y += gp.tileSize;
 
-        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {
-            //currentDiaglogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
-            
+        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {            
             char characters[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
             if (charIndex < characters.length) {
                 String s = String.valueOf(characters[charIndex]);
@@ -322,10 +320,9 @@ public class UI {
                 charIndex = 0;
                 combineText = "";
 
-                if (gp.gameState == gp.dialogueState) {
+                if (gp.gameState == gp.dialogueState && gp.gameState == gp.cutScene) {
                     npc.dialogueIndex++;
                     gp.KeyH.enterPressed = false;
-
                 }
             }
         }
@@ -333,6 +330,9 @@ public class UI {
             npc.dialogueIndex = 0;
             if (gp.gameState == gp.dialogueState) {
                 gp.gameState = gp.playState;
+            }
+            if (gp.gameState == gp.cutScene) {
+                gp.csManager.scenePhase++;
             }
         }
 
@@ -1001,10 +1001,11 @@ public class UI {
                     double hpBarValue = oneScale*monster.life;
 
                     g2.setColor(new Color(35,35,35));
-                    g2.fillRect(monster.getScreenX()-1,monster.getScreenY() -16 , gp.tileSize+2, 12);
+                    g2.fillRect(monster.getScreenX()-1,monster.getScreenY() -16 , gp.tileSize, 12);
 
                     g2.setColor(new Color(255,0,30));
-                    g2.fillRect(monster.getCenterX(), monster.getCenterY() -15, (int)hpBarValue , 10);
+                    g2.fillRect(monster.getScreenX(), monster.getScreenY() -15, (int)hpBarValue , 10);
+
 
                     monster.hpBarCounter++;
                     if (monster.hpBarCounter > 600) {
@@ -1033,4 +1034,5 @@ public class UI {
 
         }
     }
+    
 }

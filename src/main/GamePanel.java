@@ -279,7 +279,7 @@ public class GamePanel extends JPanel implements Runnable {
             long passed = drawEnd - drawStart;
 
             g2.setFont(new Font("Arial",Font.PLAIN,20));
-            g2.setColor(Color.white);
+            g2.setColor(Color.black);
             int x = 10;
             int y = 400;
             int lineHeight = 20;
@@ -316,12 +316,24 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void resetGame (boolean restart) {
+        removeTempEntity();
+        bossBatleOn = false;
         player.setDefaultLife();
         player.setDefaultPosition();
         aSetter.setNPC();
         aSetter.setMonster();
         if (restart == true) {
             player.setDefaultValue();
+        }
+    }
+
+    public void removeTempEntity() {
+        for (int mapNum = 0; mapNum < maxMap; mapNum++) {
+            for (int i =0; i < obj[1].length; i++) {
+                if (obj[mapNum][i] != null && obj[mapNum][i].temp == true) {
+                    obj[mapNum][i] = null;
+                }
+            }
         }
     }
 }
