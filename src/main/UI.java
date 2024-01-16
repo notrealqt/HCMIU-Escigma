@@ -1001,10 +1001,11 @@ public class UI {
                     double hpBarValue = oneScale*monster.life;
 
                     g2.setColor(new Color(35,35,35));
-                    g2.fillRect(monster.getScreenX()-1,monster.getScreenY() -16 , gp.tileSize+2, 12);
+                    g2.fillRect(monster.getScreenX()-1,monster.getScreenY() -16 , gp.tileSize, 12);
 
                     g2.setColor(new Color(255,0,30));
-                    g2.fillRect(monster.getCenterX(), monster.getCenterY() -15, (int)hpBarValue , 10);
+                    g2.fillRect(monster.getScreenX(), monster.getScreenY() -15, (int)hpBarValue , 10);
+
 
                     monster.hpBarCounter++;
                     if (monster.hpBarCounter > 600) {

@@ -55,6 +55,7 @@ public class Entity {
     public boolean transparent = false;
     public boolean  offBalance = false;
     public boolean hpBarOn = false;
+
     //Counter
     public int spriteCounter = 0;
     public int actionLockCounter = 0;
@@ -64,6 +65,8 @@ public class Entity {
     int knockBackCounter = 0;
     public int guardCounter = 0;
     int offBalanceCounter = 0;
+    public int hpBarCounter = 0;
+
 
 
     //attributes for character 
@@ -102,7 +105,6 @@ public class Entity {
     public boolean knockBack = false;
     public int lightRadius;
     public int knockBackPower = 0;
-    public int hpBarCounter = 0;
     public Entity(GamePanel gp){
         this.gp = gp;
     }
@@ -495,8 +497,12 @@ public class Entity {
                             break;
 
                     }
+
+    
+
                 //get invincible for entities
                 if(invincible == true){
+                    hpBarOn = true;
                     g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
                 }
                 if (die == true){
