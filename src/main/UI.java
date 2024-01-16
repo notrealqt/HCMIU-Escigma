@@ -322,10 +322,9 @@ public class UI {
                 charIndex = 0;
                 combineText = "";
 
-                if (gp.gameState == gp.dialogueState) {
+                if (gp.gameState == gp.dialogueState && gp.gameState == gp.cutScene) {
                     npc.dialogueIndex++;
                     gp.KeyH.enterPressed = false;
-
                 }
             }
         }
@@ -333,6 +332,9 @@ public class UI {
             npc.dialogueIndex = 0;
             if (gp.gameState == gp.dialogueState) {
                 gp.gameState = gp.playState;
+            }
+            if (gp.gameState == gp.cutScene) {
+                gp.csManager.scenePhase++;
             }
         }
 
@@ -1034,4 +1036,5 @@ public class UI {
 
         }
     }
+    
 }

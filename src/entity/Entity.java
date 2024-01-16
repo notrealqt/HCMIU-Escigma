@@ -29,6 +29,8 @@ public class Entity {
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
     public Entity attacker;
+    public boolean temp = false;
+    private int attackAnimationFrame = 0;
 
 
     //State 
@@ -42,6 +44,7 @@ public class Entity {
     public boolean rage = false;
     public boolean collision = false;
     public boolean sleep = false;
+    public boolean drawing = true;
 
     //take damage from monster from amount of time
     //avoid taking constantly damage
@@ -71,7 +74,7 @@ public class Entity {
 
     //attributes for character 
     public int defaultSpeed;  
-    public String name;
+    public static String name;
     public int speed;
     public int maxLife;
     public int life;
@@ -694,19 +697,27 @@ public class Entity {
     }
 
     public void attacking () {
-        spriteCounter++;
-
-        if(spriteCounter <= 20){
-            spriteNum = 1;
+        if (attacking) {
+            attackAnimationFrame++;
+    
+            // Adjust the conditions based on the number of attack sprites
+            if (attackAnimationFrame >= 0 && attackAnimationFrame < 10) {
+                spriteNum = 1;
+            }
+            if (attackAnimationFrame >= 10 && attackAnimationFrame < 20) {
+                spriteNum = 2;
+            }
+            if (attackAnimationFrame >= 20 && attackAnimationFrame < 30) {
+                spriteNum = 3;
+            } 
+            if (attackAnimationFrame >= 30 && attackAnimationFrame < 40) {
+                spriteNum = 4;
+            } else {
+                // Reset animation frame and flag when the animation is complete
+                attacking = false;
+                attackAnimationFrame = 0;
+            }
         }
-        if(spriteCounter > 20 && spriteCounter <= 40){
-            spriteNum = 2;
-        }
-        if(spriteCounter > 40 && spriteCounter <= 60){
-            spriteNum = 3;
-        }
-        if(spriteCounter > 60 && spriteCounter <= 80){
-            spriteNum = 4;
       //save the current worldx, worldy, solid area
             int currentWorldX = worldX;
             int currentWorldY = worldY;
@@ -738,28 +749,23 @@ public class Entity {
             worldX = currentWorldX;
             worldY = currentWorldY;
             solidArea.width = solidAreaWidth;
-            solidArea.height = solidAreaHeight;}
-            
-          if(spriteCounter > 80){
-            spriteNum = 1;
-            spriteCounter = 0;
-            attacking = false;
-        }
+            solidArea.height = solidAreaHeight;
+        
     }
     
-    public void checkAttack( int rate, int straight, int horizontal) {
+    public void checkAttack(int rate, int straight, int horizontal) {
         boolean targetInRange = false;
         int xDis = getXDistance(gp.player);
         int yDis = getYDistance(gp.player);
-
-        switch (direction)  {
+    
+        switch (direction) {
             case "up":
-                if (gp.player.getCenterY() < getCenterY() && yDis < straight && xDis < horizontal) {
+                if (gp.player.getCenterY() < getCenterY() && yDis < horizontal && xDis < straight) {
                     targetInRange = true;
                 }
                 break;
             case "down":
-                if (gp.player.getCenterY() > getCenterY() && yDis < straight && xDis < horizontal) {
+                if (gp.player.getCenterY() > getCenterY() && yDis < horizontal && xDis < straight) {
                     targetInRange = true;
                 }
                 break;
@@ -769,20 +775,22 @@ public class Entity {
                 }
                 break;
             case "right":
-                if (gp.player.getCenterX() > getCenterX() && yDis < straight && xDis < horizontal) {
+                if (gp.player.getCenterX() > getCenterX() && xDis < straight && yDis < horizontal) {
                     targetInRange = true;
                 }
                 break;
         }
-        if (targetInRange == true) {
+    
+        if (targetInRange) {
             int i = new Random().nextInt(rate);
-            if (i==0) {
+            if (i == 0) {
                 attacking = true;
                 spriteNum = 1;
                 spriteCounter = 0;
             }
         }
     }
+    
     
     public void chasePlayer (int interval) {
         actionLockCounter++;

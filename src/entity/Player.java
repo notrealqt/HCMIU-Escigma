@@ -742,9 +742,14 @@ public class Player extends Entity {
                 }
                     break;
             }
+
+
         if(transparent == true) {g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));}
         g2.drawImage(image, tempScreenX, tempScreenY,null);
         //reset alpha
+        if (drawing == true) {
+            g2.drawImage(image,tempScreenX,tempScreenY,null);
+        }
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         // //DEBUG monster hit player
         // g2.setFont(new Font("Arial", Font.PLAIN, 26));

@@ -1,5 +1,6 @@
 package main;
 
+import data.Progress;
 import entity.Entity;
 
 public class EventHandler {
@@ -98,9 +99,13 @@ public class EventHandler {
             if(hit(0,67,16,"any") == true) {
                 wormHole(0, 26, 27);
             }
-            if(hit(0,30,30,"any") == true) {
+            if(hit(0,76,39,"any") == true ||
+               hit(0,76,40,"any") == true ||
+               hit(0,76,38,"any") == true ||
+               hit(0,76,41,"any") == true) {
                 boss();
             }
+
         }
 
         if(hit(0,10,9,"any") == true) {
@@ -191,7 +196,7 @@ public class EventHandler {
     }
 
     public void boss() {
-        if (gp.bossBatleOn == false) {
+        if (gp.bossBatleOn == false && Progress.defeatLog == false) {
             gp.gameState = gp.cutScene;
             gp.csManager.sceneNum = gp.csManager.boss;
         }
