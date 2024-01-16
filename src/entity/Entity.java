@@ -78,6 +78,7 @@ public class Entity {
     public int maxMana, mana;
     public int attack,defense,coin,strength,dexterity;
     public Entity currentWeapon;
+    public Entity currentShield;
     public Projectile projectile;
     public Entity currentLight;
     public int motion1_duration, motion2_duration;

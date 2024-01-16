@@ -16,6 +16,7 @@ import main.KeyHandle;
 import main.UtilityTool;
 import object.Fire_Sword;
 import object.Key;
+import object.Shield;
 import object.Sword;
 
 public class Player extends Entity {
@@ -72,6 +73,7 @@ public class Player extends Entity {
         maxMana = 4;
         mana = maxMana;
         currentWeapon = new Sword(gp);
+        currentShield = new Shield(gp);
         projectile = new Fire_Sword(gp);
         attack = getAttack();
         defense = getDefense();
