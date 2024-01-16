@@ -28,11 +28,6 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldY = 19 * gp.tileSize;
         i++;
 
-        //gp.obj[mapNum][i] = new Axe(gp);
-        //gp.obj[mapNum][i].worldX = 20 * gp.tileSize;
-        //gp.obj[mapNum][i].worldY = 20 * gp.tileSize;
-        //i++;
-
         gp.obj[mapNum][i] = new Door(gp);
         gp.obj[mapNum][i].worldX = 25 * gp.tileSize;
         gp.obj[mapNum][i].worldY = 25 * gp.tileSize;
@@ -108,6 +103,20 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldY = 16 * gp.tileSize;
         i++;
 
+   
+        gp.obj[mapNum][i] = new Door(gp);
+        gp.obj[mapNum][i].worldX = 98 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 19 * gp.tileSize;
+        i++;
+        gp.obj[mapNum][i] = new Door(gp);
+        gp.obj[mapNum][i].worldX = 99 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 19 * gp.tileSize;
+        i++;
+        gp.obj[mapNum][i] = new Door(gp);
+        gp.obj[mapNum][i].worldX = 100 * gp.tileSize;
+        gp.obj[mapNum][i].worldY = 19 * gp.tileSize;
+        i++;
+
     }
     
     public void setNPC(){
@@ -126,8 +135,8 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldY = gp.tileSize*24;  
         i++;
         gp.monster[mapNum][i] = new m_Boss(gp);
-        gp.monster[mapNum][i].worldX = gp.tileSize*24;
-        gp.monster[mapNum][i].worldY = gp.tileSize*25;  
+        gp.monster[mapNum][i].worldX = gp.tileSize*90;
+        gp.monster[mapNum][i].worldY = gp.tileSize*38;  
         
     }
 }

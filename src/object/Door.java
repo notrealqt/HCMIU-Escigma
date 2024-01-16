@@ -22,7 +22,8 @@ public class Door extends Entity{
         solidArea.height = 32;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-    }  
+    } 
+     
     public void interact() {
         
         gp.gameState = gp.dialogueState;

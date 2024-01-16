@@ -37,7 +37,8 @@ public class m_Boss extends Entity {
 
         getImage();
         getAttackImage();
-    }
+        setDialogue();
+    }   
 
     public void getImage(){
         up0=setUp("monster/boss/boss_corpse collector_move_font_0",gp.tileSize, gp.tileSize);
@@ -115,10 +116,9 @@ public class m_Boss extends Entity {
             getRandomDirection(120);
         }
         if (attacking == false) {
-            checkAttack(60, gp.tileSize, gp.tileSize);
+            checkAttack(5,gp.tileSize,gp.tileSize);
         }
     }
-
 
     public void damageReaction(){
         actionLockCounter = 0; 
@@ -126,4 +126,11 @@ public class m_Boss extends Entity {
         onPath = true;
     }
 
+    public void setDialogue() {
+        dialogues[0][0] = "Injured: RUNNNNNNNNNNNNNNN! YOU CAN'T WIN, JUST ESCAPE";
+        dialogues[0][1] = "Boss: .............................";
+        dialogues[0][2] = "Boss: Would you look at that? Look like something fun come up";
+        dialogues[0][3] = "Boss: You want to get out?";
+        dialogues[0][4] = "Boss: Defeat me before I completely mess you up";
+    }
 }

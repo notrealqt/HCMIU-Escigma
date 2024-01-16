@@ -307,9 +307,7 @@ public class UI {
         x += gp.tileSize;
         y += gp.tileSize;
 
-        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {
-            //currentDiaglogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
-            
+        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {            
             char characters[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
             if (charIndex < characters.length) {
                 String s = String.valueOf(characters[charIndex]);
@@ -322,10 +320,9 @@ public class UI {
                 charIndex = 0;
                 combineText = "";
 
-                if (gp.gameState == gp.dialogueState) {
+                if (gp.gameState == gp.dialogueState && gp.gameState == gp.cutScene) {
                     npc.dialogueIndex++;
                     gp.KeyH.enterPressed = false;
-
                 }
             }
         }
@@ -333,6 +330,9 @@ public class UI {
             npc.dialogueIndex = 0;
             if (gp.gameState == gp.dialogueState) {
                 gp.gameState = gp.playState;
+            }
+            if (gp.gameState == gp.cutScene) {
+                gp.csManager.scenePhase++;
             }
         }
 
@@ -1036,4 +1036,5 @@ public class UI {
 
         }
     }
+    
 }
