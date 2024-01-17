@@ -478,8 +478,32 @@ public class Player extends Entity {
             attacking = false;
         }
             
-       
     }
+
+    // public void pickUpObject(int i){
+    //     if (i!= 9999){
+    //         //pickup only items
+    //         if(gp.obj[gp.currentMap][i].type == type_pickupOnly){
+    //             gp.obj[gp.currentMap][i].use(this);
+    //  gp.obj[gp.currentMap][i] =null;
+    //         }
+
+    //     //inventory items
+    //     else{
+    //         String text;
+    //         if(inventory.size() != maxInventorySize){
+    //             inventory.add(gp.obj[gp.currentMap][i]);
+    //             text = "Got a " + gp.obj[gp.currentMap][i].name +"!";
+    //         }
+    //         else{
+    //             text = "You cannot carry anymore!";
+            
+    //         }
+    //         gp.ui.addMessage(text);
+    //         gp.obj[i]=null;
+    //         }
+    //     }   
+    // }
     
     public void pickUpItem(int i){
         if(i!=9999){
