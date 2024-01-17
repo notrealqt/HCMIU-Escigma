@@ -419,6 +419,7 @@ public class Player extends Entity {
                 invincibleCounter = 0;
             }
         if(keyH.godMode == false){
+            
             if (life <= 0) {
                 gp.playSE(4);
                 gp.gameState= gp.youLostState;
@@ -426,6 +427,9 @@ public class Player extends Entity {
                 //death music
                 //gp.playMusic(index);
             }
+        }else if(gp.KeyH.godModePressed = true){
+
+            mana = maxMana;
         }
            
         }

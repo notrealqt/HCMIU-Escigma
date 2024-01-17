@@ -318,13 +318,17 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void resetGame (boolean restart) {
         removeTempEntity();
+        player.inventory.clear();
+        player.setDefaultValue();
         bossBatleOn = false;
         player.setDefaultLife();
         player.setDefaultPosition();
         aSetter.setNPC();
         aSetter.setMonster();
         if (restart == true) {
+            player.inventory.clear();
             player.setDefaultValue();
+            
         }
     }
 
