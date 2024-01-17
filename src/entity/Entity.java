@@ -84,9 +84,9 @@ public class Entity {
     public Entity currentShield;
     public Projectile projectile;
     public Entity currentLight;
-    public int motion1_duration, motion2_duration;
+    public int motion1_duration, motion2_duration,motion3_duration,motion4_duration;
     public boolean boss;
-
+    
     //TYPE
     public final int type_pickupOnly = 7;
     public int type; //0 -> player, 1 -> npcs, 2 -> monster
@@ -279,6 +279,7 @@ public class Entity {
                     attacking();
                 }
             }
+            
             else {
                 setAction();
                 checkCollision();
@@ -698,27 +699,19 @@ public class Entity {
     }
 
     public void attacking () {
-        if (attacking) {
-            attackAnimationFrame++;
-    
-            // Adjust the conditions based on the number of attack sprites
-            if (attackAnimationFrame >= 0 && attackAnimationFrame < 10) {
-                spriteNum = 1;
-            }
-            if (attackAnimationFrame >= 10 && attackAnimationFrame < 20) {
-                spriteNum = 2;
-            }
-            if (attackAnimationFrame >= 20 && attackAnimationFrame < 30) {
-                spriteNum = 3;
-            } 
-            if (attackAnimationFrame >= 30 && attackAnimationFrame < 40) {
-                spriteNum = 4;
-            } else {
-                // Reset animation frame and flag when the animation is complete
-                attacking = false;
-                attackAnimationFrame = 0;
-            }
+        spriteCounter++;
+
+        if(spriteCounter <= motion1_duration){
+            spriteNum = 1;
         }
+        if(spriteCounter > motion1_duration && spriteCounter <= motion2_duration){
+            spriteNum = 2;
+        }
+        if(spriteCounter > motion2_duration && spriteCounter <= motion3_duration){
+            spriteNum = 3;
+        }
+        if(spriteCounter > motion3_duration && spriteCounter <= motion4_duration){
+            spriteNum = 4;
       //save the current worldx, worldy, solid area
             int currentWorldX = worldX;
             int currentWorldY = worldY;
@@ -735,23 +728,32 @@ public class Entity {
             //attack attack area (sword) becomes solid area
             solidArea.width = attackArea.width;
             solidArea.height = attackArea.height;
-            if (type == type_monster) {
-                if (gp.colDect.checkPlayer(this ) == true) {
+
+            if(type == type_monster){
+                if (gp.colDect.checkPlayer(this) == true){
                     damagePlayer(attack);
                 }
             }
-            else {
-                //check monster collision with the updated worldX,Y and solidArea
-                int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
-                gp.player.damageMonster (monsterIndex,this, attack, knockBackPower);
+            else{ //Player
+        //check monster collision with the updated worldX,Y and solidArea
+        int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
+        gp.player.damageMonster (monsterIndex,this, attack, currentWeapon.knockBackPower);
+    
+        //after checking collision, restore the original data
+        worldX = currentWorldX;
+        worldY = currentWorldY;
+        solidArea.width = solidAreaWidth;
+        solidArea.height = solidAreaHeight;}
             }
-
-            //after checking collision, restore the original data
-            worldX = currentWorldX;
-            worldY = currentWorldY;
-            solidArea.width = solidAreaWidth;
-            solidArea.height = solidAreaHeight;
-        
+           
+            
+          if(spriteCounter > motion4_duration){
+            spriteNum = 1;
+            spriteCounter = 0;
+            attacking = false;
+        }
+            
+       
     }
     
     public void checkAttack(int rate, int straight, int horizontal) {
@@ -761,12 +763,12 @@ public class Entity {
     
         switch (direction) {
             case "up":
-                if (gp.player.getCenterY() < getCenterY() && yDis < horizontal && xDis < straight) {
+                if (gp.player.getCenterY() < getCenterY() && xDis < horizontal && yDis < straight) {
                     targetInRange = true;
                 }
                 break;
             case "down":
-                if (gp.player.getCenterY() > getCenterY() && yDis < horizontal && xDis < straight) {
+                if (gp.player.getCenterY() > getCenterY() && xDis < horizontal && yDis < straight) {
                     targetInRange = true;
                 }
                 break;
@@ -782,12 +784,14 @@ public class Entity {
                 break;
         }
     
-        if (targetInRange) {
+        if (targetInRange == true) {
+            //check attack
             int i = new Random().nextInt(rate);
             if (i == 0) {
                 attacking = true;
                 spriteNum = 1;
                 spriteCounter = 0;
+                shotAvailableCounter = 0;
             }
         }
     }

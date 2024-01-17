@@ -20,9 +20,9 @@ public class m_Boss extends Entity {
         maxLife = 10;
         life = maxLife;
         attack = 1;
-        defense = 5;
+        defense = 1;
         sleep = true;
-        knockBackPower = 100;
+        knockBackPower = 10;
 
         solidArea.x = 4;
         solidArea.y = 4;
@@ -33,7 +33,10 @@ public class m_Boss extends Entity {
         attackArea.width = 48;
         attackArea.height = 48;
         motion1_duration = 40;
-        motion2_duration = 45;
+        motion2_duration = 50;
+        motion3_duration = 60;
+        motion4_duration = 80;
+        
 
         getImage();
         getAttackImage();
@@ -104,21 +107,23 @@ public class m_Boss extends Entity {
     }
 
     public void setAction(){
+      
+        if (getTileDistance(gp.player) < 10) {
+            chasePlayer(60);
+        }
+        else {
+            checkChasing(gp.player, 5, 40);
+            getRandomDirection(120);
+        }
+        if (attacking == false) {
+            checkAttack(10,gp.tileSize*5,gp.tileSize);
+        }
         if (rage == false && life < maxLife/2) {
             rage = true;
             defaultSpeed += 2;
             speed = defaultSpeed;
             attack *= 2;
             
-        }
-        if (getTileDistance(gp.player) < 10) {
-            chasePlayer(60);
-        }
-        else {
-            getRandomDirection(120);
-        }
-        if (attacking == false) {
-            checkAttack(5,gp.tileSize,gp.tileSize);
         }
     }
 

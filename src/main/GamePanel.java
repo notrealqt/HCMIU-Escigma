@@ -288,7 +288,8 @@ public class GamePanel extends JPanel implements Runnable {
             g2.drawString("Y coord: " + player.worldY,x,y); y+= lineHeight;
             g2.drawString("Col "+(player.worldX+player.solidArea.x)/tileSize,x,y); y+= lineHeight;
             g2.drawString("Row "+(player.worldY+player.solidArea.y)/tileSize,x,y); y+= lineHeight;
-            g2.drawString("Draw Time: "+passed, x, y);
+            g2.drawString("Draw Time: "+passed, x, y);y+= lineHeight;
+            g2.drawString("God Mode:" + KeyH.godMode,x, y);
             //System.out.println("Draw Time: "+passed);
         }
     }
@@ -317,13 +318,17 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void resetGame (boolean restart) {
         removeTempEntity();
+        player.inventory.clear();
+        player.setDefaultValue();
         bossBatleOn = false;
         player.setDefaultLife();
         player.setDefaultPosition();
         aSetter.setNPC();
         aSetter.setMonster();
         if (restart == true) {
+            player.inventory.clear();
             player.setDefaultValue();
+            
         }
     }
 

@@ -1,14 +1,11 @@
 package object;
 
 import entity.Entity;
-import entity.Projectile;
 import main.GamePanel;
 
-public class Fire_Sword extends Projectile{
+public class Fire_Sword extends Entity {
 
-    GamePanel gp;
-
-    public Fire_Sword(GamePanel gp){
+    public Fire_Sword(GamePanel gp) {
         super(gp);
         this.gp = gp;
 
