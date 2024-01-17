@@ -99,7 +99,8 @@ public class Entity {
     type_consumable = 5,
     type_shield = 6,
     type_obstacle = 8,
-    type_light = 9;
+    type_light = 9,
+    type_firesword = 10;
 
     //ITEM ATTRIBUTES
     public int value;
