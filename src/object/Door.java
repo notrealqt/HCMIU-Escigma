@@ -11,7 +11,7 @@ public class Door extends Entity{
         this.gp = gp;
         type = type_obstacle;
         name = "Door";
-        down0 = setUp("objects/Door",gp.tileSize, gp.tileSize);
+        down0 = setUp("/res/objects/door/Door",gp.tileSize, gp.tileSize);
         collision = true;
         solidArea.x = 0;
         solidArea.y = 16;

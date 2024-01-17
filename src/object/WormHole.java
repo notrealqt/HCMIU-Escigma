@@ -14,14 +14,7 @@ public class WormHole extends Entity{
         this.gp = gp;
         type = type_obstacle;
         name = "WormHole";
-        down0 = setUp("objects/"+wormholeType,gp.tileSize, gp.tileSize);
+        down0 = setUp("/res/objects/"+wormholeType,gp.tileSize, gp.tileSize);
 
-        /*
-        try {
-            down0 = ImageIO.read(getClass().getResourceAsStream("/res/objects/door.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
     }  
 }

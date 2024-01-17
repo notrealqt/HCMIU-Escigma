@@ -640,7 +640,7 @@ public class Entity {
         BufferedImage image = null;
         
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/res/"+imagePath+".png"));
+            image = ImageIO.read(getClass().getResourceAsStream(imagePath+".png"));
             image = uTool.scaleImage(image, width, height);
         } catch (Exception e) {
             e.printStackTrace();

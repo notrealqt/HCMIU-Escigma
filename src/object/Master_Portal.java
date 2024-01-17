@@ -12,7 +12,7 @@ public class Master_Portal extends Entity {
         this.gp = gp;
         type = type_obstacle;
         name = objName;
-        down0 = setUp("objects/master_gate",gp.tileSize, gp.tileSize);
+        down0 = setUp("/res/objects/door/master_gate",gp.tileSize, gp.tileSize);
         collision = false;
         solidArea.x = 0;
         solidArea.y = 16;

@@ -18,9 +18,9 @@ public class Heart extends Entity {
         UtilityTool uTool = new UtilityTool();
         BufferedImage image, image2, image3 = null;
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/heart_full.png"));
-            image2 = ImageIO.read(getClass().getResourceAsStream("/res/objects/heart_half.png"));
-            image3 = ImageIO.read(getClass().getResourceAsStream("/res/objects/heart_blank.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/item/stat/heart/full.png"));
+            image2 = ImageIO.read(getClass().getResourceAsStream("/res/objects/item/stat/heart/half.png"));
+            image3 = ImageIO.read(getClass().getResourceAsStream("/res/objects/item/stat/heart/blank.png"));
             this.image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
             this.image2 = uTool.scaleImage(image2, gp.tileSize, gp.tileSize);
             this.image3 = uTool.scaleImage(image3, gp.tileSize, gp.tileSize);

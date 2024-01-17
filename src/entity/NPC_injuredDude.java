@@ -12,15 +12,12 @@ public class NPC_injuredDude extends Entity {
         super(gp);
         type = 1;
         direction = "up";
-        speed = 1;
-
         solidArea.x = 8;
         solidArea.y = 16;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         solidArea.width = 30;
         solidArea.height = 30;
-        sleep = true;
         dialogueSet = -1;
         getImage();
         setDialogue();

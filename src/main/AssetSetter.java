@@ -4,7 +4,6 @@ import data.Progress;
 import entity.Entity;
 import entity.NPC_OldMan;
 import monster.m_Boss;
-import monster.m_GreenSlime;
 import object.*;
 
 
@@ -21,9 +20,9 @@ public class AssetSetter {
         Door door = new Door(gp);
         Key key = new Key(gp);
         Master_Portal master_portal = new Master_Portal(gp);
-        Chest ice_chest = new Chest(gp, "chest_ice_open_0", "chest_ice_close_0", new Key(gp));
-        Chest forest_chest = new Chest(gp, "chest_forest_open_0", "chest_forest_close_0", new Key(gp));
-        Chest rock_chest = new Chest(gp, "chest_rock_open_0", "chest_rock_close_0", new Key(gp));
+        Chest ice_chest = new Chest(gp, "ice/open", "ice/close", new Key(gp));
+        Chest forest_chest = new Chest(gp, "forest/open", "forest/close", new Key(gp));
+        Chest rock_chest = new Chest(gp, "rock/open", "rock/close", new Key(gp));
         WormHole forest_worm = new WormHole(gp, "wormhole_forest");
         WormHole ice_worm = new WormHole(gp, "wormhole_ice");
         WormHole rock_worm = new WormHole(gp, "wormhole_rock");
@@ -56,14 +55,14 @@ public class AssetSetter {
     public void setNPC() {
         int mapNum = 0;
         int i = 0;
-        setNPCAt(new NPC_OldMan(gp), mapNum, i++, 15, 15);
+        //setNPCAt(new NPC_OldMan(gp), mapNum, i++, 15, 15);
 
     }
     public void setMonster() {
         int mapNum = 0;
         int i = 0;
 
-        setMonsterAt(new m_GreenSlime(gp), mapNum, i++, 24, 24);
+        //setMonsterAt(new m_GreenSlime(gp), mapNum, i++, 24, 24);
 
         if (!Progress.defeatLog) {
             setMonsterAt(new m_Boss(gp), mapNum, i++, 90, 38);
