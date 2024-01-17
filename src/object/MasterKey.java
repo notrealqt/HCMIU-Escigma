@@ -15,12 +15,7 @@ public class MasterKey extends Entity {
         name = objName;
         down0=setUp("objects/master_key",gp.tileSize,gp.tileSize);
 
-        //setDialogues();
     }
 
-    public void setDialogues() {
-        //dialogues[0][0] = "You pick up the master key";
-
-    }
     
 }
