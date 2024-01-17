@@ -19,7 +19,7 @@ public class Fire_Sword_Projectile extends Projectile{
         attack = 10;
         manaCost = 1;
         alive = false;
-        getImage();
+        //getImage();
     }
 
    public void getImage(){
