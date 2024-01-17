@@ -225,7 +225,7 @@ public class Player extends Entity {
 
             }
             else if (collisionOn == false) {
-                switch (gp.player.direction) {
+                switch (this.knockBackDirection) {
                     case "up":
                         worldY -= speed;
                         break;
