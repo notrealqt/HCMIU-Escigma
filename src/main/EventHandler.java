@@ -21,7 +21,6 @@ public class EventHandler {
         int col = 0;
         int row = 0;
         while (map < gp.maxMap && col < gp.maxWorldCol && row < gp.maxWorldRow) {
-           
             eventRect[map][col][row] = new EventRect();
             eventRect[map][col][row].x = 23;
             eventRect[map][col][row].y = 23;
@@ -106,18 +105,24 @@ public class EventHandler {
                 boss();
             }
 
-        }
+            if (hit(0, 37, 13, "any") == true) {
+                teleport(1,80,39);
+                
+            }
+            
+            if (hit(1,80,39, "any") == true) {
+                teleport(0, 37, 13);
+            }
+            
+            if(hit(0,10,9,"any") == true) {
+                healingPool(gp.dialogueState);
+            }
 
-        if(hit(0,10,9,"any") == true) {
-            healingPool(gp.dialogueState);
-        }
+            if(hit(0,15,12,"any") == true) {
+                teleport(gp.dialogueState);
+            }
 
-        if(hit(0,15,12,"any") == true) {
-            teleport(gp.dialogueState);
         }
-
-        
-        
     }
     
     public boolean hit(int map, int col, int row, String reqDirection) {

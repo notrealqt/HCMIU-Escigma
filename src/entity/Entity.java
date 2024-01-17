@@ -97,6 +97,7 @@ public class Entity {
     type_sword = 3,
     type_axe = 4,
     type_consumable = 5,
+    type_shield = 6,
     type_obstacle = 8,
     type_light = 9;
 
