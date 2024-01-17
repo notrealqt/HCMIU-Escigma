@@ -16,6 +16,7 @@ public class Key extends Entity {
         name = "Key";
         down0 = setUp("/res/objects/item/use/key",gp.tileSize, gp.tileSize);
         description = "["+name+"]\nKey to open door\nWhat do you expect more?";
+        stackable = true;
         /*
         try {
             down0 = ImageIO.read(getClass().getResourceAsStream("key."));
@@ -37,7 +38,6 @@ public class Key extends Entity {
         int objIndex = getDetected(entity, gp.obj, "Door");
         if(objIndex != 9999) {
             gp.obj[this.gp.currentMap][objIndex] = null;
-
             startDialogue(this, 0);
             return true;
         }

@@ -14,6 +14,7 @@ public class Potion extends Entity {
         this.name = name;
         setDialogue();
         type = type_consumable;
+        stackable = true;
         if(this.name == "HP") {
             value = 5;
             down0=setUp("/res/objects/item/consumable/potion_red",gp.tileSize,gp.tileSize);

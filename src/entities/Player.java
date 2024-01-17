@@ -505,10 +505,8 @@ public class Player extends Entity {
                 
                 String text;
 
-                if(inventory.size() != maxInventorySize) {
-                    inventory.add(gp.obj[gp.currentMap][i]);
+                if(canObtainItem(gp.obj[gp.currentMap][i]) == true) {
                     text = "Got a " + gp.obj[gp.currentMap][i].name +"!";
-
                 }
                 else {
                     text = "You cannot carry anymore!";
@@ -601,13 +599,56 @@ public class Player extends Entity {
             }
             if(selectedItem.type == type_consumable){
                 if(selectedItem.use(this) == true) {
-                    inventory.remove(itemIndex);
+                    if(selectedItem.amount > 1) {
+                        selectedItem.amount--;
+                    }
+                    else {
+                        inventory.remove(itemIndex);
+                    }
+        
                 }
 
             }
         }
     }
-    
+    public int searchItemInInventory(String itemName) {
+        int itemIndex = 9999;
+        for(int i = 0; i < inventory.size(); i++) {
+            if(inventory.get(i).name.equals(itemName)) {
+                itemIndex = i;
+                break;
+            }
+        }
+        return itemIndex;
+    }
+    public boolean canObtainItem(Entity item) {
+
+        boolean canObtain = false;
+        
+        //Check if item stackable
+        if(item.stackable == true){
+
+            int index = searchItemInInventory(item.name);
+            
+            if(index != 9999) {
+                inventory.get(index).amount++;
+                canObtain = true;
+            }
+            else {
+                if(inventory.size() != maxInventorySize) {
+                    inventory.add(item);
+                    canObtain = true;
+                }
+            }
+        }
+        else {
+            if(inventory.size() != maxInventorySize) {
+                inventory.add(item);
+                canObtain = true;
+            }
+        }
+        return canObtain;
+    }
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.white); // set color to use for drawing objects
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);

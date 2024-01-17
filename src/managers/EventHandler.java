@@ -57,7 +57,7 @@ public class EventHandler {
         int yDistance = Math.abs(gp.player.worldY - previousEventY);
         int distance = Math.max(xDistance, yDistance);
 
-        if(distance > gp.tileSize) {
+        if(distance > gp.tileSize*3) {
             canTouchEvent = true;
         }
 

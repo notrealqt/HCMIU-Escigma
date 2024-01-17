@@ -42,7 +42,7 @@ public class AssetSetter {
         setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), mapNum, i++, 22, 102);
         setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), mapNum, i++, 51, 12);
         setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), mapNum, i++, 96, 26);
-        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 91, 94);
+        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 11, 94);
         setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 46, 71);
         setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 95, 97);
         setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 108, 100);

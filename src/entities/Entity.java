@@ -12,7 +12,7 @@ import main.GamePanel;
 import managers.UtilityTool;
 
 public class Entity {
-//sdf
+    //sdf
     protected GamePanel gp;
     public BufferedImage up1, up2, up3, up0, up4, up5, up6, up7,up8,up9;
     public BufferedImage down0, down1, down2, down3, down4, down5, down6, down7, down8, down9;
@@ -108,6 +108,8 @@ public class Entity {
     public String description = ""; //item description
     public int manaCost;
     public boolean knockBack = false;
+    public boolean stackable = false;
+    public int amount = 1;
     public int lightRadius;
     public int knockBackPower = 0;
     public Entity(GamePanel gp){

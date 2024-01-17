@@ -45,11 +45,10 @@ public class Chest extends Entity{
     public void interact() {
 
         if(opened == false) {
-            if(gp.player.inventory.size() == gp.player.maxInventorySize) {
+            if(gp.player.canObtainItem(loot) == false) {
                 startDialogue(this, 0);
             }
             else {
-                gp.player.inventory.add(loot);
                 startDialogue(this, 1);
                 down0 = image2;
                 opened = true;
