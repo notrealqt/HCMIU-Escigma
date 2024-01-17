@@ -12,48 +12,48 @@ public class Dummy extends Entity {
     }
     public void getPlayerImage() {
 
-        idleUp = setUp("/player/move/1_player_idle_back_0",gp.tileSize, gp.tileSize);
-        idleDown = setUp("/player/move/1_player_idle_font_0",gp.tileSize, gp.tileSize);
-        idleRight = setUp("/player/move/1_player_idle_right_0",gp.tileSize, gp.tileSize);
-        idleLeft = setUp("/player/move/1_player_idle_left_0",gp.tileSize, gp.tileSize);
+        idleUp = setUp("/res/player/move/idle_back",gp.tileSize, gp.tileSize);
+        idleDown = setUp("/res/player/move/idle_font",gp.tileSize, gp.tileSize);
+        idleRight = setUp("/res/player/move/idle_right",gp.tileSize, gp.tileSize);
+        idleLeft = setUp("/res/player/move/idle_left",gp.tileSize, gp.tileSize);
 
-        up0 = setUp("/player/move/1_player_move_back_0",gp.tileSize, gp.tileSize);
-        up1 = setUp("/player/move/1_player_move_back_1",gp.tileSize, gp.tileSize);
-        up2 = setUp("/player/move/1_player_move_back_2",gp.tileSize, gp.tileSize);
-        up3 = setUp("/player/move/1_player_move_back_3",gp.tileSize, gp.tileSize);
-        up4 = setUp("/player/move/1_player_move_back_4",gp.tileSize, gp.tileSize);
-        up5 = setUp("/player/move/1_player_move_back_5",gp.tileSize, gp.tileSize);
-        up6 = setUp("/player/move/1_player_move_back_6",gp.tileSize, gp.tileSize);
-        up7 = setUp("/player/move/1_player_move_back_7",gp.tileSize, gp.tileSize);
+        up0 = setUp("/res/player/move/down0",gp.tileSize, gp.tileSize);
+        up1 = setUp("/res/player/move/down1",gp.tileSize, gp.tileSize);
+        up2 = setUp("/res/player/move/down2",gp.tileSize, gp.tileSize);
+        up3 = setUp("/res/player/move/down3",gp.tileSize, gp.tileSize);
+        up4 = setUp("/res/player/move/down4",gp.tileSize, gp.tileSize);
+        up5 = setUp("/res/player/move/down5",gp.tileSize, gp.tileSize);
+        up6 = setUp("/res/player/move/down6",gp.tileSize, gp.tileSize);
+        up7 = setUp("/res/player/move/down7",gp.tileSize, gp.tileSize);
 
-        down0 = setUp("/player/move/1_player_move_font_0",gp.tileSize, gp.tileSize);
-        down1 = setUp("/player/move/1_player_move_font_1",gp.tileSize, gp.tileSize);
-        down2 = setUp("/player/move/1_player_move_font_2",gp.tileSize, gp.tileSize);
-        down3 = setUp("/player/move/1_player_move_font_3",gp.tileSize, gp.tileSize);
-        down4 = setUp("/player/move/1_player_move_font_4",gp.tileSize, gp.tileSize);
-        down5 = setUp("/player/move/1_player_move_font_5",gp.tileSize, gp.tileSize);
-        down6 = setUp("/player/move/1_player_move_font_6",gp.tileSize, gp.tileSize);
-        down7 = setUp("/player/move/1_player_move_font_7",gp.tileSize, gp.tileSize);
+        down0 = setUp("/res/player/move/up0",gp.tileSize, gp.tileSize);
+        down1 = setUp("/res/player/move/up1",gp.tileSize, gp.tileSize);
+        down2 = setUp("/res/player/move/up2",gp.tileSize, gp.tileSize);
+        down3 = setUp("/res/player/move/up3",gp.tileSize, gp.tileSize);
+        down4 = setUp("/res/player/move/up4",gp.tileSize, gp.tileSize);
+        down5 = setUp("/res/player/move/up5",gp.tileSize, gp.tileSize);
+        down6 = setUp("/res/player/move/up6",gp.tileSize, gp.tileSize);
+        down7 = setUp("/res/player/move/up7",gp.tileSize, gp.tileSize);
 
         
-        left0 = setUp("/player/move/1_player_move_left_0",gp.tileSize, gp.tileSize);
-        left1 = setUp("/player/move/1_player_move_left_1",gp.tileSize, gp.tileSize);
-        left2 = setUp("/player/move/1_player_move_left_2",gp.tileSize, gp.tileSize);
-        left3 = setUp("/player/move/1_player_move_left_3",gp.tileSize, gp.tileSize);
-        left4 = setUp("/player/move/1_player_move_left_4",gp.tileSize, gp.tileSize);
-        left5 = setUp("/player/move/1_player_move_left_5",gp.tileSize, gp.tileSize);
-        left6 = setUp("/player/move/1_player_move_left_6",gp.tileSize, gp.tileSize);
-        left7 = setUp("/player/move/1_player_move_left_7",gp.tileSize, gp.tileSize);;
+        left0 = setUp("/res/player/move/left0",gp.tileSize, gp.tileSize);
+        left1 = setUp("/res/player/move/left1",gp.tileSize, gp.tileSize);
+        left2 = setUp("/res/player/move/left2",gp.tileSize, gp.tileSize);
+        left3 = setUp("/res/player/move/left3",gp.tileSize, gp.tileSize);
+        left4 = setUp("/res/player/move/left4",gp.tileSize, gp.tileSize);
+        left5 = setUp("/res/player/move/left5",gp.tileSize, gp.tileSize);
+        left6 = setUp("/res/player/move/left6",gp.tileSize, gp.tileSize);
+        left7 = setUp("/res/player/move/left7",gp.tileSize, gp.tileSize);;
 
 
-        right0 = setUp("/player/move/1_player_move_right_0",gp.tileSize, gp.tileSize);
-        right1 = setUp("/player/move/1_player_move_right_1",gp.tileSize, gp.tileSize);
-        right2 = setUp("/player/move/1_player_move_right_2",gp.tileSize, gp.tileSize);
-        right3 = setUp("/player/move/1_player_move_right_3",gp.tileSize, gp.tileSize);
-        right4 = setUp("/player/move/1_player_move_right_4",gp.tileSize, gp.tileSize);
-        right5 = setUp("/player/move/1_player_move_right_5",gp.tileSize, gp.tileSize);
-        right6 = setUp("/player/move/1_player_move_right_6",gp.tileSize, gp.tileSize);
-        right7 = setUp("/player/move/1_player_move_right_7",gp.tileSize, gp.tileSize);
+        right0 = setUp("/res/player/move/right0",gp.tileSize, gp.tileSize);
+        right1 = setUp("/res/player/move/right1",gp.tileSize, gp.tileSize);
+        right2 = setUp("/res/player/move/right2",gp.tileSize, gp.tileSize);
+        right3 = setUp("/res/player/move/right3",gp.tileSize, gp.tileSize);
+        right4 = setUp("/res/player/move/right4",gp.tileSize, gp.tileSize);
+        right5 = setUp("/res/player/move/right5",gp.tileSize, gp.tileSize);
+        right6 = setUp("/res/player/move/right6",gp.tileSize, gp.tileSize);
+        right7 = setUp("/res/player/move/right7",gp.tileSize, gp.tileSize);
         
     }
 }

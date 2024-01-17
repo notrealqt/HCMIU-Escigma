@@ -163,7 +163,48 @@ public class Player extends Entity {
             rightAttack4 = setUp(path + "right3",gp.tileSize*2, gp.tileSize);
         }
         if(currentWeapon.type == type_axe) {
-            //need image
+            String path = "/res/objects/item/weapon/axe/axe_attack/";
+            upAttack1 = setUp(path + "up0",gp.tileSize, gp.tileSize*2);
+            upAttack2 = setUp(path + "up1",gp.tileSize, gp.tileSize*2);
+            upAttack3 = setUp(path + "up2",gp.tileSize, gp.tileSize*2);
+            upAttack4 = setUp(path + "up3",gp.tileSize, gp.tileSize*2);
+
+            downAttack1 = setUp(path + "down0",gp.tileSize, gp.tileSize*2);
+            downAttack2 = setUp(path + "down1",gp.tileSize, gp.tileSize*2);
+            downAttack3 = setUp(path + "down2",gp.tileSize, gp.tileSize*2);
+            downAttack4 = setUp(path + "down3",gp.tileSize, gp.tileSize*2);
+
+            leftAttack1 = setUp(path + "left0",gp.tileSize*2, gp.tileSize);
+            leftAttack2 = setUp(path + "left1",gp.tileSize*2, gp.tileSize);
+            leftAttack3 = setUp(path + "left2",gp.tileSize*2, gp.tileSize);
+            leftAttack4 = setUp(path + "left3",gp.tileSize*2, gp.tileSize);
+
+            rightAttack1 = setUp(path + "right0",gp.tileSize*2, gp.tileSize);
+            rightAttack2 = setUp(path + "right1",gp.tileSize*2, gp.tileSize);
+            rightAttack3 = setUp(path + "right2",gp.tileSize*2, gp.tileSize);
+            rightAttack4 = setUp(path + "right3",gp.tileSize*2, gp.tileSize);
+        }
+        if(currentWeapon.name == "Fire Sword") {
+            String path = "/res/objects/item/weapon/fire sword/flame_attack/";
+            upAttack1 = setUp(path+"down0",gp.tileSize, gp.tileSize*2);
+            upAttack2 = setUp(path+"down1",gp.tileSize, gp.tileSize*2);
+            upAttack3 = setUp(path+"down2",gp.tileSize, gp.tileSize*2);
+            upAttack4 = setUp(path+"down3",gp.tileSize, gp.tileSize*2);
+
+            downAttack1 = setUp(path+"up0",gp.tileSize, gp.tileSize*2);
+            downAttack2 = setUp(path+"up1",gp.tileSize, gp.tileSize*2);
+            downAttack3 = setUp(path+"up2",gp.tileSize, gp.tileSize*2);
+            downAttack4 = setUp(path+"up3",gp.tileSize, gp.tileSize*2);
+
+            leftAttack1 = setUp(path+"left0",gp.tileSize*2, gp.tileSize);
+            leftAttack2 = setUp(path+"left1",gp.tileSize*2, gp.tileSize);
+            leftAttack3 = setUp(path+"left2",gp.tileSize*2, gp.tileSize);
+            leftAttack4 = setUp(path+"left3",gp.tileSize*2, gp.tileSize);
+
+            rightAttack1 = setUp(path+"right0",gp.tileSize*2, gp.tileSize);
+            rightAttack2 = setUp(path+"right1",gp.tileSize*2, gp.tileSize);
+            rightAttack3 = setUp(path+"right2",gp.tileSize*2, gp.tileSize);
+            rightAttack4 = setUp(path+"right3",gp.tileSize*2, gp.tileSize);
         }
     }
 
@@ -368,7 +409,9 @@ public class Player extends Entity {
 
             shotAvailableCounter = 0 ;
         }       
-        if(shotAvailableCounter<30){ shotAvailableCounter++; }         
+        if(shotAvailableCounter<30){ shotAvailableCounter++; }
+        if(life>maxLife){life = maxLife;}         
+        if(mana>maxMana){mana=maxMana;}
 
         //invincible time must outside of the key if statement
         if(invincible == true){

@@ -9,14 +9,16 @@ public class Fire_Sword extends Entity {
         super(gp);
         this.gp = gp;
 
-        name ="Fire Sword";
-        speed = 5;
-        maxLife = 80;
-        life = maxLife;
-        attack = 10;
-        manaCost = 1;
-        alive = false;
-        getImage();
+        type = type_sword;
+        name = "Fire Sword";
+        down0=setUp("/res/objects/item/weapon/fire sword/fire_sword",gp.tileSize,gp.tileSize);
+        attackvalue = 99;
+        defensevalue = 1;
+        description = "["+name+"]\nA fire sword which used belong to\nan Australian painter";
+        attackArea.width = 200;
+        attackArea.height = 100;
+        knockBackPower = 0;
+        //getImage();
     }
 
    public void getImage(){

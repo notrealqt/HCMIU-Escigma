@@ -19,18 +19,18 @@ public class Fire_Sword_Projectile extends Projectile{
         attack = 10;
         manaCost = 1;
         alive = false;
-        //getImage();
+        getImage();
     }
 
    public void getImage(){
-        up0 = setUp("/item/weapon/flame_attack/1_flame_projectile_font_0",gp.tileSize,gp.tileSize);
-        up1 = setUp("/item/weapon/flame_attack/1_flame_projectile_font_0",gp.tileSize,gp.tileSize);
-        down0 = setUp("/item/weapon/flame_attack/1_flame_projectile_back_0",gp.tileSize,gp.tileSize);
-        down1 = setUp("/item/weapon/flame_attack/1_flame_projectile_back_0",gp.tileSize,gp.tileSize);
-        left0 = setUp("/item/weapon/flame_attack/1_flame_projectile_left_0",gp.tileSize,gp.tileSize);
-        left1 = setUp("/item/weapon/flame_attack/1_flame_projectile_left_0",gp.tileSize,gp.tileSize);
-        right0 = setUp("/item/weapon/flame_attack/1_flame_projectile_right_0",gp.tileSize,gp.tileSize);
-        right1 = setUp("/item/weapon/flame_attack/1_flame_projectile_right_0",gp.tileSize,gp.tileSize);
+        up0 = setUp("/res/objects/item/weapon/fire sword/flame_attack/projectile_up",gp.tileSize,gp.tileSize);
+        up1 = setUp("/res/objects/item/weapon/fire sword/flame_attack/projectile_up",gp.tileSize,gp.tileSize);
+        down0 = setUp("/res/objects/item/weapon/fire sword/flame_attack/projectile_down",gp.tileSize,gp.tileSize);
+        down1 = setUp("/res/objects/item/weapon/fire sword/flame_attack/projectile_down",gp.tileSize,gp.tileSize);
+        left0 = setUp("/res/objects/item/weapon/fire sword/flame_attack/projectile_left",gp.tileSize,gp.tileSize);
+        left1 = setUp("/res/objects/item/weapon/fire sword/flame_attack/projectile_left",gp.tileSize,gp.tileSize);
+        right0 = setUp("/res/objects/item/weapon/fire sword/flame_attack/projectile_right",gp.tileSize,gp.tileSize);
+        right1 = setUp("/res/objects/item/weapon/fire sword/flame_attack/projectile_right",gp.tileSize,gp.tileSize);
         
    }
    
