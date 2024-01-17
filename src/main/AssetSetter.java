@@ -52,8 +52,10 @@ public class AssetSetter {
     public void setMonster() {
         int mapNum = 0;
         int i = 0;
-        setMonsterAt(new m_GreenSlime(gp), mapNum, i++, 24,24);
-        if (Progress.defeatLog == false) {
+
+        setMonsterAt(new m_GreenSlime(gp), mapNum, i++, 24, 24);
+
+        if (!Progress.defeatLog) {
             setMonsterAt(new m_Boss(gp), mapNum, i++, 90, 38);
         }
     }
@@ -76,7 +78,7 @@ public class AssetSetter {
     }
 
     public void setMonsterAt(Entity mon, int mapNum, int index, int worldX, int worldY) {
-        gp.monster[mapNum][0] = mon;
+        gp.monster[mapNum][index] = mon;  // Use the provided index parameter
         mon.worldX = worldX * gp.tileSize;
         mon.worldY = worldY * gp.tileSize;
     }

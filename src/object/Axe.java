@@ -13,8 +13,8 @@ public class Axe extends Entity {
         attackvalue = 4;
         defensevalue = 2;
         description = "["+name+"]\nAn axe!!!";
-        attackArea.width = 36;
-        attackArea.height = 36;
+        attackArea.width = 100;
+        attackArea.height = 100;
         knockBackPower = 10;
     }
     

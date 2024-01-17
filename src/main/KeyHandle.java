@@ -175,7 +175,7 @@ public class KeyHandle implements KeyListener {
                     debugText = false;
                 }
             }
-            if (code == KeyEvent.VK_R){
+            /*if (code == KeyEvent.VK_R){
                 switch(gp.currentMap) {
                     case 0:
                        gp.tileM.loadMap("/res/map/map02.txt", 0);
@@ -184,9 +184,11 @@ public class KeyHandle implements KeyListener {
                     //case 1: different map
                 }
             }
+            */
             if (code == KeyEvent.VK_SPACE) {
                 guardPressed = true;
             }
+            
         }
     
     public void pauseState(int code){
@@ -229,6 +231,9 @@ public class KeyHandle implements KeyListener {
                     gp.ui.slotCol++;
                     gp.playSE(3);
                 }
+            }
+            if(code == KeyEvent.VK_E){
+                gp.player.selectItem();
             }
     }
     
@@ -413,6 +418,9 @@ public class KeyHandle implements KeyListener {
         }
         if(code == KeyEvent.VK_SPACE) {
             guardPressed = false;
+        }
+        if(code == KeyEvent.VK_E) {
+            
         }
     }
 
