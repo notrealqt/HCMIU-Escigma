@@ -9,7 +9,7 @@ public class Shield extends Entity {
         super(gp);
         type = type_shield;
         name = "Shit shield";
-        down0=setUp("/item/shield/shield_wood",gp.tileSize,gp.tileSize);
+        //down0=setUp("/item/shield/shield_wood",gp.tileSize,gp.tileSize);
         attackvalue = 0;
         defensevalue = 2;
         description = "["+name+"]\nAn old shield";

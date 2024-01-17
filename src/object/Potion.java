@@ -16,7 +16,7 @@ public class Potion extends Entity {
         type = type_consumable;
         if(this.name == "HP") {
             value = 5;
-            down0=setUp("/item/consumable/potion_red",gp.tileSize,gp.tileSize);
+            down0=setUp("/res/objects/item/consumable/potion_red",gp.tileSize,gp.tileSize);
             description = "["+name+"] \nheal your life by "+value+".";
         }
         

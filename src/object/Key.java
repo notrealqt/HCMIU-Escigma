@@ -14,7 +14,7 @@ public class Key extends Entity {
 
         type = type_consumable;
         name = "Key";
-        down0 = setUp("objects/key",gp.tileSize, gp.tileSize);
+        down0 = setUp("/res/objects/item/use/key",gp.tileSize, gp.tileSize);
         description = "["+name+"]\nKey to open door\nWhat do you expect more?";
         /*
         try {

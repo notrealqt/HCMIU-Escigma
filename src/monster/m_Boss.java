@@ -44,63 +44,65 @@ public class m_Boss extends Entity {
     }   
 
     public void getImage(){
-        up0=setUp("monster/boss/boss_corpse collector_move_font_0",gp.tileSize, gp.tileSize);
-        up1=setUp("monster/boss/boss_corpse collector_move_font_1",gp.tileSize, gp.tileSize);
-        up2=setUp("monster/boss/boss_corpse collector_move_font_2",gp.tileSize, gp.tileSize);
-        up3=setUp("monster/boss/boss_corpse collector_move_font_3",gp.tileSize, gp.tileSize);
-        up4=setUp("monster/boss/boss_corpse collector_move_font_4",gp.tileSize, gp.tileSize);
-        up5=setUp("monster/boss/boss_corpse collector_move_font_5",gp.tileSize, gp.tileSize);
-        up6=setUp("monster/boss/boss_corpse collector_move_font_6",gp.tileSize, gp.tileSize);
-        up7=setUp("monster/boss/boss_corpse collector_move_font_7",gp.tileSize, gp.tileSize);
+        String path = "/res/monster/boss/corpse/move/";
+        up0=setUp(path + "up0",gp.tileSize, gp.tileSize);
+        up1=setUp(path + "up1",gp.tileSize, gp.tileSize);
+        up2=setUp(path + "up2",gp.tileSize, gp.tileSize);
+        up3=setUp(path + "up3",gp.tileSize, gp.tileSize);
+        up4=setUp(path + "up4",gp.tileSize, gp.tileSize);
+        up5=setUp(path + "up5",gp.tileSize, gp.tileSize);
+        up6=setUp(path + "up6",gp.tileSize, gp.tileSize);
+        up7=setUp(path + "up7",gp.tileSize, gp.tileSize);
 
-        down0=setUp("monster/boss/boss_corpse collector_move_back_0",gp.tileSize, gp.tileSize);
-        down1=setUp("monster/boss/boss_corpse collector_move_back_1",gp.tileSize, gp.tileSize);
-        down2=setUp("monster/boss/boss_corpse collector_move_back_2",gp.tileSize, gp.tileSize);
-        down3=setUp("monster/boss/boss_corpse collector_move_back_3",gp.tileSize, gp.tileSize);
-        down4=setUp("monster/boss/boss_corpse collector_move_back_4",gp.tileSize, gp.tileSize);
-        down5=setUp("monster/boss/boss_corpse collector_move_back_5",gp.tileSize, gp.tileSize);
-        down6=setUp("monster/boss/boss_corpse collector_move_back_6",gp.tileSize, gp.tileSize);
-        down7=setUp("monster/boss/boss_corpse collector_move_back_7",gp.tileSize, gp.tileSize);
+        down0=setUp(path + "down0",gp.tileSize, gp.tileSize);
+        down1=setUp(path + "down1",gp.tileSize, gp.tileSize);
+        down2=setUp(path + "down2",gp.tileSize, gp.tileSize);
+        down3=setUp(path + "down3",gp.tileSize, gp.tileSize);
+        down4=setUp(path + "down4",gp.tileSize, gp.tileSize);
+        down5=setUp(path + "down5",gp.tileSize, gp.tileSize);
+        down6=setUp(path + "down6",gp.tileSize, gp.tileSize);
+        down7=setUp(path + "down7",gp.tileSize, gp.tileSize);
 
-        left0=setUp("monster/boss/boss_corpse collector_move_left_0",gp.tileSize, gp.tileSize);
-        left1=setUp("monster/boss/boss_corpse collector_move_left_1",gp.tileSize, gp.tileSize);
-        left2=setUp("monster/boss/boss_corpse collector_move_left_2",gp.tileSize, gp.tileSize);
-        left3=setUp("monster/boss/boss_corpse collector_move_left_3",gp.tileSize, gp.tileSize);
-        left4=setUp("monster/boss/boss_corpse collector_move_left_4",gp.tileSize, gp.tileSize);
-        left5=setUp("monster/boss/boss_corpse collector_move_left_5",gp.tileSize, gp.tileSize);
-        left6=setUp("monster/boss/boss_corpse collector_move_left_6",gp.tileSize, gp.tileSize);
-        left7=setUp("monster/boss/boss_corpse collector_move_left_7",gp.tileSize, gp.tileSize);
+        left0=setUp(path + "left0",gp.tileSize, gp.tileSize);
+        left1=setUp(path + "left1",gp.tileSize, gp.tileSize);
+        left2=setUp(path + "left2",gp.tileSize, gp.tileSize);
+        left3=setUp(path + "left3",gp.tileSize, gp.tileSize);
+        left4=setUp(path + "left4",gp.tileSize, gp.tileSize);
+        left5=setUp(path + "left5",gp.tileSize, gp.tileSize);
+        left6=setUp(path + "left6",gp.tileSize, gp.tileSize);
+        left7=setUp(path + "left7",gp.tileSize, gp.tileSize);
 
-        right0=setUp("monster/boss/boss_corpse collector_move_right_0",gp.tileSize, gp.tileSize);
-        right1=setUp("monster/boss/boss_corpse collector_move_right_1",gp.tileSize, gp.tileSize);
-        right2=setUp("monster/boss/boss_corpse collector_move_right_2",gp.tileSize, gp.tileSize);
-        right3=setUp("monster/boss/boss_corpse collector_move_right_3",gp.tileSize, gp.tileSize);
-        right4=setUp("monster/boss/boss_corpse collector_move_right_4",gp.tileSize, gp.tileSize);
-        right5=setUp("monster/boss/boss_corpse collector_move_right_5",gp.tileSize, gp.tileSize);
-        right6=setUp("monster/boss/boss_corpse collector_move_right_6",gp.tileSize, gp.tileSize);
-        right7=setUp("monster/boss/boss_corpse collector_move_right_7",gp.tileSize, gp.tileSize);
+        right0=setUp(path + "right0",gp.tileSize, gp.tileSize);
+        right1=setUp(path + "right1",gp.tileSize, gp.tileSize);
+        right2=setUp(path + "right2",gp.tileSize, gp.tileSize);
+        right3=setUp(path + "right3",gp.tileSize, gp.tileSize);
+        right4=setUp(path + "right4",gp.tileSize, gp.tileSize);
+        right5=setUp(path + "right5",gp.tileSize, gp.tileSize);
+        right6=setUp(path + "right6",gp.tileSize, gp.tileSize);
+        right7=setUp(path + "right7",gp.tileSize, gp.tileSize);
     }
 
     public void getAttackImage() {
-        upAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_0", gp.tileSize, gp.tileSize*2);
-        upAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_1", gp.tileSize, gp.tileSize*2);
-        upAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_2", gp.tileSize, gp.tileSize*2);
-        upAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_3", gp.tileSize, gp.tileSize*2);
+        String path = "/res/monster/boss/corpse/attack/";
+        upAttack1 = setUp(path + "up0", gp.tileSize, gp.tileSize);
+        upAttack2 = setUp(path + "up1", gp.tileSize, gp.tileSize);
+        upAttack3 = setUp(path + "up2", gp.tileSize, gp.tileSize);
+        upAttack4 = setUp(path + "up3", gp.tileSize, gp.tileSize);
 
-        downAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_0", gp.tileSize, gp.tileSize*2);
-        downAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_1", gp.tileSize, gp.tileSize*2);
-        downAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_2", gp.tileSize, gp.tileSize*2);
-        downAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_3", gp.tileSize, gp.tileSize*2);
+        downAttack1 = setUp(path + "down0", gp.tileSize, gp.tileSize);
+        downAttack2 = setUp(path + "down1", gp.tileSize, gp.tileSize);
+        downAttack3 = setUp(path + "down2", gp.tileSize, gp.tileSize);
+        downAttack4 = setUp(path + "down3", gp.tileSize, gp.tileSize);
         
-        leftAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_0", gp.tileSize*2, gp.tileSize);
-        leftAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_1", gp.tileSize*2, gp.tileSize);
-        leftAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_2", gp.tileSize*2, gp.tileSize);
-        leftAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_3", gp.tileSize*2, gp.tileSize);
+        leftAttack1 = setUp(path + "left0", gp.tileSize, gp.tileSize);
+        leftAttack2 = setUp(path + "left1", gp.tileSize, gp.tileSize);
+        leftAttack3 = setUp(path + "left2", gp.tileSize, gp.tileSize);
+        leftAttack4 = setUp(path + "left3", gp.tileSize, gp.tileSize);
 
-        rightAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_right_0", gp.tileSize*2, gp.tileSize);
-        rightAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_right_1", gp.tileSize*2, gp.tileSize);
-        rightAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_right_2", gp.tileSize*2, gp.tileSize);
-        rightAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_right_3", gp.tileSize*2, gp.tileSize);
+        rightAttack1 = setUp(path + "right0", gp.tileSize, gp.tileSize);
+        rightAttack2 = setUp(path + "right1", gp.tileSize, gp.tileSize);
+        rightAttack3 = setUp(path + "right2", gp.tileSize, gp.tileSize);
+        rightAttack4 = setUp(path + "right3", gp.tileSize, gp.tileSize);
 
     }
 

@@ -196,7 +196,7 @@ public class CollisionDetector {
     
     public int checkEntity(Entity entity, Entity[][] target) {
         int index = 9999;
-        for(int i = 0; i<target.length; i++){
+        for(int i = 0; i < target[1].length; i++){
             if(target[gp.currentMap][i] != null){
                 entity.solidArea.x = entity.worldX + entity.solidArea.x;
                 entity.solidArea.y = entity.worldY + entity.solidArea.y;

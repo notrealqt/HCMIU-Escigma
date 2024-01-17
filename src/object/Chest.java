@@ -17,8 +17,8 @@ public class Chest extends Entity{
         this.loot = loot;
         type = type_obstacle;
         name = "Chest";
-        image = setUp("objects/"+closeImage,gp.tileSize, gp.tileSize);
-        image2 = setUp("objects/"+openImage,gp.tileSize, gp.tileSize);
+        image = setUp("/res/objects/chest/"+closeImage,gp.tileSize, gp.tileSize);
+        image2 = setUp("/res/objects/chest/"+openImage,gp.tileSize, gp.tileSize);
         down0 = image;
 
         collision = true;
@@ -28,15 +28,7 @@ public class Chest extends Entity{
         solidArea.height = 32;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        
 
-        /* 
-        try {
-            down0 = ImageIO.read(getClass().getResourceAsStream("/res/objects/chest.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
         setDialogue();
     } 
     public void setLoot (Entity loot) {

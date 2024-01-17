@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 public class KeyHandle implements KeyListener {
 
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed,attackPressed,shotKeyPressed, guardPressed;
+    public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed,attackPressed,shotKeyPressed, guardPressed,godModePressed;
     //Debug
     boolean debugText = false;
     public boolean godMode = false;
@@ -179,9 +179,11 @@ public class KeyHandle implements KeyListener {
             if (code == KeyEvent.VK_G) {
                 if(godMode == false){
                     godMode = true;
+                    godModePressed = true;
                 }
                 else if(godMode== true){
                     godMode = false;
+                    
                 }
             }
             /*if (code == KeyEvent.VK_R){

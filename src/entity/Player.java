@@ -93,6 +93,7 @@ public class Player extends Entity {
     }
     
     public void setDefaultPosition(){
+        gp.currentMap = 1;
         worldX = gp.tileSize * 14; 
         worldY = gp.tileSize * 14;
         direction = "down";
@@ -140,70 +141,29 @@ public class Player extends Entity {
     
     public void getPlayerattackImgage(){
         if(currentWeapon.type == type_sword){
-            if(currentWeapon.name == "Shit Sword") {
-                upAttack1 = setUp("player/attack/1_player_attack_back_0",gp.tileSize, gp.tileSize*2);
-                upAttack2 = setUp("player/attack/1_player_attack_back_1",gp.tileSize, gp.tileSize*2);
-                upAttack3 = setUp("player/attack/1_player_attack_back_2",gp.tileSize, gp.tileSize*2);
-                upAttack4 = setUp("player/attack/1_player_attack_back_3",gp.tileSize, gp.tileSize*2);
+            String path = "/res/objects/item/weapon/sword/sword_attack/";
+            upAttack1 = setUp(path + "up0",gp.tileSize, gp.tileSize*2);
+            upAttack2 = setUp(path + "up1",gp.tileSize, gp.tileSize*2);
+            upAttack3 = setUp(path + "up2",gp.tileSize, gp.tileSize*2);
+            upAttack4 = setUp(path + "up3",gp.tileSize, gp.tileSize*2);
 
-                downAttack1 = setUp("player/attack/1_player_attack_font_0",gp.tileSize, gp.tileSize*2);
-                downAttack2 = setUp("player/attack/1_player_attack_font_1",gp.tileSize, gp.tileSize*2);
-                downAttack3 = setUp("player/attack/1_player_attack_font_2",gp.tileSize, gp.tileSize*2);
-                downAttack4 = setUp("player/attack/1_player_attack_font_3",gp.tileSize, gp.tileSize*2);
+            downAttack1 = setUp(path + "down0",gp.tileSize, gp.tileSize*2);
+            downAttack2 = setUp(path + "down1",gp.tileSize, gp.tileSize*2);
+            downAttack3 = setUp(path + "down2",gp.tileSize, gp.tileSize*2);
+            downAttack4 = setUp(path + "down3",gp.tileSize, gp.tileSize*2);
 
-                leftAttack1 = setUp("player/attack/1_player_attack_left_0",gp.tileSize*2, gp.tileSize);
-                leftAttack2 = setUp("player/attack/1_player_attack_left_1",gp.tileSize*2, gp.tileSize);
-                leftAttack3 = setUp("player/attack/1_player_attack_left_2",gp.tileSize*2, gp.tileSize);
-                leftAttack4 = setUp("player/attack/1_player_attack_left_3",gp.tileSize*2, gp.tileSize);
+            leftAttack1 = setUp(path + "left0",gp.tileSize*2, gp.tileSize);
+            leftAttack2 = setUp(path + "left1",gp.tileSize*2, gp.tileSize);
+            leftAttack3 = setUp(path + "left2",gp.tileSize*2, gp.tileSize);
+            leftAttack4 = setUp(path + "left3",gp.tileSize*2, gp.tileSize);
 
-                rightAttack1 = setUp("player/attack/1_player_attack_right_0",gp.tileSize*2, gp.tileSize);
-                rightAttack2 = setUp("player/attack/1_player_attack_right_1",gp.tileSize*2, gp.tileSize);
-                rightAttack3 = setUp("player/attack/1_player_attack_right_2",gp.tileSize*2, gp.tileSize);
-                rightAttack4 = setUp("player/attack/1_player_attack_right_3",gp.tileSize*2, gp.tileSize);
-            }
-            if(currentWeapon.name == "Fire Sword") {
-                upAttack1 = setUp("item/weapon/flame_attack/1_flame_player_attack_back_0",gp.tileSize, gp.tileSize*2);
-                upAttack2 = setUp("item/weapon/flame_attack/1_flame_player_attack_back_1",gp.tileSize, gp.tileSize*2);
-                upAttack3 = setUp("item/weapon/flame_attack/1_flame_player_attack_back_2",gp.tileSize, gp.tileSize*2);
-                upAttack4 = setUp("item/weapon/flame_attack/1_flame_player_attack_back_3",gp.tileSize, gp.tileSize*2);
-
-                downAttack1 = setUp("item/weapon/flame_attack/1_flame_player_attack_font_0",gp.tileSize, gp.tileSize*2);
-                downAttack2 = setUp("item/weapon/flame_attack/1_flame_player_attack_font_1",gp.tileSize, gp.tileSize*2);
-                downAttack3 = setUp("item/weapon/flame_attack/1_flame_player_attack_font_2",gp.tileSize, gp.tileSize*2);
-                downAttack4 = setUp("item/weapon/flame_attack/1_flame_player_attack_font_3",gp.tileSize, gp.tileSize*2);
-
-                leftAttack1 = setUp("item/weapon/flame_attack/1_flame_player_attack_left_0",gp.tileSize*2, gp.tileSize);
-                leftAttack2 = setUp("item/weapon/flame_attack/1_flame_player_attack_left_1",gp.tileSize*2, gp.tileSize);
-                leftAttack3 = setUp("item/weapon/flame_attack/1_flame_player_attack_left_2",gp.tileSize*2, gp.tileSize);
-                leftAttack4 = setUp("item/weapon/flame_attack/1_flame_player_attack_left_3",gp.tileSize*2, gp.tileSize);
-
-                rightAttack1 = setUp("item/weapon/flame_attack/1_flame_player_attack_right_0",gp.tileSize*2, gp.tileSize);
-                rightAttack2 = setUp("item/weapon/flame_attack/1_flame_player_attack_right_1",gp.tileSize*2, gp.tileSize);
-                rightAttack3 = setUp("item/weapon/flame_attack/1_flame_player_attack_right_2",gp.tileSize*2, gp.tileSize);
-                rightAttack4 = setUp("item/weapon/flame_attack/1_flame_player_attack_right_3",gp.tileSize*2, gp.tileSize);
-            }
-        
+            rightAttack1 = setUp(path + "right0",gp.tileSize*2, gp.tileSize);
+            rightAttack2 = setUp(path + "right1",gp.tileSize*2, gp.tileSize);
+            rightAttack3 = setUp(path + "right2",gp.tileSize*2, gp.tileSize);
+            rightAttack4 = setUp(path + "right3",gp.tileSize*2, gp.tileSize);
         }
-        if(currentWeapon.type == type_axe){
-            upAttack1 = setUp("player/axe_attack/axe_player_attack_back_0",gp.tileSize, gp.tileSize*2);
-            upAttack2 = setUp("player/axe_attack/axe_player_attack_back_1",gp.tileSize, gp.tileSize*2);
-            upAttack3 = setUp("player/axe_attack/axe_player_attack_back_2",gp.tileSize, gp.tileSize*2);
-            upAttack4 = setUp("player/axe_attack/axe_player_attack_back_3",gp.tileSize, gp.tileSize*2);
-    
-            downAttack1 = setUp("player/axe_attack/axe_player_attack_font_0",gp.tileSize, gp.tileSize*2);
-            downAttack2 = setUp("player/axe_attack/axe_player_attack_font_1",gp.tileSize, gp.tileSize*2);
-            downAttack3 = setUp("player/axe_attack/axe_player_attack_font_2",gp.tileSize, gp.tileSize*2);
-            downAttack4 = setUp("player/axe_attack/axe_player_attack_font_3",gp.tileSize, gp.tileSize*2);
-    
-            leftAttack1 = setUp("player/axe_attack/axe_player_attack_left_0",gp.tileSize*2, gp.tileSize);
-            leftAttack2 = setUp("player/axe_attack/axe_player_attack_left_1",gp.tileSize*2, gp.tileSize);
-            leftAttack3 = setUp("player/axe_attack/axe_player_attack_left_2",gp.tileSize*2, gp.tileSize);
-            leftAttack4 = setUp("player/axe_attack/axe_player_attack_left_3",gp.tileSize*2, gp.tileSize);
-    
-            rightAttack1 = setUp("player/axe_attack/axe_player_attack_right_0",gp.tileSize*2, gp.tileSize);
-            rightAttack2 = setUp("player/axe_attack/axe_player_attack_right_1",gp.tileSize*2, gp.tileSize);
-            rightAttack3 = setUp("player/axe_attack/axe_player_attack_right_2",gp.tileSize*2, gp.tileSize);
-            rightAttack4 = setUp("player/axe_attack/axe_player_attack_right_3",gp.tileSize*2, gp.tileSize);
+        if(currentWeapon.type == type_axe) {
+            //need image
         }
     }
 
@@ -218,49 +178,49 @@ public class Player extends Entity {
     */
 
     public void getPlayerImage() {
+        String path = "/res/player/move/";
+        idleUp = setUp(path + "idle_up",gp.tileSize, gp.tileSize);
+        idleDown = setUp(path + "idle_down",gp.tileSize, gp.tileSize);
+        idleRight = setUp(path + "idle_right",gp.tileSize, gp.tileSize);
+        idleLeft = setUp(path + "idle_left",gp.tileSize, gp.tileSize);
 
-        idleUp = setUp("/player/move/1_player_idle_back_0",gp.tileSize, gp.tileSize);
-        idleDown = setUp("/player/move/1_player_idle_font_0",gp.tileSize, gp.tileSize);
-        idleRight = setUp("/player/move/1_player_idle_right_0",gp.tileSize, gp.tileSize);
-        idleLeft = setUp("/player/move/1_player_idle_left_0",gp.tileSize, gp.tileSize);
+        up0 = setUp(path + "up0",gp.tileSize, gp.tileSize);
+        up1 = setUp(path + "up1",gp.tileSize, gp.tileSize);
+        up2 = setUp(path + "up2",gp.tileSize, gp.tileSize);
+        up3 = setUp(path + "up3",gp.tileSize, gp.tileSize);
+        up4 = setUp(path + "up4",gp.tileSize, gp.tileSize);
+        up5 = setUp(path + "up5",gp.tileSize, gp.tileSize);
+        up6 = setUp(path + "up6",gp.tileSize, gp.tileSize);
+        up7 = setUp(path + "up7",gp.tileSize, gp.tileSize);
 
-        up0 = setUp("/player/move/1_player_move_back_0",gp.tileSize, gp.tileSize);
-        up1 = setUp("/player/move/1_player_move_back_1",gp.tileSize, gp.tileSize);
-        up2 = setUp("/player/move/1_player_move_back_2",gp.tileSize, gp.tileSize);
-        up3 = setUp("/player/move/1_player_move_back_3",gp.tileSize, gp.tileSize);
-        up4 = setUp("/player/move/1_player_move_back_4",gp.tileSize, gp.tileSize);
-        up5 = setUp("/player/move/1_player_move_back_5",gp.tileSize, gp.tileSize);
-        up6 = setUp("/player/move/1_player_move_back_6",gp.tileSize, gp.tileSize);
-        up7 = setUp("/player/move/1_player_move_back_7",gp.tileSize, gp.tileSize);
-
-        down0 = setUp("/player/move/1_player_move_font_0",gp.tileSize, gp.tileSize);
-        down1 = setUp("/player/move/1_player_move_font_1",gp.tileSize, gp.tileSize);
-        down2 = setUp("/player/move/1_player_move_font_2",gp.tileSize, gp.tileSize);
-        down3 = setUp("/player/move/1_player_move_font_3",gp.tileSize, gp.tileSize);
-        down4 = setUp("/player/move/1_player_move_font_4",gp.tileSize, gp.tileSize);
-        down5 = setUp("/player/move/1_player_move_font_5",gp.tileSize, gp.tileSize);
-        down6 = setUp("/player/move/1_player_move_font_6",gp.tileSize, gp.tileSize);
-        down7 = setUp("/player/move/1_player_move_font_7",gp.tileSize, gp.tileSize);
+        down0 = setUp(path + "down0",gp.tileSize, gp.tileSize);
+        down1 = setUp(path + "down1",gp.tileSize, gp.tileSize);
+        down2 = setUp(path + "down2",gp.tileSize, gp.tileSize);
+        down3 = setUp(path + "down3",gp.tileSize, gp.tileSize);
+        down4 = setUp(path + "down4",gp.tileSize, gp.tileSize);
+        down5 = setUp(path + "down5",gp.tileSize, gp.tileSize);
+        down6 = setUp(path + "down6",gp.tileSize, gp.tileSize);
+        down7 = setUp(path + "down7",gp.tileSize, gp.tileSize);
 
         
-        left0 = setUp("/player/move/1_player_move_left_0",gp.tileSize, gp.tileSize);
-        left1 = setUp("/player/move/1_player_move_left_1",gp.tileSize, gp.tileSize);
-        left2 = setUp("/player/move/1_player_move_left_2",gp.tileSize, gp.tileSize);
-        left3 = setUp("/player/move/1_player_move_left_3",gp.tileSize, gp.tileSize);
-        left4 = setUp("/player/move/1_player_move_left_4",gp.tileSize, gp.tileSize);
-        left5 = setUp("/player/move/1_player_move_left_5",gp.tileSize, gp.tileSize);
-        left6 = setUp("/player/move/1_player_move_left_6",gp.tileSize, gp.tileSize);
-        left7 = setUp("/player/move/1_player_move_left_7",gp.tileSize, gp.tileSize);;
+        left0 = setUp(path + "left0",gp.tileSize, gp.tileSize);
+        left1 = setUp(path + "left1",gp.tileSize, gp.tileSize);
+        left2 = setUp(path + "left2",gp.tileSize, gp.tileSize);
+        left3 = setUp(path + "left3",gp.tileSize, gp.tileSize);
+        left4 = setUp(path + "left4",gp.tileSize, gp.tileSize);
+        left5 = setUp(path + "left5",gp.tileSize, gp.tileSize);
+        left6 = setUp(path + "left6",gp.tileSize, gp.tileSize);
+        left7 = setUp(path + "left7",gp.tileSize, gp.tileSize);;
 
 
-        right0 = setUp("/player/move/1_player_move_right_0",gp.tileSize, gp.tileSize);
-        right1 = setUp("/player/move/1_player_move_right_1",gp.tileSize, gp.tileSize);
-        right2 = setUp("/player/move/1_player_move_right_2",gp.tileSize, gp.tileSize);
-        right3 = setUp("/player/move/1_player_move_right_3",gp.tileSize, gp.tileSize);
-        right4 = setUp("/player/move/1_player_move_right_4",gp.tileSize, gp.tileSize);
-        right5 = setUp("/player/move/1_player_move_right_5",gp.tileSize, gp.tileSize);
-        right6 = setUp("/player/move/1_player_move_right_6",gp.tileSize, gp.tileSize);
-        right7 = setUp("/player/move/1_player_move_right_7",gp.tileSize, gp.tileSize);
+        right0 = setUp(path + "right0",gp.tileSize, gp.tileSize);
+        right1 = setUp(path + "right1",gp.tileSize, gp.tileSize);
+        right2 = setUp(path + "right2",gp.tileSize, gp.tileSize);
+        right3 = setUp(path + "right3",gp.tileSize, gp.tileSize);
+        right4 = setUp(path + "right4",gp.tileSize, gp.tileSize);
+        right5 = setUp(path + "right5",gp.tileSize, gp.tileSize);
+        right6 = setUp(path + "right6",gp.tileSize, gp.tileSize);
+        right7 = setUp(path + "right7",gp.tileSize, gp.tileSize);
         
     }
 
@@ -419,6 +379,7 @@ public class Player extends Entity {
                 invincibleCounter = 0;
             }
         if(keyH.godMode == false){
+            
             if (life <= 0) {
                 gp.playSE(4);
                 gp.gameState= gp.youLostState;
@@ -426,6 +387,9 @@ public class Player extends Entity {
                 //death music
                 //gp.playMusic(index);
             }
+        }else if(gp.KeyH.godModePressed = true){
+
+            mana = maxMana;
         }
            
         }
@@ -478,8 +442,32 @@ public class Player extends Entity {
             attacking = false;
         }
             
-       
     }
+
+    // public void pickUpObject(int i){
+    //     if (i!= 9999){
+    //         //pickup only items
+    //         if(gp.obj[gp.currentMap][i].type == type_pickupOnly){
+    //             gp.obj[gp.currentMap][i].use(this);
+    //  gp.obj[gp.currentMap][i] =null;
+    //         }
+
+    //     //inventory items
+    //     else{
+    //         String text;
+    //         if(inventory.size() != maxInventorySize){
+    //             inventory.add(gp.obj[gp.currentMap][i]);
+    //             text = "Got a " + gp.obj[gp.currentMap][i].name +"!";
+    //         }
+    //         else{
+    //             text = "You cannot carry anymore!";
+            
+    //         }
+    //         gp.ui.addMessage(text);
+    //         gp.obj[i]=null;
+    //         }
+    //     }   
+    // }
     
     public void pickUpItem(int i){
         if(i!=9999){
@@ -506,11 +494,8 @@ public class Player extends Entity {
                     text = "You cannot carry anymore!";
                 }
                 gp.ui.addMessage(text);
-                gp.obj[gp.currentMap][i] = null;
-                
+                gp.obj[gp.currentMap][i] = null;   
             }
-            
-            
         }
     }
     

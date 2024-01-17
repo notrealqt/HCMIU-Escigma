@@ -11,12 +11,14 @@ public class EventHandler {
 
     int previousEventX, previousEventY;
     boolean canTouchEvent = true;
+
     public EventHandler(GamePanel gp) {
         this.gp = gp;
 
         eventMaster = new Entity(gp);
         
         eventRect = new EventRect[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
+
         int map = 0;
         int col = 0;
         int row = 0;
@@ -29,6 +31,7 @@ public class EventHandler {
             eventRect[map][col][row].eventRectDefaultX = eventRect[map][col][row].x;
             eventRect[map][col][row].eventRectDefaultY = eventRect[map][col][row].y;
             col++;
+
             if(col == gp.maxWorldCol) {
                 col = 0;
                 row++;
@@ -39,10 +42,7 @@ public class EventHandler {
                 }
 
             }
-
         }
-
-        
     }
     //diagloue set
     public void setDialogue() {
@@ -54,71 +54,75 @@ public class EventHandler {
         int xDistance = Math.abs(gp.player.worldX - previousEventX);
         int yDistance = Math.abs(gp.player.worldY - previousEventY);
         int distance = Math.max(xDistance, yDistance);
-        if(distance > gp.tileSize*3) {
+
+        if(distance > gp.tileSize) {
             canTouchEvent = true;
         }
+
         //This will prevent the event from happening repeatedly
         if(canTouchEvent == true) {
             if(hit(0,16,10,"any") == true) {
                 damagePit(gp.dialogueState);
             }
 
-            if(hit(0,11,94,"any") == true) {
+            else if(hit(0,11,94,"any") == true) {
                 wormHole(0, 45, 71);
             }
     
-            if(hit(0,46,71,"any") == true) {
+            else if(hit(0,46,71,"any") == true) {
                 wormHole(0, 94, 97);
             }
     
-            if(hit(0,95,97,"any") == true) {
+            else if(hit(0,95,97,"any") == true) {
                 wormHole(0, 107, 100);
             }
     
-            if(hit(0,108,100,"any") == true) {
+            else if(hit(0,108,100,"any") == true) {
                 wormHole(0, 12, 94);
             }
     
-            if(hit(0,104,63,"any") == true) {
+            else if(hit(0,104,63,"any") == true) {
                 wormHole(0, 107, 12);
             }
     
-            if(hit(0,108,12,"any") == true) {
+            else if(hit(0,108,12,"any") == true) {
                 wormHole(0, 105, 63);
             }
     
-            if(hit(0,27,27,"any") == true) {
+            else if(hit(0,27,27,"any") == true) {
                 wormHole(0, 49, 45);
             }
     
-            if(hit(0,48,45,"any") == true) {
+            else if(hit(0,48,45,"any") == true) {
                 wormHole(0, 66, 16);
             }
     
-            if(hit(0,67,16,"any") == true) {
+            else if(hit(0,67,16,"any") == true) {
                 wormHole(0, 26, 27);
             }
-            if(hit(0,76,39,"any") == true ||
+            else if(hit(0,76,39,"any") == true ||
                hit(0,76,40,"any") == true ||
                hit(0,76,38,"any") == true ||
                hit(0,76,41,"any") == true) {
                 boss();
             }
 
-            if (hit(0, 37, 13, "any") == true) {
-                teleport(1,80,39);
-                
+            else if (hit(0, 37, 13, "any") == true ||
+            hit(0, 37, 11, "any") == true || 
+            hit(0, 37, 12, "any") == true ||
+            hit(0, 37, 14, "any") == true) {
+                teleport(1,20,20);
             }
-            
-            if (hit(1,80,39, "any") == true) {
+
+            else if (hit(1,20,20, "any") == true) {
                 teleport(0, 37, 13);
             }
             
-            if(hit(0,10,9,"any") == true) {
+            else if(hit(0,10,9,"any") == true) {
                 healingPool(gp.dialogueState);
             }
 
-            if(hit(0,15,12,"any") == true) {
+            else if(hit(0,15,12,"any") == true) {
                 teleport(gp.dialogueState);
             }
 
@@ -141,13 +145,14 @@ public class EventHandler {
                     previousEventX = gp.player.worldX;
                     previousEventY = gp.player.worldY;
                 }
+            }
+
+            gp.player.solidArea.x = gp.player.solidAreaDefaultX;
+            gp.player.solidArea.y = gp.player.solidAreaDefaultY;
+            eventRect[map][col][row].x = eventRect[map][col][row].eventRectDefaultX;
+            eventRect[map][col][row].y = eventRect[map][col][row].eventRectDefaultY;
         }
 
-        gp.player.solidArea.x = gp.player.solidAreaDefaultX;
-        gp.player.solidArea.y = gp.player.solidAreaDefaultY;
-        eventRect[map][col][row].x = eventRect[map][col][row].eventRectDefaultX;
-        eventRect[map][col][row].y = eventRect[map][col][row].eventRectDefaultY;
-        }
         return hit;
     }
     
@@ -187,7 +192,7 @@ public class EventHandler {
         previousEventX = gp.player.worldX;
         previousEventY = gp.player.worldY;
         canTouchEvent = false;
-        
+        System.out.println("MOVE TO MAP: " + map);
     }
     
     public void wormHole (int map, int col, int row) {
