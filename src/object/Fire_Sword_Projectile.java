@@ -17,7 +17,7 @@ public class Fire_Sword_Projectile extends Projectile{
         maxLife = 10;
         life = maxLife;
         attack = 10;
-        manaCost = 0;
+        manaCost = 1;
         alive = false;
         getImage();
     }
