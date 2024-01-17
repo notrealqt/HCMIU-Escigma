@@ -78,6 +78,11 @@ public class Player extends Entity {
         attack = getAttack();
         defense = getDefense();
         currentLight = null;
+        motion1_duration = 5;
+        motion2_duration = 10;
+        motion3_duration = 15;
+        motion4_duration = 25;
+     
         getPlayerImage();
         getPlayerattackImgage();
         //getGuardImage();
