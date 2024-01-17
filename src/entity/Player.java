@@ -16,6 +16,7 @@ import main.KeyHandle;
 import main.UtilityTool;
 import object.Axe;
 import object.Fire_Sword;
+import object.Fire_Sword_Projectile;
 import object.Key;
 import object.Potion;
 import object.Shield;
@@ -72,11 +73,11 @@ public class Player extends Entity {
         strength = 1;   // more strength, more dmg
         dexterity = 1; //more dexterity, less dmg receive
         coin = 0;
-        maxMana = 4;
+        maxMana = 10;
         mana = maxMana;
         currentWeapon = new Sword(gp);
         currentShield = new Shield(gp);
-        projectile = new Fire_Sword(gp);
+        projectile = new Fire_Sword_Projectile(gp);
         attack = getAttack();
         defense = getDefense();
         currentLight = null;
@@ -123,6 +124,7 @@ public class Player extends Entity {
         inventory.add(currentShield);
         inventory.add(new Axe(gp));
         inventory.add(new Potion(gp, "HP"));
+        inventory.add(new Fire_Sword(gp));
     }
     
     public int getAttack(){
@@ -138,25 +140,49 @@ public class Player extends Entity {
     
     public void getPlayerattackImgage(){
         if(currentWeapon.type == type_sword){
-        upAttack1 = setUp("player/attack/1_player_attack_back_0",gp.tileSize, gp.tileSize*2);
-        upAttack2 = setUp("player/attack/1_player_attack_back_1",gp.tileSize, gp.tileSize*2);
-        upAttack3 = setUp("player/attack/1_player_attack_back_2",gp.tileSize, gp.tileSize*2);
-        upAttack4 = setUp("player/attack/1_player_attack_back_3",gp.tileSize, gp.tileSize*2);
+            if(currentWeapon.name == "Shit Sword") {
+                upAttack1 = setUp("player/attack/1_player_attack_back_0",gp.tileSize, gp.tileSize*2);
+                upAttack2 = setUp("player/attack/1_player_attack_back_1",gp.tileSize, gp.tileSize*2);
+                upAttack3 = setUp("player/attack/1_player_attack_back_2",gp.tileSize, gp.tileSize*2);
+                upAttack4 = setUp("player/attack/1_player_attack_back_3",gp.tileSize, gp.tileSize*2);
 
-        downAttack1 = setUp("player/attack/1_player_attack_font_0",gp.tileSize, gp.tileSize*2);
-        downAttack2 = setUp("player/attack/1_player_attack_font_1",gp.tileSize, gp.tileSize*2);
-        downAttack3 = setUp("player/attack/1_player_attack_font_2",gp.tileSize, gp.tileSize*2);
-        downAttack4 = setUp("player/attack/1_player_attack_font_3",gp.tileSize, gp.tileSize*2);
+                downAttack1 = setUp("player/attack/1_player_attack_font_0",gp.tileSize, gp.tileSize*2);
+                downAttack2 = setUp("player/attack/1_player_attack_font_1",gp.tileSize, gp.tileSize*2);
+                downAttack3 = setUp("player/attack/1_player_attack_font_2",gp.tileSize, gp.tileSize*2);
+                downAttack4 = setUp("player/attack/1_player_attack_font_3",gp.tileSize, gp.tileSize*2);
 
-        leftAttack1 = setUp("player/attack/1_player_attack_left_0",gp.tileSize*2, gp.tileSize);
-        leftAttack2 = setUp("player/attack/1_player_attack_left_1",gp.tileSize*2, gp.tileSize);
-        leftAttack3 = setUp("player/attack/1_player_attack_left_2",gp.tileSize*2, gp.tileSize);
-        leftAttack4 = setUp("player/attack/1_player_attack_left_3",gp.tileSize*2, gp.tileSize);
+                leftAttack1 = setUp("player/attack/1_player_attack_left_0",gp.tileSize*2, gp.tileSize);
+                leftAttack2 = setUp("player/attack/1_player_attack_left_1",gp.tileSize*2, gp.tileSize);
+                leftAttack3 = setUp("player/attack/1_player_attack_left_2",gp.tileSize*2, gp.tileSize);
+                leftAttack4 = setUp("player/attack/1_player_attack_left_3",gp.tileSize*2, gp.tileSize);
 
-        rightAttack1 = setUp("player/attack/1_player_attack_right_0",gp.tileSize*2, gp.tileSize);
-        rightAttack2 = setUp("player/attack/1_player_attack_right_1",gp.tileSize*2, gp.tileSize);
-        rightAttack3 = setUp("player/attack/1_player_attack_right_2",gp.tileSize*2, gp.tileSize);
-        rightAttack4 = setUp("player/attack/1_player_attack_right_3",gp.tileSize*2, gp.tileSize);
+                rightAttack1 = setUp("player/attack/1_player_attack_right_0",gp.tileSize*2, gp.tileSize);
+                rightAttack2 = setUp("player/attack/1_player_attack_right_1",gp.tileSize*2, gp.tileSize);
+                rightAttack3 = setUp("player/attack/1_player_attack_right_2",gp.tileSize*2, gp.tileSize);
+                rightAttack4 = setUp("player/attack/1_player_attack_right_3",gp.tileSize*2, gp.tileSize);
+            }
+            if(currentWeapon.name == "Fire Sword") {
+                upAttack1 = setUp("item/weapon/flame_attack/1_flame_player_attack_back_0",gp.tileSize, gp.tileSize*2);
+                upAttack2 = setUp("item/weapon/flame_attack/1_flame_player_attack_back_1",gp.tileSize, gp.tileSize*2);
+                upAttack3 = setUp("item/weapon/flame_attack/1_flame_player_attack_back_2",gp.tileSize, gp.tileSize*2);
+                upAttack4 = setUp("item/weapon/flame_attack/1_flame_player_attack_back_3",gp.tileSize, gp.tileSize*2);
+
+                downAttack1 = setUp("item/weapon/flame_attack/1_flame_player_attack_font_0",gp.tileSize, gp.tileSize*2);
+                downAttack2 = setUp("item/weapon/flame_attack/1_flame_player_attack_font_1",gp.tileSize, gp.tileSize*2);
+                downAttack3 = setUp("item/weapon/flame_attack/1_flame_player_attack_font_2",gp.tileSize, gp.tileSize*2);
+                downAttack4 = setUp("item/weapon/flame_attack/1_flame_player_attack_font_3",gp.tileSize, gp.tileSize*2);
+
+                leftAttack1 = setUp("item/weapon/flame_attack/1_flame_player_attack_left_0",gp.tileSize*2, gp.tileSize);
+                leftAttack2 = setUp("item/weapon/flame_attack/1_flame_player_attack_left_1",gp.tileSize*2, gp.tileSize);
+                leftAttack3 = setUp("item/weapon/flame_attack/1_flame_player_attack_left_2",gp.tileSize*2, gp.tileSize);
+                leftAttack4 = setUp("item/weapon/flame_attack/1_flame_player_attack_left_3",gp.tileSize*2, gp.tileSize);
+
+                rightAttack1 = setUp("item/weapon/flame_attack/1_flame_player_attack_right_0",gp.tileSize*2, gp.tileSize);
+                rightAttack2 = setUp("item/weapon/flame_attack/1_flame_player_attack_right_1",gp.tileSize*2, gp.tileSize);
+                rightAttack3 = setUp("item/weapon/flame_attack/1_flame_player_attack_right_2",gp.tileSize*2, gp.tileSize);
+                rightAttack4 = setUp("item/weapon/flame_attack/1_flame_player_attack_right_3",gp.tileSize*2, gp.tileSize);
+            }
+        
         }
         if(currentWeapon.type == type_axe){
             upAttack1 = setUp("player/axe_attack/axe_player_attack_back_0",gp.tileSize, gp.tileSize*2);
@@ -362,25 +388,28 @@ public class Player extends Entity {
                     else if (spriteNum == 6) { spriteNum = 7; }
                     else if (spriteNum == 7) { spriteNum = 0; }
                     spriteCounter = 0;
-                }
-
-                if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true) {
-
-                    //Set default coordinates, direction and user
-                    projectile.set(worldX, worldY, direction, true,this);
-
-                    //use the mana
-                    projectile.subtractResource(this);
-
-                    //add projectile to the list
-                    gp.projectileList.add(projectile);
-
-                    shotAvailableCounter = 0 ;
-                }       
-                if(shotAvailableCounter<30){ shotAvailableCounter++; }            
+                }  
             }
 
+            
         }
+
+        //Shot projectile
+        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true && currentWeapon.name == "Fire Sword") {
+
+            //Set default coordinates, direction and user
+            projectile.set(worldX, worldY, direction, true,this);
+
+            //use the mana
+            projectile.subtractResource(this);
+
+            //add projectile to the list
+            gp.projectileList.add(projectile);
+
+            shotAvailableCounter = 0 ;
+        }       
+        if(shotAvailableCounter<30){ shotAvailableCounter++; }         
+
         //invincible time must outside of the key if statement
         if(invincible == true){
             invincibleCounter++;

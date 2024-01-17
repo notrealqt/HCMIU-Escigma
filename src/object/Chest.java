@@ -47,7 +47,6 @@ public class Chest extends Entity{
     public void setDialogue() {
         dialogues[0][0] = "You open the chest and find something.\n...But you cannot carry anymore";
         dialogues[1][0] = "You open the chest and find something.\nYou obtain the " + loot.name + "!";
-        dialogues[1][1] = "You obtain the " + loot.name + "!";
         dialogues[2][0] = "It's empty";
     }
 
