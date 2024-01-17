@@ -113,6 +113,7 @@ public class Player extends Entity {
     
     public void setItems(){
         inventory.add(currentWeapon);
+        
     }
     
     public int getAttack(){
@@ -147,6 +148,29 @@ public class Player extends Entity {
         rightAttack2 = setUp("player/attack/1_player_attack_right_1",gp.tileSize*2, gp.tileSize);
         rightAttack3 = setUp("player/attack/1_player_attack_right_2",gp.tileSize*2, gp.tileSize);
         rightAttack4 = setUp("player/attack/1_player_attack_right_3",gp.tileSize*2, gp.tileSize);
+        }
+
+        if(currentWeapon.type == type_axe){
+            upAttack1 = setUp("player/axe_attack/axe_player_attack_back_0",gp.tileSize, gp.tileSize*2);
+            upAttack2 = setUp("player/axe_attack/axe_player_attack_back_1",gp.tileSize, gp.tileSize*2);
+            upAttack3 = setUp("player/axe_attack/axe_player_attack_back_2",gp.tileSize, gp.tileSize*2);
+            upAttack4 = setUp("player/axe_attack/axe_player_attack_back_3",gp.tileSize, gp.tileSize*2);
+    
+            downAttack1 = setUp("player/axe_attack/axe_player_attack_font_0",gp.tileSize, gp.tileSize*2);
+            downAttack2 = setUp("player/axe_attack/axe_player_attack_font_1",gp.tileSize, gp.tileSize*2);
+            downAttack3 = setUp("player/axe_attack/axe_player_attack_font_2",gp.tileSize, gp.tileSize*2);
+            downAttack4 = setUp("player/axe_attack/axe_player_attack_font_3",gp.tileSize, gp.tileSize*2);
+    
+            leftAttack1 = setUp("player/axe_attack/axe_player_attack_left_0",gp.tileSize*2, gp.tileSize);
+            leftAttack2 = setUp("player/axe_attack/axe_player_attack_left_1",gp.tileSize*2, gp.tileSize);
+            leftAttack3 = setUp("player/axe_attack/axe_player_attack_left_2",gp.tileSize*2, gp.tileSize);
+            leftAttack4 = setUp("player/axe_attack/axe_player_attack_left_3",gp.tileSize*2, gp.tileSize);
+    
+            rightAttack1 = setUp("player/axe_attack/axe_player_attack_right_0",gp.tileSize*2, gp.tileSize);
+            rightAttack2 = setUp("player/axe_attack/axe_player_attack_right_1",gp.tileSize*2, gp.tileSize);
+            rightAttack3 = setUp("player/axe_attack/axe_player_attack_right_2",gp.tileSize*2, gp.tileSize);
+            rightAttack4 = setUp("player/axe_attack/axe_player_attack_right_3",gp.tileSize*2, gp.tileSize);
+
         }
     }
 

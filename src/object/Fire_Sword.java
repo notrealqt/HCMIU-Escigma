@@ -13,7 +13,7 @@ public class Fire_Sword extends Projectile{
         this.gp = gp;
 
         name ="Fire Sword";
-        speed = 5;
+        speed = 10;
         maxLife = 80;
         life = maxLife;
         attack = 10;
