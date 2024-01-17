@@ -116,10 +116,11 @@ public class m_Boss extends Entity {
             chasePlayer(60);
         }
         else {
+            checkChasing(gp.player, 5, 40);
             getRandomDirection(120);
         }
         if (attacking == false) {
-            checkAttack(40,gp.tileSize*4,gp.tileSize);
+            checkAttack(10,gp.tileSize*5,gp.tileSize);
         }
     }
 

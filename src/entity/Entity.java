@@ -763,12 +763,12 @@ public class Entity {
     
         switch (direction) {
             case "up":
-                if (gp.player.getCenterY() < getCenterY() && yDis < horizontal && xDis < straight) {
+                if (gp.player.getCenterY() < getCenterY() && xDis < horizontal && yDis < straight) {
                     targetInRange = true;
                 }
                 break;
             case "down":
-                if (gp.player.getCenterY() > getCenterY() && yDis < horizontal && xDis < straight) {
+                if (gp.player.getCenterY() > getCenterY() && xDis < horizontal && yDis < straight) {
                     targetInRange = true;
                 }
                 break;
@@ -785,6 +785,7 @@ public class Entity {
         }
     
         if (targetInRange == true) {
+            //check attack
             int i = new Random().nextInt(rate);
             if (i == 0) {
                 attacking = true;
