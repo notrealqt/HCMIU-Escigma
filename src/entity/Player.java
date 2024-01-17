@@ -87,6 +87,7 @@ public class Player extends Entity {
     }
     
     public void setDefaultPosition(){
+        gp.currentMap = 1;
         worldX = gp.tileSize * 14; 
         worldY = gp.tileSize * 14;
         direction = "down";
@@ -451,11 +452,8 @@ public class Player extends Entity {
                     text = "You cannot carry anymore!";
                 }
                 gp.ui.addMessage(text);
-                gp.obj[gp.currentMap][i] = null;
-                
+                gp.obj[gp.currentMap][i] = null;   
             }
-            
-            
         }
     }
     

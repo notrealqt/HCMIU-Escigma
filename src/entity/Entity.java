@@ -792,7 +792,6 @@ public class Entity {
         }
     }
     
-    
     public void chasePlayer (int interval) {
         actionLockCounter++;
         if(actionLockCounter > interval) {
