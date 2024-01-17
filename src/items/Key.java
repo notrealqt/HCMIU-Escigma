@@ -36,8 +36,9 @@ public class Key extends Entity {
         
         int objIndex = getDetected(entity, gp.obj, "Door");
         if(objIndex != 9999) {
+            gp.obj[this.gp.currentMap][objIndex] = null;
+
             startDialogue(this, 0);
-            gp.obj[gp.currentMap][objIndex] = null;
             return true;
         }
         else {

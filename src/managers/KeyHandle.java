@@ -143,7 +143,6 @@ public class KeyHandle implements KeyListener {
                 interPressed = true;
             }
             if(code== KeyEvent.VK_ENTER){
-                gp.player.selectItem();
                 enterPressed = true;
             }
             if(code == KeyEvent.VK_K){

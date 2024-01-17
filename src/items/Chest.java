@@ -49,6 +49,7 @@ public class Chest extends Entity{
                 startDialogue(this, 0);
             }
             else {
+                gp.player.inventory.add(loot);
                 startDialogue(this, 1);
                 down0 = image2;
                 opened = true;

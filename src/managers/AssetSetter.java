@@ -17,7 +17,6 @@ public class AssetSetter {
     }
 
     public void setObject() {
-        Door door = new Door(gp);
         Key key = new Key(gp);
         Master_Portal master_portal = new Master_Portal(gp);
         Chest ice_chest = new Chest(gp, "ice/open", "ice/close", new Key(gp));
@@ -32,25 +31,26 @@ public class AssetSetter {
         //Map4:
         int mapNum = 0;
         int i = 0;
-        setObjectAt(door, mapNum, i++, 25, 25);
-        setObjectAt(door, mapNum, i++, 98, 19);
-        setObjectAt(door, mapNum, i++, 99, 19);
-        setObjectAt(door, mapNum, i++, 100, 19);
-        setObjectAt(master_portal, mapNum, i++, 106, 16);
-        setObjectAt(key, mapNum, i++, 19, 19);
-        setObjectAt(ice_chest, mapNum, i++, 20, 18);
-        setObjectAt(forest_chest, mapNum, i++, 22, 102);
-        setObjectAt(ice_chest, mapNum, i++, 51, 12);
-        setObjectAt(rock_chest, mapNum, i++, 96, 26);
-        setWormholeAt(forest_worm, mapNum, i++, 91, 94);
-        setWormholeAt(forest_worm, mapNum, i++, 46, 71);
-        setWormholeAt(forest_worm, mapNum, i++, 95, 97);
-        setWormholeAt(forest_worm, mapNum, i++, 108, 100);
-        setWormholeAt(rock_worm, mapNum, i++, 104, 63);
-        setWormholeAt(rock_worm, mapNum, i++, 108, 12);
-        setWormholeAt(ice_worm, mapNum, i++, 27, 27);
-        setWormholeAt(ice_worm, mapNum, i++, 48, 45);
-        setWormholeAt(ice_worm, mapNum, i++, 67, 16);
+        setObjectAt(new Door(gp), mapNum, i++, 25, 25);
+        setObjectAt(new Door(gp), mapNum, i++, 98, 19);
+        setObjectAt(new Door(gp), mapNum, i++, 99, 19);
+        setObjectAt(new Door(gp), mapNum, i++, 100, 19);
+        setObjectAt(new Master_Portal(gp), mapNum, i++, 106, 16);
+        setObjectAt(new Key(gp), mapNum, i++, 19, 19);
+        setObjectAt(new Key(gp), mapNum, i++, 19, 20);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), mapNum, i++, 20, 18);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), mapNum, i++, 22, 102);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), mapNum, i++, 51, 12);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), mapNum, i++, 96, 26);
+        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 91, 94);
+        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 46, 71);
+        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 95, 97);
+        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 108, 100);
+        setWormholeAt(new WormHole(gp, "wormhole_rock"), mapNum, i++, 104, 63);
+        setWormholeAt(new WormHole(gp, "wormhole_rock"), mapNum, i++, 108, 12);
+        setWormholeAt(new WormHole(gp, "wormhole_ice"), mapNum, i++, 27, 27);
+        setWormholeAt(new WormHole(gp, "wormhole_ice"), mapNum, i++, 48, 45);
+        setWormholeAt(new WormHole(gp, "wormhole_ice"), mapNum, i++, 67, 16);
     }   
     public void setNPC() {
         int mapNum = 0;
