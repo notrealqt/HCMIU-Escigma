@@ -1,5 +1,6 @@
 package managers;
 
+import Event.EventRect;
 import entities.Entity;
 import main.GamePanel;
 import mics.Progress;

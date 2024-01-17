@@ -1,7 +1,6 @@
 package managers;
 
 import entities.Entity;
-import entities.NPC_OldMan;
 import entities.m_Boss;
 import items.*;
 import main.GamePanel;
