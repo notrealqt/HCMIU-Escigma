@@ -1,50 +1,23 @@
 package object;
 
 import entity.Entity;
-import entity.Projectile;
 import main.GamePanel;
 
-public class Fire_Sword extends Projectile{
+public class Fire_Sword extends Entity {
 
-    GamePanel gp;
-
-    public Fire_Sword(GamePanel gp){
+    public Fire_Sword(GamePanel gp) {
         super(gp);
-        this.gp = gp;
+        type = type_sword;
+        name = "Fire Sword";
+        down0=setUp("/item/weapon/fire sword/fire_sword",gp.tileSize,gp.tileSize);
+        attackvalue = 99;
+        defensevalue = 1;
+        description = "["+name+"]\nA fire sword which used belong to\nan Australian painter";
+        attackArea.width = 200;
+        attackArea.height = 100;
+        knockBackPower = 0;
 
-        name ="Fire Sword";
-        speed = 5;
-        maxLife = 80;
-        life = maxLife;
-        attack = 10;
-        manaCost = 1;
-        alive = false;
-        getImage();
+        //TODO Auto-generated constructor stub
     }
-
-   public void getImage(){
-        up1 = setUp("/item/weapon/flame_attack/1_flame_projectile_font_0",gp.tileSize,gp.tileSize);
-        up2 = setUp("/item/weapon/flame_attack/1_flame_projectile_font_0",gp.tileSize,gp.tileSize);
-        down1 = setUp("/item/weapon/flame_attack/1_flame_projectile_back_0",gp.tileSize,gp.tileSize);
-        down2 = setUp("/item/weapon/flame_attack/1_flame_projectile_back_0",gp.tileSize,gp.tileSize);
-        left1 = setUp("/item/weapon/flame_attack/1_flame_projectile_left_0",gp.tileSize,gp.tileSize);
-        left2 = setUp("/item/weapon/flame_attack/1_flame_projectile_left_0",gp.tileSize,gp.tileSize);
-        right1 = setUp("/item/weapon/flame_attack/1_flame_projectile_right_0",gp.tileSize,gp.tileSize);
-        right2 = setUp("/item/weapon/flame_attack/1_flame_projectile_right_0",gp.tileSize,gp.tileSize);
-        
-   }
-   
-   public boolean haveResource(Entity user){
-    boolean haveResource = false;
-    if(user.mana >= manaCost){
-        haveResource = true;
     
-        }
-    return haveResource;
-    }
-
-    public void subtractResource(Entity user){
-        user.mana -= manaCost;
-
-    }
 }

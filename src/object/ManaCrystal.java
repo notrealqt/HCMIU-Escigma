@@ -11,7 +11,7 @@ public class ManaCrystal extends Entity {
         this.gp = gp;
 
         name = "MP";
-        //image = setUp("/aosdj",gp.tileSize,gp.tileSize);
-        //image2 = setUp("/aosdj",gp.tileSize,gp.tileSize);
+        image = setUp("/objects/mana_full",gp.tileSize,gp.tileSize);
+        image2 = setUp("/objects/mana_blank",gp.tileSize,gp.tileSize);
     }
 }

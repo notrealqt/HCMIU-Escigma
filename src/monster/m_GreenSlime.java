@@ -60,9 +60,8 @@ public class m_GreenSlime extends Entity {
 
     public void setAction(){
         
-        if (onPath == true) {
-            checkStop(gp.player, 15, 100);
-            searchPath(getGoalCol(gp.player),getGoalRow(gp.player));
+        if (getTileDistance(gp.player) < 10) {
+            chasePlayer(60);
         }
         else {
             checkChasing(gp.player, 5, 100);

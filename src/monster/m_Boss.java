@@ -20,9 +20,9 @@ public class m_Boss extends Entity {
         maxLife = 10;
         life = maxLife;
         attack = 1;
-        defense = 5;
+        defense = 1;
         sleep = true;
-        knockBackPower = 100;
+        knockBackPower = 10;
 
         solidArea.x = 4;
         solidArea.y = 4;
@@ -33,7 +33,10 @@ public class m_Boss extends Entity {
         attackArea.width = 48;
         attackArea.height = 48;
         motion1_duration = 40;
-        motion2_duration = 45;
+        motion2_duration = 50;
+        motion3_duration = 60;
+        motion4_duration = 80;
+        
 
         getImage();
         getAttackImage();
@@ -79,44 +82,46 @@ public class m_Boss extends Entity {
     }
 
     public void getAttackImage() {
-        upAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_0", gp.tileSize, gp.tileSize);
-        upAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_1", gp.tileSize, gp.tileSize);
-        upAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_2", gp.tileSize, gp.tileSize);
-        upAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_3", gp.tileSize, gp.tileSize);
+        upAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_0", gp.tileSize, gp.tileSize*2);
+        upAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_1", gp.tileSize, gp.tileSize*2);
+        upAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_2", gp.tileSize, gp.tileSize*2);
+        upAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_back_3", gp.tileSize, gp.tileSize*2);
 
-        downAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_0", gp.tileSize, gp.tileSize);
-        downAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_1", gp.tileSize, gp.tileSize);
-        downAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_2", gp.tileSize, gp.tileSize);
-        downAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_3", gp.tileSize, gp.tileSize);
+        downAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_0", gp.tileSize, gp.tileSize*2);
+        downAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_1", gp.tileSize, gp.tileSize*2);
+        downAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_2", gp.tileSize, gp.tileSize*2);
+        downAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_font_3", gp.tileSize, gp.tileSize*2);
         
-        leftAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_0", gp.tileSize, gp.tileSize);
-        leftAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_1", gp.tileSize, gp.tileSize);
-        leftAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_2", gp.tileSize, gp.tileSize);
-        leftAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_3", gp.tileSize, gp.tileSize);
+        leftAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_0", gp.tileSize*2, gp.tileSize);
+        leftAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_1", gp.tileSize*2, gp.tileSize);
+        leftAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_2", gp.tileSize*2, gp.tileSize);
+        leftAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_3", gp.tileSize*2, gp.tileSize);
 
-        rightAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_0", gp.tileSize, gp.tileSize);
-        rightAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_1", gp.tileSize, gp.tileSize);
-        rightAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_2", gp.tileSize, gp.tileSize);
-        rightAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_left_3", gp.tileSize, gp.tileSize);
+        rightAttack1 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_right_0", gp.tileSize*2, gp.tileSize);
+        rightAttack2 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_right_1", gp.tileSize*2, gp.tileSize);
+        rightAttack3 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_right_2", gp.tileSize*2, gp.tileSize);
+        rightAttack4 = setUp("/monster/boss/boss_attack/boss_corpse collector_attack_right_3", gp.tileSize*2, gp.tileSize);
 
     }
 
     public void setAction(){
+      
+        if (getTileDistance(gp.player) < 10) {
+            chasePlayer(60);
+        }
+        else {
+            checkChasing(gp.player, 5, 40);
+            getRandomDirection(120);
+        }
+        if (attacking == false) {
+            checkAttack(10,gp.tileSize*5,gp.tileSize);
+        }
         if (rage == false && life < maxLife/2) {
             rage = true;
             defaultSpeed += 2;
             speed = defaultSpeed;
             attack *= 2;
             
-        }
-        if (getTileDistance(gp.player) < 10) {
-            chasePlayer(60);
-        }
-        else {
-            getRandomDirection(120);
-        }
-        if (attacking == false) {
-            checkAttack(5,gp.tileSize,gp.tileSize);
         }
     }
 
