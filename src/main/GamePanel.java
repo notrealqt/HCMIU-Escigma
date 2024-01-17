@@ -2,13 +2,22 @@ package main;
 
 import javax.swing.JPanel;
 
-import AI.PathFinder;
-import data.SaveLoad;
-import entity.Entity;
-import entity.Player;
-import environment.EnvironmentManager;
-import tile.Map;
-import tile.TileManager;
+import entities.Entity;
+import entities.Player;
+import managers.AssetSetter;
+import managers.CollisionDetector;
+import managers.Config;
+import managers.CutSceneManager;
+import managers.EnvironmentManager;
+import managers.EventHandler;
+import managers.KeyHandle;
+import managers.Sound;
+import managers.UI;
+import map.Map;
+import map.TileManager;
+import mics.PathFinder;
+import mics.SaveLoad;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -54,19 +63,19 @@ public class GamePanel extends JPanel implements Runnable {
     //System
     public TileManager tileM = new TileManager(this);
     public KeyHandle KeyH = new KeyHandle(this);
-    Sound music = new Sound();
-    Sound se = new Sound();
+    public Sound music = new Sound();
+    public Sound se = new Sound();
     public CollisionDetector colDect = new CollisionDetector(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
-    Config config= new Config(this);
-    Map map = new Map(this);
+    public Config config= new Config(this);
+    public Map map = new Map(this);
     public PathFinder pFinder = new PathFinder(this);
     EnvironmentManager eManager = new EnvironmentManager(this);
-    SaveLoad saveLoad = new SaveLoad(this);
+    public SaveLoad saveLoad = new SaveLoad(this);
     public CutSceneManager csManager = new CutSceneManager(this);
-    Thread gameThread;
+    public Thread gameThread;
 
     //Entity and object
     public Player player = new Player(this, KeyH);
