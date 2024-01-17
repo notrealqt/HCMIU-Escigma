@@ -22,7 +22,7 @@ public class Entity {
     public BufferedImage guardUp, guardDown, guardLeft, guardRight;
     public BufferedImage upAttack1, downAttack1, leftAttack1, rightAttack1, upAttack2, downAttack2, leftAttack2, rightAttack2, upAttack3, downAttack3, leftAttack3, rightAttack3, upAttack4, downAttack4, leftAttack4, rightAttack4;
     public BufferedImage image, image2, image3, image4, image5; //heart image
-    public String dialogues[][] = new String[100][100];
+    public String[][] dialogues = new String[100][100];
     //This would set solidArea for all entities, we can change it by override like in Player
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0,0,0,0);
@@ -188,7 +188,6 @@ public class Entity {
     public void damagereaction() {}
     
     public void speak() {
-      
     }
     
     public void facePlayer() {
@@ -220,7 +219,7 @@ public class Entity {
         }  
     }
 
-    public void startDialogue( Entity entity, int setNum) {
+    public void startDialogue(Entity entity, int setNum) {
         gp.gameState = gp.dialogueState;
         gp.ui.npc = entity;
         dialogueSet = setNum;
@@ -244,7 +243,7 @@ public class Entity {
     
     public void update(){
 
-        if ( sleep == false) {
+        if (sleep == false) {
             if (knockBack == true) {
                 checkCollision();
                 if(collisionOn == true) {
