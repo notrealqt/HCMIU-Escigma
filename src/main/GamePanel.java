@@ -336,4 +336,14 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
     }
+
+    /*
+    public void changeArea() {
+        if (nextArea != currentArea) {
+            eSetter.setNPC();
+        }
+    }
+    currentArea = nextArea;
+    aSetter.setMonster();
+     */
 }

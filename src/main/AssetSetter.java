@@ -5,6 +5,7 @@ import object.Lantern;
 import object.WormHole;
 import object.Chest;
 import object.Door;
+import data.Progress;
 import entity.NPC_OldMan;
 import monster.m_Boss;
 import monster.m_GreenSlime;
@@ -134,9 +135,12 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldX = gp.tileSize*24;
         gp.monster[mapNum][i].worldY = gp.tileSize*24;  
         i++;
-        gp.monster[mapNum][i] = new m_Boss(gp);
-        gp.monster[mapNum][i].worldX = gp.tileSize*90;
-        gp.monster[mapNum][i].worldY = gp.tileSize*38;  
-        
+
+        if (Progress.defeatLog == false) {
+            gp.monster[mapNum][i] = new m_Boss(gp);
+            gp.monster[mapNum][i].worldX = gp.tileSize*90;
+            gp.monster[mapNum][i].worldY = gp.tileSize*38;  
+            
+        }
     }
 }
