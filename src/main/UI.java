@@ -335,32 +335,31 @@ public class UI {
         int width = gp.screenWidth - (gp.tileSize*4);
         int height = gp.tileSize*3;
         drawSubWindow(x, y, width, height);
-
         g2.setFont(tnr_20);
         x += gp.tileSize;
         y += gp.tileSize;
-
-        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {            
-            char characters[] = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
-            if (charIndex < characters.length) {
-                String s = String.valueOf(characters[charIndex]);
-                combineText = combineText + s;
-                currentDiaglogue = combineText;
-                charIndex++;
+        if(this.npc.dialogues[this.npc.dialogueSet][this.npc.dialogueIndex] != null) {            
+            char[] characters = this.npc.dialogues[this.npc.dialogueSet][this.npc.dialogueIndex].toCharArray();
+            if (this.charIndex < characters.length) {
+                String s = String.valueOf(characters[this.charIndex]);
+                this.combineText = this.combineText + s;
+                this.currentDiaglogue = this.combineText;
+                this.charIndex++;
+                
 
             }
             if (gp.KeyH.enterPressed == true ) {
-                charIndex = 0;
-                combineText = "";
+                this.charIndex = 0;
+                this.combineText = "";
 
-                if (gp.gameState == gp.dialogueState && gp.gameState == gp.cutScene) {
-                    npc.dialogueIndex++;
+                if (gp.gameState == gp.dialogueState || gp.gameState == gp.cutScene) {
+                    this.npc.dialogueIndex++;
                     gp.KeyH.enterPressed = false;
                 }
             }
         }
         else {
-            npc.dialogueIndex = 0;
+            this.npc.dialogueIndex = 0;
             if (gp.gameState == gp.dialogueState) {
                 gp.gameState = gp.playState;
             }
@@ -370,7 +369,7 @@ public class UI {
         }
 
 
-        for(String line : currentDiaglogue.split("\n")) {
+        for(String line : this.currentDiaglogue.split("\n")) {
             g2.drawString(line, x, y);
             y += 40;
         }
@@ -481,11 +480,12 @@ public class UI {
         for (int i = 0; i < gp.player.inventory.size();i++){
 
             //equip cursor
-            if(gp.player.inventory.get(i)==gp.player.currentWeapon){
+            if(gp.player.inventory.get(i)==gp.player.currentWeapon || 
+                    gp.player.inventory.get(i)==gp.player.currentShield){
                 g2.setColor(new Color(0,247,255));
                 g2.fillRoundRect(slotX, slotY, slotSize-4, slotSize-4, 15, 15);
             }
-                g2.drawImage(gp.player.inventory.get(i).down0,slotX,slotY,null);
+            g2.drawImage(gp.player.inventory.get(i).down0,slotX,slotY,null);
 
             slotX += slotSize;
 

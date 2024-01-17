@@ -31,8 +31,5 @@ public class Main {
         panel.startGameThread();
 
     }
-    public void setIcon() {
-        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("null"));
-        window.setIconImage(icon.getImage());
-    }
+
 }

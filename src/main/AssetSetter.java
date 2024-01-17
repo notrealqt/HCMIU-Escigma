@@ -1,19 +1,17 @@
 package main;
 
-import object.Key;
-import object.Lantern;
-import object.WormHole;
-import object.Chest;
-import object.Door;
+import data.Progress;
+import entity.Entity;
 import entity.NPC_OldMan;
 import monster.m_Boss;
 import monster.m_GreenSlime;
-import object.Axe;
-import object.Boots;
+import object.*;
+
+
 
 //instantiate objects class
 public class AssetSetter {
-    GamePanel gp;
+    private GamePanel gp;
 
     public AssetSetter(GamePanel gp) {
         this.gp = gp;
@@ -22,121 +20,74 @@ public class AssetSetter {
     public void setObject() {
         int mapNum = 0;
         int i = 0;
+        //Object
+        setObjectAt(new Door(gp), mapNum, i++, 25, 25);
+        setObjectAt(new Door(gp), mapNum, i++, 98, 19);
+        setObjectAt(new Door(gp), mapNum, i++, 99, 19);
+        setObjectAt(new Door(gp), mapNum, i++, 100, 19);
+        setObjectAt(new Master_Portal(gp), mapNum, i++, 106, 16);
+        setObjectAt(new Key(gp), mapNum, i++, 19, 19);
+        setObjectAt(new Chest(gp, "chest_ice_open_0", "chest_ice_close_0", new Key(gp)), mapNum, i++, 20, 18);
+        setObjectAt(new Lantern(gp), mapNum, i++, 18, 18);
+        setObjectAt(new Chest(gp, "chest_forest_open_0", "chest_forest_close_0", new Key(gp)), mapNum, i++, 22, 102);
+        setObjectAt(new Chest(gp, "chest_ice_open_0", "chest_ice_close_0", new Key(gp)), mapNum, i++, 51, 12);
+        setObjectAt(new Chest(gp, "chest_rock_open_0", "chest_rock_close_0", new Key(gp)), mapNum, i++, 96, 26);
+        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 91, 94);
+        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 46, 71);
+        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 95, 97);
+        setWormholeAt(new WormHole(gp, "wormhole_forest"), mapNum, i++, 108, 100);
+        setWormholeAt(new WormHole(gp, "wormhole_rock"), mapNum, i++, 104, 63);
+        setWormholeAt(new WormHole(gp, "wormhole_rock"), mapNum, i++, 108, 12);
+        setWormholeAt(new WormHole(gp, "wormhole_ice"), mapNum, i++, 27, 27);
+        setWormholeAt(new WormHole(gp, "wormhole_ice"), mapNum, i++, 48, 45);
+        setWormholeAt(new WormHole(gp, "wormhole_ice"), mapNum, i++, 67, 16);
 
-        gp.obj[mapNum][i] = new Key(gp);
-        gp.obj[mapNum][i].worldX = 19 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 19 * gp.tileSize;
-        i++;
+    }
+    public void setNPC() {
+        int mapNum = 0;
+        int i = 0;
+        setNPCAt(new NPC_OldMan(gp), mapNum, i++, 15, 15);
 
-        gp.obj[mapNum][i] = new Door(gp);
-        gp.obj[mapNum][i].worldX = 25 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 25 * gp.tileSize;
-        i++;
+    }
+    public void setMonster() {
+        int mapNum = 0;
+        int i = 0;
+        setMonsterAt(new m_GreenSlime(gp), mapNum, i++, 24,24);
+        if (Progress.defeatLog == false) {
+            setMonsterAt(new m_Boss(gp), mapNum, i++, 90, 38);
+        }
+    }
 
-        gp.obj[mapNum][i] = new Chest(gp, "chest_ice_open_0", "chest_ice_close_0", new Key(gp));
-        gp.obj[mapNum][i].worldX = 20 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 18 * gp.tileSize;
-        i++;
+    public void setObjectAt(Entity object, int mapNum, int index, int worldX, int worldY) {
+        gp.obj[mapNum][index] = object;
+        object.worldX = worldX * gp.tileSize;
+        object.worldY = worldY * gp.tileSize;
+    }
 
-        gp.obj[mapNum][i] = new Lantern(gp);
-        gp.obj[mapNum][i].worldX = 18 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 18 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new Chest(gp, "chest_forest_open_0", "chest_forest_close_0", new Key(gp));
-        gp.obj[mapNum][i].worldX = 22 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 102 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new Chest(gp, "chest_ice_open_0", "chest_ice_close_0", new Key(gp));
-        gp.obj[mapNum][i].worldX = 51 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 12 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new Chest(gp, "chest_rock_open_0", "chest_rock_close_0", new Key(gp));
-        gp.obj[mapNum][i].worldX = 96 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 26 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new WormHole(gp, "wormhole_forest");
-        gp.obj[mapNum][i].worldX = 11 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 94 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new WormHole(gp, "wormhole_forest");
-        gp.obj[mapNum][i].worldX = 46 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 71 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new WormHole(gp, "wormhole_forest");
-        gp.obj[mapNum][i].worldX = 95 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 97 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new WormHole(gp, "wormhole_forest");
-        gp.obj[mapNum][i].worldX = 108 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 100 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new WormHole(gp, "wormhole_rock");
-        gp.obj[mapNum][i].worldX = 104 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 63 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new WormHole(gp, "wormhole_rock");
-        gp.obj[mapNum][i].worldX = 108 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 12 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new WormHole(gp, "wormhole_ice");
-        gp.obj[mapNum][i].worldX = 27 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 27 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new WormHole(gp, "wormhole_ice");
-        gp.obj[mapNum][i].worldX = 48 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 45 * gp.tileSize;
-        i++;
-
-        gp.obj[mapNum][i] = new WormHole(gp, "wormhole_ice");
-        gp.obj[mapNum][i].worldX = 67 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 16 * gp.tileSize;
-        i++;
-
-   
-        gp.obj[mapNum][i] = new Door(gp);
-        gp.obj[mapNum][i].worldX = 98 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 19 * gp.tileSize;
-        i++;
-        gp.obj[mapNum][i] = new Door(gp);
-        gp.obj[mapNum][i].worldX = 99 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 19 * gp.tileSize;
-        i++;
-        gp.obj[mapNum][i] = new Door(gp);
-        gp.obj[mapNum][i].worldX = 100 * gp.tileSize;
-        gp.obj[mapNum][i].worldY = 19 * gp.tileSize;
-        i++;
-
+    private void setWormholeAt(WormHole wormhole, int mapNum, int index, int worldX, int worldY) {
+        gp.obj[mapNum][index] = wormhole;
+        setWorldCoordinates(wormhole, worldX, worldY);
     }
     
-    public void setNPC(){
-        int mapNum = 0;
-        gp.npc[mapNum][0] = new NPC_OldMan(gp);
-        gp.npc[mapNum][0].worldX = gp.tileSize*15;
-        gp.npc[mapNum][0].worldY = gp.tileSize*15;
-
+    public void setNPCAt(Entity npc, int mapNum, int index, int worldX, int worldY) {
+        gp.npc[mapNum][0] = npc;
+        npc.worldX = worldX * gp.tileSize;
+        npc.worldY = worldY * gp.tileSize;
     }
 
-    public void setMonster(){
-        int mapNum = 0;
-        int i = 1;
-        gp.monster[mapNum][i] = new m_GreenSlime(gp);
-        gp.monster[mapNum][i].worldX = gp.tileSize*24;
-        gp.monster[mapNum][i].worldY = gp.tileSize*24;  
-        i++;
-        gp.monster[mapNum][i] = new m_Boss(gp);
-        gp.monster[mapNum][i].worldX = gp.tileSize*90;
-        gp.monster[mapNum][i].worldY = gp.tileSize*38;  
-        
+    public void setMonsterAt(Entity mon, int mapNum, int index, int worldX, int worldY) {
+        gp.monster[mapNum][0] = mon;
+        mon.worldX = worldX * gp.tileSize;
+        mon.worldY = worldY * gp.tileSize;
     }
+
+    private void setWorldCoordinates(Object obj, int worldX, int worldY) {
+        try {
+            obj.getClass().getField("worldX").set(obj, worldX * gp.tileSize);
+            obj.getClass().getField("worldY").set(obj, worldY * gp.tileSize);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
