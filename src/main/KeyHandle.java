@@ -9,7 +9,7 @@ public class KeyHandle implements KeyListener {
     public boolean upPressed, downPressed, leftPressed,rightPressed,interPressed,enterPressed,attackPressed,shotKeyPressed, guardPressed;
     //Debug
     boolean debugText = false;
-
+    public boolean godMode = false;
     // Constructor to initialize the boolean variables
     
     public KeyHandle(GamePanel gp) {
@@ -173,6 +173,15 @@ public class KeyHandle implements KeyListener {
                 }
                 else if(debugText == true){
                     debugText = false;
+                }
+            }
+            //god mode
+            if (code == KeyEvent.VK_G) {
+                if(godMode == false){
+                    godMode = true;
+                }
+                else if(godMode== true){
+                    godMode = false;
                 }
             }
             /*if (code == KeyEvent.VK_R){

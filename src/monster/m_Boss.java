@@ -105,13 +105,7 @@ public class m_Boss extends Entity {
     }
 
     public void setAction(){
-        if (rage == false && life < maxLife/2) {
-            rage = true;
-            defaultSpeed += 2;
-            speed = defaultSpeed;
-            attack *= 2;
-            
-        }
+      
         if (getTileDistance(gp.player) < 10) {
             chasePlayer(60);
         }
@@ -121,6 +115,13 @@ public class m_Boss extends Entity {
         }
         if (attacking == false) {
             checkAttack(10,gp.tileSize*5,gp.tileSize);
+        }
+        if (rage == false && life < maxLife/2) {
+            rage = true;
+            defaultSpeed += 2;
+            speed = defaultSpeed;
+            attack *= 2;
+            
         }
     }
 
