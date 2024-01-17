@@ -133,4 +133,6 @@ public class m_Boss extends Entity {
         dialogues[0][3] = "Boss: You want to get out?";
         dialogues[0][4] = "Boss: Defeat me before I completely mess you up";
     }
-}
+
+
+}   

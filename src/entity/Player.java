@@ -426,6 +426,7 @@ public class Player extends Entity {
                     attackCanceled = true;
                     System.out.println("Pressed door");
                     gp.obj[gp.currentMap][i].interact();
+                    keyH.enterPressed = false;
                 }
             }
             /* 
@@ -754,12 +755,13 @@ public class Player extends Entity {
 
 
         if(transparent == true) {g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));}
-        g2.drawImage(image, tempScreenX, tempScreenY,null);
         //reset alpha
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        
         if (drawing == true) {
             g2.drawImage(image,tempScreenX,tempScreenY,null);
         }
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        
         // //DEBUG monster hit player
         // g2.setFont(new Font("Arial", Font.PLAIN, 26));
         // g2.setColor(Color.white);
