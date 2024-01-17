@@ -23,7 +23,7 @@ public class Chest extends Entity{
 
         collision = true;
         solidArea.x = 0;
-        solidArea.y = 16;
+        solidArea.y  = 16;
         solidArea.width = 48;
         solidArea.height = 32;
         solidAreaDefaultX = solidArea.x;
@@ -37,7 +37,7 @@ public class Chest extends Entity{
             e.printStackTrace();
         }
         */
-        
+        setDialogue();
     } 
     public void setLoot (Entity loot) {
         this.loot = loot;

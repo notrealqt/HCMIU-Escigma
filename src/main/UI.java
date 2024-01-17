@@ -343,7 +343,7 @@ public class UI {
             if (this.charIndex < characters.length) {
                 String s = String.valueOf(characters[this.charIndex]);
                 this.combineText = this.combineText + s;
-                currentDiaglogue = combineText;
+                this.currentDiaglogue = this.combineText;
                 this.charIndex++;
                 
 
@@ -480,11 +480,12 @@ public class UI {
         for (int i = 0; i < gp.player.inventory.size();i++){
 
             //equip cursor
-            if(gp.player.inventory.get(i)==gp.player.currentWeapon){
+            if(gp.player.inventory.get(i)==gp.player.currentWeapon || 
+                    gp.player.inventory.get(i)==gp.player.currentShield){
                 g2.setColor(new Color(0,247,255));
                 g2.fillRoundRect(slotX, slotY, slotSize-4, slotSize-4, 15, 15);
             }
-                g2.drawImage(gp.player.inventory.get(i).down0,slotX,slotY,null);
+            g2.drawImage(gp.player.inventory.get(i).down0,slotX,slotY,null);
 
             slotX += slotSize;
 

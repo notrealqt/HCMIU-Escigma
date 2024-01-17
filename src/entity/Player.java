@@ -14,8 +14,10 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.KeyHandle;
 import main.UtilityTool;
+import object.Axe;
 import object.Fire_Sword;
 import object.Key;
+import object.Potion;
 import object.Shield;
 import object.Sword;
 
@@ -113,6 +115,9 @@ public class Player extends Entity {
     
     public void setItems(){
         inventory.add(currentWeapon);
+        inventory.add(currentShield);
+        inventory.add(new Axe(gp));
+        inventory.add(new Potion(gp, "HP"));
     }
     
     public int getAttack(){
@@ -147,6 +152,9 @@ public class Player extends Entity {
         rightAttack2 = setUp("player/attack/1_player_attack_right_1",gp.tileSize*2, gp.tileSize);
         rightAttack3 = setUp("player/attack/1_player_attack_right_2",gp.tileSize*2, gp.tileSize);
         rightAttack4 = setUp("player/attack/1_player_attack_right_3",gp.tileSize*2, gp.tileSize);
+        }
+        if(currentWeapon.type == type_axe) {
+            //need image
         }
     }
 
@@ -429,39 +437,24 @@ public class Player extends Entity {
                     keyH.enterPressed = false;
                 }
             }
-            /* 
+             
             else {
-                String objectName = gp.obj[gp.currentMap][i].name;
-                switch(objectName){
-                    case "Key":
-                        gp.playSE(1);
-                        hasKey++;
-                        gp.obj[gp.currentMap][i] = null;
-                        gp.ui.showMessage("You got a key!");
-                        break;
-                    case "Door":
-                        if(hasKey>0){
-                            gp.obj[gp.currentMap][i] = null;
-                            hasKey--;
-                        }
-                        else {
-                            gp.ui.showMessage("You need a key to open!");
-                        }
-                        break;
-                    case "Boots":
-                        gp.playSE(1);
-                        speed += 2;
-                        gp.obj[gp.currentMap][i] = null;
-                        break;
-                    case "Chest":
-                        gp.ui.gameFinished = true;
-                        gp.stopMusic();
-                        gp.playSE(2);
-                        break;
+                
+                String text;
+
+                if(inventory.size() != maxInventorySize) {
+                    inventory.add(gp.obj[gp.currentMap][i]);
+                    text = "Got a " + gp.obj[gp.currentMap][i].name +"!";
+
                 }
+                else {
+                    text = "You cannot carry anymore!";
+                }
+                gp.ui.addMessage(text);
+                gp.obj[gp.currentMap][i] = null;
                 
             }
-            */
+            
             
         }
     }
@@ -538,8 +531,13 @@ public class Player extends Entity {
             Entity selectedItem = inventory.get(itemIndex);
 
             if(selectedItem.type == type_sword||selectedItem.type == type_axe){
-                currentWeapon = (Sword) selectedItem;
+                currentWeapon = selectedItem;
                 attack = getAttack();
+                getPlayerattackImgage();
+            }
+            if(selectedItem.type == type_shield){
+                currentShield = selectedItem;
+                defense = getDefense();
             }
             if(selectedItem.type == type_consumable){
                 if(selectedItem.use(this) == true) {
