@@ -85,7 +85,6 @@ public class Entity {
     public boolean boss;
     
     //TYPE
-    public final int type_pickupOnly = 7;
     public int type; //0 -> player, 1 -> npcs, 2 -> monster
     public final int 
     type_player = 0,
@@ -95,6 +94,7 @@ public class Entity {
     type_axe = 4,
     type_consumable = 5,
     type_shield = 6,
+    type_pickupOnly = 7,
     type_obstacle = 8,
     type_light = 9,
     type_firesword = 10,
@@ -210,18 +210,6 @@ public class Entity {
             case "right":
                 direction = "left";
                 break;    
-            case "upleft":
-                direction = "right";
-                break;
-            case "upright":
-                direction = "left";
-                break;
-            case "downleft":
-                direction = "right";
-                break;
-            case "downright":
-                direction = "left";
-                break;
         }  
     }
 

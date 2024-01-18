@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import entities.Entity;
+import entities.Player;
 import items.Heart;
 import items.Key;
 import items.ManaCrystal;
@@ -21,10 +22,8 @@ public class UI {
     public Font tnr_20, tnr_40, tnr_80;
     BufferedImage keyImage, heart_full, heart_half, heart_blank, mana_full, mana_blank;
     public boolean messageOn = false;
-   // public String message = "";
-  //  int messageCounter = 0;
-  ArrayList<String> message = new ArrayList<>();
-  ArrayList<Integer> messageCounter = new ArrayList<>();
+    ArrayList<String> message = new ArrayList<>();
+    ArrayList<Integer> messageCounter = new ArrayList<>();
     public boolean gameFinished = false;
     public String currentDiaglogue;
     public int commandNum = 0;
@@ -34,11 +33,12 @@ public class UI {
     int charIndex = 0;
     String combineText = "";
 
-
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     public Entity npc;
+
     public UI(GamePanel gp){
+        
         this.gp = gp;
         tnr_20 = new Font("Times new Ronman", Font.TRUETYPE_FONT, 20);
         tnr_40 = new Font("Times new Ronman", Font.PLAIN, 40);

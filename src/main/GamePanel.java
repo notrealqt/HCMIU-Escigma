@@ -1,7 +1,6 @@
 package main;
 
 import javax.swing.JPanel;
-
 import entities.Entity;
 import entities.Player;
 import managers.AssetSetter;
@@ -17,7 +16,6 @@ import map.Map;
 import map.TileManager;
 import mics.PathFinder;
 import mics.SaveLoad;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -30,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class GamePanel extends JPanel implements Runnable, GameConstants {
+public class GamePanel extends JPanel implements Runnable {
     BufferedImage tempScreen;
     Graphics2D g2;
     public int currentMap = 0;
@@ -297,7 +295,7 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
         player.setDefaultValue();
         bossBattleOn = false;
         player.setDefaultLife();
-        player.setDefaultPosition();
+        player.setDefaultValue();
         aSetter.setNPC();
         aSetter.setMonster();
         aSetter.setMine();

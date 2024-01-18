@@ -21,12 +21,9 @@ public class Main {
         if(panel.fullScreenOn == true){
             window.setUndecorated(true);
         }
-
         window.pack();
-        
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-
         panel.setupGame();
         panel.startGameThread();
 

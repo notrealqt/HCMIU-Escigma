@@ -18,7 +18,7 @@ import mics.Progress;
 //instantiate objects class
 public class AssetSetter {
     GamePanel gp;
-
+    public String monType1 = "forest/", monType2 = "ice/", monType3 = "rock/";
     public AssetSetter(GamePanel gp) {
         this.gp = gp;
     }
@@ -205,32 +205,27 @@ public class AssetSetter {
 
     }
     public void setMine(){
-        String mineType1 ="forest/";
-        String mineType2 ="ice/";
-        String mineType3 ="rock/";
         //map1
         int map1 = 0;
         int i1 = 0;
-        setMineAt(new MON_Mushroom(gp, mineType1), map1, i1++, 18, 18);
+        setMineAt(new MON_Mushroom(gp, monType1), map1, i1++, 18, 18);
         //map2
         int map2 = 1;
         int i2 = 0;
-        setMineAt(new MON_Mushroom(gp, mineType2), map2, i2++, 18, 18);
+        setMineAt(new MON_Mushroom(gp, monType2), map2, i2++, 18, 18);
         //map3
         int map3 = 2;
         int i3 = 0;
-        setMineAt(new MON_Mushroom(gp, mineType3), map3, i3++, 18, 18);
+        setMineAt(new MON_Mushroom(gp, monType3), map3, i3++, 18, 18);
         //map4
         int map4 = 3;
         int i4 = 0;
-        setMineAt(new MON_Mushroom(gp, mineType1), map4, i4++, 18, 18);
+        setMineAt(new MON_Mushroom(gp, monType1), map4, i4++, 18, 18);
     }
     
     public void setMonster() {
         //map1:
-        String monType1 = "forest/";
-        String monType2 = "ice/";
-        String monType3 = "rock/";
+        
 
         int map1 = 0;
         int i1= 0;

@@ -53,6 +53,7 @@ public class Player extends Entity {
     }
 
     public void setDefaultValue() {
+        gp.currentMap = 0;
         worldX = gp.tileSize * 64; //player's pos in world map
         worldY = gp.tileSize * 104;
         defaultSpeed = 10;
@@ -80,16 +81,10 @@ public class Player extends Entity {
      
         getPlayerImage();
         getPlayerattackImgage();
-        //getGuardImage();
+        getGuardImage();
         setItems();
     }
     
-    public void setDefaultPosition(){
-        gp.currentMap = 1;
-        worldX = gp.tileSize * 14; 
-        worldY = gp.tileSize * 14;
-        direction = "down";
-    }
     
     public void setDefaultLife(){
         life = maxLife;
@@ -200,15 +195,13 @@ public class Player extends Entity {
         }
     }
 
-    /*
     public void getGuardImage() {
-        guardUp = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
-        guardDown = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
-        guardLeft = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
-        guardRight = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
+        guardUp = setUp("/res/player/defend/up", gp.tileSize, gp.tileSize);
+        guardDown = setUp("/res/player/defend/down", gp.tileSize, gp.tileSize);
+        guardLeft = setUp("/res/player/defend/left", gp.tileSize, gp.tileSize);
+        guardRight = setUp("/res/player/defend/right", gp.tileSize, gp.tileSize);
 
     }
-    */
 
     public void getPlayerImage() {
         String path = "/res/player/move/";

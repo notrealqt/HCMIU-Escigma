@@ -4,13 +4,13 @@ import main.GamePanel;
 
 public class MON_Mimic extends Entity {
     GamePanel gp;
+    
     public static final String monName = "Mimic";
 
     public MON_Mimic(GamePanel gp) {
         
         super(gp);
         this.gp = gp;
-        boss = false;
         type = type_monster;
         name = monName;
         defaultSpeed = 1;
