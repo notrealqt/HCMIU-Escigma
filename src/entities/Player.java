@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import items.Axe;
 import items.Fire_Sword;
 import items.Fire_Sword_Projectile;
-import items.Potion;
 import items.Shield;
 import items.Sword;
 import main.GamePanel;
@@ -52,7 +51,7 @@ public class Player extends Entity {
     }
 
     public void setDefaultValue() {
-        gp.currentMap = 0;
+        gp.currentMap = 3;
         worldX = gp.tileSize * 64; //player's pos in world map
         worldY = gp.tileSize * 104;
         defaultSpeed = 10;
@@ -109,9 +108,6 @@ public class Player extends Entity {
     public void setItems(){
         inventory.add(currentWeapon);
         inventory.add(currentShield);
-        inventory.add(new Axe(gp));
-        inventory.add(new Potion(gp, "HP"));
-        inventory.add(new Fire_Sword(gp));
     }
     
     public int getAttack(){
@@ -461,34 +457,6 @@ public class Player extends Entity {
             
     }
 
-
-    /*
-    public void pickUpObject(int i){
-        if (i!= 9999){
-        //pickup only items
-            if(gp.obj[gp.currentMap][i].type == type_pickupOnly){
-                gp.obj[gp.currentMap][i].use(this);
-                gp.obj[gp.currentMap][i] =null;
-            }
-
-            //inventory items
-            else{
-                String text;
-                if(inventory.size() != maxInventorySize){
-                    inventory.add(gp.obj[gp.currentMap][i]);
-                    text = "Got a " + gp.obj[gp.currentMap][i].name +"!";
-                }
-                else{
-                    text = "You cannot carry anymore!";
-                
-                }
-                gp.ui.addMessage(text);
-                gp.obj[i]=null;
-                }
-            }   
-    } 
-    */
-    
     public void pickUpItem(int i){
         if(i!=9999){
             //Obstacle

@@ -295,7 +295,6 @@ public class GamePanel extends JPanel implements Runnable {
         player.setDefaultValue();
         bossBattleOn = false;
         player.setDefaultLife();
-        player.setDefaultValue();
         aSetter.setNPC();
         aSetter.setMonster();
         aSetter.setMine();
