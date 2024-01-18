@@ -73,6 +73,7 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
     public Entity obj[][] = new Entity[maxMap][1000];
     public Entity npc[][] = new Entity[maxMap][1000];
     public Entity monster[][] = new Entity[maxMap][1000];
+    public Entity mine[][] = new Entity [maxMap][1000];
     public ArrayList<Entity> projectileList = new ArrayList<>();
     ArrayList<Entity> entityList = new ArrayList<>();
 
@@ -94,6 +95,7 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setMonster();
+        aSetter.setMine();
         playMusic(0);
         stopMusic();
         gameState = titleState;
@@ -174,6 +176,14 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
                         projectileList.get(i).update();
                     }
                     if(projectileList.get(i).alive==false) {projectileList.remove(i);}
+                }
+            }
+            for(int i = 0;i< mine[1].length;i++){
+                if(mine[currentMap][i] != null){
+                    if(mine[currentMap][i].alive==true){
+                        mine[currentMap][i].update();
+                    }
+                    if(mine[currentMap][i].alive==false){mine[currentMap][i]=null;}
                 }
             }
         }
@@ -291,6 +301,7 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
         player.setDefaultPosition();
         aSetter.setNPC();
         aSetter.setMonster();
+        aSetter.setMine();
         
         if (restart) {
             player.inventory.clear();

@@ -16,6 +16,7 @@ public class Entity {
     public BufferedImage down0, down1, down2, down3, down4, down5, down6, down7, down8, down9;
     public BufferedImage left0, left1, left2, left3, left4, left5, left6, left7, left8, left9;
     public BufferedImage right0, right1, right2, right3, right4, right5, right6, right7, right8, right9;
+    public BufferedImage mineIdle, mineExpl0, mineExpl1, mineExpl2, mineExpl3, mineExpl4, mineExpl5, mineExpl6, mineExpl7, mineExpl8;
     public BufferedImage idleUp, idleDown, idleLeft, idleRight;
     public BufferedImage guardUp, guardDown, guardLeft, guardRight;
     public BufferedImage upAttack1, downAttack1, leftAttack1, rightAttack1, upAttack2, downAttack2, leftAttack2, rightAttack2, upAttack3, downAttack3, leftAttack3, rightAttack3, upAttack4, downAttack4, leftAttack4, rightAttack4;
@@ -99,7 +100,8 @@ public class Entity {
     type_obstacle = 8,
     type_light = 9,
     type_firesword = 10,
-    type_boots = 11;
+    type_boots = 11,
+    type_mine=12;
 
     //ITEM ATTRIBUTES
     public int value;
@@ -240,11 +242,13 @@ public class Entity {
         gp.colDect.checkObject(this, false);
         gp.colDect.checkEntity(this, gp.npc);    //check collision between entities (npc and monster)
         gp.colDect.checkEntity(this, gp.monster);
+        gp.colDect.checkEntity(this, gp.mine);
         boolean hitplayer = gp.colDect.checkPlayer(this);
 
-        if(this.type == type_monster && hitplayer == true){
+        if((this.type == type_monster ||this.type == type_mine)&& hitplayer == true){
             damagePlayer(attack);
         }
+        
     }
     
     public void update(){
@@ -738,7 +742,7 @@ public class Entity {
             solidArea.width = attackArea.width;
             solidArea.height = attackArea.height;
 
-            if(type == type_monster){
+            if(type == type_monster || type == type_mine){
                 if (gp.colDect.checkPlayer(this) == true){
                     damagePlayer(attack);
                 }
@@ -746,7 +750,9 @@ public class Entity {
             else{ //Player
         //check monster collision with the updated worldX,Y and solidArea
         int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
+        int mineIndex = gp.colDect.checkEntity(this,gp.mine);
         gp.player.damageMonster (monsterIndex,this, attack, currentWeapon.knockBackPower);
+        gp.player.damageMonster(mineIndex,this, attack, 0);
     
         //after checking collision, restore the original data
         worldX = currentWorldX;
