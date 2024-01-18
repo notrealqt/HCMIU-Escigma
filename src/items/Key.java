@@ -17,13 +17,6 @@ public class Key extends Entity {
         down0 = setUp("/res/objects/item/use/key",gp.tileSize, gp.tileSize);
         description = "["+name+"]\nKey to open door\nWhat do you expect more?";
         stackable = true;
-        /*
-        try {
-            down0 = ImageIO.read(getClass().getResourceAsStream("key."));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
         setDialogue();
         
     }
