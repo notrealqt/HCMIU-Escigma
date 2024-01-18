@@ -99,7 +99,6 @@ public class BOSS_HumanCollector extends Entity {
         rightAttack2 = setUp(path + "right1", gp.tileSize, gp.tileSize);
         rightAttack3 = setUp(path + "right2", gp.tileSize, gp.tileSize);
         rightAttack4 = setUp(path + "right3", gp.tileSize, gp.tileSize);
-
     }
 
     public void setAction(){

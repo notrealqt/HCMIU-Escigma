@@ -1,9 +1,6 @@
 package entities;
 
-import java.util.Random;
-
 import main.GamePanel;
-import mics.Node;
 
 public class NPC_Death extends Entity {
 
@@ -27,16 +24,11 @@ public class NPC_Death extends Entity {
 
     }
     public void getImage(){
+        up0 = setUp("/res/npc/Death",gp.tileSize, gp.tileSize);
 
     }
     
     public void setDialogue() {
-        dialogues[0][0] = "Hello, traveler! Welcome to nowhere!";
-        dialogues[0][1] = "Sadly, it's nowhere. There is nothing to do";
-        dialogues[0][2] = "Oh I know what to do, I'll follow you";
-        dialogues[0][3] = "You can run but you can't hide, you can never hide...";
-        dialogues[1][0] = " Hello world!";
-        dialogues[1][1] = " No code no life";
 
     }
 

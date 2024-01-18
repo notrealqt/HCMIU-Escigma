@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.Random;
-
 import main.GamePanel;
 
 public class NPC_Injured extends Entity {
@@ -23,13 +21,10 @@ public class NPC_Injured extends Entity {
 
     }
     public void getImage(){
-
-
+        up0 = setUp("/res/npc/Injured",gp.tileSize, gp.tileSize);
     }
     
     public void setDialogue() {
-        dialogues[0][0] = "GET OUT OF HERE";
-        dialogues[0][1] = "YOU CAN'T WIN AGAINST HIM";
 
     }
 
