@@ -1,0 +1,191 @@
+@startuml "managers"
+hide circle
+scale 1920*1080
+
+class AssetSetter {
+    -gp : GamePanel
+
+    + AssetSetter(GamePanel)
+    + setObject() : void 
+    + setNPC() : void
+    + setMonster() : void
+    + setObjectAt(Entity, int, int, int, int) : void
+    - setWormholeAt(WormHole, int, int, int, int) : void
+    + setNPCAt(Entity, int, int, int, int) : void
+    + setMonsterAt(Entity, int, int, int) : void
+    - setWorldCoordinates(Object, int, int, int) : void
+}
+class CollisionDetector {
+    -gp : GamePanel
+
+    + CollisionDetector(GamePanel) 
+    + checkTile(Entity) : void
+    + checkObject(Entity, boolean) : int
+    + checkEntity(Entity, Entity[][]) : int
+    + checkPlayer(Entity) : boolean
+}
+class Config {
+    - gp : GamePanel
+    
+    + Config(GamePanel) 
+    + getGp() : GamePanel
+    + setGp(GamePanel) : void
+    + saveConfig() : void
+    + loadConfig() : void
+}
+class CutSceneManager {
+    - npc : Entity
+    - gp : GamePanel
+    - g2 : Graphics2D
+    + sceneNum : int
+    + scenePhase : int
+    - counter : int
+    - alpha : FloralWhite
+    - y : int
+    + final NA : int
+    + final boss : int
+    + final ending : int
+    
+    + CutSceneManager(GamePanel) 
+    + draw(Graphics2D) : void
+    + scene_boss() : void
+    + scene_ending() : void
+    + counterReached(int) : boolean
+    + drawBlackBG(float) : void
+    + drawString(float, float, int, String, int) : void
+}
+class EnvironmentManager {
+    - gp : GamePanel
+    + lighting : Lighting
+    
+    + EnvironmentManager(GamePanel)
+    + setup() : void
+    + draw(Graphics2D) : void
+}
+class EventHandler {
+    - gp : GamePanel
+    - eventRect : EventRect[][][]
+    - eventMaster : Entity
+    - previousEventX : int
+    - previousEventY : int 
+    - canTouchEvent : boolean
+
+    + EventHandler(GamePanel)
+    + setDialogue() : void
+    + checkEvent() : void
+    + hit(int, int, int, String) : boolean
+    + teleport(int) : void
+    + damagePit(int) : void
+    + healingPool(int) : void
+    + teleport(int, int, int) : void
+    + wormHole(int, int, int) : void
+    + boss() : void
+}
+class EventRect {
+    + eventRectDefaulthX : int
+    + eventRectDefaulthY : int
+    + eventDone : boolean
+}
+class KeyHandle {
+    - gp : GamePanel
+    + Pressed : boolean
+    + debugText : boolean
+    + godMode : boolean
+    
+    + KeyHandle(GamePanel)
+    + keyTyped(KeyEvent) : void
+    + keyPressed(KeyEvent) : void
+    + titleState(int) : void
+    + playState(int) : void
+    + pauseState(int) : void
+    + dialogueState(int) : void
+    + characterState(int) : void
+    + menuState(int) : void
+    + youLostState(int) : void
+    + guideState(int) : void
+    + menuOptionState(int) : void
+    + mapState(int) : void
+    + keyReleased(KeyEvent) : void
+}
+class Lighting {
+    - gp : GamePanel
+    - darknessFilter : BufferedImage
+    + dayCounter : int
+    + filterAlpha : float
+    + final day : int
+    + final dusk : int
+    + final night : int
+    + final dawn : int
+    + dayState : int
+
+    + Lighting(GamePanel, int)
+    + draw(Graphics2D) : void
+}
+class Sound {
+    - clip : Clip
+    - soundURL : URL[]
+    - fc : FloatControl 
+    - volumeScale : int
+    - volume : float
+
+    + Sound()
+    + setFile(int) : void
+    + play() : void
+    + loop() : void
+    + stop() : void
+    + CheckVolume() : void
+}
+class UI {
+    - gp : GamePanel
+    - g2 : Graphics2D
+    + tnr_20 : Font
+    + tnr_40 : Font
+    + tnr_80 : Font
+    - heart : BufferedImage
+    - mana : BufferedImage
+    - message : ArrayList<String>
+    - messageCounter : ArrayList<Integer>
+    + gameFinished : boolean
+    + currentDialogue : String
+    + commandNum : int
+    - SubState : int
+    + slotCol : int
+    + slotRow : int
+    - charIndex : int
+    - combineText : String
+    - playTime : double
+    - dFormat : DecimalFormat
+    + npc : Entity
+
+    + UI(GamePanel)
+    + addMessage(String) : void
+    + draw(Graphics2D) : void
+    + drawPlayerLife() : void
+    + drawMessage() : void
+    + drawTitleScreen() : void
+    + drawPauseScreen() : void
+    + drawDialogueScreen() : void
+    + drawCharacterScreen() : void
+    + drawInventory() : void
+    + getItemIdenxOnSlot() : int
+    + drawSubWindow(int, int, int, int) : void
+    + getXforCenteredText(String) : int
+    + getXforAlignToRightText(String, int) : int
+    + drawOptionScreen() : void
+    + options_top(int, int) : void
+    + options_FullScreenNotification(int, int) : void
+    + options_Volume(int, int) : void
+    + options_Guide(int, int) : void
+    + options_EndGameComfirmation (int, int) : void
+    + options_QuitGameComfirmation (int, int) : void
+    + drawYouLostScreen() : void
+    + drawGuideScreen() : void
+    + drawMenuOptionScreen() : void
+    + drawMonsterLife() : void
+}
+class UtilityTool {
+    + scaleImage(BufferedImage, int, int) : BufferedImage
+}
+
+
+@enduml
