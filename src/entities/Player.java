@@ -53,8 +53,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValue() {
-        worldX = gp.tileSize * 14; //player's pos in world map
-        worldY = gp.tileSize * 14;
+        worldX = gp.tileSize * 64; //player's pos in world map
+        worldY = gp.tileSize * 104;
         defaultSpeed = 10;
         speed = defaultSpeed;
         direction = "down";

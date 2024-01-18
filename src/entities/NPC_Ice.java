@@ -9,7 +9,6 @@ public class NPC_Ice extends Entity {
         super(gp);
         type = 1;
         direction = "up";
-        speed = 0;
         solidArea.x = 8;
         solidArea.y = 16;
         solidAreaDefaultX = solidArea.x;
