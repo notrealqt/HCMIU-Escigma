@@ -194,7 +194,7 @@ public class AssetSetter {
         //map3 
         int map3 = 2;
         int i3 = 0;
-        setNPCAt(new NPC_Rock(gp), map3, i3++,49 , 63);
+        setNPCAt(new NPC_Rock(gp), map3, i3++,49 , 64);
         setNPCAt(new NPC_Rock(gp), map3, i3++,75 , 42);
 
         //map4;

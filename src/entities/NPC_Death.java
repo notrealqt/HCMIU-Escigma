@@ -22,7 +22,7 @@ public class NPC_Death extends Entity {
 
     }
     public void getImage(){
-        up0 = setUp("/res/npc/Death",gp.tileSize, gp.tileSize);
+        up0 = setUp("/res/npc/Death",gp.tileSize, gp.tileSize*2);
 
     }
     
