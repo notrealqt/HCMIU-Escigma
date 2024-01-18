@@ -4,14 +4,14 @@ import main.GamePanel;
 
 public class BOSS_HumanCollector extends Entity {
     GamePanel gp;
-
+    public static final String monName = "Human Collector";
     public BOSS_HumanCollector(GamePanel gp) {
         
         super(gp);
         this.gp = gp;
         boss = true;
         type = type_monster;
-        name = "Human Collector";
+        name = monName;
         speed = 2;
         maxLife = 10;
         life = maxLife;

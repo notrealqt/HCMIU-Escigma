@@ -1,19 +1,18 @@
-package monster;
+package entities;
 
 import java.util.Random;
-import entity.Entity;
 import main.GamePanel;
 
-public class m_GreenSlime extends Entity {
+public class MON_FloatingEye extends Entity {
     GamePanel gp;
-
-    public m_GreenSlime(GamePanel gp) {
+    public static final String monName = "Floating Eye";
+    public MON_FloatingEye(GamePanel gp) {
         
         super(gp);
         this.gp = gp;
         boss = false;
         type = type_monster;
-        name = "Green Slime";
+        name = monName;
         defaultSpeed = 1;
         speed = defaultSpeed;
         maxLife = 4;
