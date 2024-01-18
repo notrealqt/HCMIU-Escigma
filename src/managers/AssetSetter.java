@@ -55,7 +55,7 @@ public class AssetSetter {
         setTeleportAt(new Teleport(gp, "enter_map1"), map1, i1++, 64, 104);
         setTeleportAt(new Teleport(gp, "exit_map1"), map1, i1++, 53, 32);
 
-        setTeleportAt(new WormHole(gp, "wormhole_forest"), map1, i1++, 67, 83);
+        setTeleportAt(new WormHole(gp, "wormhole_forest"), map1, i1++, 67, 84);
         setTeleportAt(new WormHole(gp, "wormhole_forest"), map1, i1++, 81, 64);
         setTeleportAt(new WormHole(gp, "wormhole_forest"), map1, i1++, 49, 57);
         setTeleportAt(new WormHole(gp, "wormhole_forest"), map1, i1++, 17, 73);

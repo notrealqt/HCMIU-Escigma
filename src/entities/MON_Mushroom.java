@@ -48,20 +48,6 @@ public class MON_Mushroom extends Entity {
         
     }
 
-
-
-
-    // public void setAction(){
-        
-    //     if (getTileDistance(gp.player) < 10) {
-    //         chasePlayer(60);
-    //     }
-    //     else {
-    //         checkChasing(gp.player, 5, 100);
-    //         getRandomDirection(120);
-    //     }    
-    // }
-
     public void damageReaction(){
         actionLockCounter = 0; 
         //direction = gp.player.direction;

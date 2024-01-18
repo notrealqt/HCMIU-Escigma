@@ -12,7 +12,7 @@ public class MON_FloatingEye extends Entity {
         boss = false;
         type = type_monster;
         name = monName;
-        defaultSpeed = 1;
+        defaultSpeed = 0;
         speed = defaultSpeed;
         maxLife = 4;
         life = maxLife;

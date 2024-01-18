@@ -10,7 +10,6 @@ import items.Fire_Sword_Projectile;
 import items.Potion;
 import items.Shield;
 import items.Sword;
-import main.GameConstants;
 import main.GamePanel;
 import managers.KeyHandle;
 
