@@ -27,11 +27,14 @@ public class NPC_Ice extends Entity {
     }
     
     public void setDialogue() {
+        dialogues[0][0] = "The winter is coming";
+        dialogues[0][1] = "It is cold";
+        dialogues[0][2] = "Beware of the monstersssss";
+        dialogues[1][0] = "Good bye, traveler. I hope you enjoy the weather.";
 
     }
 
     public void speak() {
-        facePlayer();
         startDialogue(this, dialogueSet);
 
         dialogueSet++;

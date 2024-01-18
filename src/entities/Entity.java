@@ -29,8 +29,6 @@ public class Entity {
     public boolean collisionOn = false;
     public Entity attacker;
     public boolean temp = false;
-    private int attackAnimationFrame = 0;
-
 
     //State 
     public int dialogueSet = 0;
@@ -195,6 +193,7 @@ public class Entity {
     public void damagereaction() {}
     
     public void speak() {
+        
     }
     
     public void facePlayer() {
@@ -707,7 +706,7 @@ public class Entity {
     public void knockBack (Entity target, Entity attacker, int knockBackPower) {
         this.attacker = attacker;
         target.knockBackDirection = attacker.direction;
-        target.speed += knockBackPower;
+        target.speed += 1;
         target.knockBack = true;
     }
 

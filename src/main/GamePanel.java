@@ -188,7 +188,6 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
             }
         }
         if(gameState == pauseState){
-
         }
         
     }

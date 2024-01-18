@@ -530,6 +530,7 @@ public class Player extends Entity {
             if(i!=9999)
             {
                 attackCanceled=true;
+                gp.gameState = gp.dialogueState;
                 gp.npc[gp.currentMap][i].speak();   
             }
             
@@ -792,7 +793,7 @@ public class Player extends Entity {
         }
         
 
-        entity.speed += 10;
+        entity.speed += 3;
         entity.knockBack = true;
     }
 
