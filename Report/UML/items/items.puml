@@ -1,0 +1,80 @@
+@startuml "items"
+
+class Axe {
+    Axe(GamePanel)
+}
+class Boots {
+    Boots(GamePanel)
+}
+class Chest {
+    Chest(GamePanel, String, String, Entity)
+    setLoot(Entity) : void
+    setDialogue() : void
+    interact() : void
+}
+class Door {
+    gp : GamePanel
+    Door(GamePanel)
+    setDialogue() : void
+    interact() : void
+}
+class Fire_Sword_Projectile {
+    gp : GamePanel
+    Fire_Sword_Projectile(GamePanel)
+    getImage() : void
+    haveResource(Entity) : boolean
+    subtractResource(Entity) : void
+}
+class Fire_Sword {
+    Fire_Sword(GamePanel)
+    haveResource(Entity) : boolean
+    subtractResource(Entity) : void
+}
+class Heart {
+    gp : GamePanel
+    Heart(GamePanel)
+    use(Entity) : boolean
+}
+class Key {
+    gp : GamePanel
+    Key(GamePanel)
+    setDialogue() : void
+    use(Entity) : boolean
+}
+class Latern {
+    Latern(GamePanel)
+}
+class ManaCrystal {
+    gp : GamePanel
+    ManaCrystal(GamePanel) 
+    use(Entity) : boolean
+}
+class Master_Portal {
+    gp : GamePanel
+    final static objName : String
+    Master_Portal(GamePanel)
+    setDialogue() : void
+    use(Entity) : boolean
+}
+class MasterKey {
+    gp : GamePanel
+    final static objName : String
+    MasterKey(GamePanel)
+}
+class Potion {
+    gp : GamePanel
+    value : interact
+    Potion(GAmePanel, String)
+    setDialogue() : void
+    use(Entity) : boolean
+}
+class Shield {
+    Shield(GamePanel)
+}
+class Sword {
+    Sword(GamePanel)
+}
+class WormHole {
+    gp : GamePanel
+    WormHole(GamePanel, String)
+}
