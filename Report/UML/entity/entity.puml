@@ -1,24 +1,136 @@
 @startuml "Entity package uml"
 hide circle
-
+scale 1920*1080
 class Entity {
-    gp : GamePanel
-    up : BufferedImage
-    down : BufferImage
-    left : BufferImage
-    right : BufferImage
-    idle : BufferImage
-    Attack : BufferImage
-    image : BufferImage
-    dialogues : String[10000]
-    solidArea : Rectangle
-    attackArea : Rectangle
-    solidAreaDefaultX : int
-    solidAreaDefaultY : int
-    collisionOn : boolean
-    worldX : int
-    worldY : int
-    direction : String
-    spriteNum : int
-    
+    # gp : GamePanel
+    + up : BufferedImage
+    + down : BufferImage
+    + left : BufferImage
+    + right : BufferImage
+    + idle : BufferImage
+    + Attack : BufferImage
+    + image : BufferImage
+    + dialogues : String[][]
+    + solidArea : Rectangle
+    + attackArea : Rectangle
+    + solidAreaDefaultX : int
+    + solidAreaDefaultY : int
+    + attacker : Entity
+    + temp : boolean
+    + dialogueSet : int
+    + dialogueIndex : int
+    + worldX : int
+    + worldY : int
+    + direction : String
+    + spriteNum : int
+    + loot: Entity
+    + opened : boolean
+    + rage : boolean
+    + collision : boolean
+    + sleep : boolean
+    + drawing : boolean
+    + invincible : boolean
+    + attacking : boolean
+    + die : boolean
+    + alive : boolean
+    + onPath : boolean
+    + knockBackDirection : String
+    + guarding : boolean
+    + transparent : boolean
+    + offBalance : boolean
+    + hpBarOn : boolean
+    + spriteCounter : int
+    + actionLockCounter : int
+    + invincibleCounter : int
+    + dieCounter : int
+    + shotAvailableCounter : int
+    + knockBackCounter : int
+    + guardCounter : int
+    + offBalanceCounter : int
+    + hpBarCounter : int
+    + defaultSpeed : int
+    + name : String
+    + speed : int
+    + maxLife : int
+    + life : int
+    + maxMana : int
+    + mana : int
+    + attack: int
+    + defense : int
+    + strength : int
+    + dexterity : int
+    + currentWeapon : Entity
+    + currentShield : Entity
+    + projectile : Projectile
+    + currentLight : Entity
+    + motion1_durtion : int 
+    + motion2_durtion : int 
+    + motion3_durtion : int 
+    + motion4_durtion : int 
+    + boss : boolean
+    + type : int
+    + final type_player : int
+    + final type_npc : int
+    + final type_monster : int
+    + final type_sword : int
+    + final type_axe : int
+    + final type_consumable : int
+    + final type_shield : int
+    + final type_obstacle : int
+    + final type_light : int
+    + final type_firesword : int
+    + value : int
+    + attackvalue : int
+    + defensevalue : int
+    + description : String
+    + manaCost : int 
+    + knockBack : boolean
+    + stackable : boolean
+    + amount : int
+    + lightRadius : int
+    + knockBackPower : int 
+
+    + Entity(GamePanel)
+    + getScreenX() : int
+    + getScreenY() : int
+    + getLeftX() : int
+    + getRightX() : int
+    + getTopY() : int
+    + getBottomY() : int
+    + getCol() : int
+    + getRow() : int
+    + getCenterX() : int
+    + getCenterY() : int
+    + getXDistance(Entity) : int 
+    + getYDistance(Entity) : int
+    + getTileDistance(Entity) : int
+    + getGoalCol(Entity) : int
+    + getGoalRow(Entity) : int
+    + setLoot(Entity) : void
+    + setAtaction() : void
+    + damagereaction() : void
+    + speak() : void
+    + facePlayer() : void
+    + startDialogue(Entity, int): void
+    + interact() : void
+    + use(Entity) : boolean
+    + checkCollision() : void
+    + update() : void
+    + getOppDirection(String) : String
+    + damagePlayer(int) : void
+    + inCamera() : boolean
+    + draw(Graphics2D) : void
+    + dieAnimation(Graphics2D) : void
+    + changeAlpha(Graphics2D, float) : void
+    + searchPath(int, int) : void
+    + getDetected(Entity, Entity[][], String) : int
+    + setUp(String, int, int) : BufferedImage
+    + checkStop(Entity, int, int) : void
+    + checkChasing(Entity, int , int) : void
+    + getRandomDirection(int) : void
+    + knockBack(Entity, Entity, int) : void
+    + attacking(): void
+    + checkAttack(int, int, int) : void
+    + chasePlayer(int) : void
 }
+
