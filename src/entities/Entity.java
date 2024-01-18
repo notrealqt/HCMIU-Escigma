@@ -46,7 +46,7 @@ public class Entity {
     //take damage from monster from amount of time
     //avoid taking constantly damage
     public boolean invincible =false;
-    public boolean attacking=false;
+    public boolean attacking = false;
     public boolean die = false;
     public boolean alive = true;
     public boolean onPath = false;
@@ -298,7 +298,19 @@ public class Entity {
                     }
                 }
             }
-        
+             
+            spriteCounter++;
+                if (spriteCounter > 7) {
+                    if (spriteNum == 0) { spriteNum = 1; }
+                    else if (spriteNum == 1) { spriteNum = 2; }
+                    else if (spriteNum == 2) { spriteNum = 3; }
+                    else if (spriteNum == 3) { spriteNum = 4; }
+                    else if (spriteNum == 4) { spriteNum = 5; }
+                    else if (spriteNum == 5) { spriteNum = 6; }
+                    else if (spriteNum == 6) { spriteNum = 7; }
+                    else if (spriteNum == 7) { spriteNum = 0; }
+                    spriteCounter = 0;
+                } 
             if(invincible == true){
                 invincibleCounter++;
                 if(invincibleCounter > 60){
@@ -392,15 +404,15 @@ public class Entity {
                             if (spriteNum == 5) {image = up5;}
                             if (spriteNum == 6) {image = up6;}
                             if (spriteNum == 7) {image = up7;}
-                            if (spriteNum == 8) {image = up8;}
-                            if (spriteNum == 9) {image = up9;}
+                        //    if (spriteNum == 8) {image = up8;}
+                        //    if (spriteNum == 9) {image = up9;}
                         }
                         if(attacking == true){
                             tempScreenY = getScreenY() - up1.getHeight(); 
                             if(spriteNum==1){image = upAttack1;}
                             if(spriteNum==2){image = upAttack2;}
                             if(spriteNum==3){image = upAttack3;}
-                            if(spriteNum==4){image = upAttack4;}
+                            if(spriteNum==4){image = upAttack4; attacking = false;}
                         }
                             break;
         
@@ -414,15 +426,15 @@ public class Entity {
                             if (spriteNum == 5) {image = down5;}
                             if (spriteNum == 6) {image = down6;}
                             if (spriteNum == 7) {image = down7;}
-                            if (spriteNum == 8) {image = down8;}
-                            if (spriteNum == 9) {image = down9;}
+                        //    if (spriteNum == 8) {image = down8;}
+                        //    if (spriteNum == 9) {image = down9;}
                         }
                         if(attacking == true){
 
                             if(spriteNum==1){image = downAttack1;}
                             if(spriteNum==2){image = downAttack2;}
                             if(spriteNum==3){image = downAttack3;}
-                            if(spriteNum==4){image = downAttack4;}
+                            if(spriteNum==4){image = downAttack4;attacking = false;}
                         }
                             break;
         
@@ -433,18 +445,18 @@ public class Entity {
                             if (spriteNum == 2) {image = left2;}
                             if (spriteNum == 3) {image = left3;}
                             if (spriteNum == 4) {image = left4;}
-                            if (spriteNum == 5) {image = left5;}
+                           if (spriteNum == 5) {image = left5;}
                             if (spriteNum == 6) {image = left6;}
                             if (spriteNum == 7) {image = left7;}
-                            if (spriteNum == 8) {image = left8;}
-                            if (spriteNum == 9) {image = left9;}
+                        //    if (spriteNum == 8) {image = left8;}
+                        //    if (spriteNum == 9) {image = left9;}
                         }
                         if(attacking == true){
                             tempScreenX = getScreenX() - left1.getWidth(); 
                             if(spriteNum==1){image = leftAttack1;}
                             if(spriteNum==2){image = leftAttack2;}
                             if(spriteNum==3){image = leftAttack3;}
-                            if(spriteNum==4){image = leftAttack4;}
+                            if(spriteNum==4){image = leftAttack4;attacking = false;}
                         }
                             break;
         
@@ -458,14 +470,14 @@ public class Entity {
                             if (spriteNum == 5) {image = right5;}
                             if (spriteNum == 6) {image = right6;}
                             if (spriteNum == 7) {image = right7;}
-                            if (spriteNum == 8) {image = right8;}
-                            if (spriteNum == 9) {image = right9;}
+                        //    if (spriteNum == 8) {image = right8;}
+                        //    if (spriteNum == 9) {image = right9;}
                         }
                         if(attacking == true){
                             if(spriteNum==1){image = rightAttack1;}
                             if(spriteNum==2){image = rightAttack2;}
                             if(spriteNum==3){image = rightAttack3;}
-                            if(spriteNum==4){image = rightAttack4;}
+                            if(spriteNum==4){image = rightAttack4;attacking = false;}
                         }
                             break;
 
@@ -709,18 +721,19 @@ public class Entity {
         gp.player.damageMonster (monsterIndex,this, attack, currentWeapon.knockBackPower);
         gp.player.damageMonster(mineIndex,this, attack, 0);
     
+        }
         //after checking collision, restore the original data
         worldX = currentWorldX;
         worldY = currentWorldY;
         solidArea.width = solidAreaWidth;
-        solidArea.height = solidAreaHeight;}
+        solidArea.height = solidAreaHeight;
             }
            
             
           if(spriteCounter > motion4_duration){
             spriteNum = 1;
             spriteCounter = 0;
-            attacking = false;
+            this.attacking = false;
         }
             
        

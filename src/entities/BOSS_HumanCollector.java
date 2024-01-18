@@ -12,7 +12,8 @@ public class BOSS_HumanCollector extends Entity {
         boss = true;
         type = type_monster;
         name = monName;
-        speed = 2;
+        defaultSpeed = 5;
+        speed = defaultSpeed;
         maxLife = 10;
         life = maxLife;
         attack = 1;
@@ -28,10 +29,10 @@ public class BOSS_HumanCollector extends Entity {
         solidAreaDefaultY = solidArea.y;
         attackArea.width = 48;
         attackArea.height = 48;
-        motion1_duration = 40;
-        motion2_duration = 50;
-        motion3_duration = 60;
-        motion4_duration = 80;
+        motion1_duration = 5;
+        motion2_duration = 10;
+        motion3_duration = 15;
+        motion4_duration = 25;
         
 
         getImage();
@@ -107,10 +108,9 @@ public class BOSS_HumanCollector extends Entity {
             chasePlayer(60);
         }
         else {
-            checkChasing(gp.player, 5, 40);
             getRandomDirection(120);
         }
-        if (attacking == false && getTileDistance(gp.player) < 2) {
+        if (attacking == false) {
             checkAttack(10,gp.tileSize*5,gp.tileSize);
         }
         if (rage == false && life < maxLife/2) {
@@ -118,7 +118,6 @@ public class BOSS_HumanCollector extends Entity {
             defaultSpeed += 2;
             speed = defaultSpeed;
             attack *= 2;
-            
         }
     }
 

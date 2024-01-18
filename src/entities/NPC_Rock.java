@@ -24,8 +24,44 @@ public class NPC_Rock extends Entity {
 
     }
     public void getImage() {
-        up0 = setUp("/res/npc/Rock",gp.tileSize, gp.tileSize*2);
-    }
+        String path = "/res/npc/";
+        up0 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        up1 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        up2 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        up3 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        up4 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        up5 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        up6 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        up7 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+
+
+
+        down0 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        down1 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        down2 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        down3 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        down4 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        down5 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        down6 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        down7 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        
+        left0 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        left1 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        left2 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        left3 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        left4 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        left5 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        left6 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        left7 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+
+        right0 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        right1 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);        
+        right2 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        right3 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        right4 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        right5 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        right6 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);
+        right7 = setUp(path + "Rock",gp.tileSize, gp.tileSize*2);    }
     
     public void setDialogue() {
         dialogues[0][0] = "There is nothing here traveler.";
