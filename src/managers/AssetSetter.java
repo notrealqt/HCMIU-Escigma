@@ -35,6 +35,7 @@ public class AssetSetter {
         //Map4:
         int mapNum4 = 3;
         int i4 = 0;
+        setObjectAt(new Heart(gp),mapNum4,i4++,25,27);
         setObjectAt(new Door(gp), mapNum4, i4++, 25, 25);
         setObjectAt(new Door(gp), mapNum4, i4++, 98, 19);
         setObjectAt(new Door(gp), mapNum4, i4++, 99, 19);
