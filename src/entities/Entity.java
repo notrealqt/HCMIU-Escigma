@@ -291,7 +291,8 @@ public class Entity {
             else {
                 setAction();
                 checkCollision();
-            
+                System.out.println("Moving in direction: " + direction);
+
                 if (collisionOn == false) {
                     switch (direction) {
                         case "up":
@@ -306,43 +307,10 @@ public class Entity {
                         case "right":
                             worldX += speed;
                             break;
-                        /* 
-                        case "upleft":
-                            worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            break;
-                        case "upright":
-                            worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            break;
-                        case "downleft":
-                            worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            break;
-                        case "downright":
-                            worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            break;
-                        */
                     }
                 }
-                //npc image changes every 12 frames
-                /*
-                spriteCounter++;
-                if (spriteCounter >  12) {
-                    if (spriteNum == 0) {
-                        spriteNum = 1;
-                    }
-                    else if (spriteNum == 1) {
-                        spriteNum = 0;
-                    }
-                    spriteCounter = 0;
-                }
-                */
             }
-            
-    
-            
+        
             if(invincible == true){
                 invincibleCounter++;
                 if(invincibleCounter > 60){
@@ -685,7 +653,7 @@ public class Entity {
             if(actionLockCounter  > interval){
                 Random random = new Random();
                 int i = random.nextInt(100)+1; //Random from 1 to 100
-
+                System.out.println("Random direction: " + i);
                 if(i<=25){
                     direction = "up";
                 }
@@ -811,6 +779,7 @@ public class Entity {
     }
     
     public void chasePlayer (int interval) {
+        System.out.println("Chasing player");
         actionLockCounter++;
         if(actionLockCounter > interval) {
             if(getXDistance(gp.player) > getYDistance(gp.player)) {
@@ -832,5 +801,6 @@ public class Entity {
             actionLockCounter = 0;
         }
     }
+
 }
 
