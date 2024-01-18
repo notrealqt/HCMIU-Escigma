@@ -374,7 +374,7 @@ public class Player extends Entity {
         }
 
         //Shot projectile
-        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 30 && projectile.haveResource(this) == true && currentWeapon.name == "Fire Sword") {
+        if(gp.KeyH.shotKeyPressed == true && projectile.alive == false && shotAvailableCounter == 100 && projectile.haveResource(this) == true && currentWeapon.name == "Fire Sword") {
 
             //Set default coordinates, direction and user
             projectile.set(worldX, worldY, direction, true,this);
@@ -387,7 +387,7 @@ public class Player extends Entity {
 
             shotAvailableCounter = 0 ;
         }       
-        if(shotAvailableCounter<30){ shotAvailableCounter++; }         
+        if(shotAvailableCounter<100){ shotAvailableCounter++; }         //projectile cooldown
 
         //invincible time must outside of the key if statement
         if(invincible == true){

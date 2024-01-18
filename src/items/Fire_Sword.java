@@ -15,8 +15,8 @@ public class Fire_Sword extends Entity {
         attackvalue = 99;
         defensevalue = 1;
         description = "["+name+"]\nA fire sword which used belong to\nan Australian painter";
-        attackArea.width = 200;
-        attackArea.height = 100;
+        attackArea.width = 36;
+        attackArea.height = 36;
         knockBackPower = 0;
         //getImage();
     }
