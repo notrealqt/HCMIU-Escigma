@@ -1,6 +1,5 @@
 package entities;
 
-import java.util.Random;
 import main.GamePanel;
 
 public class MON_Slime extends Entity {
