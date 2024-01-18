@@ -44,11 +44,12 @@ package mics {
         - currentNode : Node
         - goalReached : boolean
         - step : int
-        + search : boolean
         + PathFinder(GamePanel)
         + instantiateNodes() : void
         + resetNodes() : void
-        + setNodes(int, int, int, int)
+        + setNodes(int, int, int, int) : void
+        + getCost(Node) : void
+        + search() : boolean
         - openAdjacentNodes(int, int) : void
         - openNodeIfExists(int, int) : void
         - isValidCoordinate(int, int) : boolean

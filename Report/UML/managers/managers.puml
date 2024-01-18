@@ -5,15 +5,18 @@ scale 1920*1080
 package managers {
     class AssetSetter {
         -gp : GamePanel
+        + monType : String
 
         + AssetSetter(GamePanel)
         + setObject() : void 
         + setNPC() : void
+        + setMine() : void
         + setMonster() : void
         + setObjectAt(Entity, int, int, int, int) : void
         - setWormholeAt(WormHole, int, int, int, int) : void
         + setNPCAt(Entity, int, int, int, int) : void
         + setMonsterAt(Entity, int, int, int) : void
+        + setMineAt(Entity, int, int, int, int) : void
         - setWorldCoordinates(Object, int, int, int) : void
     }
     class CollisionDetector {
@@ -74,12 +77,10 @@ package managers {
         + EventHandler(GamePanel)
         + setDialogue() : void
         + checkEvent() : void
+        + savePointHit(int, int, int) : void
         + hit(int, int, int, String) : boolean
-        + teleport(int) : void
-        + damagePit(int) : void
         + healingPool(int) : void
         + teleport(int, int, int) : void
-        + wormHole(int, int, int) : void
         + boss() : void
     }
     class EventRect {
@@ -193,6 +194,7 @@ package entities {
     class Entity
     class MON_FloatingEye
     class MON_Mimic
+    class MON_Mushroom
     class MON_Slime
     class NPC_Death
     class NPC_Forest
@@ -225,6 +227,7 @@ package mics {
 AssetSetter --> Entity
 AssetSetter --> MON_FloatingEye
 AssetSetter --> MON_Mimic
+AssetSetter --> MON_Mushroom
 AssetSetter --> MON_Slime
 AssetSetter --> NPC_Death
 AssetSetter --> NPC_Forest
