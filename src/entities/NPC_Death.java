@@ -9,8 +9,6 @@ public class NPC_Death extends Entity {
         super(gp);
         type = 1;
         direction = "up";
-        speed = 1;
-
         solidArea.x = 8;
         solidArea.y = 16;
         solidAreaDefaultX = solidArea.x;

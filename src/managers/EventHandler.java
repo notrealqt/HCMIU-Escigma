@@ -17,7 +17,7 @@ public class EventHandler {
         this.gp = gp;
 
         eventMaster = new Entity(gp);
-        
+        this.setDialogue();
         eventRect = new EventRect[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
 
         int map = 0;
@@ -25,10 +25,10 @@ public class EventHandler {
         int row = 0;
         while (map < gp.maxMap && col < gp.maxWorldCol && row < gp.maxWorldRow) {
             eventRect[map][col][row] = new EventRect();
-            eventRect[map][col][row].x = 23;
-            eventRect[map][col][row].y = 23;
-            eventRect[map][col][row].width = 2;
-            eventRect[map][col][row].height = 2;
+            eventRect[map][col][row].x = 0;
+            eventRect[map][col][row].y = 0;
+            eventRect[map][col][row].width =48;
+            eventRect[map][col][row].height = 48;
             eventRect[map][col][row].eventRectDefaultX = eventRect[map][col][row].x;
             eventRect[map][col][row].eventRectDefaultY = eventRect[map][col][row].y;
             col++;
@@ -48,6 +48,7 @@ public class EventHandler {
     //diagloue set
     public void setDialogue() {
         eventMaster.dialogues[0][0] = "You fall into a pit!" ;
+        eventMaster.dialogues[1][0] = "You rest at the camp. You feel better.\nProcess has been save!";
     }
     
     public void checkEvent() {
@@ -60,85 +61,77 @@ public class EventHandler {
             canTouchEvent = true;
         }
 
+        savePointHit(0, 76, 97);
         //This will prevent the event from happening repeatedly
         if(canTouchEvent == true) {
             if(hit(0,16,10,"any") == true) {
                 damagePit(gp.dialogueState);
             }
+            //Teleport WormHole
+            else if(hit(0,67,83,"any") == true) {teleport(0, 81, 64);}
+            else if(hit(0,81,64,"any") == true) {teleport(0, 67, 83);}
+            else if(hit(0,49,57,"any") == true) {teleport(0, 17, 73);}
+            else if(hit(0,17,73,"any") == true) {teleport(0,49,57);}
+            else if(hit(0,23,32,"any") == true) {teleport(0, 92, 32);}
+            else if(hit(0, 92, 32,"any") == true) {teleport(0,23,32);}
 
-            else if(hit(0,11,94,"any") == true) {
-                wormHole(0, 45, 71);
-            }
-    
-            else if(hit(0,46,71,"any") == true) {
-                wormHole(0, 94, 97);
-            }
-    
-            else if(hit(0,95,97,"any") == true) {
-                wormHole(0, 107, 100);
-            }
-    
-            else if(hit(0,108,100,"any") == true) {
-                wormHole(0, 12, 94);
-            }
-    
-            else if(hit(0,104,63,"any") == true) {
-                wormHole(0, 107, 12);
-            }
-    
-            else if(hit(0,108,12,"any") == true) {
-                wormHole(0, 105, 63);
-            }
-    
-            else if(hit(0,27,27,"any") == true) {
-                wormHole(0, 49, 45);
-            }
-    
-            else if(hit(0,48,45,"any") == true) {
-                wormHole(0, 66, 16);
-            }
-    
-            else if(hit(0,67,16,"any") == true) {
-                wormHole(0, 26, 27);
-            }
+            else if(hit(1,13,27,"any") == true) {teleport(1, 61, 56);}
+            else if(hit(1, 61, 56,"any") == true) {teleport(1,13,27);}
+            else if(hit(1,86,45,"any") == true) {teleport(1, 107, 16);}
+            else if(hit(1, 107, 16,"any") == true) {teleport(1,86,45);}
+            else if(hit(1,100,88,"any") == true) {teleport(1, 44, 93);}
+            else if(hit(1, 44, 93,"any") == true) {teleport(1,100,88);}
+
+            else if(hit(2,97,100,"any") == true) {teleport(2, 63, 53);}
+            else if(hit(2, 63, 53,"any") == true) {teleport(2,97,100);}
+            else if(hit(2,38,44,"any") == true) {teleport(2, 34, 69);}
+            else if(hit(2, 34, 69,"any") == true) {teleport(2,38,44);}
+            else if(hit(2,98,27,"any") == true) {teleport(2, 33, 101);}
+            else if(hit(2, 33, 101,"any") == true) {teleport(2,98,27);}
+
+            else if(hit(3,14,43,"any") == true) {teleport(3, 45, 70);}
+            else if(hit(3, 45, 70,"any") == true) {teleport(3,14,43);}
+            else if(hit(3,45,99,"any") == true) {teleport(3, 87, 62);}
+            else if(hit(3, 87, 62,"any") == true) {teleport(3,45,99);}
+            else if(hit(3,96,72,"any") == true) {teleport(3, 65, 38);}
+            else if(hit(3, 65, 38,"any") == true) {teleport(3,96,72);}
+
+            //teleport to different map
+            else if (hit(0, 53, 32, "any") == true) {teleport(1,15,17);}
+            else if (hit(1,15,17, "any") == true) {teleport(0, 53, 32);}
+
+            else if (hit(1, 101, 46, "any") == true) {teleport(2,56,65);}
+            else if (hit(2,56,65, "any") == true) {teleport(1, 101, 46);}
+
+            else if (hit(2, 72, 44, "any") == true) {teleport(3,15,12);}
+            else if (hit(3,15,12, "any") == true) {teleport(2, 72, 44);}
+            
+            
+            //Boss Scene
             else if(hit(3,76,39,"any") == true ||
                hit(3,76,40,"any") == true ||
                hit(3,76,38,"any") == true ||
                hit(3,76,41,"any") == true) {
                 boss();
             }
-            //teleport to different map
-            else if (hit(0, 12, 71, "any") == true) {
-                teleport(1,12,12);
-            }
-            else if (hit(1,12,12, "any") == true) {
-                teleport(0, 12, 71);
-            }
-            else if (hit(1, 97, 87, "any") == true) {
-                teleport(2,12,12);
-            }
-            else if (hit(2,12,12, "any") == true) {
-                teleport(1, 97, 87);
-            }
-            else if (hit(2, 108, 107, "any") == true) {
-                teleport(3,12,12);
-            }
-            else if (hit(3,12,12, "any") == true) {
-                teleport(2, 108, 107);
-            }
+            
 
-
-            else if(hit(0,10,9,"any") == true) {
-                healingPool(gp.dialogueState);
-            }
-
-            else if(hit(0,15,12,"any") == true) {
-                teleport(gp.dialogueState);
-            }
+            else if(hit(0,10,9,"any") == true) {healingPool(gp.dialogueState);}
 
         }
     }
     
+    public void savePointHit(int map, int col, int row) {
+        if(hit(map, col, row, "any") ||
+            hit(map, col+2, row, "any") ||
+            hit(map, col, row-1, "any") ||
+            hit(map, col+1, row-1, "any") ||
+            hit(map, col, row+1, "any") ||
+            hit(map, col+1, row, "any") ) {
+            
+            healingPool(gp.dialogueState);    
+            }
+    }
     public boolean hit(int map, int col, int row, String reqDirection) {
         
         boolean hit = false;
@@ -166,14 +159,6 @@ public class EventHandler {
         return hit;
     }
     
-    public void teleport(int gameState) {
-
-        gp.gameState = gameState;
-        gp.ui.currentDiaglogue = "You have encounter teleportation path. Now, suffer.";
-        gp.player.worldX = gp.tileSize*10;
-        gp.player.worldY = gp.tileSize*18;
-
-    }
     
     public void damagePit( int gameState) {
         gp.gameState = gameState;
@@ -183,16 +168,16 @@ public class EventHandler {
     }
     
     public void healingPool(int gameState) {
-        if(gp.KeyH.interPressed == true) {
+        if(gp.KeyH.enterPressed == true) {
             gp.gameState = gameState;
             gp.player.attackCanceled = true;
-            gp.ui.currentDiaglogue = "You drink the water. Your life & mana has been\n recovered. Why? Cuz you are made of more\n than 50% water. \n Saved progress";
             gp.player.life = gp.player.maxLife;
             gp.player.mana = gp.player.maxMana;
+            eventMaster.startDialogue(eventMaster, 1);
             gp.aSetter.setMonster();
             gp.saveLoad.save();
         }
-        gp.KeyH.interPressed = false;
+        gp.KeyH.enterPressed = false;
     }
     
     public void teleport (int map, int col, int row) {
@@ -203,16 +188,6 @@ public class EventHandler {
         previousEventY = gp.player.worldY;
         canTouchEvent = false;
         System.out.println("MOVE TO MAP: " + map);
-    }
-    
-    public void wormHole (int map, int col, int row) {
-        gp.currentMap = map;
-        gp.player.worldX = gp.tileSize * col;
-        gp.player.worldY = gp.tileSize * row;
-        previousEventX = gp.player.worldX;
-        previousEventY = gp.player.worldY;
-        canTouchEvent = false;
-        
     }
 
     public void boss() {

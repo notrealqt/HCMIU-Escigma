@@ -230,6 +230,12 @@ class NPC_Death {
     setDialogue() : void
     speak() : void
 }
+class NPC_Forest {
+    NPC_Forest(GamePanel)
+    getImage() : void
+    setDialogue() : void
+    speak() : void
+}
 class NPC_Ice {
     NPC_Ice(GamePanel)
     getImage() : void
@@ -242,12 +248,10 @@ class NPC_Injured {
     setDialogue() : void
     speak() : void
 }
-class NPC_OldMan {
-    eventMaster : Entity
-    NPC_OldMan(GamePanel)
+class NPC_Rock {
+    NPC_Rock(GamePanel)
     getImage() : void
     setDialogue() : void
-    setAction() : void
     speak() : void
 }
 
@@ -258,10 +262,11 @@ MON_Mimic --|> Entity
 MON_Mushroom --|> Entity
 MON_Slime --|> Entity
 NPC_Death --|> Entity
+NPC_Forest --|> Entity
 NPC_Ice --|> Entity
 NPC_Injured --|> Entity
-NPC_OldMan --|> Entity
+NPC_Rock --|> Entity
 Player --|> Entity
-
+Projectile --|> Entity
 @enduml 
 
