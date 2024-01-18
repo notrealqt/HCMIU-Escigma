@@ -188,16 +188,6 @@ public class KeyHandle implements KeyListener {
                     
                 }
             }
-            /*if (code == KeyEvent.VK_R){
-                switch(gp.currentMap) {
-                    case 0:
-                       gp.tileM.loadMap("/res/map/map02.txt", 0);
-                       break;
-
-                    //case 1: different map
-                }
-            }
-            */
             if (code == KeyEvent.VK_SPACE) {
                 guardPressed = true;
             }
@@ -350,7 +340,7 @@ public class KeyHandle implements KeyListener {
             gp.gameState = gp.titleState;
             gp.ui.commandNum = 2;
                     
-                }
+        }
     }
 }
 
@@ -409,8 +399,6 @@ public class KeyHandle implements KeyListener {
     @Override
     public void keyReleased (KeyEvent e) {
         int code = e.getKeyCode();
-        //System.out.println("Key released: " + code);
-
         if (code == KeyEvent.VK_W) {
             upPressed = false;
         }

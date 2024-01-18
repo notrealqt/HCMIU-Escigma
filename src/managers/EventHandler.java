@@ -1,6 +1,5 @@
 package managers;
 
-import Event.EventRect;
 import entities.Entity;
 import main.GamePanel;
 import mics.Progress;
@@ -102,24 +101,33 @@ public class EventHandler {
             else if(hit(0,67,16,"any") == true) {
                 wormHole(0, 26, 27);
             }
-            else if(hit(0,76,39,"any") == true ||
-               hit(0,76,40,"any") == true ||
-               hit(0,76,38,"any") == true ||
-               hit(0,76,41,"any") == true) {
+            else if(hit(3,76,39,"any") == true ||
+               hit(3,76,40,"any") == true ||
+               hit(3,76,38,"any") == true ||
+               hit(3,76,41,"any") == true) {
                 boss();
             }
-
-            else if (hit(0, 37, 13, "any") == true ||
-            hit(0, 37, 11, "any") == true || 
-            hit(0, 37, 12, "any") == true ||
-            hit(0, 37, 14, "any") == true) {
-                teleport(1,20,20);
+            //teleport to different map
+            else if (hit(0, 12, 71, "any") == true) {
+                teleport(1,12,12);
+            }
+            else if (hit(1,12,12, "any") == true) {
+                teleport(0, 12, 71);
+            }
+            else if (hit(1, 97, 87, "any") == true) {
+                teleport(2,12,12);
+            }
+            else if (hit(2,12,12, "any") == true) {
+                teleport(1, 97, 87);
+            }
+            else if (hit(2, 108, 107, "any") == true) {
+                teleport(3,12,12);
+            }
+            else if (hit(3,12,12, "any") == true) {
+                teleport(2, 108, 107);
             }
 
-            else if (hit(1,20,20, "any") == true) {
-                teleport(0, 37, 13);
-            }
-            
+
             else if(hit(0,10,9,"any") == true) {
                 healingPool(gp.dialogueState);
             }

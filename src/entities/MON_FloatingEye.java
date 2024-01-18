@@ -32,7 +32,7 @@ public class MON_FloatingEye extends Entity {
     }
     public void getImage(String type){
 
-        String path = "/res/monster/floating eye/" + type + "/";
+        String path = "/res/monster/floating eye/" + type;
         up0 = setUp(path + "up0",gp.tileSize, gp.tileSize);
         up1 = setUp(path + "up1",gp.tileSize, gp.tileSize);
         up2 = setUp(path + "up2",gp.tileSize, gp.tileSize);

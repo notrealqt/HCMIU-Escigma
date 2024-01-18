@@ -114,9 +114,11 @@ public class Entity {
     public int amount = 1;
     public int lightRadius;
     public int knockBackPower = 0;
+    
     public Entity(GamePanel gp){
         this.gp = gp;
     }
+    
     public int getScreenX () {
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         return screenX;
@@ -229,6 +231,7 @@ public class Entity {
         gp.ui.npc = entity;
         dialogueSet = setNum;
     }
+    
     public void interact() {}
     
     public boolean use(Entity entity) {return false;}
@@ -302,6 +305,7 @@ public class Entity {
                         case "right":
                             worldX += speed;
                             break;
+                        /* 
                         case "upleft":
                             worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                             worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
@@ -318,9 +322,11 @@ public class Entity {
                             worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                             worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
                             break;
+                        */
                     }
                 }
                 //npc image changes every 12 frames
+                /*
                 spriteCounter++;
                 if (spriteCounter >  12) {
                     if (spriteNum == 0) {
@@ -330,7 +336,8 @@ public class Entity {
                         spriteNum = 0;
                     }
                     spriteCounter = 0;
-            }
+                }
+                */
             }
             
     
