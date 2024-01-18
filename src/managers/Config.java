@@ -23,10 +23,10 @@ public class Config {
     try {
         BufferedWriter bw = new BufferedWriter(new FileWriter("config.txt"));
         //Full screen
-        if(gp.fullScrennOn == true){
+        if(gp.fullScreenOn == true){
             bw.write("On");
         }
-        if(gp.fullScrennOn == false) {
+        if(gp.fullScreenOn == false) {
              bw.write("Off");
         }
         bw.newLine();
@@ -56,10 +56,10 @@ public class Config {
 
             //Full Screen
             if(s.equals("On")){
-                gp.fullScrennOn = true;
+                gp.fullScreenOn = true;
             }
             if(s.equals("Off")){
-                gp.fullScrennOn = false;
+                gp.fullScreenOn = false;
             }
             //Music
             s = br.readLine();

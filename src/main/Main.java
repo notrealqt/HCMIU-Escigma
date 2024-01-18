@@ -18,7 +18,7 @@ public class Main {
         window.add(panel);
        
         panel.config.loadConfig();
-        if(panel.fullScrennOn == true){
+        if(panel.fullScreenOn == true){
             window.setUndecorated(true);
         }
 

@@ -616,10 +616,10 @@ public class UI {
             if(commandNum == 0){
                 g2.drawString("👉", textX-40, textY);
                 if(gp.KeyH.enterPressed == true){
-                    if(gp.fullScrennOn == false){
-                        gp.fullScrennOn = true;
-                    }else if(gp.fullScrennOn == true){
-                        gp.fullScrennOn = false;}
+                    if(gp.fullScreenOn == false){
+                        gp.fullScreenOn = true;
+                    }else if(gp.fullScreenOn == true){
+                        gp.fullScreenOn = false;}
                         SubState = 1;
                 }
             }
@@ -671,7 +671,7 @@ public class UI {
             textX= frameX + gp.tileSize*5;
             textY= frameY + gp.tileSize*3;
             g2.drawString("✰", textX, textY);
-            if(gp.fullScrennOn== true){
+            if(gp.fullScreenOn== true){
                 g2.drawString("★", textX, textY);
             }
             gp.config.saveConfig();
@@ -983,10 +983,10 @@ public class UI {
             if(commandNum == 0){
                 g2.drawString("👉", textX-40, textY);
                 if(gp.KeyH.enterPressed == true){
-                    if(gp.fullScrennOn == false){
-                        gp.fullScrennOn = true;
-                    }else if(gp.fullScrennOn == true){
-                        gp.fullScrennOn = false;}
+                    if(gp.fullScreenOn == false){
+                        gp.fullScreenOn = true;
+                    }else if(gp.fullScreenOn == true){
+                        gp.fullScreenOn = false;}
                        
                 }
             }
@@ -1007,7 +1007,7 @@ public class UI {
             textX= frameX + gp.tileSize*5;
             textY= frameY + gp.tileSize*2;
             g2.drawString("✰ Change after restart", textX, textY);
-            if(gp.fullScrennOn== true){
+            if(gp.fullScreenOn== true){
                 g2.drawString("★ Change after restart", textX, textY);
             }
              //Music CheckBox

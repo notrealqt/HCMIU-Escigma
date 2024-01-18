@@ -1,20 +1,17 @@
 package entities;
 
-import java.awt.image.BufferedImage;
-import java.util.Random;
-
 import main.GamePanel;
 
-public class m_Boss extends Entity {
+public class BOSS_HumanCollector extends Entity {
     GamePanel gp;
-
-    public m_Boss(GamePanel gp) {
+    public static final String monName = "Human Collector";
+    public BOSS_HumanCollector(GamePanel gp) {
         
         super(gp);
         this.gp = gp;
         boss = true;
         type = type_monster;
-        name = "Human Collector";
+        name = monName;
         speed = 2;
         maxLife = 10;
         life = maxLife;
@@ -102,7 +99,6 @@ public class m_Boss extends Entity {
         rightAttack2 = setUp(path + "right1", gp.tileSize, gp.tileSize);
         rightAttack3 = setUp(path + "right2", gp.tileSize, gp.tileSize);
         rightAttack4 = setUp(path + "right3", gp.tileSize, gp.tileSize);
-
     }
 
     public void setAction(){

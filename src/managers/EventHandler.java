@@ -208,7 +208,7 @@ public class EventHandler {
     }
 
     public void boss() {
-        if (gp.bossBatleOn == false && Progress.defeatLog == false) {
+        if (gp.bossBattleOn == false && Progress.defeatLog == false) {
             gp.gameState = gp.cutScene;
             gp.csManager.sceneNum = gp.csManager.boss;
         }

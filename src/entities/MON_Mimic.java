@@ -1,19 +1,19 @@
-package monster;
+package entities;
 
 import java.util.Random;
-import entity.Entity;
 import main.GamePanel;
 
-public class m_GreenSlime extends Entity {
+public class MON_Mimic extends Entity {
     GamePanel gp;
+    public static final String monName = "Mimic";
 
-    public m_GreenSlime(GamePanel gp) {
+    public MON_Mimic(GamePanel gp) {
         
         super(gp);
         this.gp = gp;
         boss = false;
         type = type_monster;
-        name = "Green Slime";
+        name = monName;
         defaultSpeed = 1;
         speed = defaultSpeed;
         maxLife = 4;
