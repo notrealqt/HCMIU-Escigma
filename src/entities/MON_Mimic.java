@@ -13,7 +13,7 @@ public class MON_Mimic extends Entity {
         this.gp = gp;
         type = type_monster;
         name = monName;
-        defaultSpeed = 0;
+        defaultSpeed = 3;
         speed = defaultSpeed;
         maxLife = 4;
         life = maxLife;
