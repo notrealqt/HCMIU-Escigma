@@ -12,7 +12,7 @@ public class Axe extends Entity {
         down0=setUp("/res/objects/item/weapon/axe/axe",gp.tileSize,gp.tileSize);
         attackvalue = 4;
         defensevalue = 2;
-        description = "["+name+"]\nAn axe!!!";
+        description = "["+name+"]\nAn axe that cuts down enemy!!!";
         attackArea.width = 100;
         attackArea.height = 100;
         knockBackPower = 10;
