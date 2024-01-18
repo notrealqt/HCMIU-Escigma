@@ -80,25 +80,25 @@ public class BOSS_HumanCollector extends Entity {
 
     public void getAttackImage() {
         String path = "/res/monster/boss/corpse/attack/";
-        upAttack1 = setUp(path + "up0", gp.tileSize, gp.tileSize);
-        upAttack2 = setUp(path + "up1", gp.tileSize, gp.tileSize);
-        upAttack3 = setUp(path + "up2", gp.tileSize, gp.tileSize);
-        upAttack4 = setUp(path + "up3", gp.tileSize, gp.tileSize);
+        upAttack1 = setUp(path + "up0", gp.tileSize, gp.tileSize*2);
+        upAttack2 = setUp(path + "up1", gp.tileSize, gp.tileSize*2);
+        upAttack3 = setUp(path + "up2", gp.tileSize, gp.tileSize*2);
+        upAttack4 = setUp(path + "up3", gp.tileSize, gp.tileSize*2);
 
-        downAttack1 = setUp(path + "down0", gp.tileSize, gp.tileSize);
-        downAttack2 = setUp(path + "down1", gp.tileSize, gp.tileSize);
-        downAttack3 = setUp(path + "down2", gp.tileSize, gp.tileSize);
-        downAttack4 = setUp(path + "down3", gp.tileSize, gp.tileSize);
+        downAttack1 = setUp(path + "down0", gp.tileSize, gp.tileSize*2);
+        downAttack2 = setUp(path + "down1", gp.tileSize, gp.tileSize*2);
+        downAttack3 = setUp(path + "down2", gp.tileSize, gp.tileSize*2);
+        downAttack4 = setUp(path + "down3", gp.tileSize, gp.tileSize*2);
         
-        leftAttack1 = setUp(path + "left0", gp.tileSize, gp.tileSize);
-        leftAttack2 = setUp(path + "left1", gp.tileSize, gp.tileSize);
-        leftAttack3 = setUp(path + "left2", gp.tileSize, gp.tileSize);
-        leftAttack4 = setUp(path + "left3", gp.tileSize, gp.tileSize);
+        leftAttack1 = setUp(path + "left0", gp.tileSize*2, gp.tileSize);
+        leftAttack2 = setUp(path + "left1", gp.tileSize*2, gp.tileSize);
+        leftAttack3 = setUp(path + "left2", gp.tileSize*2, gp.tileSize);
+        leftAttack4 = setUp(path + "left3", gp.tileSize*2, gp.tileSize);
 
-        rightAttack1 = setUp(path + "right0", gp.tileSize, gp.tileSize);
-        rightAttack2 = setUp(path + "right1", gp.tileSize, gp.tileSize);
-        rightAttack3 = setUp(path + "right2", gp.tileSize, gp.tileSize);
-        rightAttack4 = setUp(path + "right3", gp.tileSize, gp.tileSize);
+        rightAttack1 = setUp(path + "right0", gp.tileSize*2, gp.tileSize);
+        rightAttack2 = setUp(path + "right1", gp.tileSize*2, gp.tileSize);
+        rightAttack3 = setUp(path + "right2", gp.tileSize*2, gp.tileSize);
+        rightAttack4 = setUp(path + "right3", gp.tileSize*2, gp.tileSize);
     }
 
     public void setAction(){
@@ -110,7 +110,7 @@ public class BOSS_HumanCollector extends Entity {
             checkChasing(gp.player, 5, 40);
             getRandomDirection(120);
         }
-        if (attacking == false) {
+        if (attacking == false && getTileDistance(gp.player) < 2) {
             checkAttack(10,gp.tileSize*5,gp.tileSize);
         }
         if (rage == false && life < maxLife/2) {
