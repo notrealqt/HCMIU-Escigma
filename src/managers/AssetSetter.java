@@ -91,7 +91,7 @@ public class AssetSetter {
         //Map4:
         int map4 = 3;
         int i4 = 0;
-        setObjectAt(new Heart(gp),mapNum4,i4++,25,27);
+        setObjectAt(new Heart(gp),map4,i4++,25,27);
         setObjectAt(new Master_Portal(gp), map4, i4++, 106, 16);
         setObjectAt(new Key(gp), map4, i4++, 19, 19);
         setObjectAt(new Key(gp), map4, i4++, 19, 20);
