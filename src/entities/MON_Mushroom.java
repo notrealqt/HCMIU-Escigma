@@ -11,17 +11,16 @@ public class MON_Mushroom extends Entity {
         super(gp);
         this.gp = gp;
         boss = false;
-        type = type_monster;
+        type = type_mine;
         name = monName;
-        defaultSpeed = 1;
-        speed = defaultSpeed;
         maxLife = 4;
         life = maxLife;
         attack = 5;
         defense = 0;
         knockBackPower = 5;
         coin = 5;
-        
+        speed = 0;
+        defaultSpeed = speed;
         solidArea.x = 3;
         solidArea.y = 18;
         solidArea.width = 42;
@@ -29,49 +28,40 @@ public class MON_Mushroom extends Entity {
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
-        //getImage(typeMon);
+        getImage(typeMon);
     }
 
 
-    /*public void getImage(String type){
-        String path = "/res/monster/slime/" + type + "/";
-        up0 = setUp(path + "up0",gp.tileSize, gp.tileSize);
-        up1 = setUp(path + "up1",gp.tileSize, gp.tileSize);
-        up2 = setUp(path + "up2",gp.tileSize, gp.tileSize);
-        up3 = setUp(path + "up3",gp.tileSize, gp.tileSize);
-        up4 = setUp(path + "up4",gp.tileSize, gp.tileSize);
+    public void getImage(String type){
+        String path = "/res/monster/mushroom/" + type + "/";
+        mineIdle = setUp(path + "idle",gp.tileSize, gp.tileSize);
 
-        down0 = setUp(path + "down0",gp.tileSize, gp.tileSize);
-        down1 = setUp(path + "down1",gp.tileSize, gp.tileSize);
-        down2 = setUp(path + "down2",gp.tileSize, gp.tileSize);
-        down3 = setUp(path + "down3",gp.tileSize, gp.tileSize);
-        down4 = setUp(path + "down4",gp.tileSize, gp.tileSize);
+        mineExpl0 = setUp(path + "explode0",gp.tileSize, gp.tileSize);
+        mineExpl1 = setUp(path + "explode1",gp.tileSize, gp.tileSize);
+        mineExpl2 = setUp(path + "explode2",gp.tileSize, gp.tileSize);
+        mineExpl3 = setUp(path + "explode3",gp.tileSize, gp.tileSize);
+        mineExpl4 = setUp(path + "explode4",gp.tileSize, gp.tileSize);
+        mineExpl5 = setUp(path + "explode5",gp.tileSize, gp.tileSize);
+        mineExpl6 = setUp(path + "explode6",gp.tileSize, gp.tileSize);
+        mineExpl7 = setUp(path + "explode7",gp.tileSize, gp.tileSize);
+        mineExpl8 = setUp(path + "explode8",gp.tileSize, gp.tileSize);
 
-        left0 = setUp(path + "left0",gp.tileSize, gp.tileSize);
-        left1 = setUp(path + "left1",gp.tileSize, gp.tileSize);
-        left2 = setUp(path + "left2",gp.tileSize, gp.tileSize);
-        left3 = setUp(path + "left3",gp.tileSize, gp.tileSize);
-        left4 = setUp(path + "left4",gp.tileSize, gp.tileSize);
-
-        right0 = setUp(path + "right0",gp.tileSize, gp.tileSize);
-        right1 = setUp(path + "right1",gp.tileSize, gp.tileSize);        
-        right2 = setUp(path + "right2",gp.tileSize, gp.tileSize);
-        right3 = setUp(path + "right3",gp.tileSize, gp.tileSize);
-        right4 = setUp(path + "right4",gp.tileSize, gp.tileSize);
         
-    }*/
-
-
-    public void setAction(){
-        
-        if (getTileDistance(gp.player) < 10) {
-            chasePlayer(60);
-        }
-        else {
-            checkChasing(gp.player, 5, 100);
-            getRandomDirection(120);
-        }    
     }
+
+
+
+
+    // public void setAction(){
+        
+    //     if (getTileDistance(gp.player) < 10) {
+    //         chasePlayer(60);
+    //     }
+    //     else {
+    //         checkChasing(gp.player, 5, 100);
+    //         getRandomDirection(120);
+    //     }    
+    // }
 
     public void damageReaction(){
         actionLockCounter = 0; 

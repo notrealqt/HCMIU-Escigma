@@ -176,7 +176,6 @@ public class Player extends Entity {
             rightAttack3 = setUp(path + "right2",gp.tileSize*2, gp.tileSize);
             rightAttack4 = setUp(path + "right3",gp.tileSize*2, gp.tileSize);
         }
-
         if(currentWeapon.name == "Fire Sword") {
             String path = "/res/objects/item/weapon/fire sword/flame_attack/";
             upAttack1 = setUp(path + "up0",gp.tileSize, gp.tileSize*2);
@@ -267,6 +266,7 @@ public class Player extends Entity {
             gp.colDect.checkObject(this, true);
             gp.colDect.checkEntity(this, gp.npc);
             gp.colDect.checkEntity(this, gp.monster);
+            gp.colDect.checkEntity(this, gp.mine);
 
 
             if(collisionOn == true) {
@@ -331,6 +331,10 @@ public class Player extends Entity {
                 //Check monster collision
                 int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
                 encounterMonster(monsterIndex);
+
+                //check mine collision
+                int mineIndex = gp.colDect.checkEntity(this, gp.mine);
+                encounterMonster(mineIndex);
                 
                 //if collision is false, player can move 
                 if (collisionOn == false && keyH.interPressed==false && keyH.attackPressed == false) {     //interact without moving
@@ -447,7 +451,9 @@ public class Player extends Entity {
 
             //check monster collision with the updated worldX,Y and solidArea
             int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
+            int mineIndex = gp.colDect.checkEntity(this, gp.mine);
             damageMonster (monsterIndex,this, attack, currentWeapon.knockBackPower);
+            damageMonster (mineIndex,this, attack, 0);
         
             //after checking collision, restore the original data
             worldX = currentWorldX;
@@ -462,6 +468,7 @@ public class Player extends Entity {
         }
             
     }
+
 
     /*
     public void pickUpObject(int i){
@@ -532,7 +539,7 @@ public class Player extends Entity {
     
     public void encounterMonster(int i) {
         if (i!=9999){
-            if(invincible == false && gp.monster[gp.currentMap][i].die==false){
+            if(invincible == false && (gp.monster[gp.currentMap][i].die==false)){
                 int damage = gp.monster[gp.currentMap][i].attack - defense;
                 if(damage < 1){
                     damage = 1;

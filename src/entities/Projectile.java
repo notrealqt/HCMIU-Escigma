@@ -55,7 +55,16 @@ public class Projectile extends Entity {
                 spriteNum = 2;
             }
             else if (spriteNum ==2){
-                spriteNum =1;
+                spriteNum =3;
+            }
+            else if(spriteNum == 3){
+                spriteNum = 4;
+            }
+            else if (spriteNum == 4){
+                spriteNum = 5;
+            }
+            else if(spriteNum == 5){
+                spriteNum = 1;
             }
             spriteCounter = 0;
    
