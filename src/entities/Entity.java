@@ -279,8 +279,6 @@ public class Entity {
             else {
                 setAction();
                 checkCollision();
-                System.out.println("Moving in direction: " + direction);
-
                 if (collisionOn == false) {
                     switch (direction) {
                         case "up":
@@ -578,11 +576,6 @@ public class Entity {
                 }
             }
 
-        //int nextCol = gp.pFinder.pathList.get(0).col;
-        //int nextRow = gp.pFinder.pathList.get(0).row;
-        //if (nextCol == goalCol && nextRow == goalRow) {
-        //   onPath = false;
-        //}
         }
     }
     
@@ -653,7 +646,6 @@ public class Entity {
             if(actionLockCounter  > interval){
                 Random random = new Random();
                 int i = random.nextInt(100)+1; //Random from 1 to 100
-                System.out.println("Random direction: " + i);
                 if(i<=25){
                     direction = "up";
                 }
