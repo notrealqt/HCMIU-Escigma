@@ -21,7 +21,7 @@ public class NPC_Injured extends Entity {
 
     }
     public void getImage(){
-        up0 = setUp("/res/npc/Injured",gp.tileSize, gp.tileSize);
+        up0 = setUp("/res/npc/Injured",gp.tileSize, gp.tileSize*2);
     }
     
     public void setDialogue() {
