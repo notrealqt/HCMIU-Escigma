@@ -1,39 +1,38 @@
 @startuml "main"
 hide circle
 scale 1920*1080
-interface GameConstants {
-    originalTileSize : int
-    scale : int
-    tileSize : int
-    maxScreenCol : int
-    maxScreenRow : int
-    screenWidth : int
-    screenHeight : int
-    maxWorldCol : int
-    maxWorldRow : int
-    maxMap : int
-    worldWidth : int
-    worldHeight : int
-    screenWidth2 : int
-    screenHeight2 : int
-    FPS : int
-    titleState : int
-    playState : int
-    pauseState : int
-    dialogueState : int
-    characterState : int
-    optionState : int
-    youLostState : int
-    guideState : int
-    menuOptionState : int
-    mapState : int
-    cutScene : int
-    bossBattleOn : boolean
-}
 class GanePanel {
     - tempScreen : BufferedImage
     - g2 : Graphics2D
     + fullScreenOn : boolean
+    + currentMap : int
+    - originalTileSize : int
+    - scale : int
+    + tileSize : int
+    + maxScreenCol : int
+    + maxScreenRow : int
+    + maxWorldCol : int
+    + maxWorldRow : int
+    + maxMap : int
+    + worldWidth : int
+    + worldHeight : int
+    + screenWidth : int
+    + screenHeight : int
+    + screenWidth2 : int
+    + screenHeight2 : int
+    + FPS : int
+    + titleState : int
+    + playState : int
+    + pauseState : int
+    + dialogueState : int
+    + characterState : int
+    + optionState : int
+    + youLostState : int
+    + guideState : int
+    + menuOptionState : int
+    + mapState : int
+    + cutScene : int
+    + bossBattleOn : boolean
     + tileM : TileManager
     + KeyH : KeyHandle
     + music : Sound
@@ -60,7 +59,6 @@ class GanePanel {
     - screenWidth2 : int
     - screenHeight2 : int
     + bossBattleOn : boolean
-    + currentMap : int
     + GamePanel()
     + setupGame() : void
     + setFullScreen() : void
@@ -81,5 +79,6 @@ class Main {
     + static main(args: String[]): void
 }
 
+@enduml 
 
 
