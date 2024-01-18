@@ -43,7 +43,6 @@ public class Config {
         bw.close();
 
     } catch (IOException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
     }
 }
@@ -72,7 +71,6 @@ public class Config {
 
             br.close();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 }

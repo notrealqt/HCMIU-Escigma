@@ -10,6 +10,7 @@ import items.Fire_Sword_Projectile;
 import items.Potion;
 import items.Shield;
 import items.Sword;
+import main.GameConstants;
 import main.GamePanel;
 import managers.KeyHandle;
 
@@ -312,12 +313,7 @@ public class Player extends Entity {
                 if (keyH.downPressed == true) { direction = "down"; }
                 if (keyH.leftPressed == true) { direction = "left"; }
                 if ( keyH.rightPressed == true) { direction = "right"; }
-                /*
-                if ((keyH.upPressed && keyH.leftPressed) == true) { direction = "upleft"; }
-                if ((keyH.upPressed && keyH.rightPressed) == true) { direction = "upright"; }
-                if ((keyH.downPressed && keyH.leftPressed) == true) { direction = "downleft"; }
-                if ((keyH.downPressed && keyH.rightPressed) == true) { direction = "downright"; } 
-                */
+
                 //Check tile collision
                 collisionOn = false;
                 gp.colDect.checkTile(this);
@@ -347,21 +343,7 @@ public class Player extends Entity {
                             break;
                         case "right": worldX += speed;
                             break;
-                        /*
-                        case "upleft": worldX -= (int)Math.round(2*Math.sqrt(speed)); 
-                                    worldY -= (int)Math.round(2*Math.sqrt(speed));
-                            break;
-                        case "upright": worldX += (int)Math.round(2*Math.sqrt(speed));
-                                        worldY -= (int)Math.round(2*Math.sqrt(speed));
-                            break;
-                        case "downleft": worldX -= (int)Math.round(2*Math.sqrt(speed));
-                                        worldY += (int)Math.round(2*Math.sqrt(speed));
-                            break;
-                        case "downright": worldX += (int)Math.round(2*Math.sqrt(speed));
-                                        worldY += (int)Math.round(2*Math.sqrt(speed));
-                            break;
-                        */
-                    }
+                     }
                 }
                 
                 if(keyH.attackPressed==true&&attackCanceled==false){
@@ -777,103 +759,6 @@ public class Player extends Entity {
                 }
                     break;
 
-                /*
-                case "upleft":
-                if(attacking == false){
-                    if (spriteNum == 0) {image = up0;}
-                    if (spriteNum == 1) {image = up1;}
-                    if (spriteNum == 2) {image = up2;}
-                    if (spriteNum == 3) {image = up3;}
-                    if (spriteNum == 4) {image = up4;}
-                    if (spriteNum == 5) {image = up5;}
-                    if (spriteNum == 6) {image = up6;}
-                    if (spriteNum == 7) {image = up7;}
-                    if (spriteNum == 8) {image = up8;}
-                    if (spriteNum == 9) {image = up9;}
-                }
-                if(attacking == true){
-                    tempScreenY = screenY - gp.tileSize;  
-                    if(spriteNum==1){image = upAttack1;}
-                    if(spriteNum==2){image = upAttack2;}
-                    if(spriteNum==3){image = upAttack3;}
-                    if(spriteNum==4){image = upAttack4;}
-                }
-                if(guarding == true) {
-                    image = guardUp;
-                }
-                    break;
-
-                case "upright":
-                if(attacking == false){
-                    if (spriteNum == 0) {image = up0;}
-                    if (spriteNum == 1) {image = up1;}
-                    if (spriteNum == 2) {image = up2;}
-                    if (spriteNum == 3) {image = up3;}
-                    if (spriteNum == 4) {image = up4;}
-                    if (spriteNum == 5) {image = up5;}
-                    if (spriteNum == 6) {image = up6;}
-                    if (spriteNum == 7) {image = up7;}
-                    if (spriteNum == 8) {image = up8;}
-                    if (spriteNum == 9) {image = up9;}
-                }
-                if(attacking == true){
-                    tempScreenY = screenY - gp.tileSize; 
-                    if(spriteNum==1){image = upAttack1;}
-                    if(spriteNum==2){image = upAttack2;}
-                    if(spriteNum==3){image = upAttack3;}
-                    if(spriteNum==4){image = upAttack4;}
-                }
-                if(guarding == true) {
-                    image = guardUp;
-                }
-                    break;
-                case "downleft":
-                if(attacking == false){
-                    if (spriteNum == 0) {image = down0;}
-                    if (spriteNum == 1) {image = down1;}
-                    if (spriteNum == 2) {image = down2;}
-                    if (spriteNum == 3) {image = down3;}
-                    if (spriteNum == 4) {image = down4;}
-                    if (spriteNum == 5) {image = down5;}
-                    if (spriteNum == 6) {image = down6;}
-                    if (spriteNum == 7) {image = down7;}
-                    if (spriteNum == 8) {image = down8;}
-                    if (spriteNum == 9) {image = down9;}
-                }
-                if(attacking == true){
-                    if(spriteNum==1){image = downAttack1;}
-                    if(spriteNum==2){image = downAttack2;}
-                    if(spriteNum==3){image = downAttack3;}
-                    if(spriteNum==4){image = downAttack4;}
-                }
-                if(guarding == true) {
-                    image = guardDown;
-                }
-                    break;
-                case "downright":
-                if(attacking == false) {
-                    if (spriteNum == 0) {image = down0;}
-                    if (spriteNum == 1) {image = down1;}
-                    if (spriteNum == 2) {image = down2;}
-                    if (spriteNum == 3) {image = down3;}
-                    if (spriteNum == 4) {image = down4;}
-                    if (spriteNum == 5) {image = down5;}
-                    if (spriteNum == 6) {image = down6;}
-                    if (spriteNum == 7) {image = down7;}
-                    if (spriteNum == 8) {image = down8;}
-                    if (spriteNum == 9) {image = down9;}
-                }
-                if(attacking == true){
-                    if(spriteNum==1){image = downAttack1;}
-                    if(spriteNum==2){image = downAttack2;}
-                    if(spriteNum==3){image = downAttack3;}
-                    if(spriteNum==4){image = downAttack4;}
-                }
-                if(guarding == true) {
-                    image = guardDown;
-                }
-                    break;
-                */
             }
 
 

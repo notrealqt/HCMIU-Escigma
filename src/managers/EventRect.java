@@ -1,4 +1,4 @@
-package Event;
+package managers;
 
 import java.awt.Rectangle;
 

@@ -34,7 +34,42 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
     BufferedImage tempScreen;
     Graphics2D g2;
     public boolean fullScreenOn = false;
+    public int currentMap = 0;
+    int originalTileSize = 16;
+    int scale = 3;
+    public int tileSize = originalTileSize * scale;
+        
 
+    // FULL SCREEN
+
+        
+    int maxScreenCol = 20;
+    int maxScreenRow = 12;
+
+
+    // WORLD SETTING
+    public int maxWorldCol = 120;
+    public int maxWorldRow = 120;
+    public int maxMap = 10;
+
+    public int worldWidth = tileSize * maxWorldCol;
+    public int worldHeight = tileSize * maxWorldRow;
+    public int screenWidth = tileSize * maxScreenCol;
+    public int screenHeight = tileSize * maxScreenRow;
+    public int screenWidth2 = screenWidth;
+    public int screenHeight2 = screenHeight;
+
+    // FPS
+    int FPS = 60;
+
+    // Game state
+    public int titleState = 0, playState = 1, pauseState = 2, dialogueState = 3, characterState = 4, optionState = 5, youLostState = 6;
+    public int guideState = 7;
+    public int menuOptionState = 8;
+    public int mapState = 10;
+    public int cutScene = 11;
+
+    public boolean bossBattleOn = false;
     // System
     public TileManager tileM = new TileManager(this);
     public KeyHandle KeyH = new KeyHandle(this);
@@ -62,12 +97,9 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
 
     // Game state
     public int gameState;
-    public int currentArea;
-    int screenWidth2 = screenWidth;
-    int screenHeight2 = screenHeight;
-    public boolean bossBattleOn = false;
-    public int currentMap = 0;
-
+    public int currentArea;;
+    
+    
     public GamePanel() {
         setPreferredSize(new Dimension(screenWidth, screenHeight));
         setBackground(Color.black);

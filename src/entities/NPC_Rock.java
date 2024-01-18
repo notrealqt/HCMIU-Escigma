@@ -9,7 +9,7 @@ public class NPC_Rock extends Entity {
         super(gp);
         type = 1;
         direction = "up";
-        speed = 1;
+        speed = 0;
 
         solidArea.x = 8;
         solidArea.y = 16;
