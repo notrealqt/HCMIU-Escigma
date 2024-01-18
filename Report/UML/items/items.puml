@@ -73,7 +73,7 @@ class Potion {
     - gp : GamePanel
     - value : interact
     
-    + Potion(GAmePanel, String)
+    + Potion(GamePanel, String)
     + setDialogue() : void
     + use(Entity) : boolean
 }

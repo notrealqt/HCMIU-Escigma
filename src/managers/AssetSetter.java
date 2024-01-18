@@ -26,6 +26,7 @@ public class AssetSetter {
         //Map 1:
         int map1 = 0;
         int i1 = 0;
+        setObjectAt(new SavePoint(gp, "forest"), map1, i1++, 76, 97);
         setObjectAt(new Key(gp), map1, i1++, 25, 18);
         setObjectAt(new Key(gp), map1, i1++, 35, 32);
         setObjectAt(new Key(gp), map1, i1++, 57, 89);

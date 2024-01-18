@@ -1,7 +1,7 @@
 @startuml "main"
 hide circle
 scale 1920*1080
-class GanePanel {
+class GamePanel {
     - tempScreen : BufferedImage
     - g2 : Graphics2D
     + fullScreenOn : boolean
