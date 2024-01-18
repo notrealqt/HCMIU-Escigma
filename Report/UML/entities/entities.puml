@@ -79,6 +79,7 @@ class Entity {
     + final type_obstacle : int
     + final type_light : int
     + final type_firesword : int
+    + final type_boots : int
     + value : int
     + attackvalue : int
     + defensevalue : int
@@ -133,4 +134,134 @@ class Entity {
     + checkAttack(int, int, int) : void
     + chasePlayer(int) : void
 }
+class Player {
+    - keyH : KeyHandle
+    + final screenX : int
+    + final screenY : int
+    - standCounter : int
+    + attackCanceled : boolean
+    + inventory : ArrayList<Entity>
+    + final maxInventorySize : int
+    + lightUpdate : boolean
+    + currentLight : Object
+
+    + Player(Gamepanel, KeyHandle)
+    + setDefaultValue() : void
+    + sestDefaultPosition() : void
+    + setDefaultLife() : void
+    + getCurrentWeap() : int
+    + setItems() : void
+    + getAttack() : int
+    + getDefense() : int
+    + getPlayerattackImage() : void
+    + getGuardImage() : void 
+    + getPlayerImage() : void
+    + update() : void
+    + attacking() : void
+    + pickUpItem(int) : void
+    + interactNPC(int) : void
+    + encounterMonster(int) : void
+    + damageMonster(int, Entity, int, knockBackPower) : void
+    + selectItem() : void
+    + searchItemInInventory(String itemName) : int
+    + canObtainItem(Entity) : boolean
+    + draw(Graphics2D) : void
+    + knockBack(Entity) : void
+}
+class Projectile {
+    user : Entity
+    Projectile(GamePanel)
+    set(int, int, String, boolean, Entity) : void
+    update() : void
+    haveResource(Entity) : boolean
+    subtractResource(Entity) : void
+}
+class BOSS_HumanCollector {
+    gp : GamePanel
+    final static monName : String
+    BOSS_HumanCollector(GamePanel)
+    getImage() : void
+    getAttackImage() : void
+    setAction() : void
+    damageReaction() : void
+    setDialogue() : void
+}
+class Dummy {
+    final static npcName : String
+    - player : Player
+    Dummy(GamePanel)
+    getPlayerImage() : void
+}
+class MON_FloatingEye {
+    gp : GamePanel
+    final static monName : String
+    MON_FloatingEye(GamePanel, typeMon)
+    getImage(String) : void
+    setAction() : void
+    damageReaction() : void
+}
+class MON_Mimic {
+    gp : GamePanel
+    final static monName : String
+    MON_Mimic(GamePanel)
+    getImage() : void
+    setAction() : void
+    damageReaction() : void
+}
+class MON_Mushroom {
+    gp : GamePanel
+    final static monName : String
+    MON_Mushroom(GamePanel, typeMon)
+    getImage(String) : void
+    setAction() : void
+    damageReaction() : void
+}
+class MON_Slime {
+    gp : GamePanel
+    final static monName : String
+    MON_Slime(GamePanel, typeMon)
+    getImage(String) : void
+    setAction() : void
+    damageReaction() : void
+}
+class NPC_Death {
+    NPC_Death(GamePanel)
+    getImage() : void
+    setDialogue() : void
+    speak() : void
+}
+class NPC_Ice {
+    NPC_Ice(GamePanel)
+    getImage() : void
+    setDialogue() : void
+    speak() : void
+}
+class NPC_Injured {
+    NPC_Injured(GamePanel)
+    getImage() : void
+    setDialogue() : void
+    speak() : void
+}
+class NPC_OldMan {
+    eventMaster : Entity
+    NPC_OldMan(GamePanel)
+    getImage() : void
+    setDialogue() : void
+    setAction() : void
+    speak() : void
+}
+
+BOSS_HumanCollector --|> Entity
+Dummy --|> Entity
+MON_FloatingEye --|> Entity
+MON_Mimic --|> Entity
+MON_Mushroom --|> Entity
+MON_Slime --|> Entity
+NPC_Death --|> Entity
+NPC_Ice --|> Entity
+NPC_Injured --|> Entity
+NPC_OldMan --|> Entity
+Player --|> Entity
+
+@enduml 
 

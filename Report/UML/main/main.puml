@@ -1,0 +1,85 @@
+@startuml "main"
+hide circle
+scale 1920*1080
+interface GameConstants {
+    originalTileSize : int
+    scale : int
+    tileSize : int
+    maxScreenCol : int
+    maxScreenRow : int
+    screenWidth : int
+    screenHeight : int
+    maxWorldCol : int
+    maxWorldRow : int
+    maxMap : int
+    worldWidth : int
+    worldHeight : int
+    screenWidth2 : int
+    screenHeight2 : int
+    FPS : int
+    titleState : int
+    playState : int
+    pauseState : int
+    dialogueState : int
+    characterState : int
+    optionState : int
+    youLostState : int
+    guideState : int
+    menuOptionState : int
+    mapState : int
+    cutScene : int
+    bossBattleOn : boolean
+}
+class GanePanel {
+    - tempScreen : BufferedImage
+    - g2 : Graphics2D
+    + fullScreenOn : boolean
+    + tileM : TileManager
+    + KeyH : KeyHandle
+    + music : Sound
+    + se : Sound
+    + colDect : CollisionDetector
+    + aSetter : AssetSetter
+    + ui : UI
+    + eHandler : EvenHandler
+    + config : Config
+    + map : Map
+    + pFinder : PathFinder
+    - eManager : EnvironmentManager
+    + saveLoad : SaveLoad
+    + csManager : CutSceneManager
+    + gameThread : Thread
+    + player : Player
+    + obj : Entity[][]
+    + npc : Entity[][]
+    + monster : Entity[][]
+    + projectileList : ArrayList<Entity>
+    - entityList : ArrayList<Entity>
+    + gameState : int
+    + currentArea : int
+    - screenWidth2 : int
+    - screenHeight2 : int
+    + bossBattleOn : boolean
+    + currentMap : int
+    + GamePanel()
+    + setupGame() : void
+    + setFullScreen() : void
+    + startGameThread() : void
+    + run() : void
+    + update() : void
+    + drawToTempScreen() : void
+    + addEntitiesToList(Entity[]) : void
+    + drawToScreen() : void
+    + playeMusic(int) : void
+    + stopMusic() : void
+    + playSE(int) : void
+    + resetGame(boolean) : void
+    + removeTempEntity() : void
+}
+class Main {
+    + static window: JFrame
+    + static main(args: String[]): void
+}
+
+
+
