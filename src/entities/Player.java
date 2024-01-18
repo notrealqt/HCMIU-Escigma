@@ -4,8 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import items.Axe;
-import items.Fire_Sword;
 import items.Fire_Sword_Projectile;
 import items.Shield;
 import items.Sword;
@@ -51,10 +49,10 @@ public class Player extends Entity {
     }
 
     public void setDefaultValue() {
-        gp.currentMap = 3;
+        gp.currentMap = 0;
         worldX = gp.tileSize * 64; //player's pos in world map
         worldY = gp.tileSize * 104;
-        defaultSpeed = 10;
+        defaultSpeed = 5;
         speed = defaultSpeed;
         direction = "down";
 

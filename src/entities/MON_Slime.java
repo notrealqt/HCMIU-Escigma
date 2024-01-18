@@ -13,7 +13,7 @@ public class MON_Slime extends Entity {
         boss = false;
         type = type_monster;
         name = monName;
-        defaultSpeed = 0;
+        defaultSpeed = 2;
         speed = defaultSpeed;
         maxLife = 4;
         life = maxLife;

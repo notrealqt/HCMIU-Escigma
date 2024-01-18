@@ -11,7 +11,7 @@ public class Axe extends Entity {
         name = "Hacked Axe";
         down0=setUp("/res/objects/item/weapon/axe/axe",gp.tileSize,gp.tileSize);
         attackvalue = 4;
-        defensevalue = 2;
+        defensevalue = 4;
         description = "["+name+"]\nAn axe that cuts down enemy!!!";
         attackArea.width = 100;
         attackArea.height = 100;
