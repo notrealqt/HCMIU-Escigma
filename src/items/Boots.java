@@ -1,22 +1,17 @@
 package items;
 
-import java.io.IOException;
-import javax.imageio.ImageIO;
-
 import entities.Entity;
 import main.GamePanel;
 
 public class Boots extends Entity{
     public Boots(GamePanel gp) {
         super(gp);
+        type = type_consumable;
         name = "Boots";
-        down0 = setUp("objects/boots",gp.tileSize, gp.tileSize);
-        /* 
-        try {
-            down0 = ImageIO.read(getClass().getResourceAsStream("/res/objects/boots.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
-    }  
+        defensevalue = 2;
+        down0 = setUp("/res/objects/item/armor/boots",gp.tileSize, gp.tileSize); 
+        description = "["+name+"]\nHermes' boots";
+        stackable = false;
+        speed = 1;
+    } 
 }

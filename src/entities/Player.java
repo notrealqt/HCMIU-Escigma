@@ -1,26 +1,18 @@
 package entities;
 import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
 import items.Axe;
 import items.Fire_Sword;
 import items.Fire_Sword_Projectile;
-import items.Key;
 import items.Potion;
 import items.Shield;
 import items.Sword;
+import main.GameConstants;
 import main.GamePanel;
 import managers.KeyHandle;
-import managers.UtilityTool;
 
 public class Player extends Entity {
 
@@ -64,7 +56,7 @@ public class Player extends Entity {
         worldX = gp.tileSize * 14; //player's pos in world map
         worldY = gp.tileSize * 14;
         defaultSpeed = 10;
-        speed = 10;
+        speed = defaultSpeed;
         direction = "down";
 
         //Player status
@@ -209,7 +201,6 @@ public class Player extends Entity {
         }
     }
 
-
     /*
     public void getGuardImage() {
         guardUp = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
@@ -322,10 +313,7 @@ public class Player extends Entity {
                 if (keyH.downPressed == true) { direction = "down"; }
                 if (keyH.leftPressed == true) { direction = "left"; }
                 if ( keyH.rightPressed == true) { direction = "right"; }
-                if ((keyH.upPressed && keyH.leftPressed) == true) { direction = "upleft"; }
-                if ((keyH.upPressed && keyH.rightPressed) == true) { direction = "upright"; }
-                if ((keyH.downPressed && keyH.leftPressed) == true) { direction = "downleft"; }
-                if ((keyH.downPressed && keyH.rightPressed) == true) { direction = "downright"; }
+
                 //Check tile collision
                 collisionOn = false;
                 gp.colDect.checkTile(this);
@@ -355,19 +343,7 @@ public class Player extends Entity {
                             break;
                         case "right": worldX += speed;
                             break;
-                        case "upleft": worldX -= (int)Math.round(2*Math.sqrt(speed)); 
-                                    worldY -= (int)Math.round(2*Math.sqrt(speed));
-                            break;
-                        case "upright": worldX += (int)Math.round(2*Math.sqrt(speed));
-                                        worldY -= (int)Math.round(2*Math.sqrt(speed));
-                            break;
-                        case "downleft": worldX -= (int)Math.round(2*Math.sqrt(speed));
-                                        worldY += (int)Math.round(2*Math.sqrt(speed));
-                            break;
-                        case "downright": worldX += (int)Math.round(2*Math.sqrt(speed));
-                                        worldY += (int)Math.round(2*Math.sqrt(speed));
-                            break;
-                    }
+                     }
                 }
                 
                 if(keyH.attackPressed==true&&attackCanceled==false){
@@ -487,30 +463,32 @@ public class Player extends Entity {
             
     }
 
-    // public void pickUpObject(int i){
-    //     if (i!= 9999){
-    //         //pickup only items
-    //         if(gp.obj[gp.currentMap][i].type == type_pickupOnly){
-    //             gp.obj[gp.currentMap][i].use(this);
-    //  gp.obj[gp.currentMap][i] =null;
-    //         }
+    /*
+    public void pickUpObject(int i){
+        if (i!= 9999){
+        //pickup only items
+            if(gp.obj[gp.currentMap][i].type == type_pickupOnly){
+                gp.obj[gp.currentMap][i].use(this);
+                gp.obj[gp.currentMap][i] =null;
+            }
 
-    //     //inventory items
-    //     else{
-    //         String text;
-    //         if(inventory.size() != maxInventorySize){
-    //             inventory.add(gp.obj[gp.currentMap][i]);
-    //             text = "Got a " + gp.obj[gp.currentMap][i].name +"!";
-    //         }
-    //         else{
-    //             text = "You cannot carry anymore!";
-            
-    //         }
-    //         gp.ui.addMessage(text);
-    //         gp.obj[i]=null;
-    //         }
-    //     }   
-    // }
+            //inventory items
+            else{
+                String text;
+                if(inventory.size() != maxInventorySize){
+                    inventory.add(gp.obj[gp.currentMap][i]);
+                    text = "Got a " + gp.obj[gp.currentMap][i].name +"!";
+                }
+                else{
+                    text = "You cannot carry anymore!";
+                
+                }
+                gp.ui.addMessage(text);
+                gp.obj[i]=null;
+                }
+            }   
+    } 
+    */
     
     public void pickUpItem(int i){
         if(i!=9999){
@@ -634,6 +612,7 @@ public class Player extends Entity {
             }
         }
     }
+    
     public int searchItemInInventory(String itemName) {
         int itemIndex = 9999;
         for(int i = 0; i < inventory.size(); i++) {
@@ -644,6 +623,7 @@ public class Player extends Entity {
         }
         return itemIndex;
     }
+    
     public boolean canObtainItem(Entity item) {
 
         boolean canObtain = false;
@@ -672,6 +652,7 @@ public class Player extends Entity {
         }
         return canObtain;
     }
+    
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.white); // set color to use for drawing objects
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
@@ -778,101 +759,6 @@ public class Player extends Entity {
                 }
                     break;
 
-                case "upleft":
-                if(attacking == false){
-                    if (spriteNum == 0) {image = up0;}
-                    if (spriteNum == 1) {image = up1;}
-                    if (spriteNum == 2) {image = up2;}
-                    if (spriteNum == 3) {image = up3;}
-                    if (spriteNum == 4) {image = up4;}
-                    if (spriteNum == 5) {image = up5;}
-                    if (spriteNum == 6) {image = up6;}
-                    if (spriteNum == 7) {image = up7;}
-                    if (spriteNum == 8) {image = up8;}
-                    if (spriteNum == 9) {image = up9;}
-                }
-                if(attacking == true){
-                    tempScreenY = screenY - gp.tileSize;  
-                    if(spriteNum==1){image = upAttack1;}
-                    if(spriteNum==2){image = upAttack2;}
-                    if(spriteNum==3){image = upAttack3;}
-                    if(spriteNum==4){image = upAttack4;}
-                }
-                if(guarding == true) {
-                    image = guardUp;
-                }
-                    break;
-
-                case "upright":
-                if(attacking == false){
-                    if (spriteNum == 0) {image = up0;}
-                    if (spriteNum == 1) {image = up1;}
-                    if (spriteNum == 2) {image = up2;}
-                    if (spriteNum == 3) {image = up3;}
-                    if (spriteNum == 4) {image = up4;}
-                    if (spriteNum == 5) {image = up5;}
-                    if (spriteNum == 6) {image = up6;}
-                    if (spriteNum == 7) {image = up7;}
-                    if (spriteNum == 8) {image = up8;}
-                    if (spriteNum == 9) {image = up9;}
-                }
-                if(attacking == true){
-                    tempScreenY = screenY - gp.tileSize; 
-                    if(spriteNum==1){image = upAttack1;}
-                    if(spriteNum==2){image = upAttack2;}
-                    if(spriteNum==3){image = upAttack3;}
-                    if(spriteNum==4){image = upAttack4;}
-                }
-                if(guarding == true) {
-                    image = guardUp;
-                }
-                    break;
-                case "downleft":
-                if(attacking == false){
-                    if (spriteNum == 0) {image = down0;}
-                    if (spriteNum == 1) {image = down1;}
-                    if (spriteNum == 2) {image = down2;}
-                    if (spriteNum == 3) {image = down3;}
-                    if (spriteNum == 4) {image = down4;}
-                    if (spriteNum == 5) {image = down5;}
-                    if (spriteNum == 6) {image = down6;}
-                    if (spriteNum == 7) {image = down7;}
-                    if (spriteNum == 8) {image = down8;}
-                    if (spriteNum == 9) {image = down9;}
-                }
-                if(attacking == true){
-                    if(spriteNum==1){image = downAttack1;}
-                    if(spriteNum==2){image = downAttack2;}
-                    if(spriteNum==3){image = downAttack3;}
-                    if(spriteNum==4){image = downAttack4;}
-                }
-                if(guarding == true) {
-                    image = guardDown;
-                }
-                    break;
-                case "downright":
-                if(attacking == false) {
-                    if (spriteNum == 0) {image = down0;}
-                    if (spriteNum == 1) {image = down1;}
-                    if (spriteNum == 2) {image = down2;}
-                    if (spriteNum == 3) {image = down3;}
-                    if (spriteNum == 4) {image = down4;}
-                    if (spriteNum == 5) {image = down5;}
-                    if (spriteNum == 6) {image = down6;}
-                    if (spriteNum == 7) {image = down7;}
-                    if (spriteNum == 8) {image = down8;}
-                    if (spriteNum == 9) {image = down9;}
-                }
-                if(attacking == true){
-                    if(spriteNum==1){image = downAttack1;}
-                    if(spriteNum==2){image = downAttack2;}
-                    if(spriteNum==3){image = downAttack3;}
-                    if(spriteNum==4){image = downAttack4;}
-                }
-                if(guarding == true) {
-                    image = guardDown;
-                }
-                    break;
             }
 
 

@@ -155,27 +155,6 @@ public class CollisionDetector {
                         entity.solidArea.x += entity.speed;
               
                         break;
-                    case "upright":
-                        entity.solidArea.x += entity.speed;
-                        entity.solidArea.y -= entity.speed;
-          
-                        break;
-                    case "downright":
-                        entity.solidArea.x += entity.speed;
-                        entity.solidArea.y += entity.speed;
-           
-                        break;
-                    case "upleft":
-                        entity.solidArea.x -= entity.speed;
-                        entity.solidArea.y -= entity.speed;
-              
-                        break;
-                    case "downleft":
-                        entity.solidArea.x -= entity.speed;
-                        entity.solidArea.y += entity.speed;
-            
-                        break;
-                        
                 }
                     if(entity.solidArea.intersects(gp.obj[gp.currentMap][i].solidArea)){
                     if(gp.obj[gp.currentMap][i].collision == true){
@@ -226,25 +205,6 @@ public class CollisionDetector {
                         entity.solidArea.x += entity.speed; 
 
                         break;
-                    case "upright":
-                        entity.solidArea.x += entity.speed;
-                        entity.solidArea.y -= entity.speed;
-
-                        break;
-                    case "downright":
-                        entity.solidArea.x += entity.speed;
-                        entity.solidArea.y += entity.speed;
-
-                        break;
-                    case "upleft":
-                        entity.solidArea.x -= entity.speed;
-                        entity.solidArea.y -= entity.speed;
-
-                        break;
-                    case "downleft":
-                        entity.solidArea.x -= entity.speed;
-                        entity.solidArea.y += entity.speed;
-                        break;                        
                     }
                 if(entity.solidArea.intersects(target[gp.currentMap][i].solidArea)){
                     if(target[gp.currentMap][i]!=entity){
@@ -283,22 +243,8 @@ public class CollisionDetector {
             case "right":
                 entity.solidArea.x += entity.speed;
                 break;
-            case "upright":
-                entity.solidArea.x += entity.speed;
-                entity.solidArea.y -= entity.speed;
-                break;
-            case "downright":
-                entity.solidArea.x += entity.speed;
-                entity.solidArea.y += entity.speed;
-                break;
-            case "upleft":
-                entity.solidArea.x -= entity.speed;
-                entity.solidArea.y -= entity.speed;
-                break;
-            case "downleft":
-                entity.solidArea.x -= entity.speed;
-                entity.solidArea.y += entity.speed;
-                break;        
+
+           
         }
                 if(entity.solidArea.intersects(gp.player.solidArea)){
                 entity.collisionOn = true;

@@ -6,9 +6,7 @@ import java.awt.Graphics2D;
 
 import entities.Dummy;
 import entities.Entity;
-import entities.m_Boss;
 import items.Door;
-import items.MasterKey;
 import items.Master_Portal;
 import main.GamePanel;
 
@@ -47,7 +45,7 @@ public class CutSceneManager {
         if (scenePhase == 0) {
             System.out.println("Phase: " + scenePhase);
             System.out.println("Player X: " + gp.player.worldX);
-            gp.bossBatleOn = true;
+            gp.bossBattleOn = true;
             
             //Shut the door
             for (int i = 0; i < gp.obj[1].length - 1; i += 2) {

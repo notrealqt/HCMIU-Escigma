@@ -2,15 +2,14 @@ package entities;
 
 import main.GamePanel;
 
-public class Rock extends Entity {
+public class NPC_Ice extends Entity {
 
-    public Rock(GamePanel gp){
+    public NPC_Ice(GamePanel gp){
   
         super(gp);
         type = 1;
         direction = "up";
-        speed = 1;
-
+        speed = 0;
         solidArea.x = 8;
         solidArea.y = 16;
         solidAreaDefaultX = solidArea.x;
@@ -24,16 +23,11 @@ public class Rock extends Entity {
 
     }
     public void getImage(){
+        up0 = setUp("/res/npc/Ice",gp.tileSize, gp.tileSize);
 
     }
     
     public void setDialogue() {
-        dialogues[0][0] = "Hello, traveler! Welcome to nowhere!";
-        dialogues[0][1] = "Sadly, it's nowhere. There is nothing to do";
-        dialogues[0][2] = "Oh I know what to do, I'll follow you";
-        dialogues[0][3] = "You can run but you can't hide, you can never hide...";
-        dialogues[1][0] = " Hello world!";
-        dialogues[1][1] = " No code no life";
 
     }
 
