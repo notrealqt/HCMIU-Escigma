@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 import entities.Dummy;
 import entities.Entity;
-import entities.m_Boss;
+import entities.BOSS_HumanCollector;
 import items.Door;
 import items.MasterKey;
 import items.Master_Portal;

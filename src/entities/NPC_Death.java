@@ -5,9 +5,9 @@ import java.util.Random;
 import main.GamePanel;
 import mics.Node;
 
-public class Death extends Entity {
+public class NPC_Death extends Entity {
 
-    public Death(GamePanel gp){
+    public NPC_Death(GamePanel gp){
   
         super(gp);
         type = 1;

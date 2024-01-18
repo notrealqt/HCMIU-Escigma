@@ -2,9 +2,9 @@ package entities;
 
 import main.GamePanel;
 
-public class Ice extends Entity {
+public class NPC_Rock extends Entity {
 
-    public Ice(GamePanel gp){
+    public NPC_Rock(GamePanel gp){
   
         super(gp);
         type = 1;

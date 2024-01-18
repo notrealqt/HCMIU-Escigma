@@ -1,14 +1,11 @@
 package entities;
 
-import java.awt.image.BufferedImage;
-import java.util.Random;
-
 import main.GamePanel;
 
-public class m_Boss extends Entity {
+public class BOSS_HumanCollector extends Entity {
     GamePanel gp;
 
-    public m_Boss(GamePanel gp) {
+    public BOSS_HumanCollector(GamePanel gp) {
         
         super(gp);
         this.gp = gp;

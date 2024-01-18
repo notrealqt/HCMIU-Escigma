@@ -1,7 +1,7 @@
 package managers;
 
 import entities.Entity;
-import entities.m_Boss;
+import entities.BOSS_HumanCollector;
 import items.*;
 import main.GamePanel;
 import mics.Progress;
@@ -65,7 +65,7 @@ public class AssetSetter {
         //setMonsterAt(new m_GreenSlime(gp), mapNum, i++, 24, 24);
 
         if (!Progress.defeatLog) {
-            setMonsterAt(new m_Boss(gp), mapNum, i++, 90, 38);
+            setMonsterAt(new BOSS_HumanCollector(gp), mapNum, i++, 90, 38);
         }
     }
 
