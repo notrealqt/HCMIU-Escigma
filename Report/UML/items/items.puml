@@ -1,91 +1,148 @@
 @startuml "items"
 hide circle
 scale 1920*1080
-class Axe {
-    + Axe(GamePanel)
+package items {
+    class Axe {
+        + Axe(GamePanel)
+    }
+    class Boots {
+        + Boots(GamePanel)
+    }
+    class Chest {
+        + Chest(GamePanel, String, String, Entity)
+        + setLoot(Entity) : void
+        + setDialogue() : void
+        + interact() : void
+    }
+    class Door {
+        - gp : GamePanel
+        
+        + Door(GamePanel)
+        + setDialogue() : void
+        + interact() : void
+    }
+    class Fire_Sword_Projectile {
+        - gp : GamePanel
+        
+        + Fire_Sword_Projectile(GamePanel)
+        + getImage() : void
+        + haveResource(Entity) : boolean
+        + subtractResource(Entity) : void
+    }
+    class Fire_Sword {
+        + Fire_Sword(GamePanel)
+        + haveResource(Entity) : boolean
+        + subtractResource(Entity) : void
+    }
+    class Heart {
+        - gp : GamePanel
+        
+        + Heart(GamePanel)
+        + use(Entity) : boolean
+    }
+    class Key {
+        - gp : GamePanel
+        
+        + Key(GamePanel)
+        + setDialogue() : void
+        + use(Entity) : boolean
+    }
+    class ManaCrystal {
+        - gp : GamePanel
+        
+        + ManaCrystal(GamePanel) 
+        + use(Entity) : boolean
+    }
+    class Master_Portal {
+        - gp : GamePanel
+        + final static objName : String
+
+        + Master_Portal(GamePanel)
+        + setDialogue() : void
+        + use(Entity) : boolean
+    }
+    class MasterKey {
+        - gp : GamePanel
+        + final static objName : String
+
+        + MasterKey(GamePanel)
+    }
+    class Potion {
+        - gp : GamePanel
+        - value : interact
+        
+        + Potion(GamePanel, String)
+        + setDialogue() : void
+        + use(Entity) : boolean
+    }
+    class SavePoint {
+        - gp : GamePanel
+
+        + SavePoint(GamePanel, String)
+    }
+    class Shield {
+        + Shield(GamePanel)
+    }
+    class Sword {
+        + Sword(GamePanel)
+    }
+    class Teleport {
+        - gp : GamePanel
+
+        + Teleport(GamePanel, String)
+    }
+    class WormHole {
+        - gp : GamePanel
+
+        + WormHole(GamePanel, String)
+    }
 }
-class Boots {
-    + Boots(GamePanel)
+package entities {
+    class Entity
+    class Projectile
 }
-class Chest {
-    + Chest(GamePanel, String, String, Entity)
-    + setLoot(Entity) : void
-    + setDialogue() : void
-    + interact() : void
+package main {
+    class GamePanel
 }
-class Door {
-    - gp : GamePanel
-    
-    + Door(GamePanel)
-    + setDialogue() : void
-    + interact() : void
-}
-class Fire_Sword_Projectile {
-    - gp : GamePanel
-    
-    + Fire_Sword_Projectile(GamePanel)
-    + getImage() : void
-    + haveResource(Entity) : boolean
-    + subtractResource(Entity) : void
-}
-class Fire_Sword {
-    + Fire_Sword(GamePanel)
-    + haveResource(Entity) : boolean
-    + subtractResource(Entity) : void
-}
-class Heart {
-    - gp : GamePanel
-    
-    + Heart(GamePanel)
-    + use(Entity) : boolean
-}
-class Key {
-    - gp : GamePanel
-    
-    + Key(GamePanel)
-    + setDialogue() : void
-    + use(Entity) : boolean
-}
-class Latern {
-    + Latern(GamePanel)
-}
-class ManaCrystal {
-    - gp : GamePanel
-    
-    + ManaCrystal(GamePanel) 
-    + use(Entity) : boolean
-}
-class Master_Portal {
-    - gp : GamePanel
-    
-    + final static objName : String
-    + Master_Portal(GamePanel)
-    + setDialogue() : void
-    + use(Entity) : boolean
-}
-class MasterKey {
-    - gp : GamePanel
-    
-    + final static objName : String
-    + MasterKey(GamePanel)
-}
-class Potion {
-    - gp : GamePanel
-    - value : interact
-    
-    + Potion(GamePanel, String)
-    + setDialogue() : void
-    + use(Entity) : boolean
-}
-class Shield {
-    + Shield(GamePanel)
-}
-class Sword {
-    + Sword(GamePanel)
-}
-class WormHole {
-    - gp : GamePanel
-    
-    + WormHole(GamePanel, String)
-}
+
+Axe --|> Entity
+Boots --|> Entity
+Chest --|> Entity
+Door --|> Entity
+Fire_Sword --|> Entity
+Fire_Sword_Projectile --|> Projectile
+Heart --|> Entity
+Key --|> Entity
+ManaCrystal --|> Entity
+Master_Portal --|> Entity
+MasterKey --|> Entity
+Potion --|> Entity
+SavePoint --|> Entity
+Shield --|> Entity
+Sword --|> Entity
+Teleport --|> Entity
+WormHole --|> Entity
+
+Axe --> GamePanel
+Boots --> GamePanel
+Chest --> GamePanel
+Door --> GamePanel
+Fire_Sword --> GamePanel
+Fire_Sword_Projectile --> GamePanel
+Heart --> GamePanel
+Key --> GamePanel
+ManaCrystal --> GamePanel
+Master_Portal --> GamePanel
+MasterKey --> GamePanel
+Potion --> GamePanel
+SavePoint --> GamePanel
+Shield --> GamePanel
+Sword --> GamePanel
+Teleport --> GamePanel
+WormHole --> GamePanel
+
+Key <--> Door
+MasterKey <--> Master_Portal
+Fire_Sword_Projectile --* Fire_Sword 
+ManaCrystal ..> Fire_Sword_Projectile
 @enduml 
