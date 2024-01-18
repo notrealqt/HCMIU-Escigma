@@ -25,6 +25,9 @@ public class NPC_Injured extends Entity {
     }
     
     public void setDialogue() {
+        dialogues[0][0] = "It's like a relentless, stabbing ache—right here";
+        dialogues[0][1] = "I guess you're too late";
+        dialogues[0][2] = "Gooooo, and escape from here";
 
     }
 

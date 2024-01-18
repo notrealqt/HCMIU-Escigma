@@ -1,7 +1,6 @@
 package main;
 
 import javax.swing.JPanel;
-
 import entities.Entity;
 import entities.Player;
 import managers.AssetSetter;
@@ -17,7 +16,6 @@ import map.Map;
 import map.TileManager;
 import mics.PathFinder;
 import mics.SaveLoad;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -30,46 +28,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class GamePanel extends JPanel implements Runnable, GameConstants {
+public class GamePanel extends JPanel implements Runnable {
     BufferedImage tempScreen;
     Graphics2D g2;
-    public boolean fullScreenOn = false;
     public int currentMap = 0;
-    int originalTileSize = 16;
-    int scale = 3;
+    int originalTileSize = 16, scale = 3, maxScreenCol = 20, maxScreenRow = 12;
     public int tileSize = originalTileSize * scale;
-        
+    public int maxWorldCol = 120, maxWorldRow = 120, maxMap = 10, FPS = 60;
 
-    // FULL SCREEN
-
-        
-    int maxScreenCol = 20;
-    int maxScreenRow = 12;
-
-
-    // WORLD SETTING
-    public int maxWorldCol = 120;
-    public int maxWorldRow = 120;
-    public int maxMap = 10;
-
-    public int worldWidth = tileSize * maxWorldCol;
-    public int worldHeight = tileSize * maxWorldRow;
-    public int screenWidth = tileSize * maxScreenCol;
-    public int screenHeight = tileSize * maxScreenRow;
-    public int screenWidth2 = screenWidth;
-    public int screenHeight2 = screenHeight;
-
-    // FPS
-    int FPS = 60;
+    public int  worldWidth = tileSize * maxWorldCol,
+                worldHeight = tileSize * maxWorldRow,
+                screenWidth = tileSize * maxScreenCol,
+                screenHeight = tileSize * maxScreenRow,
+                screenWidth2 = screenWidth,
+                screenHeight2 = screenHeight;
 
     // Game state
-    public int titleState = 0, playState = 1, pauseState = 2, dialogueState = 3, characterState = 4, optionState = 5, youLostState = 6;
-    public int guideState = 7;
-    public int menuOptionState = 8;
-    public int mapState = 10;
-    public int cutScene = 11;
+    public int  titleState = 0, playState = 1, pauseState = 2, 
+                dialogueState = 3, characterState = 4, optionState = 5, 
+                youLostState = 6, guideState = 7, menuOptionState = 8,
+                mapState = 10, cutScene = 11;
 
-    public boolean bossBattleOn = false;
     // System
     public TileManager tileM = new TileManager(this);
     public KeyHandle KeyH = new KeyHandle(this);
@@ -92,13 +71,14 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
     public Entity obj[][] = new Entity[maxMap][1000];
     public Entity npc[][] = new Entity[maxMap][1000];
     public Entity monster[][] = new Entity[maxMap][1000];
+    public Entity mine[][] = new Entity [maxMap][1000];
     public ArrayList<Entity> projectileList = new ArrayList<>();
     ArrayList<Entity> entityList = new ArrayList<>();
 
     // Game state
-    public int gameState;
-    public int currentArea;;
-    
+    public int gameState, currentArea;
+    public boolean fullScreenOn = false, bossBattleOn = false;
+
     
     public GamePanel() {
         setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -113,6 +93,7 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setMonster();
+        aSetter.setMine();
         playMusic(0);
         stopMusic();
         gameState = titleState;
@@ -195,9 +176,16 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
                     if(projectileList.get(i).alive==false) {projectileList.remove(i);}
                 }
             }
+            for(int i = 0;i< mine[1].length;i++){
+                if(mine[currentMap][i] != null){
+                    if(mine[currentMap][i].alive==true){
+                        mine[currentMap][i].update();
+                    }
+                    if(mine[currentMap][i].alive==false){mine[currentMap][i]=null;}
+                }
+            }
         }
         if(gameState == pauseState){
-
         }
         
     }
@@ -307,9 +295,10 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
         player.setDefaultValue();
         bossBattleOn = false;
         player.setDefaultLife();
-        player.setDefaultPosition();
+        player.setDefaultValue();
         aSetter.setNPC();
         aSetter.setMonster();
+        aSetter.setMine();
         
         if (restart) {
             player.inventory.clear();

@@ -3,6 +3,7 @@ package managers;
 import entities.Entity;
 import entities.MON_FloatingEye;
 import entities.MON_Mimic;
+import entities.MON_Mushroom;
 import entities.MON_Slime;
 import entities.NPC_Death;
 import entities.NPC_Forest;
@@ -17,7 +18,7 @@ import mics.Progress;
 //instantiate objects class
 public class AssetSetter {
     GamePanel gp;
-
+    public String monType1 = "forest/", monType2 = "ice/", monType3 = "rock/";
     public AssetSetter(GamePanel gp) {
         this.gp = gp;
     }
@@ -203,15 +204,32 @@ public class AssetSetter {
         setNPCAt(new NPC_Injured(gp), map4, i4++,83 , 37);
 
     }
+    public void setMine(){
+        //map1
+        int map1 = 0;
+        int i1 = 0;
+        setMineAt(new MON_Mushroom(gp, monType1), map1, i1++, 18, 18);
+        //map2
+        int map2 = 1;
+        int i2 = 0;
+        setMineAt(new MON_Mushroom(gp, monType2), map2, i2++, 18, 18);
+        //map3
+        int map3 = 2;
+        int i3 = 0;
+        setMineAt(new MON_Mushroom(gp, monType3), map3, i3++, 18, 18);
+        //map4
+        int map4 = 3;
+        int i4 = 0;
+        setMineAt(new MON_Mushroom(gp, monType1), map4, i4++, 18, 18);
+    }
     
     public void setMonster() {
         //map1:
-        String monType1 = "forest/";
-        String monType2 = "ice/";
-        String monType3 = "rock/";
+        
 
         int map1 = 0;
         int i1= 0;
+        setMonsterAt(new MON_Mushroom(gp, monType1),map1,i1++,16,16);
         setMonsterAt(new MON_FloatingEye(gp, monType1), map1, i1++, 18, 56);
         setMonsterAt(new MON_Slime(gp, monType1), map1, i1++, 30, 78);
         setMonsterAt(new MON_FloatingEye(gp, monType1), map1, i1++, 26, 94);
@@ -357,6 +375,11 @@ public class AssetSetter {
         gp.monster[mapNum][index] = mon; 
         mon.worldX = worldX * gp.tileSize;
         mon.worldY = worldY * gp.tileSize;
+    }
+    public void setMineAt(Entity mine, int mapNum, int index, int worldX, int worldY) {
+        gp.mine[mapNum][index] = mine; 
+        mine.worldX = worldX * gp.tileSize;
+        mine.worldY = worldY * gp.tileSize;
     }
 
     private void setWorldCoordinates(Object obj, int worldX, int worldY) {

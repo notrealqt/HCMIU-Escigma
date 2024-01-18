@@ -108,10 +108,10 @@ public class EventHandler {
             
             
             //Boss Scene
-            else if(hit(3,76,39,"any") == true ||
-               hit(3,76,40,"any") == true ||
-               hit(3,76,38,"any") == true ||
-               hit(3,76,41,"any") == true) {
+            else if(hit(3,77,39,"any") == true ||
+               hit(3,77,40,"any") == true ||
+               hit(3,77,38,"any") == true ||
+               hit(3,77,41,"any") == true) {
                 boss();
             }
             

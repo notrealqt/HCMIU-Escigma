@@ -129,11 +129,17 @@ public class BOSS_HumanCollector extends Entity {
     }
 
     public void setDialogue() {
-        dialogues[0][0] = "Injured: RUNNNNNNNNNNNNNNN! YOU CAN'T WIN, JUST ESCAPE";
-        dialogues[0][1] = "Boss: .............................";
-        dialogues[0][2] = "Boss: Would you look at that? Look like something fun come up";
-        dialogues[0][3] = "Boss: You want to get out?";
-        dialogues[0][4] = "Boss: Defeat me before I completely mess you up";
+        dialogues[0][0] = "Injured: Flee! You can't possibly win this, just run for your life!";
+        dialogues[0][1] = "Boss: ....................................................";
+        dialogues[0][2] = "Boss: Well, well, what do we have here? Seems like fate has thrown us into the arena of destiny.";
+        dialogues[0][3] = "Boss: Do you yearn to escape?";
+        dialogues[0][4] = "Boss: Conquer me before I unleash the full fury that will shatter what's left of your existence!";
+        dialogues[0][5] = "Injured: The shadows of defeat loom, but I won't surrender to your darkness!";
+        dialogues[0][6] = "Boss: ....................................................";
+        dialogues[0][7] = "Boss: Oh, the desperation in your eyes, the futile struggle against the inevitable.";
+        dialogues[0][8] = "Boss: Do you feel the weight of your choices pressing down on you?";
+        dialogues[0][9] = "Boss: Victory is a distant dream; your only hope is to survive my impending onslaught!";
+        
     }
 
 

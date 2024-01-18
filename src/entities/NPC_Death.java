@@ -27,11 +27,12 @@ public class NPC_Death extends Entity {
     }
     
     public void setDialogue() {
+        dialogues[0][0] = "Nahm nahm nahm nahm nahm *slurp*";
+        dialogues[0][1] = "Only death awaits your traveler, please go back to where you were.";
 
     }
 
     public void speak() {
-        facePlayer();
         startDialogue(this, dialogueSet);
 
         dialogueSet++;

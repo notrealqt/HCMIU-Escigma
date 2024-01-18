@@ -28,11 +28,13 @@ public class NPC_Rock extends Entity {
     }
     
     public void setDialogue() {
-
+        dialogues[0][0] = "There is nothing here traveler.";
+        dialogues[0][1] = "Just you and me";
+        dialogues[1][0] = "Bye bye traveler";
+        dialogues[1][1] = "Beware the Ides of March";
     }
 
     public void speak() {
-        facePlayer();
         startDialogue(this, dialogueSet);
 
         dialogueSet++;

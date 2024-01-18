@@ -27,13 +27,15 @@ public class NPC_Forest extends Entity {
     }
     
     public void setDialogue() {
-
+        dialogues[0][0] = "Hello, traveler! Welcome to nowhere!";
+        dialogues[0][1] = "I guess you're lost huh?";
+        dialogues[0][2] = "Well, I don't see many people around here usually.";
+        dialogues[0][3] = "I guess there was someone came here just a minute ago.";
+        dialogues[0][4] = "There should be a portal leading to somewhere";
     }
 
     public void speak() {
-        facePlayer();
         startDialogue(this, dialogueSet);
-
         dialogueSet++;
 
         if (dialogues[dialogueSet][0] == null ) {

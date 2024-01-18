@@ -53,6 +53,7 @@ public class Player extends Entity {
     }
 
     public void setDefaultValue() {
+        gp.currentMap = 0;
         worldX = gp.tileSize * 64; //player's pos in world map
         worldY = gp.tileSize * 104;
         defaultSpeed = 10;
@@ -80,16 +81,10 @@ public class Player extends Entity {
      
         getPlayerImage();
         getPlayerattackImgage();
-        //getGuardImage();
+        getGuardImage();
         setItems();
     }
     
-    public void setDefaultPosition(){
-        gp.currentMap = 1;
-        worldX = gp.tileSize * 14; 
-        worldY = gp.tileSize * 14;
-        direction = "down";
-    }
     
     public void setDefaultLife(){
         life = maxLife;
@@ -176,7 +171,6 @@ public class Player extends Entity {
             rightAttack3 = setUp(path + "right2",gp.tileSize*2, gp.tileSize);
             rightAttack4 = setUp(path + "right3",gp.tileSize*2, gp.tileSize);
         }
-
         if(currentWeapon.name == "Fire Sword") {
             String path = "/res/objects/item/weapon/fire sword/flame_attack/";
             upAttack1 = setUp(path + "up0",gp.tileSize, gp.tileSize*2);
@@ -201,15 +195,13 @@ public class Player extends Entity {
         }
     }
 
-    /*
     public void getGuardImage() {
-        guardUp = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
-        guardDown = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
-        guardLeft = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
-        guardRight = setUp("player/attack/1_player_attack_back_0", gp.tileSize, gp.tileSize);
+        guardUp = setUp("/res/player/defend/up", gp.tileSize, gp.tileSize);
+        guardDown = setUp("/res/player/defend/down", gp.tileSize, gp.tileSize);
+        guardLeft = setUp("/res/player/defend/left", gp.tileSize, gp.tileSize);
+        guardRight = setUp("/res/player/defend/right", gp.tileSize, gp.tileSize);
 
     }
-    */
 
     public void getPlayerImage() {
         String path = "/res/player/move/";
@@ -267,6 +259,7 @@ public class Player extends Entity {
             gp.colDect.checkObject(this, true);
             gp.colDect.checkEntity(this, gp.npc);
             gp.colDect.checkEntity(this, gp.monster);
+            gp.colDect.checkEntity(this, gp.mine);
 
 
             if(collisionOn == true) {
@@ -331,6 +324,10 @@ public class Player extends Entity {
                 //Check monster collision
                 int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
                 encounterMonster(monsterIndex);
+
+                //check mine collision
+                int mineIndex = gp.colDect.checkEntity(this, gp.mine);
+                encounterMonster(mineIndex);
                 
                 //if collision is false, player can move 
                 if (collisionOn == false && keyH.interPressed==false && keyH.attackPressed == false) {     //interact without moving
@@ -447,7 +444,9 @@ public class Player extends Entity {
 
             //check monster collision with the updated worldX,Y and solidArea
             int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
+            int mineIndex = gp.colDect.checkEntity(this, gp.mine);
             damageMonster (monsterIndex,this, attack, currentWeapon.knockBackPower);
+            damageMonster (mineIndex,this, attack, 0);
         
             //after checking collision, restore the original data
             worldX = currentWorldX;
@@ -462,6 +461,7 @@ public class Player extends Entity {
         }
             
     }
+
 
     /*
     public void pickUpObject(int i){
@@ -523,6 +523,7 @@ public class Player extends Entity {
             if(i!=9999)
             {
                 attackCanceled=true;
+                gp.gameState = gp.dialogueState;
                 gp.npc[gp.currentMap][i].speak();   
             }
             
@@ -532,7 +533,7 @@ public class Player extends Entity {
     
     public void encounterMonster(int i) {
         if (i!=9999){
-            if(invincible == false && gp.monster[gp.currentMap][i].die==false){
+            if(invincible == false && (gp.monster[gp.currentMap][i].die==false)){
                 int damage = gp.monster[gp.currentMap][i].attack - defense;
                 if(damage < 1){
                     damage = 1;
@@ -785,7 +786,7 @@ public class Player extends Entity {
         }
         
 
-        entity.speed += 10;
+        entity.speed += 3;
         entity.knockBack = true;
     }
 

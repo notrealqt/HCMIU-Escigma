@@ -16,6 +16,7 @@ public class Entity {
     public BufferedImage down0, down1, down2, down3, down4, down5, down6, down7, down8, down9;
     public BufferedImage left0, left1, left2, left3, left4, left5, left6, left7, left8, left9;
     public BufferedImage right0, right1, right2, right3, right4, right5, right6, right7, right8, right9;
+    public BufferedImage mineIdle, mineExpl0, mineExpl1, mineExpl2, mineExpl3, mineExpl4, mineExpl5, mineExpl6, mineExpl7, mineExpl8;
     public BufferedImage idleUp, idleDown, idleLeft, idleRight;
     public BufferedImage guardUp, guardDown, guardLeft, guardRight;
     public BufferedImage upAttack1, downAttack1, leftAttack1, rightAttack1, upAttack2, downAttack2, leftAttack2, rightAttack2, upAttack3, downAttack3, leftAttack3, rightAttack3, upAttack4, downAttack4, leftAttack4, rightAttack4;
@@ -28,8 +29,6 @@ public class Entity {
     public boolean collisionOn = false;
     public Entity attacker;
     public boolean temp = false;
-    private int attackAnimationFrame = 0;
-
 
     //State 
     public int dialogueSet = 0;
@@ -86,7 +85,6 @@ public class Entity {
     public boolean boss;
     
     //TYPE
-    public final int type_pickupOnly = 7;
     public int type; //0 -> player, 1 -> npcs, 2 -> monster
     public final int 
     type_player = 0,
@@ -96,10 +94,12 @@ public class Entity {
     type_axe = 4,
     type_consumable = 5,
     type_shield = 6,
+    type_pickupOnly = 7,
     type_obstacle = 8,
     type_light = 9,
     type_firesword = 10,
-    type_boots = 11;
+    type_boots = 11,
+    type_mine=12;
 
     //ITEM ATTRIBUTES
     public int value;
@@ -193,6 +193,7 @@ public class Entity {
     public void damagereaction() {}
     
     public void speak() {
+        
     }
     
     public void facePlayer() {
@@ -209,18 +210,6 @@ public class Entity {
             case "right":
                 direction = "left";
                 break;    
-            case "upleft":
-                direction = "right";
-                break;
-            case "upright":
-                direction = "left";
-                break;
-            case "downleft":
-                direction = "right";
-                break;
-            case "downright":
-                direction = "left";
-                break;
         }  
     }
 
@@ -240,11 +229,13 @@ public class Entity {
         gp.colDect.checkObject(this, false);
         gp.colDect.checkEntity(this, gp.npc);    //check collision between entities (npc and monster)
         gp.colDect.checkEntity(this, gp.monster);
+        gp.colDect.checkEntity(this, gp.mine);
         boolean hitplayer = gp.colDect.checkPlayer(this);
 
-        if(this.type == type_monster && hitplayer == true){
+        if((this.type == type_monster ||this.type == type_mine)&& hitplayer == true){
             damagePlayer(attack);
         }
+        
     }
     
     public void update(){
@@ -288,7 +279,8 @@ public class Entity {
             else {
                 setAction();
                 checkCollision();
-            
+                System.out.println("Moving in direction: " + direction);
+
                 if (collisionOn == false) {
                     switch (direction) {
                         case "up":
@@ -303,43 +295,10 @@ public class Entity {
                         case "right":
                             worldX += speed;
                             break;
-                        /* 
-                        case "upleft":
-                            worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            break;
-                        case "upright":
-                            worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            worldY -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            break;
-                        case "downleft":
-                            worldX -= (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            break;
-                        case "downright":
-                            worldX += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            worldY += (int)Math.round(Math.sqrt(speed/2)*(speed/2));
-                            break;
-                        */
                     }
                 }
-                //npc image changes every 12 frames
-                /*
-                spriteCounter++;
-                if (spriteCounter >  12) {
-                    if (spriteNum == 0) {
-                        spriteNum = 1;
-                    }
-                    else if (spriteNum == 1) {
-                        spriteNum = 0;
-                    }
-                    spriteCounter = 0;
-                }
-                */
             }
-            
-    
-            
+        
             if(invincible == true){
                 invincibleCounter++;
                 if(invincibleCounter > 60){
@@ -682,7 +641,7 @@ public class Entity {
             if(actionLockCounter  > interval){
                 Random random = new Random();
                 int i = random.nextInt(100)+1; //Random from 1 to 100
-
+                System.out.println("Random direction: " + i);
                 if(i<=25){
                     direction = "up";
                 }
@@ -703,7 +662,7 @@ public class Entity {
     public void knockBack (Entity target, Entity attacker, int knockBackPower) {
         this.attacker = attacker;
         target.knockBackDirection = attacker.direction;
-        target.speed += knockBackPower;
+        target.speed += 1;
         target.knockBack = true;
     }
 
@@ -738,7 +697,7 @@ public class Entity {
             solidArea.width = attackArea.width;
             solidArea.height = attackArea.height;
 
-            if(type == type_monster){
+            if(type == type_monster || type == type_mine){
                 if (gp.colDect.checkPlayer(this) == true){
                     damagePlayer(attack);
                 }
@@ -746,7 +705,9 @@ public class Entity {
             else{ //Player
         //check monster collision with the updated worldX,Y and solidArea
         int monsterIndex = gp.colDect.checkEntity(this, gp.monster);
+        int mineIndex = gp.colDect.checkEntity(this,gp.mine);
         gp.player.damageMonster (monsterIndex,this, attack, currentWeapon.knockBackPower);
+        gp.player.damageMonster(mineIndex,this, attack, 0);
     
         //after checking collision, restore the original data
         worldX = currentWorldX;
@@ -806,6 +767,7 @@ public class Entity {
     }
     
     public void chasePlayer (int interval) {
+        System.out.println("Chasing player");
         actionLockCounter++;
         if(actionLockCounter > interval) {
             if(getXDistance(gp.player) > getYDistance(gp.player)) {
@@ -827,5 +789,6 @@ public class Entity {
             actionLockCounter = 0;
         }
     }
+
 }
 
