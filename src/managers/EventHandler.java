@@ -103,8 +103,8 @@ public class EventHandler {
             else if (hit(1, 101, 46, "any") == true) {teleport(2,56,65);}
             else if (hit(2,56,65, "any") == true) {teleport(1, 101, 46);}
 
-            else if (hit(2, 72, 44, "any") == true) {teleport(3,15,12);}
-            else if (hit(3,15,12, "any") == true) {teleport(2, 72, 44);}
+            else if (hit(2, 72, 44, "any") == true) {teleport(3, 44,104);}
+            else if (hit(3,44,104, "any") == true) {teleport(2, 72, 44);}
             
             
             //Boss Scene

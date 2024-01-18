@@ -12,8 +12,8 @@ public class Fire_Sword extends Entity {
         type = type_sword;
         name = "Fire Sword";
         down0=setUp("/res/objects/item/weapon/fire sword/fire_sword",gp.tileSize,gp.tileSize);
-        attackvalue = 99;
-        defensevalue = 1;
+        attackvalue = 6;
+        defensevalue = 2;
         description = "["+name+"]\nA fire sword which used belong to\nan Australian painter";
         attackArea.width = 36;
         attackArea.height = 36;

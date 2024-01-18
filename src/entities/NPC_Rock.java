@@ -24,7 +24,7 @@ public class NPC_Rock extends Entity {
 
     }
     public void getImage() {
-        up0 = setUp("/res/npc/Rock",gp.tileSize, gp.tileSize);
+        up0 = setUp("/res/npc/Rock",gp.tileSize, gp.tileSize*2);
     }
     
     public void setDialogue() {
