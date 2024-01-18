@@ -2,33 +2,53 @@
 hide circle
 scale 1920*1080
 
-class Map {
-    - gp : GamePanel
-    - worldMap : BufferedImage[]
-    + miniMapOn : boolean
-    + miniMapScaleFactor : double
-    
-    + Map(GamePanel)
-    + createWorldMap() : void   
-    + drawFullMapScreen(Graphics2D) : void
-    + drawMiniMap(Graphics2D) : void
+package map {
+    class Map {
+        - gp : GamePanel
+        - worldMap : BufferedImage[]
+        + miniMapOn : boolean
+        + miniMapScaleFactor : double
+        
+        + Map(GamePanel)
+        + createWorldMap() : void   
+        + drawFullMapScreen(Graphics2D) : void
+        + drawMiniMap(Graphics2D) : void
+    }
+    class Tile {
+        + image : BufferedImage
+        + collision : boolean
+    }
+    class TileManager {
+        - gp : GamePanel
+        + tile : Tile[]
+        + mapTileNum : int[][][]
+        - drawPath : boolean
+        
+        + TileManager(GamePanel)
+        + getTileImage() : void
+        + setUp(int, String, boolean)
+        + loadMap(String, int) : void
+        + draw(Graphics2D) : void
+    }
 }
-class Tile {
-    + image : BufferedImage
-    + collision : boolean
+
+package main {
+    class GamePanel
 }
-class TileManager {
-    - gp : GamePanel
-    + tile : Tile[]
-    + mapTileNum : int[][][]
-    - drawPath : boolean
-    
-    + TileManager(GamePanel)
-    + getTileImage() : void
-    + setUp(int, String, boolean)
-    + loadMap(String, int) : void
-    + draw(Graphics2D) : void
+package managers{
+    class UtilityTool
 }
+package mics {
+    class Node
+}
+
+Map --|> TileManager
+Map --> GamePanel
+
+TileManager --> Tile
+TileManager --> GamePanel
+TileManager --> Node
+TileManager --> UtilityTool
 
 
 @enduml

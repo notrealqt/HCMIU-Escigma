@@ -256,23 +256,23 @@ public class AssetSetter {
         //map2:
         int map2 =1;
         int i2 = 0;
-        setObjectAt(new MON_Mimic(gp), map2, i2++, 32, 31);
-        setObjectAt(new MON_Mimic(gp), map2, i2++, 45, 38);
-        setObjectAt(new MON_Mimic(gp), map2, i2++, 36, 87);
+        setMonsterAt(new MON_Mimic(gp), map2, i2++, 32, 31);
+        setMonsterAt(new MON_Mimic(gp), map2, i2++, 45, 38);
+        setMonsterAt(new MON_Mimic(gp), map2, i2++, 36, 87);
         setMonsterAt(new MON_FloatingEye(gp, monType2), map2, i2++, 50, 88);
         setMonsterAt(new MON_Slime(gp, monType2), map2, i2++, 72, 49);
         setMonsterAt(new MON_FloatingEye(gp, monType2), map2, i2++, 109, 64);
-        setObjectAt(new MON_Mimic(gp), map2, i2++, 22, 14);
-        setObjectAt(new MON_Mimic(gp), map2, i2++, 19, 20);
+        setMonsterAt(new MON_Mimic(gp), map2, i2++, 22, 14);
+        setMonsterAt(new MON_Mimic(gp), map2, i2++, 19, 20);
         setMonsterAt(new MON_FloatingEye(gp, monType2), map2, i2++, 79, 15);
         setMonsterAt(new MON_Slime(gp, monType2), map2, i2++, 83, 32);
         setMonsterAt(new MON_FloatingEye(gp, monType2), map2, i2++, 107, 41);
-        setObjectAt(new MON_Mimic(gp), map2, i2++, 84, 70);
-        setObjectAt(new MON_Mimic(gp), map2, i2++, 100, 91);
+        setMonsterAt(new MON_Mimic(gp), map2, i2++, 84, 70);
+        setMonsterAt(new MON_Mimic(gp), map2, i2++, 100, 91);
         setMonsterAt(new MON_Slime(gp, monType2), map2, i2++, 62, 86);
         setMonsterAt(new MON_FloatingEye(gp, monType2), map2, i2++, 22, 94);
-        setObjectAt(new MON_Mimic(gp), map2, i2++, 17, 47);
-        setObjectAt(new MON_Mimic(gp), map2, i2++, 15, 28);
+        setMonsterAt(new MON_Mimic(gp), map2, i2++, 17, 47);
+        setMonsterAt(new MON_Mimic(gp), map2, i2++, 15, 28);
 
 
         //map3 
@@ -328,8 +328,8 @@ public class AssetSetter {
         setMonsterAt(new MON_Slime(gp, monType3), map4, i4++, 99, 47);
         setMonsterAt(new MON_Slime(gp, monType3), map4, i4++, 105, 42);
 
-        setObjectAt(new MON_Mimic(gp), map4, i4++, 16, 16);
-        setObjectAt(new MON_Mimic(gp), map4, i4++, 36, 34);
+        setMonsterAt(new MON_Mimic(gp), map4, i4++, 16, 16);
+        setMonsterAt(new MON_Mimic(gp), map4, i4++, 36, 34);
         setMonsterAt(new MON_FloatingEye(gp, monType2), map4, i4++, 25, 49);
         setMonsterAt(new MON_Slime(gp, monType2), map4, i4++, 73, 14);
         setMonsterAt(new MON_FloatingEye(gp, monType2), map4, i4++, 34, 13);

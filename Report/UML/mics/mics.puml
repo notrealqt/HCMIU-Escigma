@@ -2,69 +2,83 @@
 hide circle
 scale 1920*1080
 
-class DataStorage {
-    - level : int
-    - maxLife : int
-    - life : int
-    - maxMana : int
-    - mana : int
-    - strength : int
-    - dexterity : int
-    - itemNames : ArrayList<String>
-    - itemAmounts : ArrayList<Integer>
-    - currenWeaponSlot : int
-    - mapObjectNames : String[][]
-    - mapObjectWorldX : int[][]
-    - mapObjectWorldY : int[][]
-    - mapObjectLootNames : String[][]
-    - mapObjectOpened : boolean[][]
-}
-class Node {
-    - parent : Node
-    + col : int
-    + row : int
-    - gCost : int
-    - hCost : int
-    - fCost : int
-    - solid : boolean
-    - open : boolean
-    - checked : boolean
+package mics {
+    class DataStorage {
+        - level : int
+        - maxLife : int
+        - life : int
+        - maxMana : int
+        - mana : int
+        - strength : int
+        - dexterity : int
+        - itemNames : ArrayList<String>
+        - itemAmounts : ArrayList<Integer>
+        - currenWeaponSlot : int
+        - mapObjectNames : String[][]
+        - mapObjectWorldX : int[][]
+        - mapObjectWorldY : int[][]
+        - mapObjectLootNames : String[][]
+        - mapObjectOpened : boolean[][]
+    }
+    class Node {
+        - parent : Node
+        + col : int
+        + row : int
+        - gCost : int
+        - hCost : int
+        - fCost : int
+        - solid : boolean
+        - open : boolean
+        - checked : boolean
 
-    + Node(int, int)
-    + reset() : void
-}
-class PathFinder {
-    - gp : GamePanel
-    - node : Node[][]
-    - openList : ArrayList<Node> 
-    + pathList : ArrayList<Node>
-    - startNode : Node
-    - goalNode : Node
-    - currentNode : Node
-    - goalReached : boolean
-    - step : int
-    + search : boolean
-    + PathFinder(GamePanel)
-    + instantiateNodes() : void
-    + resetNodes() : void
-    + setNodes(int, int, int, int)
-    - openAdjacentNodes(int, int) : void
-    - openNodeIfExists(int, int) : void
-    - isValidCoordinate(int, int) : boolean
-    - findBestNode() : Node
-    + openNode(Node) : void
-    + trackThePath() : void
-}
-class Progress {
-    + static defeatLog : boolean
-}
-class SaveLoad {
-    - gp : GamePanel
-    
-    + SaveLoad(GamePanel)
-    + save() : void
-    + load() : void
+        + Node(int, int)
+        + reset() : void
+    }
+    class PathFinder {
+        - gp : GamePanel
+        - node : Node[][]
+        - openList : ArrayList<Node> 
+        + pathList : ArrayList<Node>
+        - startNode : Node
+        - goalNode : Node
+        - currentNode : Node
+        - goalReached : boolean
+        - step : int
+        + search : boolean
+        + PathFinder(GamePanel)
+        + instantiateNodes() : void
+        + resetNodes() : void
+        + setNodes(int, int, int, int)
+        - openAdjacentNodes(int, int) : void
+        - openNodeIfExists(int, int) : void
+        - isValidCoordinate(int, int) : boolean
+        - findBestNode() : Node
+        + openNode(Node) : void
+        + trackThePath() : void
+    }
+    class Progress {
+        + static defeatLog : boolean
+    }
+    class SaveLoad {
+        - gp : GamePanel
+        
+        + SaveLoad(GamePanel)
+        + save() : void
+        + load() : void
+    }
 }
 
+
+package main {
+    class GamePanel
+}
+
+DataStorage ..|> Serializable
+
+PathFinder --* GamePanel
+PathFinder --* Node
+
+SaveLoad --* GamePanel
+SaveLoad --* DataStorage
 
 @enduml
