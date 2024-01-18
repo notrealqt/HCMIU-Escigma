@@ -33,43 +33,24 @@ import java.util.Comparator;
 public class GamePanel extends JPanel implements Runnable, GameConstants {
     BufferedImage tempScreen;
     Graphics2D g2;
-    public boolean fullScreenOn = false;
     public int currentMap = 0;
-    int originalTileSize = 16;
-    int scale = 3;
+    int originalTileSize = 16, scale = 3, maxScreenCol = 20, maxScreenRow = 12;
     public int tileSize = originalTileSize * scale;
-        
+    public int maxWorldCol = 120, maxWorldRow = 120, maxMap = 10, FPS = 60;
 
-    // FULL SCREEN
-
-        
-    int maxScreenCol = 20;
-    int maxScreenRow = 12;
-
-
-    // WORLD SETTING
-    public int maxWorldCol = 120;
-    public int maxWorldRow = 120;
-    public int maxMap = 10;
-
-    public int worldWidth = tileSize * maxWorldCol;
-    public int worldHeight = tileSize * maxWorldRow;
-    public int screenWidth = tileSize * maxScreenCol;
-    public int screenHeight = tileSize * maxScreenRow;
-    public int screenWidth2 = screenWidth;
-    public int screenHeight2 = screenHeight;
-
-    // FPS
-    int FPS = 60;
+    public int  worldWidth = tileSize * maxWorldCol,
+                worldHeight = tileSize * maxWorldRow,
+                screenWidth = tileSize * maxScreenCol,
+                screenHeight = tileSize * maxScreenRow,
+                screenWidth2 = screenWidth,
+                screenHeight2 = screenHeight;
 
     // Game state
-    public int titleState = 0, playState = 1, pauseState = 2, dialogueState = 3, characterState = 4, optionState = 5, youLostState = 6;
-    public int guideState = 7;
-    public int menuOptionState = 8;
-    public int mapState = 10;
-    public int cutScene = 11;
+    public int  titleState = 0, playState = 1, pauseState = 2, 
+                dialogueState = 3, characterState = 4, optionState = 5, 
+                youLostState = 6, guideState = 7, menuOptionState = 8,
+                mapState = 10, cutScene = 11;
 
-    public boolean bossBattleOn = false;
     // System
     public TileManager tileM = new TileManager(this);
     public KeyHandle KeyH = new KeyHandle(this);
@@ -96,9 +77,9 @@ public class GamePanel extends JPanel implements Runnable, GameConstants {
     ArrayList<Entity> entityList = new ArrayList<>();
 
     // Game state
-    public int gameState;
-    public int currentArea;;
-    
+    public int gameState, currentArea;
+    public boolean fullScreenOn = false, bossBattleOn = false;
+
     
     public GamePanel() {
         setPreferredSize(new Dimension(screenWidth, screenHeight));
