@@ -28,6 +28,8 @@ public class AssetSetter {
         int map1 = 0;
         int i1 = 0;
         setObjectAt(new SavePoint(gp, "forest"), map1, i1++, 76, 97);
+        setObjectAt(new SavePoint(gp, "forest"), map1, i1++, 54, 34);
+
         setObjectAt(new Key(gp), map1, i1++, 25, 18);
         setObjectAt(new Key(gp), map1, i1++, 35, 32);
         setObjectAt(new Key(gp), map1, i1++, 57, 89);
@@ -66,6 +68,8 @@ public class AssetSetter {
         //Map2:
         int map2 = 1;
         int i2 = 0;
+        setObjectAt(new SavePoint(gp, "ice"), map2, i2++, 11, 12);
+        setObjectAt(new SavePoint(gp, "ice"), map2, i2++, 100, 47);
         setObjectAt(new Key(gp), map2, i2++, 24, 16);
         setObjectAt(new Key(gp), map2, i2++, 13, 26);
         setObjectAt(new Key(gp), map2, i2++, 16, 66);
@@ -100,6 +104,8 @@ public class AssetSetter {
         //Map3:
         int map3 = 2;
         int i3 = 0;
+        setObjectAt(new SavePoint(gp, "rock"), map3, i3++, 50, 57);
+        setObjectAt(new SavePoint(gp, "rock"), map3, i3++, 73, 45);
         setObjectAt(new Key(gp), map3, i3++, 29, 32);
         setObjectAt(new Key(gp), map3, i3++, 34, 60);
         setObjectAt(new Key(gp), map3, i3++, 46, 26);
@@ -146,6 +152,9 @@ public class AssetSetter {
         //Map4:
         int map4 = 3;
         int i4 = 0;
+        setObjectAt(new SavePoint(gp, "forest"), map4, i4++, 41, 96);
+        setObjectAt(new SavePoint(gp, "ice"), map4, i4++, 48, 44);
+
         setObjectAt(new Heart(gp),map4,i4++,25,27);
         setObjectAt(new Master_Portal(gp), map4, i4++, 106, 16);
 

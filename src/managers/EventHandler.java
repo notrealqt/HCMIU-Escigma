@@ -62,6 +62,15 @@ public class EventHandler {
         }
 
         savePointHit(0, 76, 97);
+        savePointHit(0, 54, 34);
+        savePointHit(1, 11, 12);
+        savePointHit(1, 100, 47);
+        savePointHit(2, 50, 57);
+        savePointHit(2, 73, 45);
+        savePointHit(3, 41, 96);
+        savePointHit(3, 48, 44);
+    
+
         //This will prevent the event from happening repeatedly
         if(canTouchEvent == true) {
             if(hit(0,16,10,"any") == true) {
@@ -122,12 +131,16 @@ public class EventHandler {
     }
     
     public void savePointHit(int map, int col, int row) {
-        if(hit(map, col, row, "any") ||
-            hit(map, col+2, row, "any") ||
-            hit(map, col, row-1, "any") ||
-            hit(map, col+1, row-1, "any") ||
-            hit(map, col, row+1, "any") ||
-            hit(map, col+1, row, "any") ) {
+        if(hit(map, col - 1, row, "any") ||
+            hit(map, col + 3, row, "any") ||
+            hit(map, col - 1, row + 1, "any") ||
+            hit(map, col + 3, row + 1, "any") ||
+            hit(map, col, row - 1, "any") ||
+            hit(map, col + 1, row - 1, "any") ||
+            hit(map, col + 2, row - 1, "any") ||
+            hit(map, col , row + 2, "any") ||
+            hit(map, col + 1, row + 2, "any") ||
+            hit(map, col + 2, row + 2, "any")  ) {
             
             healingPool(gp.dialogueState);    
             }
