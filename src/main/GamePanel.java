@@ -245,7 +245,8 @@ public class GamePanel extends JPanel implements Runnable {
             int x = 10;
             int y = 400;
             int lineHeight = 20;
-    
+            g2.drawString("Current Map: " + currentMap, x, y);
+            y += lineHeight;
             g2.drawString("X coord: " + player.worldX, x, y);
             y += lineHeight;
             g2.drawString("Y coord: " + player.worldY, x, y);

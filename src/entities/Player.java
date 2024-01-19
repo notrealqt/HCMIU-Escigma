@@ -404,8 +404,6 @@ public class Player extends Entity {
             }
         }else if(gp.KeyH.godModePressed == true){
             if(collision == true) {
-                defaultSpeed = 10;
-                speed = 10;
                 collision = false;
             }
             mana = maxMana;
