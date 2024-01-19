@@ -53,6 +53,7 @@ package main {
         + obj : Entity[][]
         + npc : Entity[][]
         + monster : Entity[][]
+        + mine : Entity[][]
         + projectileList : ArrayList<Entity>
         - entityList : ArrayList<Entity>
         + gameState : int
@@ -60,6 +61,7 @@ package main {
         - screenWidth2 : int
         - screenHeight2 : int
         + bossBattleOn : boolean
+        
         + GamePanel()
         + setupGame() : void
         + setFullScreen() : void

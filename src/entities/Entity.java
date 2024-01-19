@@ -42,7 +42,7 @@ public class Entity {
     public boolean collision = false;
     public boolean sleep = false;
     public boolean drawing = true;
-
+    public boolean opening = false;
     //take damage from monster from amount of time
     //avoid taking constantly damage
     public boolean invincible =false;
@@ -217,6 +217,7 @@ public class Entity {
         gp.gameState = gp.dialogueState;
         gp.ui.npc = entity;
         dialogueSet = setNum;
+        
     }
     
     public void interact() {}
@@ -279,8 +280,6 @@ public class Entity {
             else {
                 setAction();
                 checkCollision();
-                System.out.println("Moving in direction: " + direction);
-
                 if (collisionOn == false) {
                     switch (direction) {
                         case "up":
@@ -578,11 +577,6 @@ public class Entity {
                 }
             }
 
-        //int nextCol = gp.pFinder.pathList.get(0).col;
-        //int nextRow = gp.pFinder.pathList.get(0).row;
-        //if (nextCol == goalCol && nextRow == goalRow) {
-        //   onPath = false;
-        //}
         }
     }
     
@@ -653,7 +647,6 @@ public class Entity {
             if(actionLockCounter  > interval){
                 Random random = new Random();
                 int i = random.nextInt(100)+1; //Random from 1 to 100
-                System.out.println("Random direction: " + i);
                 if(i<=25){
                     direction = "up";
                 }
@@ -780,7 +773,7 @@ public class Entity {
     }
     
     public void chasePlayer (int interval) {
-        System.out.println("Chasing player");
+        //System.out.println("Chasing player");
         actionLockCounter++;
         if(actionLockCounter > interval) {
             if(getXDistance(gp.player) > getYDistance(gp.player)) {

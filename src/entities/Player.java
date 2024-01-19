@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import items.Fire_Sword_Projectile;
+import items.Master_Key;
 import items.Shield;
 import items.Sword;
 import main.GamePanel;
@@ -52,7 +53,7 @@ public class Player extends Entity {
         gp.currentMap = 0;
         worldX = gp.tileSize * 64; //player's pos in world map
         worldY = gp.tileSize * 104;
-        defaultSpeed = 5;
+        defaultSpeed = 10;
         speed = defaultSpeed;
         direction = "down";
 
@@ -106,6 +107,7 @@ public class Player extends Entity {
     public void setItems(){
         inventory.add(currentWeapon);
         inventory.add(currentShield);
+        inventory.add(new Master_Key(gp));
     }
     
     public int getAttack(){
@@ -248,7 +250,9 @@ public class Player extends Entity {
         if (knockBack == true) {
             
             collisionOn = false;
-            gp.colDect.checkTile(this);
+            if(keyH.godMode == false) {
+                gp.colDect.checkTile(this);
+            }
             gp.colDect.checkObject(this, true);
             gp.colDect.checkEntity(this, gp.npc);
             gp.colDect.checkEntity(this, gp.monster);
@@ -302,7 +306,9 @@ public class Player extends Entity {
 
                 //Check tile collision
                 collisionOn = false;
-                gp.colDect.checkTile(this);
+                if(keyH.godMode == false) {
+                    gp.colDect.checkTile(this);
+                }
 
                 //Check item collision
                 int itemIndex = gp.colDect.checkObject(this, true);
@@ -396,8 +402,10 @@ public class Player extends Entity {
                 //death music
                 //gp.playMusic(index);
             }
-        }else if(gp.KeyH.godModePressed = true){
-
+        }else if(gp.KeyH.godModePressed == true){
+            if(collision == true) {
+                collision = false;
+            }
             mana = maxMana;
         }
            
@@ -462,6 +470,9 @@ public class Player extends Entity {
                 if(keyH.enterPressed == true) {
                     attackCanceled = true;
                     System.out.println("Pressed door");
+                    if(gp.obj[gp.currentMap][i].name == "Master Portal" && gp.obj[gp.currentMap][i].opening == true) {
+                        gp.gameState = gp.titleState;
+                    }
                     gp.obj[gp.currentMap][i].interact();
                     keyH.enterPressed = false;
                 }
