@@ -772,7 +772,7 @@ public class Entity {
     }
     
     public void chasePlayer (int interval) {
-        System.out.println("Chasing player");
+        //System.out.println("Chasing player");
         actionLockCounter++;
         if(actionLockCounter > interval) {
             if(getXDistance(gp.player) > getYDistance(gp.player)) {
