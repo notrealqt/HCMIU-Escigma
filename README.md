@@ -43,4 +43,6 @@ MSC. Nguyen Quang Phu - nqphu@hcmiu.edu.vn.
     Nguyễn Phát Lợi                    ITCSIU22081        https://github.com/zzhahazz
 
 # Credits:
-Check out my YouTube playlist: [Shortened Link]([your_shortened_link_here](https://www.youtube.com/playlist?list=PL4rzdwizLaxYmltJQRjq18a9gsSyEQQ-0)https://www.youtube.com/playlist?list=PL4rzdwizLaxYmltJQRjq18a9gsSyEQQ-0)
+1. RyiSnow: How to Make a 2D Game in Java - https://www.youtube.com/playlist?list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq.
+2. Karrin Gaming: Platformer Tutorial - Java - https://www.youtube.com/playlist?list=PL4rzdwizLaxYmltJQRjq18a9gsSyEQQ-0
+3. Github: Treasure Hunt Game - https://github.com/LordRekishi/treasure-hunt-game
