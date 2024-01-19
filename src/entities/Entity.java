@@ -625,7 +625,7 @@ public class Entity {
     
     public void checkStop ( Entity target, int distance, int rate) {
         if (getTileDistance(target) > distance) {
-            int i = new Random().nextInt();
+            int i = new Random().nextInt(rate);
             if (i==0) {
                 onPath = false;
             }
@@ -634,7 +634,7 @@ public class Entity {
     
     public void checkChasing ( Entity target, int distance, int rate) {
         if (getTileDistance(target) < distance) {
-            int i = new Random().nextInt();
+            int i = new Random().nextInt(rate);
             if (i==0) {
                 onPath = true;
             }

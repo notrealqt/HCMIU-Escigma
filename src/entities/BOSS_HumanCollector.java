@@ -12,7 +12,7 @@ public class BOSS_HumanCollector extends Entity {
         boss = true;
         type = type_monster;
         name = monName;
-        defaultSpeed = 4;
+        defaultSpeed = 3;
         speed = defaultSpeed;
         maxLife = 10;
         life = maxLife;
@@ -111,7 +111,7 @@ public class BOSS_HumanCollector extends Entity {
             getRandomDirection(120);
         }
         if (attacking == false) {
-            checkAttack(10,gp.tileSize*5,gp.tileSize);
+            checkAttack(10,gp.tileSize *2 ,gp.tileSize);
         }
         if (rage == false && life < maxLife/2) {
             rage = true;
@@ -131,18 +131,18 @@ public class BOSS_HumanCollector extends Entity {
         dialogues[0][0] = "Injured: Flee! You can't possibly win this, just run for your life!";
         dialogues[0][1] = "Boss: ....................................................";
         dialogues[0][2] = "Boss: Well, well, what do we have here?";
-        dialogues[0][3] = "Seems like fate has thrown us into the arena of destiny.";
+        dialogues[0][3] = "Boss:Seems like fate has thrown us into the arena of destiny.";
         dialogues[0][4] = "Boss: Do you yearn to escape?";
         dialogues[0][5] = "Boss: Conquer me !!";
-        dialogues[0][6] = "before I unleash the full fury that will shatter what's left of your existence!";
+        dialogues[0][6] = "Boss: before I unleash the full fury that will shatter what's left of your existence!";
         dialogues[0][7] = "Injured: The shadows of defeat loom";
-        dialogues[0][8] = "but I won't surrender to your darkness!";
+        dialogues[0][8] = "Injured: but I won't surrender to your darkness!";
         dialogues[0][9] = "Boss: ....................................................";
         dialogues[0][10] = "Boss: Oh, the desperation in your eyes";
-        dialogues[0][11] = "the futile struggle against the inevitable.";
+        dialogues[0][11] = "Boss: the futile struggle against the inevitable.";
         dialogues[0][12] = "Boss: Do you feel the weight of your choices pressing down on you?";
         dialogues[0][13] = "Boss: Victory is a distant dream";
-        dialogues[0][14] = "your only hope is to survive my impending onslaught!";
+        dialogues[0][14] = "Boss: your only hope is to survive my impending onslaught!";
     }
 
 

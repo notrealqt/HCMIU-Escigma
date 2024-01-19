@@ -76,11 +76,11 @@ public class MON_Slime extends Entity {
 
     public void setAction(){
         
-        if (getTileDistance(gp.player) < 10) {
+        if (getTileDistance(gp.player) < 8) {
             chasePlayer(60);
         }
         else {
-            checkChasing(gp.player, 5, 100);
+            checkChasing(gp.player, 10, 60);
             getRandomDirection(120);
         }    
     }
