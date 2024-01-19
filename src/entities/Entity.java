@@ -42,7 +42,7 @@ public class Entity {
     public boolean collision = false;
     public boolean sleep = false;
     public boolean drawing = true;
-
+    public boolean opening = false;
     //take damage from monster from amount of time
     //avoid taking constantly damage
     public boolean invincible =false;
@@ -217,6 +217,7 @@ public class Entity {
         gp.gameState = gp.dialogueState;
         gp.ui.npc = entity;
         dialogueSet = setNum;
+        
     }
     
     public void interact() {}
