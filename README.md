@@ -1,10 +1,12 @@
 # Project Name
-"Escigma"
+Escigma
+
+![menu art](https://github.com/notrealqt/oop-project-IU/assets/79768562/84756045-03ce-49c8-aa38-b070e3f5ac1c)
 
     + Escape: describes the action of escaping a restricted area or circumstance.
     
     + Enigma: describes something enigmatic, perplexing, or challenging to comprehend.
-    
+
 # Description
 Welcome to the thrilling world of "Escigma," a Java-based 2D game where players embark on an epic journey through a mysterious maze dungeon. Your mission? To unearth the elusive Master Key that holds the key to your escape from this perilous labyrinth.
 
