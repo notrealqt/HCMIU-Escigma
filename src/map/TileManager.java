@@ -109,7 +109,7 @@ public class TileManager {
     }
      
     public void setUp(int index, String imageName, boolean collision) {
-        collision = false;
+        //collision = false;
         UtilityTool uTool = new UtilityTool();
         try {
             tile[index] = new Tile();

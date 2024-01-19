@@ -248,7 +248,9 @@ public class Player extends Entity {
         if (knockBack == true) {
             
             collisionOn = false;
-            gp.colDect.checkTile(this);
+            if(keyH.godMode == false) {
+                gp.colDect.checkTile(this);
+            }
             gp.colDect.checkObject(this, true);
             gp.colDect.checkEntity(this, gp.npc);
             gp.colDect.checkEntity(this, gp.monster);
@@ -302,7 +304,9 @@ public class Player extends Entity {
 
                 //Check tile collision
                 collisionOn = false;
-                gp.colDect.checkTile(this);
+                if(keyH.godMode == false) {
+                    gp.colDect.checkTile(this);
+                }
 
                 //Check item collision
                 int itemIndex = gp.colDect.checkObject(this, true);
@@ -397,7 +401,9 @@ public class Player extends Entity {
                 //gp.playMusic(index);
             }
         }else if(gp.KeyH.godModePressed = true){
-
+            if(collision == true) {
+                collision = false;
+            }
             mana = maxMana;
         }
            
