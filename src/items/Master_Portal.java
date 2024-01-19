@@ -31,5 +31,8 @@ public class Master_Portal extends Entity {
             startDialogue(this, 0);
             opening = true;
         }
+        if(opening == true) {
+            gp.gameState = gp.titleState;
+        }
     }
 }
