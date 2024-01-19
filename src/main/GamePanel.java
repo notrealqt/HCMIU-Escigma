@@ -226,7 +226,7 @@ public class GamePanel extends JPanel implements Runnable {
                 map.drawMiniMap(g2);
             }
             //light
-            //eManager.draw(g2);
+            eManager.draw(g2);
 
             // Draw cutscene
             csManager.draw(g2);

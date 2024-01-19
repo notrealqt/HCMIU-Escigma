@@ -761,6 +761,7 @@ public class UI {
             textY += gp.tileSize;
             g2.drawString("Move", textX, textY);  textY += gp.tileSize;
             g2.drawString("Interact", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Talk", textX, textY);  textY += gp.tileSize;
             g2.drawString("Pause", textX, textY);  textY += gp.tileSize;
             g2.drawString("Attack", textX, textY);  textY += gp.tileSize;
             g2.drawString("Map", textX, textY);  textY += gp.tileSize;
@@ -769,6 +770,7 @@ public class UI {
             textX= frameX + gp.tileSize*5;
             textY = frameY + gp.tileSize*2;
             g2.drawString("WASD", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Enter", textX, textY);  textY += gp.tileSize;
             g2.drawString("F", textX, textY);  textY += gp.tileSize;
             g2.drawString("P", textX, textY);  textY += gp.tileSize;
             g2.drawString("J", textX, textY);  textY += gp.tileSize;
@@ -925,6 +927,7 @@ public class UI {
             textY += gp.tileSize;
             g2.drawString("Move", textX, textY);  textY += gp.tileSize;
             g2.drawString("Interact", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Talk", textX, textY);  textY += gp.tileSize;
             g2.drawString("Pause", textX, textY);  textY += gp.tileSize;
             g2.drawString("Attack", textX, textY);  textY += gp.tileSize;
             g2.drawString("Map", textX, textY);  textY += gp.tileSize;
@@ -934,6 +937,7 @@ public class UI {
             textX= frameX + gp.tileSize*5;
             textY = frameY + gp.tileSize*2;
             g2.drawString("WASD", textX, textY);  textY += gp.tileSize;
+            g2.drawString("Enter", textX, textY);  textY += gp.tileSize;
             g2.drawString("F", textX, textY);  textY += gp.tileSize;
             g2.drawString("P", textX, textY);  textY += gp.tileSize;
             g2.drawString("J", textX, textY);  textY += gp.tileSize;

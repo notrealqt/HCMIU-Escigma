@@ -472,6 +472,7 @@ public class Player extends Entity {
                     System.out.println("Pressed door");
                     if(gp.obj[gp.currentMap][i].name == "Master Portal" && gp.obj[gp.currentMap][i].opening == true) {
                         gp.gameState = gp.titleState;
+                        
                     }
                     gp.obj[gp.currentMap][i].interact();
                     keyH.enterPressed = false;

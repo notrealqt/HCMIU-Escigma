@@ -33,6 +33,7 @@ public class Master_Portal extends Entity {
         }
         if(opening == true) {
             gp.gameState = gp.titleState;
+            gp.resetGame(true);
         }
     }
 }
