@@ -27,6 +27,9 @@ public class AssetSetter {
         //Map 1:
         int map1 = 0;
         int i1 = 0;
+        setObjectAt(new Door(gp), map1, i1++, 53, 14);
+        setObjectAt(new Door(gp), map1, i1++, 54, 14);
+
         setObjectAt(new SavePoint(gp, "forest"), map1, i1++, 76, 97);
         setObjectAt(new SavePoint(gp, "forest"), map1, i1++, 54, 34);
 
@@ -44,15 +47,15 @@ public class AssetSetter {
         setObjectAt(new Key(gp), map1, i1++, 97, 59);
         setObjectAt(new Key(gp), map1, i1++, 98, 86);
 
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map1, i1++, 14, 22);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map1, i1++, 19, 47);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map1, i1++, 35, 103);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map1, i1++, 74, 97);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map1, i1++, 89, 45);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map1, i1++, 22, 78);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map1, i1++, 30, 42);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map1, i1++, 53, 39);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map1, i1++, 80, 43);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "HP Potion")), map1, i1++, 14, 22);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "MP Potion")), map1, i1++, 19, 47);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "HP Potion")), map1, i1++, 35, 103);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "MP Potion")), map1, i1++, 74, 97);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "HP Potion")), map1, i1++, 89, 45);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "MP Potion")), map1, i1++, 22, 78);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "HP Potion")), map1, i1++, 30, 42);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "MP Potion")), map1, i1++, 53, 39);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "Green Potion")), map1, i1++, 80, 43);
 
         setTeleportAt(new Teleport(gp, "enter_map1"), map1, i1++, 64, 104);
         setTeleportAt(new Teleport(gp, "exit_map1"), map1, i1++, 53, 32);
@@ -68,6 +71,10 @@ public class AssetSetter {
         //Map2:
         int map2 = 1;
         int i2 = 0;
+
+        setObjectAt(new Door(gp), map2, i2++, 104, 28);
+        setObjectAt(new Door(gp), map2, i2++, 105, 28);
+
         setObjectAt(new SavePoint(gp, "ice"), map2, i2++, 11, 12);
         setObjectAt(new SavePoint(gp, "ice"), map2, i2++, 100, 47);
         setObjectAt(new Key(gp), map2, i2++, 24, 16);
@@ -82,14 +89,14 @@ public class AssetSetter {
         setObjectAt(new Key(gp), map2, i2++, 103, 92);
         setObjectAt(new Key(gp), map2, i2++, 17, 102);
 
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map2, i2++, 35, 23);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map2, i2++, 24, 69);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map2, i2++, 16, 86);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map2, i2++, 74, 45);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map2, i2++, 25, 21);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map2, i2++, 104, 15);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map2, i2++, 81, 52);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map2, i2++, 62, 102);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "HP Potion")), map2, i2++, 35, 23);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "MP Potion")), map2, i2++, 24, 69);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "HP Potion")), map2, i2++, 16, 86);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "MP Potion")), map2, i2++, 74, 45);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Axe(gp)), map2, i2++, 25, 21);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "MP Potion")), map2, i2++, 104, 15);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "HP Potion")), map2, i2++, 81, 52);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "Pink Potion")), map2, i2++, 62, 102);
         
         setTeleportAt(new Teleport(gp, "enter_map2"), map2, i2++, 15, 17);
         setTeleportAt(new Teleport(gp, "exit_map2"), map2, i2++, 101, 46);
@@ -104,6 +111,8 @@ public class AssetSetter {
         //Map3:
         int map3 = 2;
         int i3 = 0;
+        setObjectAt(new Door(gp), map3, i3++, 74, 34);
+        setObjectAt(new Door(gp), map3, i3++, 75, 34);
         setObjectAt(new SavePoint(gp, "rock"), map3, i3++, 50, 57);
         setObjectAt(new SavePoint(gp, "rock"), map3, i3++, 73, 45);
         setObjectAt(new Key(gp), map3, i3++, 29, 32);
@@ -123,19 +132,19 @@ public class AssetSetter {
         setObjectAt(new Key(gp), map3, i3++, 52, 38);
         setObjectAt(new Key(gp), map3, i3++, 20, 70);
 
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 14, 31);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 60, 89);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 33, 71);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 23, 61);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 38, 53);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 68, 74);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 79, 58);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 83, 18);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 71, 17);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 20, 101);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 63, 94);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 78, 101);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map3, i3++, 107, 56);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "HP Potion")), map3, i3++, 14, 31);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "MP Potion")), map3, i3++, 60, 89);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "HP Potion")), map3, i3++, 33, 71);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "MP Potion")), map3, i3++, 23, 61);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "HP Potion")), map3, i3++, 38, 53);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "MP Potion")), map3, i3++, 68, 74);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "HP Potion")), map3, i3++, 79, 58);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "MP Potion")), map3, i3++, 83, 18);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "HP Potion")), map3, i3++, 71, 17);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "MP Potion")), map3, i3++, 20, 101);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "HP Potion")), map3, i3++, 63, 94);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "MP Potion")), map3, i3++, 78, 101);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "HP Potion")), map3, i3++, 107, 56);
        
         setTeleportAt(new Teleport(gp, "enter_map3"), map3, i3++, 56, 65);
         setTeleportAt(new Teleport(gp, "exit_map3"), map3, i3++, 72, 44);
@@ -152,6 +161,11 @@ public class AssetSetter {
         //Map4:
         int map4 = 3;
         int i4 = 0;
+
+        setObjectAt(new Door(gp), map4, i4++, 98, 19);
+        setObjectAt(new Door(gp), map4, i4++, 99, 19);
+        setObjectAt(new Door(gp), map4, i4++, 100, 19);
+
         setObjectAt(new SavePoint(gp, "forest"), map4, i4++, 41, 96);
         setObjectAt(new SavePoint(gp, "ice"), map4, i4++, 48, 44);
 
@@ -163,17 +177,17 @@ public class AssetSetter {
         setObjectAt(new Key(gp), map4, i4++, 22, 31);
         setObjectAt(new Key(gp), map4, i4++, 38, 104);
 
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map4, i4++, 20, 18);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map4, i4++, 22, 102);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map4, i4++, 51, 12);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map4, i4++, 96, 26);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)),map4, i4++, 32, 21);
-        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Key(gp)), map4, i4++, 65, 32);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map4, i4++, 86, 23);
-        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Key(gp)), map4, i4++, 101, 63);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map4, i4++, 101, 89);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map4, i4++, 68, 102);
-        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Key(gp)), map4, i4++, 19, 66);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "HP Potion")), map4, i4++, 20, 18);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "MP Potion")), map4, i4++, 22, 102);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "HP Potion")), map4, i4++, 51, 12);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "MP Potion")), map4, i4++, 96, 26);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "HP Potion")),map4, i4++, 32, 21);
+        setObjectAt(new Chest(gp, "ice/open", "ice/close", new Potion(gp, "MP Potion")), map4, i4++, 65, 32);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "HP Potion")), map4, i4++, 86, 23);
+        setObjectAt(new Chest(gp, "rock/open", "rock/close", new Potion(gp, "MP Potion")), map4, i4++, 101, 63);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "HP Potion")), map4, i4++, 101, 89);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Fire_Sword(gp)), map4, i4++, 68, 102);
+        setObjectAt(new Chest(gp, "forest/open", "forest/close", new Potion(gp, "MP Potion")), map4, i4++, 19, 66);
 
 
         setTeleportAt(new WormHole(gp, "wormhole_forest"), map4, i4++, 45, 70);
@@ -183,7 +197,7 @@ public class AssetSetter {
         setTeleportAt(new WormHole(gp, "wormhole_ice"), map4, i4++, 14, 43);
         setTeleportAt(new WormHole(gp, "wormhole_ice"), map4, i4++, 65,38);
 
-        setTeleportAt(new Teleport(gp, "enter_map2"), map4, i4++, 44, 104);
+        setTeleportAt(new Teleport(gp, "enter_map1"), map4, i4++, 44, 104);
 
     }   
     

@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import items.Fire_Sword_Projectile;
 import items.Master_Key;
+import items.Potion;
 import items.Shield;
 import items.Sword;
 import main.GamePanel;
@@ -107,7 +108,6 @@ public class Player extends Entity {
     public void setItems(){
         inventory.add(currentWeapon);
         inventory.add(currentShield);
-        inventory.add(new Master_Key(gp));
     }
     
     public int getAttack(){
@@ -542,11 +542,19 @@ public class Player extends Entity {
                     gp.monster[gp.currentMap][index].invincible = true;
                     gp.monster[gp.currentMap][index].damagereaction();
     
-                    if (gp.monster[gp.currentMap][index].life <= 0) {
+                    if (gp.monster[gp.currentMap][index].life <= 0 && gp.monster[gp.currentMap][index].name != "Human Collector") {
                         gp.monster[gp.currentMap][index].die = true; // kill monster
                         gp.ui.addMessage("Killed the " +gp.monster[gp.currentMap][index].name + "!");
                         gp.ui.addMessage("Coin + " +gp.monster[gp.currentMap][index].coin + "!");
                         coin += gp.monster[gp.currentMap][index].coin;
+
+                    }
+
+                    if (gp.monster[gp.currentMap][index].life <= 0 && gp.monster[gp.currentMap][index].name == "Human Collector") {
+                        gp.monster[gp.currentMap][index].die = true; // kill monster
+                        gp.ui.addMessage("Killed the " +gp.monster[gp.currentMap][index].name + "!");
+                        gp.ui.addMessage("Got the Master Key!");
+                        inventory.add(new Master_Key(gp));
 
                     }
 
