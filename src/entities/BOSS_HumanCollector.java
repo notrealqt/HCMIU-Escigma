@@ -12,7 +12,7 @@ public class BOSS_HumanCollector extends Entity {
         boss = true;
         type = type_monster;
         name = monName;
-        defaultSpeed = 5;
+        defaultSpeed = 4;
         speed = defaultSpeed;
         maxLife = 10;
         life = maxLife;

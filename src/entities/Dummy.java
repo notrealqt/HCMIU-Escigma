@@ -4,7 +4,6 @@ import main.GamePanel;
 
 public class Dummy extends Entity {
     public static final String npcName = "Dummy";
-    Player player = new Player(gp, null);
     public Dummy(GamePanel gp) {
         super(gp);
         name = npcName;
