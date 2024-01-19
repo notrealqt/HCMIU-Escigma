@@ -41,3 +41,6 @@ MSC. Nguyen Quang Phu - nqphu@hcmiu.edu.vn.
     Hoàng Thiên Ân                     ITCSIU22248        https://github.com/anhoang935
     Nguyễn Huỳnh Minh Đức              ITCSIU22218        https://github.com/minhduckd5
     Nguyễn Phát Lợi                    ITCSIU22081        https://github.com/zzhahazz
+
+# Credits:
+Check out my YouTube playlist: [Shortened Link]([your_shortened_link_here](https://www.youtube.com/playlist?list=PL4rzdwizLaxYmltJQRjq18a9gsSyEQQ-0)https://www.youtube.com/playlist?list=PL4rzdwizLaxYmltJQRjq18a9gsSyEQQ-0)
