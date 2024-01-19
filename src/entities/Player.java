@@ -52,7 +52,7 @@ public class Player extends Entity {
         gp.currentMap = 0;
         worldX = gp.tileSize * 64; //player's pos in world map
         worldY = gp.tileSize * 104;
-        defaultSpeed = 5;
+        defaultSpeed = 10;
         speed = defaultSpeed;
         direction = "down";
 
@@ -402,6 +402,7 @@ public class Player extends Entity {
             }
         }else if(gp.KeyH.godModePressed = true){
             if(collision == true) {
+                gp.player.defaultSpeed = 10;
                 collision = false;
             }
             mana = maxMana;
