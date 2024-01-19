@@ -4,6 +4,8 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -250,74 +252,70 @@ public class UI {
 
     }
     public void drawTitleScreen() {
-        
+
         g2.setColor(Color.DARK_GRAY);
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
-        
-        // switch (SubState) {
-        //    case 0: 
-        // }
-        //Title name
+    
+        // Main character image
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/res/menu art/menu art.png"));
+        g2.drawImage(image, 0, 0, gp.screenWidth, gp.screenHeight, null);
+    
+        // Title name
         g2.setFont(tnr_80);
         String text = "Escigma";
         int x = getXforCenteredText(text);
-        int y = gp.tileSize*2;
-        //Shadow
+        int y = gp.tileSize * 2;
+        // Shadow
         g2.setColor(Color.black);
-        g2.drawString(text, x+5, y+5);
-        //Main color
+        g2.drawString(text, x + 5, y + 5);
+        // Main color
         g2.setColor(Color.white);
         g2.drawString(text, x, y);
-        
-        //Main character image
-        x = gp.screenWidth/2 - (gp.tileSize*4)/2;
-        y += gp.tileSize;
-        g2.drawImage(gp.player.down1, x, y, gp.tileSize*3, gp.tileSize*3, null);
-        
-        //Menu
+    
+        // Menu
         g2.setFont(tnr_40);
-
+    
         text = "NEW GAME";
         x = getXforCenteredText(text);
-        y += gp.tileSize*4;
+        y += gp.tileSize * 4;
         g2.drawString(text, x, y);
-        if(commandNum == 0) {
-            g2.drawString(">", x-gp.tileSize, y);
+        if (commandNum == 0) {
+            g2.drawString(">", x - gp.tileSize, y);
         }
-
+    
         text = "CONTINUE";
         x = getXforCenteredText(text);
         y += gp.tileSize;
         g2.drawString(text, x, y);
-        if(commandNum == 1) {
-            g2.drawString(">", x-gp.tileSize, y);
-           
+        if (commandNum == 1) {
+            g2.drawString(">", x - gp.tileSize, y);
         }
+    
         text = "GUIDE";
         x = getXforCenteredText(text);
         y += gp.tileSize;
         g2.drawString(text, x, y);
-        if(commandNum == 2) {
-            g2.drawString(">", x-gp.tileSize, y);
+        if (commandNum == 2) {
+            g2.drawString(">", x - gp.tileSize, y);
         }
-
+    
         text = "SETTING";
         x = getXforCenteredText(text);
         y += gp.tileSize;
         g2.drawString(text, x, y);
-        if(commandNum == 3) {
-            g2.drawString(">", x-gp.tileSize, y);
+        if (commandNum == 3) {
+            g2.drawString(">", x - gp.tileSize, y);
         }
-
+    
         text = "QUIT";
         x = getXforCenteredText(text);
         y += gp.tileSize;
         g2.drawString(text, x, y);
-        if(commandNum == 4) {
-            g2.drawString(">", x-gp.tileSize, y);
+        if (commandNum == 4) {
+            g2.drawString(">", x - gp.tileSize, y);
         }
-
     }
+    
     
     public void drawPauseScreen(){
         g2.setFont(tnr_40);
