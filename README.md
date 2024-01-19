@@ -1,6 +1,8 @@
 # Project Name
 "Escigma"
+
     + Escape: describes the action of escaping a restricted area or circumstance.
+    
     + Enigma: describes something enigmatic, perplexing, or challenging to comprehend.
     
 # Description
