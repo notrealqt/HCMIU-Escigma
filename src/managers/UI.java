@@ -107,10 +107,10 @@ public class UI {
             
         }
         else {
-            g2.setFont(tnr_40);
-            g2.setColor(Color.black);
-            g2.drawImage(keyImage, 15, 500, gp.tileSize, gp.tileSize, null);
-            g2.drawString("x"+ gp.player.hasKey, 65, 545);
+            //g2.setFont(tnr_40);
+            //g2.setColor(Color.black);
+            //g2.drawImage(keyImage, 15, 500, gp.tileSize, gp.tileSize, null);
+            //g2.drawString("x"+ gp.player.hasKey, 65, 545);
             
             //Time
             //playTime +=(double)1/60;
